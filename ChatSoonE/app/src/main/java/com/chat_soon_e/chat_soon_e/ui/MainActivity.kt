@@ -5,9 +5,6 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import com.chat_soon_e.chat_soon_e.data.entities.Chat
 import com.chat_soon_e.chat_soon_e.data.local.AppDatabase
 import com.chat_soon_e.chat_soon_e.databinding.ActivityMainBinding
-import com.chat_soon_e.chat_soon_e.ui.BaseActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.content.Intent
 import android.view.MenuItem
 import android.view.View
@@ -85,11 +82,11 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
                 Log.d("MAIN/LONG-CLICK", "onChatLongClick")
 
                 // 여기서 view는 클릭된 뷰를 의미한다.
-                var popup = PopupMenu(this@MainActivity, view)
+                val popup = PopupMenu(this@MainActivity, view)
                 menuInflater.inflate(R.menu.popup_menu, popup.menu)
 
                 // 리스너로 처리
-                var listener = PopupMenuListener()
+                val listener = PopupMenuListener()
                 popup.setOnMenuItemClickListener(listener)
                 popup.show()    // 팝업 메뉴 보이도록
             }
@@ -99,7 +96,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
     private fun initClickListener() {
         // 내폴더 아이콘을 클릭했을 때 폴더 화면으로 이동할 수 있도록
         binding.mainMyFolderIv.setOnClickListener {
-            // startNextActivity(FolderActivity::class.java)
+            startNextActivity(FolderActivity::class.java)
         }
 
         // 업데이트 버튼을 클릭했을 때 업데이트 해주는 함수 실행
