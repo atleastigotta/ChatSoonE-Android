@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:enabled="true"
+        android:title="@string/menu_home"
+        android:icon="@drawable/selector_navi_home"/>
+    <item
+        android:id="@+id/searchFragment"
+        android:enabled="true"
+        android:title="@string/menu_search"
+        android:icon="@drawable/selector_navi_search"/>
+    <item
+        android:id="@+id/matchFragment"
+        android:enabled="true"
+        android:title="@string/menu_matching"
+        android:icon="@drawable/selector_navi_match"/>
+    <item
+        android:id="@+id/mypageFragment"
+        android:enabled="true"
+        android:title="@string/menu_mypage"
+        android:icon="@drawable/selector_navi_mypage"/>
+</menu>
