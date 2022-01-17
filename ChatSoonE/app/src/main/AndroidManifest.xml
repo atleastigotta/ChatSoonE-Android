@@ -14,6 +14,7 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Template_Basic">
 
+        <!-- SplashActivity -->
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.SplashActivity"
             android:exported="true">
@@ -24,16 +25,24 @@
             </intent-filter>
         </activity>
 
+        <!-- LoginActivity -->
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.LoginActivity"
             android:exported="true"/>
 
+        <!-- SignUpActivity -->
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.SignUpActivity"
             android:exported="true"/>
 
+        <!-- MainActivity -->
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.MainActivity"
+            android:exported="true"/>
+
+        <!-- FolderActivity -->
+        <activity
+            android:name=".ui.FolderActivity"
             android:exported="true"/>
 
         <!-- NotificationListener 권한 얻기 -->
