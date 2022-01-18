@@ -23,6 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.PermissionActivity"/>
 
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.LoginActivity"

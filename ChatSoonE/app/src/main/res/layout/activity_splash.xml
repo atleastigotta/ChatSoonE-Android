@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backgroud"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <TextView
         android:id="@+id/splash_main_text"
@@ -25,34 +26,54 @@
         app:layout_constraintTop_toBottomOf="@id/splash_main_text"
         android:layout_marginTop="20dp"
         style="@android:style/Widget.ProgressBar.Horizontal"/>
-    <TextView
-        android:id="@+id/splash_enter_btn"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/splash_start_btn_cv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/splash_progressBar"
-        android:layout_marginTop="20dp"
-        android:paddingHorizontal="20dp"
-        android:text="시작하기"
-        android:textSize="30sp"
-        android:background="#C5C5C5"
-        android:textColor="@color/black"
-        />
-    <TextView
-        android:id="@+id/splash_login_btn"
+        android:layout_marginTop="70dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="0dp"
+        android:visibility="invisible"
+        >
+        <TextView
+            android:id="@+id/splash_start_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="시작하기"
+            android:textSize="20sp"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="8dp"
+            android:background="#FEB3B0"
+            android:textColor="@color/white"
+            />
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/splash_login_btn_cv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/splash_enter_btn"
+        app:layout_constraintTop_toBottomOf="@id/splash_start_btn_cv"
         android:layout_marginTop="20dp"
-        android:paddingHorizontal="20dp"
-        android:text="카카오톡 로그인"
-        android:textSize="30sp"
-        android:background="#C5C5C5"
-        android:textColor="@color/black"
-        />
+        app:cardCornerRadius="30dp"
+        app:cardElevation="0dp"
+        android:visibility="invisible"
+        >
+        <TextView
+            android:id="@+id/splash_login_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="로그인"
+            android:textSize="20sp"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="8dp"
+            android:background="#FEE500"
+            android:textColor="#181600"
+            />
+    </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
