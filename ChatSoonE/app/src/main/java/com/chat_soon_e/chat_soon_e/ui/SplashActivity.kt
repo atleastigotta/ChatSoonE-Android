@@ -2,6 +2,7 @@ package com.chat_soon_e.chat_soon_e.ui
 
 import android.os.Handler
 import android.os.Looper
+import androidx.core.app.NotificationManagerCompat
 import com.chat_soon_e.chat_soon_e.data.remote.auth.AuthService
 import com.chat_soon_e.chat_soon_e.databinding.ActivitySplashBinding
 
@@ -13,11 +14,12 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
 
     // BaseActivity onCreate()에서 바인딩 끝나고 자동적으로 호출이 되게끔 해준다.
     override fun initAfterBinding() {
-        // SplashActivity에서 2초가 지난 뒤 autoLogin() 수행
         Handler(Looper.getMainLooper()).postDelayed({
+            //여기서 알림 권한을 얻었는지 확인한다. 만약 권한이 없다면 권한 창으로 이동, 있다면 시작하기&로그인 나타나기
             // autoLogin()
-            startNextActivity(MainActivity::class.java)
-        }, 2000)
+            if(!permissionGrantred())
+                startNextActivity(PermissionActivity::class.java)
+        }, 1000)
     }
 
     private fun autoLogin() {
@@ -34,5 +36,11 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
 
     override fun onAutoLoginFailure(code: Int, message: String) {
         startActivityWithClear(LoginActivity::class.java)
+    }
+    private fun permissionGrantred(): Boolean {//알림 권한 체크
+        return NotificationManagerCompat.getEnabledListenerPackages(this).any {
+                enabledPackageName ->
+            enabledPackageName == packageName
+        }
     }
 }
