@@ -22,6 +22,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
     private lateinit var chatDB: AppDatabase            // chat list를 담고 있는 데이터베이스
     private lateinit var mainRVAdapter: MainRVAdapter   // chat list recycler view adpater
     private var chatList = ArrayList<Chat>()            // 데이터베이스로부터 chat list를 받아올 변수
+    private var isSelectionMode: Boolean = false        // 폴더 이동 선택 모드인지 아닌지를 결정해주는 변수
 
     override fun initAfterBinding() {
         Log.d("MAIN/LIFE-CYCLE", "after onCreate()")
@@ -73,6 +74,11 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         chatDB.chatDao().insert(Chat(null, "남선우", "Android", "오전 12시"))
         chatDB.chatDao().insert(Chat(null, "변재호", "Server (node.js)", "오후 1시"))
         chatDB.chatDao().insert(Chat(null, "이주연", "Android", "오후 2시"))
+        chatDB.chatDao().insert(Chat(null, "강은서", "Designer", "오후 3시"))
+        chatDB.chatDao().insert(Chat(null, "김민경", "PM\nServer(node.js)", "오후 4시"))
+        chatDB.chatDao().insert(Chat(null, "남선우", "Android", "오후 5시"))
+        chatDB.chatDao().insert(Chat(null, "변재호", "Server (node.js)", "오후 6시"))
+        chatDB.chatDao().insert(Chat(null, "이주연", "Android", "오후 7시"))
 
         Log.d("MAIN/DATA", chatDB.chatDao().getChatList().toString())
     }
@@ -93,27 +99,41 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         mainRVAdapter = MainRVAdapter(chatList)
         binding.mainContent.mainChatListRecyclerView.adapter = mainRVAdapter
 
-        // 아이템 뷰가 길게 클릭됐을 때 팝업 메뉴 띄우기
-        mainRVAdapter.setMyItemClickListener(object: MainRVAdapter.MyItemClickListener {
-            override fun onChatClick(view: View, position: Int) {
-                TODO("Not yet implemented")
-            }
+        if(isSelectionMode) {   // 만약 폴더 이동 선택 모드일 경우
+            mainRVAdapter.setMyItemClickListener(object: MainRVAdapter.MyItemClickListener {
+                override fun onChatClick(view: View, position: Int) {
+                    TODO("Not yet implemented")
+                }
 
-            override fun onChatLongClick(view: View, position: Int) {
-                // 팝업 메뉴 나오도록
-                // PopupMenu는 API 11 레벨부터 제공된다.
-                Log.d("MAIN/LONG-CLICK", "onChatLongClick")
+                override fun onChatLongClick(view: View, position: Int) {
+                    Log.d("MAIN/RV-ADAPTER", "폴더 이동 선택 모드")
+                }
 
-                // 여기서 view는 클릭된 뷰를 의미한다.
-                val popup = PopupMenu(this@MainActivity, view)
-                menuInflater.inflate(R.menu.popup_menu, popup.menu)
+            })
+        } else {    // 만약 폴더 이동 선택 모드가 아닐 경우
+            // 아이템 뷰가 길게 클릭됐을 때 팝업 메뉴 띄우기
+            mainRVAdapter.setMyItemClickListener(object: MainRVAdapter.MyItemClickListener {
+                override fun onChatClick(view: View, position: Int) {
+                    TODO("Not yet implemented")
+                }
 
-                // 리스너로 처리
-                val listener = PopupMenuListener()
-                popup.setOnMenuItemClickListener(listener)
-                popup.show()    // 팝업 메뉴 보이도록
-            }
-        })
+                override fun onChatLongClick(view: View, position: Int) {
+                    // 팝업 메뉴 나오도록
+                    // PopupMenu는 API 11 레벨부터 제공된다.
+                    Log.d("MAIN/LONG-CLICK", "onChatLongClick")
+
+                    // 여기서 view는 클릭된 뷰를 의미한다.
+                    val popup = PopupMenu(this@MainActivity, view)
+                    menuInflater.inflate(R.menu.popup_menu, popup.menu)
+
+                    // 리스너로 처리
+                    val listener = PopupMenuListener()
+                    popup.setOnMenuItemClickListener(listener)
+                    popup.show()    // 팝업 메뉴 보이도록
+                }
+
+            })
+        }
     }
 
     // 설정 메뉴 창을 띄우는 DrawerLayout 초기화
@@ -154,13 +174,39 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
     }
 
     private fun initClickListener() {
-//        val binding = ActivityMainContentBinding.inflate(layoutInflater)
+        // 내폴더 아이콘 클릭시 폴더 화면으로 이동
+        binding.mainContent.mainMyFolderIv.setOnClickListener {
+            // startNextActivityWithClear()를 사용하는 게 좋을까?
+            startNextActivity(FolderActivity::class.java)
+        }
 
-//        내폴더 아이콘을 클릭했을 때 폴더 화면으로 이동할 수 있도록
-//        binding.mainMyFolderIv.setOnClickListener {
-//            startNextActivity(FolderActivity::class.java)
-//        }
-//
+        // (특정 폴더로 옮길 특정 채팅을 선택하는 모드로 들어가게 해주는) 폴더 아이콘 클릭시
+        binding.mainContent.mainFolderIv.setOnClickListener {
+            binding.mainContent.mainFolderIv.setImageResource(R.drawable.icon_move) // 이미지 변경 (선택 모드 진입을 알린다.)
+            binding.mainContent.mainUpdateIv.visibility = View.GONE
+            binding.mainContent.mainCancelIv.visibility = View.VISIBLE
+
+            // RecyclerView의 아이템 클릭이벤트를 실행시킬 수 있도록
+            // 폴더 이동 선택 모드 설정
+            isSelectionMode = true
+        }
+
+        // 취소 버튼 클릭시 다시 초기 화면으로
+        binding.mainContent.mainCancelIv.setOnClickListener {
+            binding.mainContent.mainFolderIv.setImageResource(R.drawable.icon_my_folder)
+            binding.mainContent.mainUpdateIv.visibility = View.VISIBLE
+            binding.mainContent.mainCancelIv.visibility = View.GONE
+
+            // RecyclerView의 아이템 클릭이벤트를 실행시킬 수 없도록
+            // 폴더 이동 선택 모드 해제
+            isSelectionMode = false
+        }
+
+        // 설정 메뉴창 아이콘 클릭시 설정 메뉴창 뜨도록
+        binding.mainContent.mainSettingMenuIv.setOnClickListener {
+            // 이 부분 어떻게 구현해야 될지 고민하기
+        }
+
 //        업데이트 버튼을 클릭했을 때 업데이트 해주는 함수 실행
 //        binding.mainUpdateIv.setOnClickListener {
 //            update()

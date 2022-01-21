@@ -8,7 +8,7 @@
         android:id="@+id/main_drawer_setting_menu_iv"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:src="@drawable/ic_baseline_menu_24"
+        android:src="@drawable/ic_baseline_black_menu_24"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="20dp"
         android:layout_marginStart="20dp"
