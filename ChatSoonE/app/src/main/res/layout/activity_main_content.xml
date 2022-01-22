@@ -55,7 +55,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/main_chat_list_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="570dp"
+        android:layout_height="580dp"
         android:background="@drawable/background_white_corner"
         android:scrollbars="vertical"
         android:scrollbarFadeDuration="0"
@@ -81,10 +81,12 @@
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:src="@drawable/icon_chat"
+        android:layout_marginStart="70dp"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintTop_toTopOf="@+id/main_bottom_bar_view"
         app:layout_constraintBottom_toBottomOf="@+id/main_bottom_bar_view"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/main_folder_iv" />
+        app:layout_constraintEnd_toStartOf="@+id/main_my_folder_iv" />
 
     <ImageView
         android:id="@+id/main_folder_iv"
@@ -119,9 +121,11 @@
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:src="@drawable/icon_my_folder"
+        android:layout_marginEnd="70dp"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintTop_toTopOf="@+id/main_bottom_bar_view"
         app:layout_constraintBottom_toBottomOf="@+id/main_bottom_bar_view"
-        app:layout_constraintStart_toEndOf="@+id/main_folder_iv"
+        app:layout_constraintStart_toEndOf="@+id/main_chat_iv"
         app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

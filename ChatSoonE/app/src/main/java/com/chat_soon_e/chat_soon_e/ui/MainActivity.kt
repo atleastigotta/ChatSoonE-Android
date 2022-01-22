@@ -24,10 +24,12 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
     private var chatList = ArrayList<Chat>()            // 데이터베이스로부터 chat list를 받아올 변수
     private var isSelectionMode: Boolean = false        // 폴더 이동 선택 모드인지 아닌지를 결정해주는 변수
 
+    // onCreate() 이후
     override fun initAfterBinding() {
         Log.d("MAIN/LIFE-CYCLE", "after onCreate()")
     }
 
+    // initAfterBinding() 이후 실행
     override fun onStart() {
         super.onStart()
         Log.d("MAIN/LIFE-CYCLE", "onStart()")
@@ -142,7 +144,17 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 //        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 //        홈버튼 이미지 변경
 //        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24)
+
         binding.mainNavigationView.setNavigationItemSelectedListener(this)
+
+        // 설정 메뉴창에서 알림 권한 허용 여부 표시해주기 위해
+        if(!permissionGrantred()) {
+            // 허용이 되어 있지 않다면
+            binding.mainNavigationView.menu.getItem(0).setActionView(R.layout.activity_main_drawer_toggle_off)
+        } else {
+            // 허용이 되어 있다면
+            binding.mainNavigationView.menu.getItem(0).setActionView(R.layout.activity_main_drawer_toggle_on)
+        }
     }
 
 //    툴바 메뉴 버튼이 클릭되었을 때 실행된다.
@@ -157,8 +169,57 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
     // 설정 메뉴 창의 네비게이션 드로어의 아이템들에 대한 이벤트를 처리
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-            R.id.navi_setting_alarm_item -> Toast.makeText(this, "alarm clicked", Toast.LENGTH_SHORT).show()
-            else -> Toast.makeText(this, "clicked", Toast.LENGTH_SHORT).show()
+//            R.id.main_drawer_alarm_toggle_on_layout -> {
+//                binding.mainNavigationView.menu.getItem(0).setActionView(R.layout.activity_main_drawer_toggle_off)
+//                Toast.makeText(this, "알림 권한을 허용하지 않습니다.", Toast.LENGTH_SHORT).show()
+//
+//                // 알림 허용을 꺼주는 코드 추가하기 (권한 해제)
+//            }
+//
+//            R.id.main_drawer_alarm_toggle_off_layout -> {
+//                binding.mainNavigationView.menu.getItem(0).setActionView(R.layout.activity_main_drawer_toggle_on)
+//                Toast.makeText(this, "알림 권한을 허용합니다.", Toast.LENGTH_SHORT).show()
+//
+//                // 알림 허용을 해주는 코드 추가하기 (권한 부여)
+//            }
+
+            // 설정 메뉴창의 아이템(목록)들을 클릭했을 때
+            // 알림 설정
+            R.id.navi_setting_alarm_item -> {
+                Toast.makeText(this, "알림 설정", Toast.LENGTH_SHORT).show()
+            }
+
+            // 차단 관리
+            R.id.navi_setting_block_item -> {
+                Toast.makeText(this, "차단 관리", Toast.LENGTH_SHORT).show()
+            }
+
+            // 이메일 문의
+            R.id.navi_setting_email_item -> {
+                Toast.makeText(this, "이메일 문의", Toast.LENGTH_SHORT).show()
+            }
+
+            // 사용 방법 도움말
+            R.id.navi_setting_helper_item -> {
+                Toast.makeText(this, "사용 방법 도움말", Toast.LENGTH_SHORT).show()
+            }
+
+            // 앱 리뷰하기
+            R.id.navi_setting_review_item -> {
+                Toast.makeText(this, "앱 리뷰하기", Toast.LENGTH_SHORT).show()
+            }
+
+            // 공유하기
+            R.id.navi_setting_share_item -> {
+                Toast.makeText(this, "공유하기", Toast.LENGTH_SHORT).show()
+            }
+
+            // 개인정보 처리방침
+            R.id.navi_setting_privacy_item -> {
+                Toast.makeText(this, "개인정보 처리방침", Toast.LENGTH_SHORT).show()
+            }
+
+            else -> Toast.makeText(this, "잘못된 항목입니다.", Toast.LENGTH_SHORT).show()
         }
         return false
     }
@@ -182,7 +243,8 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 
         // (특정 폴더로 옮길 특정 채팅을 선택하는 모드로 들어가게 해주는) 폴더 아이콘 클릭시
         binding.mainContent.mainFolderIv.setOnClickListener {
-            binding.mainContent.mainFolderIv.setImageResource(R.drawable.icon_move) // 이미지 변경 (선택 모드 진입을 알린다.)
+            binding.mainContent.mainFolderIv.visibility = View.GONE
+            binding.mainContent.mainFolderModeIv.visibility = View.VISIBLE
             binding.mainContent.mainUpdateIv.visibility = View.GONE
             binding.mainContent.mainCancelIv.visibility = View.VISIBLE
 
@@ -191,9 +253,15 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             isSelectionMode = true
         }
 
-        // 취소 버튼 클릭시 다시 초기 화면으로
+        // 폴더 선택 모드 클릭시 팝업 메뉴
+        binding.mainContent.mainFolderModeIv.setOnClickListener {
+            // 팝업 메뉴
+        }
+
+        // 취소 버튼 클릭시 다시 초기 화면으로 (폴더 선택 모드 취소)
         binding.mainContent.mainCancelIv.setOnClickListener {
-            binding.mainContent.mainFolderIv.setImageResource(R.drawable.icon_my_folder)
+            binding.mainContent.mainFolderIv.visibility = View.VISIBLE
+            binding.mainContent.mainFolderModeIv.visibility = View.GONE
             binding.mainContent.mainUpdateIv.visibility = View.VISIBLE
             binding.mainContent.mainCancelIv.visibility = View.GONE
 
@@ -202,9 +270,27 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             isSelectionMode = false
         }
 
-        // 설정 메뉴창 아이콘 클릭시 설정 메뉴창 뜨도록
+        // 설정 메뉴창을 여는 메뉴 아이콘 클릭시 설정 메뉴창 열리도록
         binding.mainContent.mainSettingMenuIv.setOnClickListener {
-            // 이 부분 어떻게 구현해야 될지 고민하기
+            if(!binding.mainDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+                // 설정 메뉴창이 닫혀있을 때
+                binding.mainDrawerLayout.openDrawer(GravityCompat.START)
+            }
+        }
+
+        // 설정 메뉴창에 있는 메뉴 아이콘 클릭시 설정 메뉴창 닫히도록
+        val headerView = binding.mainNavigationView.getHeaderView(0)
+        headerView.setOnClickListener {
+            binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
+        }
+
+        binding.mainNavigationView.menu.getItem(0).actionView.setOnClickListener {
+            if(!permissionGrantred()) { // 허용이 안 되어 있는 경우
+                // 허용이 안 된 (toggle off) 상태에서 허용된 (toggle on) 상태로 바꿔주고, 그에 맞춰 뷰 바인딩을 해준다.
+                binding.mainNavigationView.menu.getItem(0).setActionView(R.layout.activity_main_drawer_toggle_on)
+            } else {    // 허용이 되어있는 겨웅
+                binding.mainNavigationView.menu.getItem(0).setActionView(R.layout.activity_main_drawer_toggle_off)
+            }
         }
 
 //        업데이트 버튼을 클릭했을 때 업데이트 해주는 함수 실행
