@@ -95,47 +95,92 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL)
         recyclerView.addItemDecoration(dividerItemDecoration)
 
+//        // RecyclerView 아이템간 간격
+//        val recyclerViewSpace: RecyclerDecoration
+
         // 더미 데이터와 어댑터 연결
         chatDB = AppDatabase.getInstance(this)!!
         chatList = chatDB.chatDao().getChatList() as ArrayList
-        mainRVAdapter = MainRVAdapter(chatList)
+        mainRVAdapter = MainRVAdapter(chatList, isSelectionMode)
         binding.mainContent.mainChatListRecyclerView.adapter = mainRVAdapter
 
-        if(isSelectionMode) {   // 만약 폴더 이동 선택 모드일 경우
-            mainRVAdapter.setMyItemClickListener(object: MainRVAdapter.MyItemClickListener {
-                override fun onChatClick(view: View, position: Int) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onChatLongClick(view: View, position: Int) {
-                    Log.d("MAIN/RV-ADAPTER", "폴더 이동 선택 모드")
-                }
-
-            })
-        } else {    // 만약 폴더 이동 선택 모드가 아닐 경우
-            // 아이템 뷰가 길게 클릭됐을 때 팝업 메뉴 띄우기
-            mainRVAdapter.setMyItemClickListener(object: MainRVAdapter.MyItemClickListener {
-                override fun onChatClick(view: View, position: Int) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onChatLongClick(view: View, position: Int) {
-                    // 팝업 메뉴 나오도록
-                    // PopupMenu는 API 11 레벨부터 제공된다.
-                    Log.d("MAIN/LONG-CLICK", "onChatLongClick")
-
-                    // 여기서 view는 클릭된 뷰를 의미한다.
-                    val popup = PopupMenu(this@MainActivity, view)
-                    menuInflater.inflate(R.menu.popup_menu, popup.menu)
-
-                    // 리스너로 처리
-                    val listener = PopupMenuListener()
-                    popup.setOnMenuItemClickListener(listener)
-                    popup.show()    // 팝업 메뉴 보이도록
-                }
-
-            })
+        // 취소하기 했을 때 다 취소하기
+        binding.mainContent.mainModeCancelTv.setOnClickListener {
+            mainRVAdapter.clearSelectedItemList()
+            binding.mainContent.mainModeBottomBarView.visibility = View.GONE
+            binding.mainContent.mainModeBottomLayout.visibility = View.VISIBLE
+            binding.mainContent.mainBottomBarView.visibility = View.VISIBLE
+            binding.mainContent.mainChatIv.visibility = View.VISIBLE
+            binding.mainContent.mainMyFolderIv.visibility = View.VISIBLE
+            binding.mainContent.mainFolderIv.visibility = View.VISIBLE
         }
+
+        mainRVAdapter.setMyItemClickListener(object: MainRVAdapter.MyItemClickListener {
+            override fun onChatClick(view: View, position: Int) {
+                Log.d("MAIN/RV", "onChatClick()")
+                mainRVAdapter.toggleItemSelected(position)
+            }
+
+            override fun onChatLongClick(view: View, position: Int) {
+                Log.d("MAIN/RV", "onChatLongClick()")
+                mainRVAdapter.toggleItemSelected(position)
+//                // 팝업 메뉴 나오도록
+//                // PopupMenu는 API 11 레벨부터 제공된다.
+//                Log.d("MAIN/LONG-CLICK", "onChatLongClick")
+//
+//                // 여기서 view는 클릭된 뷰를 의미한다.
+//                val popup = PopupMenu(this@MainActivity, view)
+//                menuInflater.inflate(R.menu.popup_menu, popup.menu)
+//
+//                // 리스너로 처리
+//                val listener = PopupMenuListener()
+//                popup.setOnMenuItemClickListener(listener)
+//                popup.show()    // 팝업 메뉴 보이도록
+
+            }
+
+            override fun onChatClickForFolder(view: View, position: Int) {
+                Log.d("MAIN/RV", "onChatClickForFolder()")
+            }
+
+        })
+
+//        if(isSelectionMode) {   // 만약 폴더 이동 선택 모드일 경우
+//            mainRVAdapter.setMyItemClickListener(object: MainRVAdapter.MyItemClickListener {
+//                override fun onChatClick(view: View, position: Int) {
+//                    Log.d("MAIN/RV", "onChatClick()")
+//                }
+//
+//                override fun onChatLongClick(view: View, position: Int) {
+//                    Log.d("MAIN/RV", "onChatLongClick()")
+//                }
+//
+//            })
+//        } else {    // 만약 폴더 이동 선택 모드가 아닐 경우
+//            // 아이템 뷰가 길게 클릭됐을 때 팝업 메뉴 띄우기
+//            mainRVAdapter.setMyItemClickListener(object: MainRVAdapter.MyItemClickListener {
+//                override fun onChatClick(view: View, position: Int) {
+//                    // 대화 목록으로 이동하는 코드 작성
+//                    // 논의 필요
+//                }
+//
+//                override fun onChatLongClick(view: View, position: Int) {
+//                    // 팝업 메뉴 나오도록
+//                    // PopupMenu는 API 11 레벨부터 제공된다.
+//                    Log.d("MAIN/LONG-CLICK", "onChatLongClick")
+//
+//                    // 여기서 view는 클릭된 뷰를 의미한다.
+//                    val popup = PopupMenu(this@MainActivity, view)
+//                    menuInflater.inflate(R.menu.popup_menu, popup.menu)
+//
+//                    // 리스너로 처리
+//                    val listener = PopupMenuListener()
+//                    popup.setOnMenuItemClickListener(listener)
+//                    popup.show()    // 팝업 메뉴 보이도록
+//                }
+//
+//            })
+//        }
     }
 
     // 설정 메뉴 창을 띄우는 DrawerLayout 초기화
@@ -234,6 +279,10 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         }
     }
 
+    private fun setBottomByMode(isSelectionMode: Boolean) {
+        
+    }
+
     private fun initClickListener() {
         // 내폴더 아이콘 클릭시 폴더 화면으로 이동
         binding.mainContent.mainMyFolderIv.setOnClickListener {
@@ -251,6 +300,25 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             // RecyclerView의 아이템 클릭이벤트를 실행시킬 수 있도록
             // 폴더 이동 선택 모드 설정
             isSelectionMode = true
+        }
+
+        // 폴더 이동 선택 모드일 때
+        if(isSelectionMode) {
+            binding.mainContent.mainBottomBarView.visibility = View.GONE
+            binding.mainContent.mainMyFolderIv.visibility = View.GONE
+            binding.mainContent.mainFolderIv.visibility = View.GONE
+            binding.mainContent.mainChatIv.visibility = View.GONE
+
+            binding.mainContent.mainModeBottomBarView.visibility = View.VISIBLE
+            binding.mainContent.mainModeBottomLayout.visibility = View.VISIBLE
+        } else {    // 폴더 이동 선택 모드 아닐 때
+            binding.mainContent.mainBottomBarView.visibility = View.VISIBLE
+            binding.mainContent.mainMyFolderIv.visibility = View.VISIBLE
+            binding.mainContent.mainFolderIv.visibility = View.VISIBLE
+            binding.mainContent.mainChatIv.visibility = View.VISIBLE
+
+            binding.mainContent.mainModeBottomBarView.visibility = View.GONE
+            binding.mainContent.mainModeBottomLayout.visibility = View.GONE
         }
 
         // 폴더 이동 선택 모드 클릭시 팝업 메뉴
