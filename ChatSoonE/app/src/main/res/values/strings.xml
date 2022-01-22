@@ -40,6 +40,7 @@
     <!-- 팝업 메뉴 -->
     <string name="delete">삭제하기</string>
     <string name="block">차단하기</string>
+    <string name="folder">폴더로 보내기</string>
 
     <!-- navigation drawer -->
     <string name="setting_alarm">알림 설정</string>

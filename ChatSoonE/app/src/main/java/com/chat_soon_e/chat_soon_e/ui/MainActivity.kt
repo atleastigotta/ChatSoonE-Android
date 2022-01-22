@@ -253,9 +253,20 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             isSelectionMode = true
         }
 
-        // 폴더 선택 모드 클릭시 팝업 메뉴
+        // 폴더 이동 선택 모드 클릭시 팝업 메뉴
         binding.mainContent.mainFolderModeIv.setOnClickListener {
-            // 팝업 메뉴
+            // 팝업 메뉴 나오도록
+            // PopupMenu는 API 11 레벨부터 제공된다.
+            Log.d("MAIN/POPUP", "폴더 이동 선택 모드 팝업 메뉴")
+
+            // 여기서 view는 클릭된 뷰를 의미한다.
+            val popup = PopupMenu(this@MainActivity, binding.mainContent.mainFolderModeIv)
+            menuInflater.inflate(R.menu.popup_folder_menu, popup.menu)
+
+            // 리스너로 처리
+            val listener = PopupFolderMenuListener()
+            popup.setOnMenuItemClickListener(listener)
+            popup.show()    // 팝업 메뉴 보이도록
         }
 
         // 취소 버튼 클릭시 다시 초기 화면으로 (폴더 선택 모드 취소)
@@ -284,14 +295,14 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
         }
 
-        binding.mainNavigationView.menu.getItem(0).actionView.setOnClickListener {
-            if(!permissionGrantred()) { // 허용이 안 되어 있는 경우
-                // 허용이 안 된 (toggle off) 상태에서 허용된 (toggle on) 상태로 바꿔주고, 그에 맞춰 뷰 바인딩을 해준다.
-                binding.mainNavigationView.menu.getItem(0).setActionView(R.layout.activity_main_drawer_toggle_on)
-            } else {    // 허용이 되어있는 겨웅
-                binding.mainNavigationView.menu.getItem(0).setActionView(R.layout.activity_main_drawer_toggle_off)
-            }
-        }
+//        binding.mainNavigationView.menu.getItem(0).actionView.setOnClickListener {
+//            if(!permissionGrantred()) { // 허용이 안 되어 있는 경우
+//                // 허용이 안 된 (toggle off) 상태에서 허용된 (toggle on) 상태로 바꿔주고, 그에 맞춰 뷰 바인딩을 해준다.
+//                binding.mainNavigationView.menu.getItem(0).setActionView(R.layout.activity_main_drawer_toggle_on)
+//            } else {    // 허용이 되어있는 겨웅
+//                binding.mainNavigationView.menu.getItem(0).setActionView(R.layout.activity_main_drawer_toggle_off)
+//            }
+//        }
 
 //        업데이트 버튼을 클릭했을 때 업데이트 해주는 함수 실행
 //        binding.mainUpdateIv.setOnClickListener {
@@ -309,6 +320,19 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
                         -> Toast.makeText(this@MainActivity, "차단하기", Toast.LENGTH_SHORT).show()
                 else
                     -> Toast.makeText(this@MainActivity, "잘못된 선택입니다.", Toast.LENGTH_SHORT).show()
+            }
+            return false
+        }
+    }
+
+    // 폴더 이동 선택 모드 팝업 메뉴 리스너
+    inner class PopupFolderMenuListener: PopupMenu.OnMenuItemClickListener {
+        override fun onMenuItemClick(item: MenuItem?): Boolean {
+            when(item?.itemId) {
+                R.id.popup_folder_menu
+                -> Toast.makeText(this@MainActivity, "폴더로 보내기", Toast.LENGTH_SHORT).show()
+                else
+                -> Toast.makeText(this@MainActivity, "잘못된 선택입니다.", Toast.LENGTH_SHORT).show()
             }
             return false
         }

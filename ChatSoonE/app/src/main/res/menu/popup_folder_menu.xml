@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/popup_folder_menu"
+        android:title="@string/folder">
+
+        <menu>
+            <item android:title="폴더1" />
+            <item android:title="폴더2" />
+        </menu>
+    </item>
+</menu>
