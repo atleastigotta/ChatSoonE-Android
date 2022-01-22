@@ -71,56 +71,91 @@ class MainRVAdapter(private val chatList: ArrayList<Chat>, private val isSelecti
         holder.bind(chatList[position])
         holder.itemView.isSelected = isItemSelected(position)
 
-//        RecylcerView 커스텀
-//        클릭된 아이템 뷰일 경우 와이어 프레임에 나온 것처럼 배경 회색 처리
-//        if(selectedPosition == position) {
-//            holder.itemView.setBackgroundColor(Color.LTGRAY)
-//        } else {
-//            holder.itemView.setBackgroundColor(Color.WHITE)
-//        }
-
-        // 간격 설정
-        val layoutParams = holder.itemView.layoutParams
-        layoutParams.height = 300
-        holder.itemView.requestLayout()
-
-        // 한 번 클릭했을 때
         holder.itemView.setOnClickListener {
-            // 폴더 이동 선택 모드가 아닌 경우 바로 리턴
-            if(!isSelectionMode) {
-                holder.itemView.setBackgroundColor(Color.parseColor("#FED7D3"))
-                mItemClickListener.onChatClick(holder.itemView, position)
-                return@setOnClickListener
-            }
-
-            // 폴더 이동 선택 모드인 경우
             toggleItemSelected(position)
             mItemClickListener.onChatClickForFolder(holder.itemView, position)
         }
 
         holder.itemView.setOnLongClickListener {
-//            아이템 뷰의 항목을 길게 클릭했을 때 selectPosition을 beforePosition에 저장한 후
-//            현재 position으로 바꿔준다.
-//            val beforePosition = selectedPosition
-//            selectedPosition = position
-
-//            beforePosition, selectPosition을 전달해줌으로써 해당 항목들의 레이아웃이 다시 생성되고, 스타일이 업데이트 된다.
-//            notifyItemChanged(beforePosition)
-//            notifyItemChanged(selectedPosition)
-//            notifyDataSetChanged()
-
-            if(isSelectionMode) {   // 폴더 이동 선택 모드인 경우 바로 리턴
-                return@setOnLongClickListener false
-            }
-            else {  // 폴더 이동 선택 모드가 아닌 경우
-                mItemClickListener.onChatLongClick(holder.itemView, position)
-                return@setOnLongClickListener true
-            }
-//            mItemClickListener.onChatLongClick(holder.binding.itemChatListDateTimeTv, position)
+            toggleItemSelected(position)
+            mItemClickListener.onChatLongClick(holder.itemView, position)
+            return@setOnLongClickListener false
         }
-//        toggleIcon(holder.binding, position)
-//        toggleSelection(position)
-//        toggleItemSelected(position)
+
+//        if(isSelectionMode) {
+//            holder.itemView.setOnClickListener {
+//                toggleItemSelected(position)
+//                mItemClickListener.onChatClickForFolder(holder.itemView, position)
+//            }
+////            holder.itemView.setOnLongClickListener {
+////                toggleItemSelected(position)
+////                mItemClickListener.onChatLongClick(holder.itemView, position)
+////            }
+//        } else {
+////            holder.itemView.setOnClickListener {
+////                if(isSelectionMode) {
+////                    toggleItemSelected(position)
+////                    mItemClickListener.onChatClickForFolder(holder.itemView, position)
+////                } else {
+////                    return@setOnClickListener
+////                }
+////            }
+//
+//            holder.itemView.setOnLongClickListener {
+//                toggleItemSelected(position)
+//                mItemClickListener.onChatLongClick(holder.itemView, position)
+//                return@setOnLongClickListener false
+//            }
+//        }
+
+////        RecylcerView 커스텀
+////        클릭된 아이템 뷰일 경우 와이어 프레임에 나온 것처럼 배경 회색 처리
+////        if(selectedPosition == position) {
+////            holder.itemView.setBackgroundColor(Color.LTGRAY)
+////        } else {
+////            holder.itemView.setBackgroundColor(Color.WHITE)
+////        }
+//
+//        // 한 번 클릭했을 때
+//        holder.itemView.setOnClickListener {
+//            // 폴더 이동 선택 모드가 아닌 경우 바로 리턴
+//            if(!isSelectionMode) {
+////                holder.itemView.setBackgroundColor(Color.parseColor("#FED7D3"))
+//                mItemClickListener.onChatClick(holder.itemView, position)
+//                return@setOnClickListener
+//            }
+//
+//            // 폴더 이동 선택 모드인 경우
+//            toggleItemSelected(position)
+//            holder.itemView.setBackgroundColor(Color.parseColor("#FED7D3"))
+//            mItemClickListener.onChatClickForFolder(holder.itemView, position)
+//        }
+//
+//        holder.itemView.setOnLongClickListener {
+////            아이템 뷰의 항목을 길게 클릭했을 때 selectPosition을 beforePosition에 저장한 후
+////            현재 position으로 바꿔준다.
+////            val beforePosition = selectedPosition
+////            selectedPosition = position
+//
+////            beforePosition, selectPosition을 전달해줌으로써 해당 항목들의 레이아웃이 다시 생성되고, 스타일이 업데이트 된다.
+////            notifyItemChanged(beforePosition)
+////            notifyItemChanged(selectedPosition)
+////            notifyDataSetChanged()
+//
+//            if(isSelectionMode) {   // 폴더 이동 선택 모드인 경우 바로 리턴
+//                holder.itemView.setBackgroundColor(Color.parseColor("#FED7D3"))
+//                return@setOnLongClickListener false
+//            }
+//            else {  // 폴더 이동 선택 모드가 아닌 경우
+//                holder.itemView.setBackgroundColor(Color.parseColor("#FED7D3"))
+//                mItemClickListener.onChatLongClick(holder.itemView, position)
+//                return@setOnLongClickListener true
+//            }
+////            mItemClickListener.onChatLongClick(holder.binding.itemChatListDateTimeTv, position)
+//        }
+////        toggleIcon(holder.binding, position)
+////        toggleSelection(position)
+////        toggleItemSelected(position)
     }
 
     // 선택한 아이템의 뷰 변경
@@ -147,13 +182,16 @@ class MainRVAdapter(private val chatList: ArrayList<Chat>, private val isSelecti
         selectedIndex = -1
     }
 
+    private fun clear() {
+
+    }
+
     // selectedItemList 초기화
     @SuppressLint("NotifyDataSetChanged")
     fun clearSelectedItemList() {
         selectedItemList.clear()
         notifyDataSetChanged()
     }
-
 
 //    fun toggleSelection(position: Int) {
 ////        selectedIndex = position
@@ -167,7 +205,7 @@ class MainRVAdapter(private val chatList: ArrayList<Chat>, private val isSelecti
 //    }
 
     // will toggle the selection of items
-    fun toggleItemSelected(position: Int) {
+    private fun toggleItemSelected(position: Int) {
         if(selectedItemList.get(position, false)) {
             selectedItemList.delete(position)
         } else {
@@ -190,7 +228,7 @@ class MainRVAdapter(private val chatList: ArrayList<Chat>, private val isSelecti
     fun selectedItemCount(): Int = selectedItemList.size()
 
     // 뷰홀더
-    inner class ViewHolder(val binding: ItemChatListBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: ItemChatListBinding): RecyclerView.ViewHolder(binding.root) {
         // 뷰 객체가 담겨있는 binding에 데이터 리스트에서 받아온 데이터들을 넣어준다.
         fun bind(chat: Chat) {
             // 프로필 사진 어떻게 처리할 건지

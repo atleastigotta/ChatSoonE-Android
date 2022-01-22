@@ -6,6 +6,8 @@ import com.chat_soon_e.chat_soon_e.data.entities.Chat
 import com.chat_soon_e.chat_soon_e.data.local.AppDatabase
 import com.chat_soon_e.chat_soon_e.databinding.ActivityMainBinding
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.Rect
 import android.view.MenuItem
 import android.view.View
 import android.widget.PopupMenu
@@ -13,6 +15,7 @@ import android.widget.Toast
 import android.widget.Toolbar
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.view.GravityCompat
+import androidx.recyclerview.widget.RecyclerView
 import com.chat_soon_e.chat_soon_e.R
 import com.chat_soon_e.chat_soon_e.databinding.ActivityMainContentBinding
 import com.google.android.material.navigation.NavigationView
@@ -95,8 +98,13 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL)
         recyclerView.addItemDecoration(dividerItemDecoration)
 
-//        // RecyclerView 아이템간 간격
-//        val recyclerViewSpace: RecyclerDecoration
+//        // 간격 설정
+//        val layoutParams = binding.mainContent.mainChatListRecyclerView.layoutParams
+//        layoutParams.height = 500
+//        binding.mainContent.mainChatListRecyclerView.requestLayout()
+//
+//        val spaceDecoration = VerticalSpaceItemDecoration(200)
+//        recyclerView.addItemDecoration(spaceDecoration)
 
         // 더미 데이터와 어댑터 연결
         chatDB = AppDatabase.getInstance(this)!!
@@ -104,26 +112,34 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         mainRVAdapter = MainRVAdapter(chatList, isSelectionMode)
         binding.mainContent.mainChatListRecyclerView.adapter = mainRVAdapter
 
-        // 취소하기 했을 때 다 취소하기
+        // '취소하기' 클릭시
         binding.mainContent.mainModeCancelTv.setOnClickListener {
             mainRVAdapter.clearSelectedItemList()
-            binding.mainContent.mainModeBottomBarView.visibility = View.GONE
-            binding.mainContent.mainModeBottomLayout.visibility = View.VISIBLE
-            binding.mainContent.mainBottomBarView.visibility = View.VISIBLE
-            binding.mainContent.mainChatIv.visibility = View.VISIBLE
-            binding.mainContent.mainMyFolderIv.visibility = View.VISIBLE
+            setBottomByMode(true)
+        }
+
+        // 취소 버튼 클릭시 다시 초기 화면으로 (폴더 선택 모드 취소)
+        binding.mainContent.mainCancelIv.setOnClickListener {
+            mainRVAdapter.clearSelectedItemList()
+            setBottomByMode(true)
+
             binding.mainContent.mainFolderIv.visibility = View.VISIBLE
+            binding.mainContent.mainFolderModeIv.visibility = View.GONE
+            binding.mainContent.mainUpdateIv.visibility = View.VISIBLE
+            binding.mainContent.mainCancelIv.visibility = View.GONE
         }
 
         mainRVAdapter.setMyItemClickListener(object: MainRVAdapter.MyItemClickListener {
             override fun onChatClick(view: View, position: Int) {
                 Log.d("MAIN/RV", "onChatClick()")
-                mainRVAdapter.toggleItemSelected(position)
+//                mainRVAdapter.toggleItemSelected(position)
             }
 
             override fun onChatLongClick(view: View, position: Int) {
                 Log.d("MAIN/RV", "onChatLongClick()")
-                mainRVAdapter.toggleItemSelected(position)
+                if(isSelectionMode) return
+                setBottomByMode(false)
+//                mainRVAdapter.toggleItemSelected(position)
 //                // 팝업 메뉴 나오도록
 //                // PopupMenu는 API 11 레벨부터 제공된다.
 //                Log.d("MAIN/LONG-CLICK", "onChatLongClick")
@@ -136,11 +152,13 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 //                val listener = PopupMenuListener()
 //                popup.setOnMenuItemClickListener(listener)
 //                popup.show()    // 팝업 메뉴 보이도록
-
             }
 
             override fun onChatClickForFolder(view: View, position: Int) {
                 Log.d("MAIN/RV", "onChatClickForFolder()")
+//                mainRVAdapter.toggleItemSelected(position)
+                if(!isSelectionMode) return
+                setBottomByMode(true)
             }
 
         })
@@ -280,7 +298,20 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
     }
 
     private fun setBottomByMode(isSelectionMode: Boolean) {
-        
+        // 폴더 이동 선택 모드 아닐 때
+        if(!isSelectionMode) {
+            binding.mainContent.mainBottomBarView.setBackgroundColor(Color.parseColor("#FED7D3"))
+            binding.mainContent.mainMyFolderIv.visibility = View.GONE
+            binding.mainContent.mainFolderIv.visibility = View.GONE
+            binding.mainContent.mainChatIv.visibility = View.GONE
+            binding.mainContent.mainModeBottomLayout.visibility = View.VISIBLE
+        } else {    // 폴더 이동 선택 모드일 때
+            binding.mainContent.mainBottomBarView.setBackgroundColor(Color.parseColor("#BFBFBF"))
+            binding.mainContent.mainMyFolderIv.visibility = View.VISIBLE
+            binding.mainContent.mainFolderIv.visibility = View.VISIBLE
+            binding.mainContent.mainChatIv.visibility = View.VISIBLE
+            binding.mainContent.mainModeBottomLayout.visibility = View.GONE
+        }
     }
 
     private fun initClickListener() {
@@ -302,25 +333,6 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             isSelectionMode = true
         }
 
-        // 폴더 이동 선택 모드일 때
-        if(isSelectionMode) {
-            binding.mainContent.mainBottomBarView.visibility = View.GONE
-            binding.mainContent.mainMyFolderIv.visibility = View.GONE
-            binding.mainContent.mainFolderIv.visibility = View.GONE
-            binding.mainContent.mainChatIv.visibility = View.GONE
-
-            binding.mainContent.mainModeBottomBarView.visibility = View.VISIBLE
-            binding.mainContent.mainModeBottomLayout.visibility = View.VISIBLE
-        } else {    // 폴더 이동 선택 모드 아닐 때
-            binding.mainContent.mainBottomBarView.visibility = View.VISIBLE
-            binding.mainContent.mainMyFolderIv.visibility = View.VISIBLE
-            binding.mainContent.mainFolderIv.visibility = View.VISIBLE
-            binding.mainContent.mainChatIv.visibility = View.VISIBLE
-
-            binding.mainContent.mainModeBottomBarView.visibility = View.GONE
-            binding.mainContent.mainModeBottomLayout.visibility = View.GONE
-        }
-
         // 폴더 이동 선택 모드 클릭시 팝업 메뉴
         binding.mainContent.mainFolderModeIv.setOnClickListener {
             // 팝업 메뉴 나오도록
@@ -337,17 +349,13 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             popup.show()    // 팝업 메뉴 보이도록
         }
 
-        // 취소 버튼 클릭시 다시 초기 화면으로 (폴더 선택 모드 취소)
-        binding.mainContent.mainCancelIv.setOnClickListener {
-            binding.mainContent.mainFolderIv.visibility = View.VISIBLE
-            binding.mainContent.mainFolderModeIv.visibility = View.GONE
-            binding.mainContent.mainUpdateIv.visibility = View.VISIBLE
-            binding.mainContent.mainCancelIv.visibility = View.GONE
-
-            // RecyclerView의 아이템 클릭이벤트를 실행시킬 수 없도록
-            // 폴더 이동 선택 모드 해제
-            isSelectionMode = false
-        }
+//        // 취소 버튼 클릭시 다시 초기 화면으로 (폴더 선택 모드 취소)
+//        binding.mainContent.mainCancelIv.setOnClickListener {
+//            binding.mainContent.mainFolderIv.visibility = View.VISIBLE
+//            binding.mainContent.mainFolderModeIv.visibility = View.GONE
+//            binding.mainContent.mainUpdateIv.visibility = View.VISIBLE
+//            binding.mainContent.mainCancelIv.visibility = View.GONE
+//        }
 
         // 설정 메뉴창을 여는 메뉴 아이콘 클릭시 설정 메뉴창 열리도록
         binding.mainContent.mainSettingMenuIv.setOnClickListener {
@@ -403,6 +411,18 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
                 -> Toast.makeText(this@MainActivity, "잘못된 선택입니다.", Toast.LENGTH_SHORT).show()
             }
             return false
+        }
+    }
+
+    inner class VerticalSpaceItemDecoration(private val verticalSpaceHeight: Int): RecyclerView.ItemDecoration() {
+        override fun getItemOffsets(
+            outRect: Rect,
+            view: View,
+            parent: RecyclerView,
+            state: RecyclerView.State
+        ) {
+//            super.getItemOffsets(outRect, view, parent, state)
+            outRect.bottom = verticalSpaceHeight
         }
     }
 }
