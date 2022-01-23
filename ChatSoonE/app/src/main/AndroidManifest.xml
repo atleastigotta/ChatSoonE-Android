@@ -3,7 +3,9 @@
     package="com.chat_soon_e.chat_soon_e">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <application
         android:name="com.chat_soon_e.chat_soon_e.ApplicationClass"
         android:allowBackup="true"
@@ -24,6 +26,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.PermissionActivity"/>
 
         <!-- LoginActivity -->
         <activity
@@ -40,6 +43,20 @@
             android:name="com.chat_soon_e.chat_soon_e.ui.MainActivity"
             android:exported="true"/>
 
+        <activity
+            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- Redirect URI: "kakao{NATIVE_APP_KEY}://oauth" -->
+                <data android:host="oauth"
+                    android:scheme="kakao63ebc69c67adf9e9e8f147df6508dc35" />
+            </intent-filter>
+        </activity>
+
         <!-- FolderActivity -->
         <activity
             android:name=".ui.FolderActivity"
@@ -48,7 +65,7 @@
         <!-- NotificationListener 권한 얻기 -->
         <service android:name=".ui.MyNotificationListener"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
-            android:exported="true">
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.notification.NotificationListenerService" />
             </intent-filter>

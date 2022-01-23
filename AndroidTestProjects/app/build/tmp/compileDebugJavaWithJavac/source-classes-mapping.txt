@@ -1,0 +1,4 @@
+com/example/notificationtest/databinding/ActivityMainBinding.java
+ com.example.notificationtest.databinding.ActivityMainBinding
+com/example/notificationtest/BuildConfig.java
+ com.example.notificationtest.BuildConfig

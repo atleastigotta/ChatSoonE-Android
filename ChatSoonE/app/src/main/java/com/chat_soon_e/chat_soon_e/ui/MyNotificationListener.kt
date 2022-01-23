@@ -37,23 +37,23 @@ class MyNotificationListener: NotificationListenerService() {
             val subText = extras.getCharSequence(Notification.EXTRA_SUB_TEXT)
 
             // millisecond로 받아와지는 값을 변환
-            val millisecond = sbn.postTime
-            val date = Date(millisecond)
-            val dateFormat = SimpleDateFormat("yyyy-MM-dd kk:mm:ss E", Locale("ko", "KR"))
-            val dateString = dateFormat.format(dateFormat)
+//            val millisecond = sbn.postTime
+//            val date = Date(millisecond)
+//            val dateFormat = SimpleDateFormat("yyyy-MM-dd kk:mm:ss E", Locale("ko", "KR"))
+//            val dateString = dateFormat.format(dateFormat)
 
             // 사진 저장, value icon (아직 확인 X)
             // val smallIcon: Icon = notification.smallIcon()//이거는 확인 안함, 사진 저장, value icon
             // val largeIcon: Icon = notification.getLargeIcon()
 
             // 데이터베이스에 받아온 내용 저장
-            chatDB.chatDao().insert(Chat(null, name.toString(), text.toString(), dateString))
+            //chatDB.chatDao().insert(Chat(null, name.toString(), text.toString(), "f"))
 
             Log.d(
                 TAG, "onNotificationPosted ~ " +
                         " packageName: " + sbn.packageName + // 앱 이름
                         " id: " + sbn.id + // id
-                        " postTime: " + dateString +
+                        //" postTime: " + dateString +
                         " name: " + name + // 이름
                         " text : " + text // 내용
                         + "subtext: "+ subText // 그룹 채팅방 일때 그룹명

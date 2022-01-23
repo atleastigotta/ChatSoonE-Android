@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import com.chat_soon_e.chat_soon_e.config.XAccessTokenInterceptor
+import com.kakao.sdk.common.KakaoSdk
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -34,6 +35,8 @@ class ApplicationClass : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        //kakao sdk 연결
+        KakaoSdk.init(this,"63ebc69c67adf9e9e8f147df6508dc35" )
 
         // client definition
         // Http 통신할 때 클라이언트 옵션 설정해주는 부분

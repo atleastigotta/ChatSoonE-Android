@@ -14,6 +14,7 @@ class SignUpActivity: BaseActivity<ActivitySignupBinding>(ActivitySignupBinding:
         binding.signUpSignUpBtn.setOnClickListener(this)
     }
 
+
     override fun onClick(v: View?) {
         if(v == null) return
 
@@ -23,14 +24,14 @@ class SignUpActivity: BaseActivity<ActivitySignupBinding>(ActivitySignupBinding:
         }
     }
 
-    private fun getUser(): User {
-        val email: String =
-            binding.signUpIdEt.text.toString() + "@" + binding.signUpDirectInputEt.text.toString()
-        val pwd: String = binding.signUpPasswordEt.text.toString()
-        val name: String = binding.signUpNameEt.text.toString()
-
-        return User(email, pwd, name)
-    }
+//    private fun getUser(): User {
+//        val email: String =
+//            binding.signUpIdEt.text.toString() + "@" + binding.signUpDirectInputEt.text.toString()
+//        val pwd: String = binding.signUpPasswordEt.text.toString()
+//        val name: String = binding.signUpNameEt.text.toString()
+//
+//        return User(email, pwd, name)
+//    }
 
     private fun signUp() {
         if (binding.signUpIdEt.text.toString()
@@ -50,7 +51,7 @@ class SignUpActivity: BaseActivity<ActivitySignupBinding>(ActivitySignupBinding:
             return
         }
 
-        AuthService.signUp(this, getUser())
+        //AuthService.signUp(this, getUser())
     }
 
     override fun onSignUpLoading() {
