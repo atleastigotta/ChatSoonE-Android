@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/navi_setting_alarm_item"
+        android:icon="@null"
+        android:title="@string/setting_alarm" />
+
+    <item
+        android:id="@+id/navi_setting_block_item"
+        android:icon="@null"
+        android:title="@string/setting_block" />
+
+    <item
+        android:id="@+id/navi_setting_email_item"
+        android:icon="@null"
+        android:title="@string/setting_email" />
+
+    <item
+        android:id="@+id/navi_setting_helper_item"
+        android:icon="@null"
+        android:title="@string/setting_helper" />
+
+    <item
+        android:id="@+id/navi_setting_review_item"
+        android:icon="@null"
+        android:title="@string/setting_review" />
+
+    <item
+        android:id="@+id/navi_setting_share_item"
+        android:icon="@null"
+        android:title="@string/setting_share" />
+
+    <item
+        android:id="@+id/navi_setting_privacy_item"
+        android:icon="@null"
+        android:title="@string/setting_privacy" />
+
+</menu>
