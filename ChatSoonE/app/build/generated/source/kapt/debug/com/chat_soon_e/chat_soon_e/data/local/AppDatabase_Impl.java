@@ -35,10 +35,10 @@ public final class AppDatabase_Impl extends AppDatabase {
     final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(1) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `ChatTable` (`profile` TEXT, `name` TEXT NOT NULL, `dateTime` TEXT NOT NULL, `idx` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `ChatTable` (`image_name` TEXT, `user_idx` TEXT, `name` TEXT NOT NULL, `dateTime` TEXT NOT NULL, `idx` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `UserTable` (`id` INTEGER NOT NULL, `nickname` TEXT NOT NULL, `email` TEXT NOT NULL, `idx` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'de6f4acdf9bb819b9dcd2ed2f29408f0')");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a3b87d005473c6ba3fa0d6c55f090962')");
       }
 
       @Override
@@ -83,8 +83,9 @@ public final class AppDatabase_Impl extends AppDatabase {
 
       @Override
       protected RoomOpenHelper.ValidationResult onValidateSchema(SupportSQLiteDatabase _db) {
-        final HashMap<String, TableInfo.Column> _columnsChatTable = new HashMap<String, TableInfo.Column>(4);
-        _columnsChatTable.put("profile", new TableInfo.Column("profile", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashMap<String, TableInfo.Column> _columnsChatTable = new HashMap<String, TableInfo.Column>(5);
+        _columnsChatTable.put("image_name", new TableInfo.Column("image_name", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsChatTable.put("user_idx", new TableInfo.Column("user_idx", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsChatTable.put("name", new TableInfo.Column("name", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsChatTable.put("dateTime", new TableInfo.Column("dateTime", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsChatTable.put("idx", new TableInfo.Column("idx", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
@@ -113,7 +114,7 @@ public final class AppDatabase_Impl extends AppDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "de6f4acdf9bb819b9dcd2ed2f29408f0", "cd9ea23a416ef1e623cdc6d98dd29461");
+    }, "a3b87d005473c6ba3fa0d6c55f090962", "dd325ad889349a359786ad277d828f95");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)

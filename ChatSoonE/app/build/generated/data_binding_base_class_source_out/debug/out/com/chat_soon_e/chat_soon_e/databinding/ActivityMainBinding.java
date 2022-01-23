@@ -4,57 +4,42 @@ package com.chat_soon_e.chat_soon_e.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.chat_soon_e.chat_soon_e.R;
+import com.google.android.material.navigation.NavigationView;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
 
 public final class ActivityMainBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final DrawerLayout rootView;
 
   @NonNull
-  public final ImageView mainChatListFolderIv;
+  public final ActivityMainContentBinding mainContent;
 
   @NonNull
-  public final RecyclerView mainChatListRecyclerView;
+  public final DrawerLayout mainDrawerLayout;
 
   @NonNull
-  public final ImageView mainMyFolderIv;
+  public final NavigationView mainNavigationView;
 
-  @NonNull
-  public final ImageView mainSettingIv;
-
-  @NonNull
-  public final TextView mainTitleTv;
-
-  @NonNull
-  public final ImageView mainUpdateIv;
-
-  private ActivityMainBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ImageView mainChatListFolderIv, @NonNull RecyclerView mainChatListRecyclerView,
-      @NonNull ImageView mainMyFolderIv, @NonNull ImageView mainSettingIv,
-      @NonNull TextView mainTitleTv, @NonNull ImageView mainUpdateIv) {
+  private ActivityMainBinding(@NonNull DrawerLayout rootView,
+      @NonNull ActivityMainContentBinding mainContent, @NonNull DrawerLayout mainDrawerLayout,
+      @NonNull NavigationView mainNavigationView) {
     this.rootView = rootView;
-    this.mainChatListFolderIv = mainChatListFolderIv;
-    this.mainChatListRecyclerView = mainChatListRecyclerView;
-    this.mainMyFolderIv = mainMyFolderIv;
-    this.mainSettingIv = mainSettingIv;
-    this.mainTitleTv = mainTitleTv;
-    this.mainUpdateIv = mainUpdateIv;
+    this.mainContent = mainContent;
+    this.mainDrawerLayout = mainDrawerLayout;
+    this.mainNavigationView = mainNavigationView;
   }
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public DrawerLayout getRoot() {
     return rootView;
   }
 
@@ -79,44 +64,23 @@ public final class ActivityMainBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.main_chat_list_folder_iv;
-      ImageView mainChatListFolderIv = ViewBindings.findChildViewById(rootView, id);
-      if (mainChatListFolderIv == null) {
+      id = R.id.main_content;
+      View mainContent = ViewBindings.findChildViewById(rootView, id);
+      if (mainContent == null) {
+        break missingId;
+      }
+      ActivityMainContentBinding binding_mainContent = ActivityMainContentBinding.bind(mainContent);
+
+      DrawerLayout mainDrawerLayout = (DrawerLayout) rootView;
+
+      id = R.id.main_navigation_view;
+      NavigationView mainNavigationView = ViewBindings.findChildViewById(rootView, id);
+      if (mainNavigationView == null) {
         break missingId;
       }
 
-      id = R.id.main_chat_list_recycler_view;
-      RecyclerView mainChatListRecyclerView = ViewBindings.findChildViewById(rootView, id);
-      if (mainChatListRecyclerView == null) {
-        break missingId;
-      }
-
-      id = R.id.main_my_folder_iv;
-      ImageView mainMyFolderIv = ViewBindings.findChildViewById(rootView, id);
-      if (mainMyFolderIv == null) {
-        break missingId;
-      }
-
-      id = R.id.main_setting_iv;
-      ImageView mainSettingIv = ViewBindings.findChildViewById(rootView, id);
-      if (mainSettingIv == null) {
-        break missingId;
-      }
-
-      id = R.id.main_title_tv;
-      TextView mainTitleTv = ViewBindings.findChildViewById(rootView, id);
-      if (mainTitleTv == null) {
-        break missingId;
-      }
-
-      id = R.id.main_update_iv;
-      ImageView mainUpdateIv = ViewBindings.findChildViewById(rootView, id);
-      if (mainUpdateIv == null) {
-        break missingId;
-      }
-
-      return new ActivityMainBinding((ConstraintLayout) rootView, mainChatListFolderIv,
-          mainChatListRecyclerView, mainMyFolderIv, mainSettingIv, mainTitleTv, mainUpdateIv);
+      return new ActivityMainBinding((DrawerLayout) rootView, binding_mainContent, mainDrawerLayout,
+          mainNavigationView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

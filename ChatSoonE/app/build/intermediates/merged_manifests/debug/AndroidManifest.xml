@@ -36,6 +36,8 @@
         android:testOnly="true"
         android:theme="@style/Theme.Template_Basic"
         android:usesCleartextTraffic="true" >
+
+        <!-- SplashActivity -->
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.SplashActivity"
             android:exported="true" >
@@ -46,12 +48,18 @@
             </intent-filter>
         </activity>
         <activity android:name="com.chat_soon_e.chat_soon_e.ui.PermissionActivity" />
+
+        <!-- LoginActivity -->
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.LoginActivity"
             android:exported="true" />
+
+        <!-- SignUpActivity -->
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.SignUpActivity"
             android:exported="true" />
+
+        <!-- MainActivity -->
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.MainActivity"
             android:exported="true" />
@@ -72,7 +80,10 @@
                     android:scheme="kakao63ebc69c67adf9e9e8f147df6508dc35" />
             </intent-filter>
         </activity>
-
+        <!-- FolderActivity -->
+        <activity
+            android:name="com.chat_soon_e.chat_soon_e.ui.FolderActivity"
+            android:exported="true" />
         <!-- NotificationListener 권한 얻기 -->
         <service
             android:name="com.chat_soon_e.chat_soon_e.ui.MyNotificationListener"

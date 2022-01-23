@@ -76,6 +76,9 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
         binding.splashWithdraw.setOnClickListener {
             withdraw()
         }
+        binding.splashStartBtn.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
         //로그인이 되었다면 로그인은 안뜨게
         //데이터 다운이 완료되면 시작하기 버튼 활성화
     }
