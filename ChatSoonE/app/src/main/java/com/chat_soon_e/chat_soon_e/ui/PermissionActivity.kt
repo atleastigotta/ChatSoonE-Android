@@ -1,11 +1,14 @@
 package com.chat_soon_e.chat_soon_e.ui
 
 import android.content.Intent
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.chat_soon_e.chat_soon_e.databinding.ActivityPermissionBinding
 import com.chat_soon_e.chat_soon_e.utils.permissionGrantred
 
 class PermissionActivity:BaseActivity<ActivityPermissionBinding>(ActivityPermissionBinding::inflate) {
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun initAfterBinding() {
         //페이지 사용 여부 체크
         val spf=this.getSharedPreferences("firstRun", AppCompatActivity.MODE_PRIVATE)
@@ -17,7 +20,7 @@ class PermissionActivity:BaseActivity<ActivityPermissionBinding>(ActivityPermiss
             startActivity(Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"))
             //권한을 얻었다면 서비스 시작
             if(permissionGrantred(this))
-                startService(Intent(this, MyNotificationListener::class.java))
+                startForegroundService(Intent(this, MyNotificationListener::class.java))
             finish()
         }
     }

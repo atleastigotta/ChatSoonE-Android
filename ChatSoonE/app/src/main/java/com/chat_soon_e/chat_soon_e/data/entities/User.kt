@@ -1,9 +1,14 @@
 package com.chat_soon_e.chat_soon_e.data.entities
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "UserTable")
 data class User(
-    @SerializedName("email") val email: String,
-    @SerializedName("password") val password: String,
-    @SerializedName("name") val name: String
-)
+    @SerializedName("id") val id: Int,
+    @SerializedName("nickname") val nickname: String,
+    @SerializedName("email") val email: String
+){
+    @PrimaryKey(autoGenerate = true)var idx:Int=0
+}

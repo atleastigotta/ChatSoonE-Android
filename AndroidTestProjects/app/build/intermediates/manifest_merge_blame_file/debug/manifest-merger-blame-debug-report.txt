@@ -1,0 +1,100 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.notificationtest"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="24"
+8-->D:\gitfolder\UMC_ChatSoon\AndroidTestProjects\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="31" />
+9-->D:\gitfolder\UMC_ChatSoon\AndroidTestProjects\app\src\main\AndroidManifest.xml
+10
+11    <application
+11-->D:\gitfolder\UMC_ChatSoon\AndroidTestProjects\app\src\main\AndroidManifest.xml:4:5-27:19
+12        android:allowBackup="true"
+12-->D:\gitfolder\UMC_ChatSoon\AndroidTestProjects\app\src\main\AndroidManifest.xml:5:9-35
+13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+13-->[androidx.core:core:1.7.0] C:\Users\82108\.gradle\caches\transforms-3\f151290c6ded99e73cc30cce4233ae32\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
+14        android:debuggable="true"
+15        android:extractNativeLibs="false"
+16        android:icon="@mipmap/ic_launcher"
+16-->D:\gitfolder\UMC_ChatSoon\AndroidTestProjects\app\src\main\AndroidManifest.xml:6:9-43
+17        android:label="@string/app_name"
+17-->D:\gitfolder\UMC_ChatSoon\AndroidTestProjects\app\src\main\AndroidManifest.xml:7:9-41
+18        android:roundIcon="@mipmap/ic_launcher_round"
+18-->D:\gitfolder\UMC_ChatSoon\AndroidTestProjects\app\src\main\AndroidManifest.xml:8:9-54
+19        android:supportsRtl="true"
+19-->D:\gitfolder\UMC_ChatSoon\AndroidTestProjects\app\src\main\AndroidManifest.xml:9:9-35
+20        android:testOnly="true"
+21        android:theme="@style/Theme.NotificationTest" >
+21-->D:\gitfolder\UMC_ChatSoon\AndroidTestProjects\app\src\main\AndroidManifest.xml:10:9-54
+22        <activity
+22-->D:\gitfolder\UMC_ChatSoon\AndroidTestProjects\app\src\main\AndroidManifest.xml:11:9-18:20
+23            android:name="com.example.notificationtest.MainActivity"
+23-->D:\gitfolder\UMC_ChatSoon\AndroidTestProjects\app\src\main\AndroidManifest.xml:12:13-41
+24            android:exported="true" >
+24-->D:\gitfolder\UMC_ChatSoon\AndroidTestProjects\app\src\main\AndroidManifest.xml:13:13-36
+25            <intent-filter>
+25-->D:\gitfolder\UMC_ChatSoon\AndroidTestProjects\app\src\main\AndroidManifest.xml:14:13-17:29
+26                <action android:name="android.intent.action.MAIN" />
+26-->D:\gitfolder\UMC_ChatSoon\AndroidTestProjects\app\src\main\AndroidManifest.xml:15:17-69
+26-->D:\gitfolder\UMC_ChatSoon\AndroidTestProjects\app\src\main\AndroidManifest.xml:15:25-66
+27
+28                <category android:name="android.intent.category.LAUNCHER" />
+28-->D:\gitfolder\UMC_ChatSoon\AndroidTestProjects\app\src\main\AndroidManifest.xml:16:17-77
+28-->D:\gitfolder\UMC_ChatSoon\AndroidTestProjects\app\src\main\AndroidManifest.xml:16:27-74
+29            </intent-filter>
+30        </activity>
+31        <!-- 권한 얻기 -->
+32        <service
+32-->D:\gitfolder\UMC_ChatSoon\AndroidTestProjects\app\src\main\AndroidManifest.xml:20:9-26:19
+33            android:name="com.example.notificationtest.MyNotificationListener"
+33-->D:\gitfolder\UMC_ChatSoon\AndroidTestProjects\app\src\main\AndroidManifest.xml:20:18-84
+34            android:exported="true"
+34-->D:\gitfolder\UMC_ChatSoon\AndroidTestProjects\app\src\main\AndroidManifest.xml:22:13-36
+35            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" >
+35-->D:\gitfolder\UMC_ChatSoon\AndroidTestProjects\app\src\main\AndroidManifest.xml:21:13-87
+36            <intent-filter>
+36-->D:\gitfolder\UMC_ChatSoon\AndroidTestProjects\app\src\main\AndroidManifest.xml:23:13-25:29
+37                <action android:name="android.service.notification.NotificationListenerService" />
+37-->D:\gitfolder\UMC_ChatSoon\AndroidTestProjects\app\src\main\AndroidManifest.xml:24:17-98
+37-->D:\gitfolder\UMC_ChatSoon\AndroidTestProjects\app\src\main\AndroidManifest.xml:24:25-96
+38            </intent-filter>
+39        </service>
+40
+41        <activity
+41-->[gun0912.ted:tedpermission:2.2.3] C:\Users\82108\.gradle\caches\transforms-3\1111232b02dedae0ce0b7db5b4a5acdd\transformed\jetified-tedpermission-2.2.3\AndroidManifest.xml:10:9-14:67
+42            android:name="com.gun0912.tedpermission.TedPermissionActivity"
+42-->[gun0912.ted:tedpermission:2.2.3] C:\Users\82108\.gradle\caches\transforms-3\1111232b02dedae0ce0b7db5b4a5acdd\transformed\jetified-tedpermission-2.2.3\AndroidManifest.xml:11:13-75
+43            android:configChanges="mcc|mnc|locale|keyboard|keyboardHidden|screenLayout|fontScale|uiMode|orientation|screenSize|layoutDirection"
+43-->[gun0912.ted:tedpermission:2.2.3] C:\Users\82108\.gradle\caches\transforms-3\1111232b02dedae0ce0b7db5b4a5acdd\transformed\jetified-tedpermission-2.2.3\AndroidManifest.xml:12:13-144
+44            android:screenOrientation="unspecified"
+44-->[gun0912.ted:tedpermission:2.2.3] C:\Users\82108\.gradle\caches\transforms-3\1111232b02dedae0ce0b7db5b4a5acdd\transformed\jetified-tedpermission-2.2.3\AndroidManifest.xml:13:13-52
+45            android:theme="@style/Theme.Transparent.Permission" />
+45-->[gun0912.ted:tedpermission:2.2.3] C:\Users\82108\.gradle\caches\transforms-3\1111232b02dedae0ce0b7db5b4a5acdd\transformed\jetified-tedpermission-2.2.3\AndroidManifest.xml:14:13-64
+46
+47        <provider
+47-->[androidx.emoji2:emoji2:1.0.0] C:\Users\82108\.gradle\caches\transforms-3\cb617eb54cd2cd0ae69b65f31e00fe95\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
+48            android:name="androidx.startup.InitializationProvider"
+48-->[androidx.emoji2:emoji2:1.0.0] C:\Users\82108\.gradle\caches\transforms-3\cb617eb54cd2cd0ae69b65f31e00fe95\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:27:13-67
+49            android:authorities="com.example.notificationtest.androidx-startup"
+49-->[androidx.emoji2:emoji2:1.0.0] C:\Users\82108\.gradle\caches\transforms-3\cb617eb54cd2cd0ae69b65f31e00fe95\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:28:13-68
+50            android:exported="false" >
+50-->[androidx.emoji2:emoji2:1.0.0] C:\Users\82108\.gradle\caches\transforms-3\cb617eb54cd2cd0ae69b65f31e00fe95\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:29:13-37
+51            <meta-data
+51-->[androidx.emoji2:emoji2:1.0.0] C:\Users\82108\.gradle\caches\transforms-3\cb617eb54cd2cd0ae69b65f31e00fe95\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+52                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+52-->[androidx.emoji2:emoji2:1.0.0] C:\Users\82108\.gradle\caches\transforms-3\cb617eb54cd2cd0ae69b65f31e00fe95\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:32:17-75
+53                android:value="androidx.startup" />
+53-->[androidx.emoji2:emoji2:1.0.0] C:\Users\82108\.gradle\caches\transforms-3\cb617eb54cd2cd0ae69b65f31e00fe95\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:33:17-49
+54            <meta-data
+54-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\82108\.gradle\caches\transforms-3\ae924bdef1f7e2531745028cd5061da5\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
+55                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+55-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\82108\.gradle\caches\transforms-3\ae924bdef1f7e2531745028cd5061da5\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
+56                android:value="androidx.startup" />
+56-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\82108\.gradle\caches\transforms-3\ae924bdef1f7e2531745028cd5061da5\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
+57        </provider>
+58    </application>
+59
+60</manifest>

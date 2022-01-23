@@ -4,10 +4,12 @@ package com.chat_soon_e.chat_soon_e.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
@@ -21,10 +23,7 @@ public final class ActivitySplashBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final TextView splashEnterBtn;
-
-  @NonNull
-  public final TextView splashLoginBtn;
+  public final ImageView splashKakaoLoginBtn;
 
   @NonNull
   public final TextView splashMainText;
@@ -32,14 +31,26 @@ public final class ActivitySplashBinding implements ViewBinding {
   @NonNull
   public final ProgressBar splashProgressBar;
 
+  @NonNull
+  public final TextView splashStartBtn;
+
+  @NonNull
+  public final CardView splashStartBtnCv;
+
+  @NonNull
+  public final TextView splashWithdraw;
+
   private ActivitySplashBinding(@NonNull ConstraintLayout rootView,
-      @NonNull TextView splashEnterBtn, @NonNull TextView splashLoginBtn,
-      @NonNull TextView splashMainText, @NonNull ProgressBar splashProgressBar) {
+      @NonNull ImageView splashKakaoLoginBtn, @NonNull TextView splashMainText,
+      @NonNull ProgressBar splashProgressBar, @NonNull TextView splashStartBtn,
+      @NonNull CardView splashStartBtnCv, @NonNull TextView splashWithdraw) {
     this.rootView = rootView;
-    this.splashEnterBtn = splashEnterBtn;
-    this.splashLoginBtn = splashLoginBtn;
+    this.splashKakaoLoginBtn = splashKakaoLoginBtn;
     this.splashMainText = splashMainText;
     this.splashProgressBar = splashProgressBar;
+    this.splashStartBtn = splashStartBtn;
+    this.splashStartBtnCv = splashStartBtnCv;
+    this.splashWithdraw = splashWithdraw;
   }
 
   @Override
@@ -69,15 +80,9 @@ public final class ActivitySplashBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.splash_enter_btn;
-      TextView splashEnterBtn = ViewBindings.findChildViewById(rootView, id);
-      if (splashEnterBtn == null) {
-        break missingId;
-      }
-
-      id = R.id.splash_login_btn;
-      TextView splashLoginBtn = ViewBindings.findChildViewById(rootView, id);
-      if (splashLoginBtn == null) {
+      id = R.id.splash_kakao_login_btn;
+      ImageView splashKakaoLoginBtn = ViewBindings.findChildViewById(rootView, id);
+      if (splashKakaoLoginBtn == null) {
         break missingId;
       }
 
@@ -93,8 +98,26 @@ public final class ActivitySplashBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivitySplashBinding((ConstraintLayout) rootView, splashEnterBtn, splashLoginBtn,
-          splashMainText, splashProgressBar);
+      id = R.id.splash_start_btn;
+      TextView splashStartBtn = ViewBindings.findChildViewById(rootView, id);
+      if (splashStartBtn == null) {
+        break missingId;
+      }
+
+      id = R.id.splash_start_btn_cv;
+      CardView splashStartBtnCv = ViewBindings.findChildViewById(rootView, id);
+      if (splashStartBtnCv == null) {
+        break missingId;
+      }
+
+      id = R.id.splash_withdraw;
+      TextView splashWithdraw = ViewBindings.findChildViewById(rootView, id);
+      if (splashWithdraw == null) {
+        break missingId;
+      }
+
+      return new ActivitySplashBinding((ConstraintLayout) rootView, splashKakaoLoginBtn,
+          splashMainText, splashProgressBar, splashStartBtn, splashStartBtnCv, splashWithdraw);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

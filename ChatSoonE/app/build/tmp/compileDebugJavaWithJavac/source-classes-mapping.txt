@@ -1,24 +1,30 @@
-com/chat_soon_e/chat_soon_e/databinding/ActivityPermissionBinding.java
- com.chat_soon_e.chat_soon_e.databinding.ActivityPermissionBinding
-com/chat_soon_e/chat_soon_e/databinding/ActivitySignupBinding.java
- com.chat_soon_e.chat_soon_e.databinding.ActivitySignupBinding
+com/chat_soon_e/chat_soon_e/databinding/FragmentSearchBinding.java
+ com.chat_soon_e.chat_soon_e.databinding.FragmentSearchBinding
+com/chat_soon_e/chat_soon_e/databinding/ActivitySplashBinding.java
+ com.chat_soon_e.chat_soon_e.databinding.ActivitySplashBinding
 com/chat_soon_e/chat_soon_e/BuildConfig.java
  com.chat_soon_e.chat_soon_e.BuildConfig
-com/chat_soon_e/chat_soon_e/databinding/FragmentMypageBinding.java
- com.chat_soon_e.chat_soon_e.databinding.FragmentMypageBinding
-com/chat_soon_e/chat_soon_e/data/local/AppDatabase_Impl.java
- com.chat_soon_e.chat_soon_e.data.local.AppDatabase_Impl
- com.chat_soon_e.chat_soon_e.data.local.AppDatabase_Impl$1
+com/chat_soon_e/chat_soon_e/data/local/UserDao_Impl.java
+ com.chat_soon_e.chat_soon_e.data.local.UserDao_Impl
+ com.chat_soon_e.chat_soon_e.data.local.UserDao_Impl$1
+ com.chat_soon_e.chat_soon_e.data.local.UserDao_Impl$2
+ com.chat_soon_e.chat_soon_e.data.local.UserDao_Impl$3
 com/chat_soon_e/chat_soon_e/databinding/ItemChatListBinding.java
  com.chat_soon_e.chat_soon_e.databinding.ItemChatListBinding
 com/chat_soon_e/chat_soon_e/databinding/ActivityLoginBinding.java
  com.chat_soon_e.chat_soon_e.databinding.ActivityLoginBinding
+com/chat_soon_e/chat_soon_e/databinding/ActivityPermissionBinding.java
+ com.chat_soon_e.chat_soon_e.databinding.ActivityPermissionBinding
 com/chat_soon_e/chat_soon_e/databinding/ActivityFolderBinding.java
  com.chat_soon_e.chat_soon_e.databinding.ActivityFolderBinding
 com/chat_soon_e/chat_soon_e/databinding/FragmentMatchBinding.java
  com.chat_soon_e.chat_soon_e.databinding.FragmentMatchBinding
+com/chat_soon_e/chat_soon_e/databinding/ActivitySignupBinding.java
+ com.chat_soon_e.chat_soon_e.databinding.ActivitySignupBinding
 com/chat_soon_e/chat_soon_e/databinding/ActivityMainBinding.java
  com.chat_soon_e.chat_soon_e.databinding.ActivityMainBinding
+com/chat_soon_e/chat_soon_e/databinding/FragmentMypageBinding.java
+ com.chat_soon_e.chat_soon_e.databinding.FragmentMypageBinding
 com/chat_soon_e/chat_soon_e/databinding/FragmentHomeBinding.java
  com.chat_soon_e.chat_soon_e.databinding.FragmentHomeBinding
 com/chat_soon_e/chat_soon_e/data/local/ChatDao_Impl.java
@@ -26,7 +32,6 @@ com/chat_soon_e/chat_soon_e/data/local/ChatDao_Impl.java
  com.chat_soon_e.chat_soon_e.data.local.ChatDao_Impl$1
  com.chat_soon_e.chat_soon_e.data.local.ChatDao_Impl$2
  com.chat_soon_e.chat_soon_e.data.local.ChatDao_Impl$3
-com/chat_soon_e/chat_soon_e/databinding/ActivitySplashBinding.java
- com.chat_soon_e.chat_soon_e.databinding.ActivitySplashBinding
-com/chat_soon_e/chat_soon_e/databinding/FragmentSearchBinding.java
- com.chat_soon_e.chat_soon_e.databinding.FragmentSearchBinding
+com/chat_soon_e/chat_soon_e/data/local/AppDatabase_Impl.java
+ com.chat_soon_e.chat_soon_e.data.local.AppDatabase_Impl
+ com.chat_soon_e.chat_soon_e.data.local.AppDatabase_Impl$1

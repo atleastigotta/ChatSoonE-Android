@@ -1128,6 +1128,10 @@ color bright_foreground_inverse_material_dark
 color bright_foreground_inverse_material_light
 color bright_foreground_material_dark
 color bright_foreground_material_light
+color browser_actions_bg_grey
+color browser_actions_divider_color
+color browser_actions_text_color
+color browser_actions_title_color
 color button_material_dark
 color button_material_light
 color cardview_dark_background
@@ -1391,6 +1395,8 @@ dimen abc_text_size_title_material
 dimen abc_text_size_title_material_toolbar
 dimen action_bar_size
 dimen appcompat_dialog_background_inset
+dimen browser_actions_context_menu_max_width
+dimen browser_actions_context_menu_min_padding
 dimen cardview_compat_inset_shadow
 dimen cardview_default_elevation
 dimen cardview_default_radius
@@ -1812,7 +1818,7 @@ drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
-drawable backgroud
+drawable background
 drawable background2
 drawable background_icon_folder
 drawable btn_checkbox_checked_mtrl
@@ -1849,6 +1855,7 @@ drawable icon_folder
 drawable icon_menu
 drawable icon_profile
 drawable icon_update
+drawable kakao_login_medium_narrow
 drawable makeus_logo
 drawable material_cursor_drawable
 drawable material_ic_calendar_black_24dp
@@ -1871,6 +1878,7 @@ drawable mtrl_popupmenu_background
 drawable mtrl_popupmenu_background_dark
 drawable mtrl_tabs_default_indicator
 drawable navigation_empty_icon
+drawable notiback
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -1989,6 +1997,11 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id browser_actions_header_text
+id browser_actions_menu_item_icon
+id browser_actions_menu_item_text
+id browser_actions_menu_items
+id browser_actions_menu_view
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -2321,10 +2334,12 @@ id snapMargins
 id south
 id spacer
 id special_effects_controller_view_tag
-id splash_enter_btn
-id splash_login_btn
+id splash_kakao_login_btn
 id splash_main_text
 id splash_progressBar
+id splash_start_btn
+id splash_start_btn_cv
+id splash_withdraw
 id spline
 id split_action_bar
 id spread
@@ -2409,6 +2424,7 @@ id view_tree_saved_state_registry_owner
 id view_tree_view_model_store_owner
 id visible
 id visible_removing_fragment_view_tag
+id webview
 id west
 id withText
 id withinBounds
@@ -2487,11 +2503,15 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_folder
+layout activity_kakao_auth
 layout activity_login
 layout activity_main
 layout activity_permission
 layout activity_signup
 layout activity_splash
+layout activity_talk_auth_code
+layout browser_actions_context_menu_page
+layout browser_actions_context_menu_row
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -2630,6 +2650,7 @@ string chat_list_date_time
 string chat_list_name
 string chip_text
 string clear_text_end_icon_content_description
+string com_kakao_talk_chooser_text
 string default_fail
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
@@ -3241,6 +3262,7 @@ style ThemeOverlay_MaterialComponents_TimePicker_Display
 style ThemeOverlay_MaterialComponents_Toolbar_Primary
 style ThemeOverlay_MaterialComponents_Toolbar_Surface
 style ThemeOverlayColorAccentRed
+style TransparentCompat
 style Widget_AppCompat_ActionBar
 style Widget_AppCompat_ActionBar_Solid
 style Widget_AppCompat_ActionBar_TabBar

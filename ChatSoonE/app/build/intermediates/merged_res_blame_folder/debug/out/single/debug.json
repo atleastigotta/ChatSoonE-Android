@@ -184,6 +184,10 @@
         "source": "D:\\gitfolder\\UMC_ChatSoon\\ChatSoonE\\app\\src\\main\\res\\drawable-xhdpi\\icon_24_home_off.png"
     },
     {
+        "merged": "D:\\gitfolder\\UMC_ChatSoon\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_notiback.png.flat",
+        "source": "D:\\gitfolder\\UMC_ChatSoon\\ChatSoonE\\app\\src\\main\\res\\drawable\\notiback.png"
+    },
+    {
         "merged": "D:\\gitfolder\\UMC_ChatSoon\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
         "source": "D:\\gitfolder\\UMC_ChatSoon\\ChatSoonE\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
     },
@@ -216,8 +220,16 @@
         "source": "D:\\gitfolder\\UMC_ChatSoon\\ChatSoonE\\app\\src\\main\\res\\drawable-mdpi\\icon_24_home_off.png"
     },
     {
+        "merged": "D:\\gitfolder\\UMC_ChatSoon\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_kakao_login_medium_narrow.png.flat",
+        "source": "D:\\gitfolder\\UMC_ChatSoon\\ChatSoonE\\app\\src\\main\\res\\drawable\\kakao_login_medium_narrow.png"
+    },
+    {
         "merged": "D:\\gitfolder\\UMC_ChatSoon\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_icon_update.png.flat",
         "source": "D:\\gitfolder\\UMC_ChatSoon\\ChatSoonE\\app\\src\\main\\res\\drawable\\icon_update.png"
+    },
+    {
+        "merged": "D:\\gitfolder\\UMC_ChatSoon\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_background.png.flat",
+        "source": "D:\\gitfolder\\UMC_ChatSoon\\ChatSoonE\\app\\src\\main\\res\\drawable\\background.png"
     },
     {
         "merged": "D:\\gitfolder\\UMC_ChatSoon\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
@@ -314,10 +326,6 @@
     {
         "merged": "D:\\gitfolder\\UMC_ChatSoon\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_signup.xml.flat",
         "source": "D:\\gitfolder\\UMC_ChatSoon\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_signup.xml"
-    },
-    {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_backgroud.png.flat",
-        "source": "D:\\gitfolder\\UMC_ChatSoon\\ChatSoonE\\app\\src\\main\\res\\drawable\\backgroud.png"
     },
     {
         "merged": "D:\\gitfolder\\UMC_ChatSoon\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_login.xml.flat",

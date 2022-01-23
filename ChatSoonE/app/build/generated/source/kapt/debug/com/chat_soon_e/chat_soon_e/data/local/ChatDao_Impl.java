@@ -32,7 +32,7 @@ public final class ChatDao_Impl implements ChatDao {
     this.__insertionAdapterOfChat = new EntityInsertionAdapter<Chat>(__db) {
       @Override
       public String createQuery() {
-        return "INSERT OR ABORT INTO `ChatTable` (`profile`,`name`,`content`,`dateTime`,`idx`) VALUES (?,?,?,?,nullif(?, 0))";
+        return "INSERT OR ABORT INTO `ChatTable` (`profile`,`name`,`dateTime`,`idx`) VALUES (?,?,?,nullif(?, 0))";
       }
 
       @Override
@@ -47,17 +47,12 @@ public final class ChatDao_Impl implements ChatDao {
         } else {
           stmt.bindString(2, value.getName());
         }
-        if (value.getContent() == null) {
+        if (value.getDateTime() == null) {
           stmt.bindNull(3);
         } else {
-          stmt.bindString(3, value.getContent());
+          stmt.bindString(3, value.getDateTime());
         }
-        if (value.getDateTime() == null) {
-          stmt.bindNull(4);
-        } else {
-          stmt.bindString(4, value.getDateTime());
-        }
-        stmt.bindLong(5, value.getIdx());
+        stmt.bindLong(4, value.getIdx());
       }
     };
     this.__deletionAdapterOfChat = new EntityDeletionOrUpdateAdapter<Chat>(__db) {
@@ -74,7 +69,7 @@ public final class ChatDao_Impl implements ChatDao {
     this.__updateAdapterOfChat = new EntityDeletionOrUpdateAdapter<Chat>(__db) {
       @Override
       public String createQuery() {
-        return "UPDATE OR ABORT `ChatTable` SET `profile` = ?,`name` = ?,`content` = ?,`dateTime` = ?,`idx` = ? WHERE `idx` = ?";
+        return "UPDATE OR ABORT `ChatTable` SET `profile` = ?,`name` = ?,`dateTime` = ?,`idx` = ? WHERE `idx` = ?";
       }
 
       @Override
@@ -89,18 +84,13 @@ public final class ChatDao_Impl implements ChatDao {
         } else {
           stmt.bindString(2, value.getName());
         }
-        if (value.getContent() == null) {
+        if (value.getDateTime() == null) {
           stmt.bindNull(3);
         } else {
-          stmt.bindString(3, value.getContent());
+          stmt.bindString(3, value.getDateTime());
         }
-        if (value.getDateTime() == null) {
-          stmt.bindNull(4);
-        } else {
-          stmt.bindString(4, value.getDateTime());
-        }
+        stmt.bindLong(4, value.getIdx());
         stmt.bindLong(5, value.getIdx());
-        stmt.bindLong(6, value.getIdx());
       }
     };
   }
@@ -150,7 +140,6 @@ public final class ChatDao_Impl implements ChatDao {
     try {
       final int _cursorIndexOfProfile = CursorUtil.getColumnIndexOrThrow(_cursor, "profile");
       final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "name");
-      final int _cursorIndexOfContent = CursorUtil.getColumnIndexOrThrow(_cursor, "content");
       final int _cursorIndexOfDateTime = CursorUtil.getColumnIndexOrThrow(_cursor, "dateTime");
       final int _cursorIndexOfIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "idx");
       final List<Chat> _result = new ArrayList<Chat>(_cursor.getCount());
@@ -168,19 +157,13 @@ public final class ChatDao_Impl implements ChatDao {
         } else {
           _tmpName = _cursor.getString(_cursorIndexOfName);
         }
-        final String _tmpContent;
-        if (_cursor.isNull(_cursorIndexOfContent)) {
-          _tmpContent = null;
-        } else {
-          _tmpContent = _cursor.getString(_cursorIndexOfContent);
-        }
         final String _tmpDateTime;
         if (_cursor.isNull(_cursorIndexOfDateTime)) {
           _tmpDateTime = null;
         } else {
           _tmpDateTime = _cursor.getString(_cursorIndexOfDateTime);
         }
-        _item = new Chat(_tmpProfile,_tmpName,_tmpContent,_tmpDateTime);
+        _item = new Chat(_tmpProfile,_tmpName,_tmpDateTime);
         final int _tmpIdx;
         _tmpIdx = _cursor.getInt(_cursorIndexOfIdx);
         _item.setIdx(_tmpIdx);
@@ -204,7 +187,6 @@ public final class ChatDao_Impl implements ChatDao {
     try {
       final int _cursorIndexOfProfile = CursorUtil.getColumnIndexOrThrow(_cursor, "profile");
       final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "name");
-      final int _cursorIndexOfContent = CursorUtil.getColumnIndexOrThrow(_cursor, "content");
       final int _cursorIndexOfDateTime = CursorUtil.getColumnIndexOrThrow(_cursor, "dateTime");
       final int _cursorIndexOfIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "idx");
       final Chat _result;
@@ -221,19 +203,13 @@ public final class ChatDao_Impl implements ChatDao {
         } else {
           _tmpName = _cursor.getString(_cursorIndexOfName);
         }
-        final String _tmpContent;
-        if (_cursor.isNull(_cursorIndexOfContent)) {
-          _tmpContent = null;
-        } else {
-          _tmpContent = _cursor.getString(_cursorIndexOfContent);
-        }
         final String _tmpDateTime;
         if (_cursor.isNull(_cursorIndexOfDateTime)) {
           _tmpDateTime = null;
         } else {
           _tmpDateTime = _cursor.getString(_cursorIndexOfDateTime);
         }
-        _result = new Chat(_tmpProfile,_tmpName,_tmpContent,_tmpDateTime);
+        _result = new Chat(_tmpProfile,_tmpName,_tmpDateTime);
         final int _tmpIdx;
         _tmpIdx = _cursor.getInt(_cursorIndexOfIdx);
         _result.setIdx(_tmpIdx);

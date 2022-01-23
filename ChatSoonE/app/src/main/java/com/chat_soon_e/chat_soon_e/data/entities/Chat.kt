@@ -6,9 +6,11 @@ import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "ChatTable")
 data class Chat(
-    @SerializedName("profile") val profile: String? = null,
+    @SerializedName("profile") val image_name: String? = null,
+    @SerializedName("kakaoUserIdx") val user_idx: String? = null,
     @SerializedName("name") val name: String,
-    @SerializedName("content") val content: String,
+
+    //@SerializedName("content") val content: ArrayList<String>,
     @SerializedName("dateTime") val dateTime: String
 ) {
     @PrimaryKey(autoGenerate = true) var idx: Int = 0

@@ -37,7 +37,7 @@ class MainRVAdapter(private val chatList: ArrayList<Chat>): RecyclerView.Adapter
         fun bind(chat: Chat) {
             // 프로필 사진 어떻게 처리할 건지
             binding.itemChatListNameTv.text = chat.name
-            binding.itemChatListContentTv.text = chat.content
+            //binding.itemChatListContentTv.text = chat.content
             binding.itemChatListDateTimeTv.text = chat.dateTime
         }
     }

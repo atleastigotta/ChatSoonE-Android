@@ -20,27 +20,27 @@ class LoginActivity: BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::in
 
         when(v) {
             binding.loginSignUpTv -> startNextActivity(SignUpActivity::class.java)
-            binding.loginSignInBtn -> login()
+            //binding.loginSignInBtn -> login()
         }
     }
 
-    private fun login() {
-        if (binding.loginIdEt.text.toString().isEmpty() || binding.loginDirectInputEt.text.toString().isEmpty()) {
-            Toast.makeText(this, "이메일을 입력해주세요.", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        if (binding.loginPasswordEt.text.toString().isEmpty()) {
-            Toast.makeText(this, "비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        val email = binding.loginIdEt.text.toString() + "@" + binding.loginDirectInputEt.text.toString()
-        val password = binding.loginPasswordEt.text.toString()
-        val user = User(email, password, "")
-
-        AuthService.login(this, user)
-    }
+//    private fun login() {
+//        if (binding.loginIdEt.text.toString().isEmpty() || binding.loginDirectInputEt.text.toString().isEmpty()) {
+//            Toast.makeText(this, "이메일을 입력해주세요.", Toast.LENGTH_SHORT).show()
+//            return
+//        }
+//
+//        if (binding.loginPasswordEt.text.toString().isEmpty()) {
+//            Toast.makeText(this, "비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
+//            return
+//        }
+//
+//        val email = binding.loginIdEt.text.toString() + "@" + binding.loginDirectInputEt.text.toString()
+//        val password = binding.loginPasswordEt.text.toString()
+//        val user = User(email, password, "")
+//
+//        AuthService.login(this, user)
+//    }
 
     override fun onLoginLoading() {
         binding.loginLoadingPb.visibility = View.VISIBLE

@@ -9,6 +9,19 @@
         android:targetSdkVersion="31" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <queries>
+        <package android:name="com.kakao.talk" />
+        <package android:name="com.kakao.talk.alpha" />
+        <package android:name="com.kakao.talk.sandbox" />
+        <package android:name="com.kakao.onetalk" />
+        <package android:name="com.android.chrome" />
+        <package android:name="com.chrome.beta" />
+        <package android:name="com.chrome.dev" />
+    </queries>
 
     <application
         android:name="com.chat_soon_e.chat_soon_e.ApplicationClass"
@@ -42,6 +55,23 @@
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.MainActivity"
             android:exported="true" />
+        <activity
+            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:theme="@style/TransparentCompat" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- Redirect URI: "kakao{NATIVE_APP_KEY}://oauth" -->
+                <data
+                    android:host="oauth"
+                    android:scheme="kakao63ebc69c67adf9e9e8f147df6508dc35" />
+            </intent-filter>
+        </activity>
 
         <!-- NotificationListener 권한 얻기 -->
         <service
@@ -53,6 +83,11 @@
             </intent-filter>
         </service>
 
+        <activity
+            android:name="com.kakao.sdk.auth.TalkAuthCodeActivity"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:theme="@style/TransparentCompat" />
         <activity
             android:name="com.gun0912.tedpermission.TedPermissionActivity"
             android:configChanges="mcc|mnc|locale|keyboard|keyboardHidden|screenLayout|fontScale|uiMode|orientation|screenSize|layoutDirection"
