@@ -78,10 +78,8 @@ dependencies {
     // 권한 요청을 위한 팝업을 쉽게 구성하기 위해
     implementation 'gun0912.ted:tedpermission:2.2.3'
 
-<<<<<<< HEAD
     // 카카오 로그인
     implementation "com.kakao.sdk:v2-user:2.4.2"
-=======
     // DrawerLayout
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
@@ -91,5 +89,5 @@ dependencies {
     // RecyclerView
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'com.balysv:material-ripple:1.0.2'
->>>>>>> 306ab99cb5b317e99af820d31579e8d16186d785
+
 }
