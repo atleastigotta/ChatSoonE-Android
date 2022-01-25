@@ -231,10 +231,10 @@ class MainRVAdapter(private val chatList: ArrayList<Chat>, private val isSelecti
     inner class ViewHolder(private val binding: ItemChatListBinding): RecyclerView.ViewHolder(binding.root) {
         // 뷰 객체가 담겨있는 binding에 데이터 리스트에서 받아온 데이터들을 넣어준다.
         fun bind(chat: Chat) {
-            // 프로필 사진 어떻게 처리할 건지
-            binding.itemChatListNameTv.text = chat.name
-            //binding.itemChatListContentTv.text = chat.content
-            binding.itemChatListDateTimeTv.text = chat.dateTime
+//            // 프로필 사진 어떻게 처리할 건지
+//            binding.itemChatListNameTv.text = chat.name
+//            binding.itemChatListContentTv.text = chat.content
+//            binding.itemChatListDateTimeTv.text = chat.dateTime
         }
     }
 }

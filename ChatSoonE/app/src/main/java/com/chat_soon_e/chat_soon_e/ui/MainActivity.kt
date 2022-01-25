@@ -12,12 +12,10 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.PopupMenu
 import android.widget.Toast
-import android.widget.Toolbar
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.chat_soon_e.chat_soon_e.R
-import com.chat_soon_e.chat_soon_e.databinding.ActivityMainContentBinding
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate), NavigationView.OnNavigationItemSelectedListener {
@@ -72,18 +70,18 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         // 이미 데이터가 있다는 것을 뜻하므로 함수를 리턴한다.
         if(chatList.isNotEmpty()) return
 
-        // 만약 데이터베이스에서 받아온 chat list가 비어있는 경우
-        // 더미 데이터
-        chatDB.chatDao().insert(Chat(null, "강은서", "Designer", "오전 10시"))
-        chatDB.chatDao().insert(Chat(null, "김민경", "PM\nServer(node.js)", "오전 11시"))
-        chatDB.chatDao().insert(Chat(null, "남선우", "Android", "오전 12시"))
-        chatDB.chatDao().insert(Chat(null, "변재호", "Server (node.js)", "오후 1시"))
-        chatDB.chatDao().insert(Chat(null, "이주연", "Android", "오후 2시"))
-        chatDB.chatDao().insert(Chat(null, "강은서", "Designer", "오후 3시"))
-        chatDB.chatDao().insert(Chat(null, "김민경", "PM\nServer(node.js)", "오후 4시"))
-        chatDB.chatDao().insert(Chat(null, "남선우", "Android", "오후 5시"))
-        chatDB.chatDao().insert(Chat(null, "변재호", "Server (node.js)", "오후 6시"))
-        chatDB.chatDao().insert(Chat(null, "이주연", "Android", "오후 7시"))
+//        // 만약 데이터베이스에서 받아온 chat list가 비어있는 경우
+//        // 더미 데이터
+//        chatDB.chatDao().insert(Chat(null, "강은서", "Designer", "오전 10시"))
+//        chatDB.chatDao().insert(Chat(null, "김민경", "PM\nServer(node.js)", "오전 11시"))
+//        chatDB.chatDao().insert(Chat(null, "남선우", "Android", "오전 12시"))
+//        chatDB.chatDao().insert(Chat(null, "변재호", "Server (node.js)", "오후 1시"))
+//        chatDB.chatDao().insert(Chat(null, "이주연", "Android", "오후 2시"))
+//        chatDB.chatDao().insert(Chat(null, "강은서", "Designer", "오후 3시"))
+//        chatDB.chatDao().insert(Chat(null, "김민경", "PM\nServer(node.js)", "오후 4시"))
+//        chatDB.chatDao().insert(Chat(null, "남선우", "Android", "오후 5시"))
+//        chatDB.chatDao().insert(Chat(null, "변재호", "Server (node.js)", "오후 6시"))
+//        chatDB.chatDao().insert(Chat(null, "이주연", "Android", "오후 7시"))
 
         Log.d("MAIN/DATA", chatDB.chatDao().getChatList().toString())
     }
@@ -318,7 +316,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         // 내폴더 아이콘 클릭시 폴더 화면으로 이동
         binding.mainContent.mainMyFolderIv.setOnClickListener {
             // startNextActivityWithClear()를 사용하는 게 좋을까?
-            startNextActivity(FolderActivity::class.java)
+            startNextActivity(MyFolderActivity::class.java)
         }
 
         // (특정 폴더로 옮길 특정 채팅을 선택하는 모드로 들어가게 해주는) 폴더 아이콘 클릭시

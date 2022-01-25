@@ -48,18 +48,12 @@
             </intent-filter>
         </activity>
         <activity android:name="com.chat_soon_e.chat_soon_e.ui.PermissionActivity" />
-
-        <!-- LoginActivity -->
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.LoginActivity"
             android:exported="true" />
-
-        <!-- SignUpActivity -->
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.SignUpActivity"
             android:exported="true" />
-
-        <!-- MainActivity -->
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.MainActivity"
             android:exported="true" />
@@ -80,10 +74,22 @@
                     android:scheme="kakao63ebc69c67adf9e9e8f147df6508dc35" />
             </intent-filter>
         </activity>
-        <!-- FolderActivity -->
+        <activity
+            android:name="com.chat_soon_e.chat_soon_e.ui.MyFolderActivity"
+            android:exported="true" />
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.FolderActivity"
             android:exported="true" />
+        <activity
+            android:name="com.chat_soon_e.chat_soon_e.ui.CreatePasswordActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.chat_soon_e.chat_soon_e.ui.InputPasswordActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.chat_soon_e.chat_soon_e.ui.ProgramActivity"
+            android:exported="true" />
+
         <!-- NotificationListener 권한 얻기 -->
         <service
             android:name="com.chat_soon_e.chat_soon_e.ui.MyNotificationListener"

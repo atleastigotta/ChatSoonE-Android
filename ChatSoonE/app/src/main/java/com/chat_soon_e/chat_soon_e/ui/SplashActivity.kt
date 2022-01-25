@@ -31,6 +31,8 @@ import android.net.NetworkInfo
 
 import android.net.NetworkCapabilities
 import android.os.Build
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 // BaseActivity를 상속받기 때문에 BaseActivity 안에서 onCreate() 실행되면서 자동적으로 뷰 바인딩을 해준다.
@@ -38,7 +40,7 @@ import android.os.Build
 // <> Generic: 아직 정의되지 않은 타입을 정의할 때 사용하는데, 여기서는 이 안에 어떤 뷰 바인딩을 할 것인지를 넣어준다.
 class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate),
     SplashView {
-    val TAG="splashtest"
+    val TAG = "splashtest"
     // BaseActivity onCreate()에서 바인딩 끝나고 자동적으로 호출이 되게끔 해준다.
     private fun autoLogin() {
         AuthService.autoLogin(this)
@@ -106,7 +108,12 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
                             if(user!=null){
                                 binding.splashKakaoLoginBtn.visibility=View.INVISIBLE
                                 Log.d(TAG, user.id.toString())
-                                val data=User(user.id.toInt(),user.kakaoAccount?.profile?.nickname.toString(), user.kakaoAccount?.email.toString())
+
+                                // date 객체 생성 과정에서 RoomDB 관련 오류가 발생해 임의로 추가한 부분 존재
+                                // SimpleDateFormat이 아니라 그냥 String으로 전달하는 건 어떨지?
+                                 val formatter = SimpleDateFormat("yyyyMMdd HH:mm:ss", Locale.getDefault())
+                                val dateTime = formatter.format(Calendar.getInstance().time)
+                                val data = User(user.id.toInt(),user.kakaoAccount?.profile?.nickname.toString(), user.kakaoAccount?.email.toString(), "active", dateTime, dateTime)
                                 val database=AppDatabase.getInstance(this)!!
                                 database.userDao().insert(data)
                             }

@@ -31,7 +31,7 @@ public final class UserDao_Impl implements UserDao {
     this.__insertionAdapterOfUser = new EntityInsertionAdapter<User>(__db) {
       @Override
       public String createQuery() {
-        return "INSERT OR ABORT INTO `UserTable` (`id`,`nickname`,`email`,`idx`) VALUES (?,?,?,nullif(?, 0))";
+        return "INSERT OR ABORT INTO `UserTable` (`id`,`nickname`,`email`,`status`,`createdAt`,`updatedAt`,`idx`) VALUES (?,?,?,?,?,?,nullif(?, 0))";
       }
 
       @Override
@@ -47,7 +47,22 @@ public final class UserDao_Impl implements UserDao {
         } else {
           stmt.bindString(3, value.getEmail());
         }
-        stmt.bindLong(4, value.getIdx());
+        if (value.getStatus() == null) {
+          stmt.bindNull(4);
+        } else {
+          stmt.bindString(4, value.getStatus());
+        }
+        if (value.getCreatedAt() == null) {
+          stmt.bindNull(5);
+        } else {
+          stmt.bindString(5, value.getCreatedAt());
+        }
+        if (value.getUpdatedAt() == null) {
+          stmt.bindNull(6);
+        } else {
+          stmt.bindString(6, value.getUpdatedAt());
+        }
+        stmt.bindLong(7, value.getIdx());
       }
     };
     this.__deletionAdapterOfUser = new EntityDeletionOrUpdateAdapter<User>(__db) {
@@ -64,7 +79,7 @@ public final class UserDao_Impl implements UserDao {
     this.__updateAdapterOfUser = new EntityDeletionOrUpdateAdapter<User>(__db) {
       @Override
       public String createQuery() {
-        return "UPDATE OR ABORT `UserTable` SET `id` = ?,`nickname` = ?,`email` = ?,`idx` = ? WHERE `idx` = ?";
+        return "UPDATE OR ABORT `UserTable` SET `id` = ?,`nickname` = ?,`email` = ?,`status` = ?,`createdAt` = ?,`updatedAt` = ?,`idx` = ? WHERE `idx` = ?";
       }
 
       @Override
@@ -80,8 +95,23 @@ public final class UserDao_Impl implements UserDao {
         } else {
           stmt.bindString(3, value.getEmail());
         }
-        stmt.bindLong(4, value.getIdx());
-        stmt.bindLong(5, value.getIdx());
+        if (value.getStatus() == null) {
+          stmt.bindNull(4);
+        } else {
+          stmt.bindString(4, value.getStatus());
+        }
+        if (value.getCreatedAt() == null) {
+          stmt.bindNull(5);
+        } else {
+          stmt.bindString(5, value.getCreatedAt());
+        }
+        if (value.getUpdatedAt() == null) {
+          stmt.bindNull(6);
+        } else {
+          stmt.bindString(6, value.getUpdatedAt());
+        }
+        stmt.bindLong(7, value.getIdx());
+        stmt.bindLong(8, value.getIdx());
       }
     };
   }
@@ -134,6 +164,9 @@ public final class UserDao_Impl implements UserDao {
       final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
       final int _cursorIndexOfNickname = CursorUtil.getColumnIndexOrThrow(_cursor, "nickname");
       final int _cursorIndexOfEmail = CursorUtil.getColumnIndexOrThrow(_cursor, "email");
+      final int _cursorIndexOfStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "status");
+      final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
+      final int _cursorIndexOfUpdatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "updatedAt");
       final int _cursorIndexOfIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "idx");
       final User _result;
       if(_cursor.moveToFirst()) {
@@ -151,7 +184,25 @@ public final class UserDao_Impl implements UserDao {
         } else {
           _tmpEmail = _cursor.getString(_cursorIndexOfEmail);
         }
-        _result = new User(_tmpId,_tmpNickname,_tmpEmail);
+        final String _tmpStatus;
+        if (_cursor.isNull(_cursorIndexOfStatus)) {
+          _tmpStatus = null;
+        } else {
+          _tmpStatus = _cursor.getString(_cursorIndexOfStatus);
+        }
+        final String _tmpCreatedAt;
+        if (_cursor.isNull(_cursorIndexOfCreatedAt)) {
+          _tmpCreatedAt = null;
+        } else {
+          _tmpCreatedAt = _cursor.getString(_cursorIndexOfCreatedAt);
+        }
+        final String _tmpUpdatedAt;
+        if (_cursor.isNull(_cursorIndexOfUpdatedAt)) {
+          _tmpUpdatedAt = null;
+        } else {
+          _tmpUpdatedAt = _cursor.getString(_cursorIndexOfUpdatedAt);
+        }
+        _result = new User(_tmpId,_tmpNickname,_tmpEmail,_tmpStatus,_tmpCreatedAt,_tmpUpdatedAt);
         final int _tmpIdx;
         _tmpIdx = _cursor.getInt(_cursorIndexOfIdx);
         _result.setIdx(_tmpIdx);

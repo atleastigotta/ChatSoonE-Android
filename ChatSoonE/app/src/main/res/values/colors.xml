@@ -10,8 +10,8 @@
 
     <!-- 새로 정의한 색상 -->
     <color name="gray">#BFBFBF</color>
-    <color name="light_gray">#F3F3F3</color>
     <color name="pink">#FED7D3</color>
+    <color name="light_gray">#D8D8D8</color>
 
     <!-- 공통 -->
     <color name="primary">#F84D17</color>

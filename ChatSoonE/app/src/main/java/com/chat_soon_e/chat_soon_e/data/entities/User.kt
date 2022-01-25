@@ -12,8 +12,8 @@ data class User(
     @SerializedName("nickname") val nickname: String,
     @SerializedName("email") val email: String,
     @SerializedName("status") val status: String,
-    @SerializedName("createdAt") val createdAt: SimpleDateFormat,//
-    @SerializedName("updatedAt") val updatedAt: SimpleDateFormat,//
+    @SerializedName("createdAt") val createdAt: String,
+    @SerializedName("updatedAt") val updatedAt: String
 ){
     @PrimaryKey(autoGenerate = true)var idx:Int=0
 }
