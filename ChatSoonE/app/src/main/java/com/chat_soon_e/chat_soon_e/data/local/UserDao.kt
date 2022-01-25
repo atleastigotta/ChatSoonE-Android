@@ -12,9 +12,16 @@ interface UserDao {
     @Update
     fun update(user:User)
 
+    @Query("UPDATE UserTable SET status= :status WHERE idx= :id")
+    fun updateStatus(id:Int, status:String)
+
+
     @Delete
     fun delete(user:User)
 
-    @Query("SELECT * FROM UserTable WHERE id= :id")
-    fun getUser(id:Int):User
+    @Query("SELECT * FROM UserTable WHERE idx= :id")
+    fun getUser(id:Int):User?
+
+    @Query("SELECT * FROM UserTable")
+    fun getUsers():List<User>?
 }

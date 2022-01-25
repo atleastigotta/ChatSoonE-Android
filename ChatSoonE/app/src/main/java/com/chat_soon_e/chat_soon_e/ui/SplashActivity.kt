@@ -31,6 +31,9 @@ import android.net.NetworkInfo
 
 import android.net.NetworkCapabilities
 import android.os.Build
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKeys
+import com.chat_soon_e.chat_soon_e.data.remote.auth.master
 
 
 // BaseActivity를 상속받기 때문에 BaseActivity 안에서 onCreate() 실행되면서 자동적으로 뷰 바인딩을 해준다.
@@ -40,34 +43,20 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
     SplashView {
     val TAG="splashtest"
     // BaseActivity onCreate()에서 바인딩 끝나고 자동적으로 호출이 되게끔 해준다.
-    private fun autoLogin() {
-        AuthService.autoLogin(this)
-    }
-
-    override fun onAutoLoginLoading() {
-
-    }
-
-    override fun onAutoLoginSuccess() {
-        startActivityWithClear(MainActivity::class.java)
-    }
-
-    override fun onAutoLoginFailure(code: Int, message: String) {
-        startActivityWithClear(LoginActivity::class.java)
-    }
-
     override fun initAfterBinding() {
-
         Handler(Looper.getMainLooper()).postDelayed({
-            // autoLogin()
             //최초 실행 때만 권한 얻기 페이지를 뜨게 함, spf를 사용해 최초 진입인지 아닌지 확인
-            val spf=this.getSharedPreferences("firstRun",AppCompatActivity.MODE_PRIVATE)
-            Log.d("splashactivityspf", spf.getInt("check", 0).toString())
-            if((spf==null) || (spf?.getInt("check", 0)!=1))
-                    startNextActivity(PermissionActivity::class.java)
+            //일단 권한 없으면 무조건 페이지로 가게하기
+//            val spf=this.getSharedPreferences("firstRun",AppCompatActivity.MODE_PRIVATE)
+//            Log.d("splashactivityspf", spf.getInt("check", 0).toString())
+//            if((spf==null) || (spf?.getInt("check", 0)!=1))
+//                    startNextActivity(PermissionActivity::class.java)
+            if(!permissionGrantred(this))
+                startNextActivity(PermissionActivity::class.java)
         }, 1000)
         //로딩바 설정
         binding.splashProgressBar.setProgress(10)
+        loginPermission()
         binding.splashKakaoLoginBtn.setOnClickListener {
                 if(binding.splashKakaoLoginBtn.isVisible){
                     login()
@@ -83,58 +72,48 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
         //데이터 다운이 완료되면 시작하기 버튼 활성화
     }
     fun loginPermission(){
-        if (AuthApiClient.instance.hasToken()) {//Token 있음!
+        //Token 존재 확인
+        if (AuthApiClient.instance.hasToken()) {
             //Token 유효성 검증
             UserApiClient.instance.accessTokenInfo { _, error ->
                 if (error != null) {
+                    //로그인 필요
                     if (error is KakaoSdkError && error.isInvalidTokenError() == true) {
-                        //로그인 필요
                         binding.splashKakaoLoginBtn.visibility=View.VISIBLE
                     }
+                    //기타 에러
                     else {
-                        //기타 에러
                         Log.d(TAG, error.message.toString())
                     }
                 }
+                //토큰 유효성 체크 성공(필요 시 토큰 갱신됨)
                 else {
-                    //토큰 유효성 체크 성공(필요 시 토큰 갱신됨)
                     Log.d(TAG, "토큰 유효")
-                    UserApiClient.instance.me { user, error ->
-                        if(error!=null)
-                            Log.d(TAG, "사용자 정보 가져오기 실패")
-                        else{
-                            if(user!=null){
-                                binding.splashKakaoLoginBtn.visibility=View.INVISIBLE
-                                Log.d(TAG, user.id.toString())
-                                val data=User(user.id.toInt(),user.kakaoAccount?.profile?.nickname.toString(), user.kakaoAccount?.email.toString())
-                                val database=AppDatabase.getInstance(this)!!
-                                database.userDao().insert(data)
-                            }
-                        }
-                    }
+                    binding.splashKakaoLoginBtn.visibility=View.INVISIBLE
                 }
             }
         }
-        else {//토큰 없음(로그아웃 혹은 연결 끊김)
-            //로그인 필요
+        //토큰 없음(로그아웃 혹은 연결 끊김)
+        else {
             binding.splashKakaoLoginBtn.visibility=View.VISIBLE
         }
     }
-    fun login(){
+    private fun login(){
         //카카오계정 로그인
         val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
             if (error != null) {
                 Log.e(TAG, "카카오계정으로 로그인 실패", error)
             } else if (token != null) {
                 Log.i(TAG, "카카오계정으로 로그인 성공 ${token.accessToken}")
+                binding.splashKakaoLoginBtn.visibility=View.INVISIBLE
+                saveUserInfo("login")
+                }
             }
-        }
         //카카오톡 로그인 가능하다면 카카오톡으로 로그인
         if (UserApiClient.instance.isKakaoTalkLoginAvailable(this)) {
             UserApiClient.instance.loginWithKakaoTalk(this) { token, error ->
                 if (error != null) {
                     Log.e(TAG, "카카오톡으로 로그인 실패", error)
-
                     // 사용자가 카카오톡 설치 후 디바이스 권한 요청 화면에서 로그인을 취소한 경우,
                     // 의도적인 로그인 취소로 보고 카카오계정으로 로그인 시도 없이 로그인 취소로 처리 (예: 뒤로 가기)
                     if (error is ClientError && error.reason == ClientErrorCause.Cancelled) {
@@ -145,6 +124,7 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
                 } else if (token != null) {
                     Log.i(TAG, "카카오톡으로 로그인 성공 ${token.accessToken}")
                     binding.splashKakaoLoginBtn.visibility=View.INVISIBLE
+                    saveUserInfo("login")
                 }
             }
         } else {
@@ -153,21 +133,68 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
 
     }
     //로그아웃
-    fun logout(){
+    private fun logout(){
         UserApiClient.instance.logout { error->
             if(error!=null)
                 Log.d(TAG, "로그아웃 실패")
-            else
-                Log.d(TAG, "로그아웃 성공")
+            else{
+                val user=AppDatabase.getInstance(this)!!.userDao()
+
+            }
         }
     }
     //탈퇴: 계정 연결 끊기
-    fun withdraw(){
-        UserApiClient.instance.unlink { error->
-            if(error!=null)
+    private fun withdraw() {
+        saveUserInfo("withdraw")
+        UserApiClient.instance.unlink { error ->
+            if (error != null)
                 Log.e(TAG, "연결끊기 실패", error)
-            else
+            else {
                 Log.d(TAG, "연결 끊기 성공")
+            }
+        }
+    }
+    private fun saveUserInfo(state:String){
+        UserApiClient.instance.me { user, error ->
+            if (error != null){
+                Log.d(TAG, "사용자 정보 가져오기 실패")
+            }
+            else {
+                if (user != null) {
+                    Log.d(TAG, user.id.toString())
+                    //id 암호화 후 spf 저장
+                    val spf = EncryptedSharedPreferences.create(
+                        "auth",
+                        master, this, EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                        EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+                    )
+                    val editor = spf.edit()
+                    editor?.apply { putString("id", user.id.toString()) }
+                    val database=AppDatabase.getInstance(this)!!
+                    val dao=database.userDao()
+                    if(state=="login"){
+                        var users=dao.getUser(user.id.toInt())
+                        if(users==null){
+                            //유저 인포 저장====================
+                            dao.insert(User(user.id.toInt(), user.kakaoAccount?.profile?.nickname.toString(), user.kakaoAccount?.email.toString(), "activate"))
+                        }else{
+                            if(users.status=="delete")
+                            //유저 인포 업데이트====================
+                                dao.update(User(user.id.toInt(), user.kakaoAccount?.profile?.nickname.toString(), user.kakaoAccount?.email.toString(), "activate"))
+                            else if(users.status=="inactivate")
+                                dao.updateStatus(user.id.toInt(), "activate")
+                        }
+                    }
+                    //로그아웃 시
+                    else if(state=="logout"){
+                        dao.updateStatus(user.id.toInt(), "inactivate")
+                    }
+                    //탈퇴 시
+                    else if(state=="withdraw")
+                        dao.updateStatus(user.id.toInt(), "delete")
+                    Log.d(TAG, dao.getUsers().toString())
+                }
+            }
         }
     }
 
@@ -212,5 +239,17 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
         }
         else
             return false
+    }
+
+    override fun onAutoLoginLoading() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onAutoLoginSuccess() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onAutoLoginFailure(code: Int, message: String) {
+        TODO("Not yet implemented")
     }
 }

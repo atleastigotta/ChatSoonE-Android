@@ -30,6 +30,7 @@ MERGED from [com.kakao.sdk:v2-common:2.4.2] C:\Users\82108\.gradle\caches\transf
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\82108\.gradle\caches\transforms-3\c4f72d47318f2a3af2c70a73484b019b\transformed\legacy-support-v4-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.recyclerview:recyclerview:1.2.1] C:\Users\82108\.gradle\caches\transforms-3\d28d81d77548a209ea6fe89fa0aeb3bd\transformed\recyclerview-1.2.1\AndroidManifest.xml:17:1-24:12
 MERGED from [com.balysv:material-ripple:1.0.2] C:\Users\82108\.gradle\caches\transforms-3\d7751a7c345f95283ecd5cc3070042b0\transformed\jetified-material-ripple-1.0.2\AndroidManifest.xml:2:1-14:12
+MERGED from [androidx.security:security-crypto:1.0.0-rc03] C:\Users\82108\.gradle\caches\transforms-3\a9a1229f21e61e3346c9e2f316e41a3e\transformed\jetified-security-crypto-1.0.0-rc03\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.2.0] C:\Users\82108\.gradle\caches\transforms-3\96fc14fc5840ebff4aa01e0659ccfa38\transformed\jetified-lifecycle-runtime-ktx-2.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-extensions:2.2.0] C:\Users\82108\.gradle\caches\transforms-3\c9c00fec30301076cc4d83c57dc6251c\transformed\lifecycle-extensions-2.2.0\AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.navigation:navigation-fragment:2.3.5] C:\Users\82108\.gradle\caches\transforms-3\a7d144e1564715c3d741821274aec7e6\transformed\navigation-fragment-2.3.5\AndroidManifest.xml:17:1-24:12
@@ -309,6 +310,8 @@ MERGED from [androidx.recyclerview:recyclerview:1.2.1] C:\Users\82108\.gradle\ca
 MERGED from [androidx.recyclerview:recyclerview:1.2.1] C:\Users\82108\.gradle\caches\transforms-3\d28d81d77548a209ea6fe89fa0aeb3bd\transformed\recyclerview-1.2.1\AndroidManifest.xml:20:5-22:41
 MERGED from [com.balysv:material-ripple:1.0.2] C:\Users\82108\.gradle\caches\transforms-3\d7751a7c345f95283ecd5cc3070042b0\transformed\jetified-material-ripple-1.0.2\AndroidManifest.xml:8:5-10:41
 MERGED from [com.balysv:material-ripple:1.0.2] C:\Users\82108\.gradle\caches\transforms-3\d7751a7c345f95283ecd5cc3070042b0\transformed\jetified-material-ripple-1.0.2\AndroidManifest.xml:8:5-10:41
+MERGED from [androidx.security:security-crypto:1.0.0-rc03] C:\Users\82108\.gradle\caches\transforms-3\a9a1229f21e61e3346c9e2f316e41a3e\transformed\jetified-security-crypto-1.0.0-rc03\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.security:security-crypto:1.0.0-rc03] C:\Users\82108\.gradle\caches\transforms-3\a9a1229f21e61e3346c9e2f316e41a3e\transformed\jetified-security-crypto-1.0.0-rc03\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.2.0] C:\Users\82108\.gradle\caches\transforms-3\96fc14fc5840ebff4aa01e0659ccfa38\transformed\jetified-lifecycle-runtime-ktx-2.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.2.0] C:\Users\82108\.gradle\caches\transforms-3\96fc14fc5840ebff4aa01e0659ccfa38\transformed\jetified-lifecycle-runtime-ktx-2.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-extensions:2.2.0] C:\Users\82108\.gradle\caches\transforms-3\c9c00fec30301076cc4d83c57dc6251c\transformed\lifecycle-extensions-2.2.0\AndroidManifest.xml:20:5-22:41

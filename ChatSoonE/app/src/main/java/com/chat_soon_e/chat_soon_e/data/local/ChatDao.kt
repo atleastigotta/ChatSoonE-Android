@@ -17,6 +17,6 @@ interface ChatDao {
     @Query("SELECT * FROM ChatTable")
     fun getChatList(): List<Chat>
 
-    @Query("SELECT * FROM ChatTable WHERE idx = :idx")
-    fun getChatByIdx(idx: Int): Chat
+//    @Query("SELECT * FROM ChatTable WHERE idx = :idx")
+//    fun getChatByIdx(idx: Int): Chat
 }

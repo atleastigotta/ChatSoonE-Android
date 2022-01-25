@@ -1,15 +1,11 @@
 com/chat_soon_e/chat_soon_e/databinding/ActivitySignupBinding.java
  com.chat_soon_e.chat_soon_e.databinding.ActivitySignupBinding
-com/chat_soon_e/chat_soon_e/data/local/UserDao_Impl.java
- com.chat_soon_e.chat_soon_e.data.local.UserDao_Impl
- com.chat_soon_e.chat_soon_e.data.local.UserDao_Impl$1
- com.chat_soon_e.chat_soon_e.data.local.UserDao_Impl$2
- com.chat_soon_e.chat_soon_e.data.local.UserDao_Impl$3
+com/chat_soon_e/chat_soon_e/databinding/ActivityMainDrawerHeaderBinding.java
+ com.chat_soon_e.chat_soon_e.databinding.ActivityMainDrawerHeaderBinding
 androidx/databinding/DataBinderMapperImpl.java
  androidx.databinding.DataBinderMapperImpl
-com/chat_soon_e/chat_soon_e/data/local/AppDatabase_Impl.java
- com.chat_soon_e.chat_soon_e.data.local.AppDatabase_Impl
- com.chat_soon_e.chat_soon_e.data.local.AppDatabase_Impl$1
+androidx/databinding/DataBindingComponent.java
+ androidx.databinding.DataBindingComponent
 androidx/databinding/library/baseAdapters/BR.java
  androidx.databinding.library.baseAdapters.BR
 com/chat_soon_e/chat_soon_e/BR.java
@@ -50,14 +46,19 @@ com/chat_soon_e/chat_soon_e/databinding/ActivityMainBinding.java
  com.chat_soon_e.chat_soon_e.databinding.ActivityMainBinding
 com/chat_soon_e/chat_soon_e/DataBindingTriggerClass.java
  com.chat_soon_e.chat_soon_e.DataBindingTriggerClass
+com/chat_soon_e/chat_soon_e/databinding/ActivityMainToolbarBinding.java
+ com.chat_soon_e.chat_soon_e.databinding.ActivityMainToolbarBinding
 com/chat_soon_e/chat_soon_e/data/local/ChatDao_Impl.java
  com.chat_soon_e.chat_soon_e.data.local.ChatDao_Impl
  com.chat_soon_e.chat_soon_e.data.local.ChatDao_Impl$1
  com.chat_soon_e.chat_soon_e.data.local.ChatDao_Impl$2
  com.chat_soon_e.chat_soon_e.data.local.ChatDao_Impl$3
-com/chat_soon_e/chat_soon_e/databinding/ActivityMainDrawerHeaderBinding.java
- com.chat_soon_e.chat_soon_e.databinding.ActivityMainDrawerHeaderBinding
-androidx/databinding/DataBindingComponent.java
- androidx.databinding.DataBindingComponent
-com/chat_soon_e/chat_soon_e/databinding/ActivityMainToolbarBinding.java
- com.chat_soon_e.chat_soon_e.databinding.ActivityMainToolbarBinding
+com/chat_soon_e/chat_soon_e/data/local/UserDao_Impl.java
+ com.chat_soon_e.chat_soon_e.data.local.UserDao_Impl
+ com.chat_soon_e.chat_soon_e.data.local.UserDao_Impl$1
+ com.chat_soon_e.chat_soon_e.data.local.UserDao_Impl$2
+ com.chat_soon_e.chat_soon_e.data.local.UserDao_Impl$3
+ com.chat_soon_e.chat_soon_e.data.local.UserDao_Impl$4
+com/chat_soon_e/chat_soon_e/data/local/AppDatabase_Impl.java
+ com.chat_soon_e.chat_soon_e.data.local.AppDatabase_Impl
+ com.chat_soon_e.chat_soon_e.data.local.AppDatabase_Impl$1

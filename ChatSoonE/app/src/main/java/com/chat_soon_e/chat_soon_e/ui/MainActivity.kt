@@ -74,16 +74,16 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 
         // 만약 데이터베이스에서 받아온 chat list가 비어있는 경우
         // 더미 데이터
-        chatDB.chatDao().insert(Chat(null, "강은서", "Designer", "오전 10시"))
-        chatDB.chatDao().insert(Chat(null, "김민경", "PM\nServer(node.js)", "오전 11시"))
-        chatDB.chatDao().insert(Chat(null, "남선우", "Android", "오전 12시"))
-        chatDB.chatDao().insert(Chat(null, "변재호", "Server (node.js)", "오후 1시"))
-        chatDB.chatDao().insert(Chat(null, "이주연", "Android", "오후 2시"))
-        chatDB.chatDao().insert(Chat(null, "강은서", "Designer", "오후 3시"))
-        chatDB.chatDao().insert(Chat(null, "김민경", "PM\nServer(node.js)", "오후 4시"))
-        chatDB.chatDao().insert(Chat(null, "남선우", "Android", "오후 5시"))
-        chatDB.chatDao().insert(Chat(null, "변재호", "Server (node.js)", "오후 6시"))
-        chatDB.chatDao().insert(Chat(null, "이주연", "Android", "오후 7시"))
+//        chatDB.chatDao().insert(Chat(null, "강은서", "Designer", "오전 10시"))
+//        chatDB.chatDao().insert(Chat(null, "김민경", "PM\nServer(node.js)", "오전 11시"))
+//        chatDB.chatDao().insert(Chat(null, "남선우", "Android", "오전 12시"))
+//        chatDB.chatDao().insert(Chat(null, "변재호", "Server (node.js)", "오후 1시"))
+//        chatDB.chatDao().insert(Chat(null, "이주연", "Android", "오후 2시"))
+//        chatDB.chatDao().insert(Chat(null, "강은서", "Designer", "오후 3시"))
+//        chatDB.chatDao().insert(Chat(null, "김민경", "PM\nServer(node.js)", "오후 4시"))
+//        chatDB.chatDao().insert(Chat(null, "남선우", "Android", "오후 5시"))
+//        chatDB.chatDao().insert(Chat(null, "변재호", "Server (node.js)", "오후 6시"))
+//        chatDB.chatDao().insert(Chat(null, "이주연", "Android", "오후 7시"))
 
         Log.d("MAIN/DATA", chatDB.chatDao().getChatList().toString())
     }

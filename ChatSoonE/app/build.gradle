@@ -90,4 +90,6 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'com.balysv:material-ripple:1.0.2'
 
+    //spf 보안
+    implementation "androidx.security:security-crypto:1.0.0-rc03"
 }
