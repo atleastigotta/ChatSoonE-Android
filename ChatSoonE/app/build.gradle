@@ -90,4 +90,6 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'com.balysv:material-ripple:1.0.2'
 
+    // PatternLockView
+    implementation 'com.andrognito.patternlockview:patternlockview:1.0.0'
 }

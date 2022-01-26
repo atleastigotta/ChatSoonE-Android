@@ -128,6 +128,8 @@ attr arcMode
 attr argType
 attr arrowHeadLength
 attr arrowShaftLength
+attr aspectRatio
+attr aspectRatioEnabled
 attr attributeName
 attr autoCompleteMode
 attr autoCompleteTextViewStyle
@@ -366,6 +368,7 @@ attr cornerSizeBottomLeft
 attr cornerSizeBottomRight
 attr cornerSizeTopLeft
 attr cornerSizeTopRight
+attr correctStateColor
 attr counterEnabled
 attr counterMaxLength
 attr counterOverflowTextAppearance
@@ -411,6 +414,10 @@ attr dividerInsetStart
 attr dividerPadding
 attr dividerThickness
 attr dividerVertical
+attr dotAnimationDuration
+attr dotCount
+attr dotNormalSize
+attr dotSelectedSize
 attr dragDirection
 attr dragScale
 attr dragThreshold
@@ -836,6 +843,7 @@ attr navigationViewStyle
 attr nestedScrollFlags
 attr nestedScrollViewStyle
 attr nestedScrollable
+attr normalStateColor
 attr nullable
 attr number
 attr numericModifiers
@@ -864,7 +872,9 @@ attr passwordToggleDrawable
 attr passwordToggleEnabled
 attr passwordToggleTint
 attr passwordToggleTintMode
+attr pathEndAnimationDuration
 attr pathMotionArc
+attr pathWidth
 attr path_percent
 attr percentHeight
 attr percentWidth
@@ -1197,6 +1207,7 @@ attr windowFixedWidthMinor
 attr windowMinWidthMajor
 attr windowMinWidthMinor
 attr windowNoTitle
+attr wrongStateColor
 attr yearSelectedStyle
 attr yearStyle
 attr yearTodayStyle
@@ -1792,6 +1803,7 @@ color notification_action_color_filter
 color notification_icon_bg_color
 color notification_material_background_media_default_color
 color pink
+color pomegranate
 color primary
 color primary_dark_material_dark
 color primary_dark_material_light
@@ -2390,6 +2402,9 @@ dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
+dimen pattern_lock_dot_selected_size
+dimen pattern_lock_dot_size
+dimen pattern_lock_path_width
 dimen subtitle_corner_radius
 dimen subtitle_outline_width
 dimen subtitle_shadow_offset
@@ -2513,9 +2528,11 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
-drawable ic_back
+drawable ic_all_chat
+drawable ic_baseline_arrow_back_ios_24
 drawable ic_baseline_cached_24
 drawable ic_baseline_cancel_24
+drawable ic_baseline_chat_pink_24
 drawable ic_baseline_create_new_folder_24
 drawable ic_baseline_folder_24
 drawable ic_baseline_menu_24
@@ -2553,6 +2570,7 @@ drawable icon_profile
 drawable icon_up_and_down_arrow
 drawable icon_update
 drawable img_background
+drawable img_background_folder
 drawable kakao_login_medium_narrow
 drawable m3_appbar_background
 drawable m3_popupmenu_background_overlay
@@ -2748,6 +2766,8 @@ id continuousVelocity
 id coordinator
 id cos
 id counterclockwise
+id create_pattern_lock_view
+id create_pattern_tv
 id currentState
 id custom
 id customPanel
@@ -2819,6 +2839,7 @@ id grouping
 id groups
 id guideline
 id header_title
+id height_bias
 id hideable
 id home
 id homeAsUp
@@ -2834,6 +2855,8 @@ id image
 id immediateStop
 id included
 id info
+id input_pattern_lock_view
+id input_pattern_tv
 id invisible
 id inward
 id italic
@@ -2956,6 +2979,8 @@ id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
+id my_folder_all_chat_iv
+id my_folder_background_layout
 id my_folder_bottom_bar_view
 id my_folder_chat_iv
 id my_folder_create_new_folder_iv
@@ -3191,6 +3216,7 @@ id visible
 id visible_removing_fragment_view_tag
 id webview
 id west
+id width_bias
 id withText
 id withinBounds
 id wrap
@@ -3286,10 +3312,10 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_chat
-layout activity_create_password
+layout activity_create_pattern
 layout activity_folder
 layout activity_hidden_folder
-layout activity_input_password
+layout activity_input_pattern
 layout activity_kakao_auth
 layout activity_login
 layout activity_main
@@ -3301,7 +3327,6 @@ layout activity_main_drawer_toggle_on
 layout activity_main_toolbar
 layout activity_my_folder
 layout activity_permission
-layout activity_program
 layout activity_signup
 layout activity_splash
 layout activity_talk_auth_code
@@ -3485,6 +3510,7 @@ string ic_back
 string icon_content_description
 string img_app_logo
 string item_view_role_description
+string lib_name
 string login
 string login_email_delimiter
 string login_email_hint
@@ -3540,6 +3566,10 @@ string menu_home
 string menu_matching
 string menu_mypage
 string menu_search
+string message_pattern_cleared
+string message_pattern_detected
+string message_pattern_dot_added
+string message_pattern_started
 string mtrl_badge_numberless_content_description
 string mtrl_chip_close_icon_content_description
 string mtrl_exceed_max_badge_number_content_description
@@ -4751,6 +4781,7 @@ styleable NavigationView android_layout_gravity android_background android_fitsS
 styleable Navigator android_label android_id
 styleable OnClick clickAction targetId
 styleable OnSwipe autoCompleteMode dragDirection dragScale dragThreshold limitBoundsTo maxAcceleration maxVelocity moveWhenScrollAtTop nestedScrollFlags onTouchUp rotationCenterId springBoundary springDamping springMass springStiffness springStopThreshold touchAnchorId touchAnchorSide touchRegionId
+styleable PatternLockView aspectRatio aspectRatioEnabled correctStateColor dotAnimationDuration dotCount dotNormalSize dotSelectedSize normalStateColor pathEndAnimationDuration pathWidth wrongStateColor
 styleable PopupWindow android_popupBackground android_popupAnimationStyle overlapAnchor
 styleable PopupWindowBackgroundState state_above_anchor
 styleable PropertySet android_visibility android_alpha layout_constraintTag motionProgress visibilityMode

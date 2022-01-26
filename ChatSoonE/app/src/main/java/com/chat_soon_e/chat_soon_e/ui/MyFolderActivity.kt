@@ -1,5 +1,6 @@
 package com.chat_soon_e.chat_soon_e.ui
 
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.PopupMenu
@@ -22,8 +23,30 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
 
     override fun onStart() {
         super.onStart()
-        initRecyclerView()
-        initClickListener()
+        initFolderList()        // folder list 데이터 초기화
+        initRecyclerView()      // RecyclerView Adpater 연결 & 기타 설정
+        initClickListener()     // 여러 ClickListener 초기화
+    }
+
+    // folder list를 불러와 화면에 띄워주는 역할
+    // 일단 더미 데이터로 구현
+    private fun initFolderList() {
+        folderDB = AppDatabase.getInstance(this)!!
+        folderList = folderDB.folderDao().getFolderList() as ArrayList
+
+        // 만약 데이터베이스에서 받아온 folder list가 비어있지 않을 경우
+        // 이미 데이터가 있다는 것을 뜻하므로 함수를 리턴한다.
+        if(folderList.isNotEmpty()) return
+
+        // 만약 데이터베이스에서 받아온 folder list가 비어있는 경우
+        // 더미 데이터
+        folderDB.folderDao().insert(Folder(0, "추억"))
+        folderDB.folderDao().insert(Folder(1, "여행"))
+        folderDB.folderDao().insert(Folder(2, "음식"))
+        folderDB.folderDao().insert(Folder(3, "학교"))
+        folderDB.folderDao().insert(Folder(4, "게임"))
+
+        Log.d("MYFOLDER/DATA", folderDB.folderDao().getFolderList().toString())
     }
 
     private fun initRecyclerView() {
@@ -33,8 +56,8 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
         folderRVAdapter = MyFolderRVAdapter(folderList)
         binding.myFolderFolderListRecyclerView.adapter = folderRVAdapter
 
-        // 그리드 레이아웃 설정
-        binding.myFolderFolderListRecyclerView.layoutManager = GridLayoutManager(this@MyFolderActivity, 4)
+//        // 그리드 레이아웃 설정
+//        binding.myFolderFolderListRecyclerView.layoutManager = GridLayoutManager(this@MyFolderActivity, 4)
 
         // 폴더 아이콘 클릭시
         folderRVAdapter.setMyItemClickListener(object: MyFolderRVAdapter.MyItemClickListener {
@@ -73,10 +96,20 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
     inner class PopupFolderMenuOptionListener: PopupMenu.OnMenuItemClickListener {
         override fun onMenuItemClick(item: MenuItem?): Boolean {
             when(item?.itemId) {
-                R.id.popup_folder_option_menu_1
-                        -> Toast.makeText(this@MyFolderActivity, "폴더 생성하기", Toast.LENGTH_SHORT).show()
-                R.id.popup_folder_option_menu_2
-                        -> startNextActivity(HiddenFolderActivity::class.java)
+                R.id.popup_folder_option_menu_1 -> {
+                    Toast.makeText(this@MyFolderActivity, "폴더 생성하기", Toast.LENGTH_SHORT).show()
+                }
+                R.id.popup_folder_option_menu_2 -> {
+                    val sharedPreferences = getSharedPreferences("lock", 0)
+                    val pattern = sharedPreferences.getString("pattern", "0")
+
+                    if(pattern.equals("0")) {   // 패턴이 설정되어 있지 않은 경우 패턴 설정 페이지로
+                        Toast.makeText(this@MyFolderActivity, "패턴이 설정되어 있지 않습니다. 패턴을 설정해주세요.", Toast.LENGTH_SHORT).show()
+                        startNextActivity(CreatePatternActivity::class.java)
+                    } else {
+                        startNextActivity(InputPatternActivity::class.java)
+                    }
+                }
            }
             return false
         }

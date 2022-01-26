@@ -27,7 +27,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 
     // onCreate() 이후
     override fun initAfterBinding() {
-        Log.d("MAIN/LIFE-CYCLE", "after onCreate()")
+
     }
 
     // initAfterBinding() 이후 실행
@@ -60,7 +60,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         }
     }
 
-    // chat list를 불러와 화면의 띄워주는 역할
+    // chat list를 불러와 화면에 띄워주는 역할
     // 일단 더미 데이터로 구현
     private fun initChatList() {
         chatDB = AppDatabase.getInstance(this)!!

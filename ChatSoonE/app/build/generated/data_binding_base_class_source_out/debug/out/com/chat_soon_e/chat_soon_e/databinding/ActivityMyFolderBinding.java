@@ -22,6 +22,12 @@ public final class ActivityMyFolderBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final ImageView myFolderAllChatIv;
+
+  @NonNull
+  public final ConstraintLayout myFolderBackgroundLayout;
+
+  @NonNull
   public final View myFolderBottomBarView;
 
   @NonNull
@@ -46,12 +52,15 @@ public final class ActivityMyFolderBinding implements ViewBinding {
   public final TextView myFolderMyFolderTv;
 
   private ActivityMyFolderBinding(@NonNull ConstraintLayout rootView,
+      @NonNull ImageView myFolderAllChatIv, @NonNull ConstraintLayout myFolderBackgroundLayout,
       @NonNull View myFolderBottomBarView, @NonNull ImageView myFolderChatIv,
       @NonNull ImageView myFolderCreateNewFolderIv,
       @NonNull RecyclerView myFolderFolderListRecyclerView, @NonNull ImageView myFolderMenuIv,
       @NonNull ImageView myFolderMyFolderIv, @NonNull View myFolderMyFolderLineView,
       @NonNull TextView myFolderMyFolderTv) {
     this.rootView = rootView;
+    this.myFolderAllChatIv = myFolderAllChatIv;
+    this.myFolderBackgroundLayout = myFolderBackgroundLayout;
     this.myFolderBottomBarView = myFolderBottomBarView;
     this.myFolderChatIv = myFolderChatIv;
     this.myFolderCreateNewFolderIv = myFolderCreateNewFolderIv;
@@ -89,6 +98,18 @@ public final class ActivityMyFolderBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.my_folder_all_chat_iv;
+      ImageView myFolderAllChatIv = ViewBindings.findChildViewById(rootView, id);
+      if (myFolderAllChatIv == null) {
+        break missingId;
+      }
+
+      id = R.id.my_folder_background_layout;
+      ConstraintLayout myFolderBackgroundLayout = ViewBindings.findChildViewById(rootView, id);
+      if (myFolderBackgroundLayout == null) {
+        break missingId;
+      }
+
       id = R.id.my_folder_bottom_bar_view;
       View myFolderBottomBarView = ViewBindings.findChildViewById(rootView, id);
       if (myFolderBottomBarView == null) {
@@ -137,8 +158,9 @@ public final class ActivityMyFolderBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMyFolderBinding((ConstraintLayout) rootView, myFolderBottomBarView,
-          myFolderChatIv, myFolderCreateNewFolderIv, myFolderFolderListRecyclerView, myFolderMenuIv,
+      return new ActivityMyFolderBinding((ConstraintLayout) rootView, myFolderAllChatIv,
+          myFolderBackgroundLayout, myFolderBottomBarView, myFolderChatIv,
+          myFolderCreateNewFolderIv, myFolderFolderListRecyclerView, myFolderMenuIv,
           myFolderMyFolderIv, myFolderMyFolderLineView, myFolderMyFolderTv);
     }
     String missingId = rootView.getResources().getResourceName(id);

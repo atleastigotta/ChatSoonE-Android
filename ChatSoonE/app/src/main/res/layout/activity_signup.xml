@@ -27,7 +27,7 @@
         android:paddingStart="0dp"
         android:paddingEnd="10dp"
         android:paddingBottom="10dp"
-        android:src="@drawable/ic_back"
+        android:src="@drawable/ic_baseline_arrow_back_ios_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

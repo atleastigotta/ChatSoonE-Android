@@ -26,11 +26,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.PermissionActivity" />
 
+        <activity android:name=".ui.PermissionActivity" />
         <activity android:name="com.chat_soon_e.chat_soon_e.ui.LoginActivity" android:exported="true" />
         <activity android:name="com.chat_soon_e.chat_soon_e.ui.SignUpActivity" android:exported="true" />
         <activity android:name="com.chat_soon_e.chat_soon_e.ui.MainActivity" android:exported="true" />
+
+        <!-- Folder -->
+        <activity android:name=".ui.MyFolderActivity" android:exported="true" />
+        <activity android:name=".ui.FolderActivity" android:exported="true" />
+
+        <!-- PatternLockView -->
+        <activity android:name=".ui.CreatePatternActivity" android:exported="true" />
+        <activity android:name=".ui.HiddenFolderActivity" android:exported="true" />
+        <activity android:name=".ui.InputPatternActivity" android:exported="true" />
 
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
@@ -45,12 +54,6 @@
                     android:scheme="kakao63ebc69c67adf9e9e8f147df6508dc35" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".ui.MyFolderActivity" android:exported="true" />
-        <activity android:name=".ui.FolderActivity" android:exported="true" />
-        <activity android:name=".ui.CreatePasswordActivity" android:exported="true" />
-        <activity android:name=".ui.InputPasswordActivity" android:exported="true" />
-        <activity android:name=".ui.ProgramActivity" android:exported="true" />
 
         <!-- NotificationListener 권한 얻기 -->
         <service android:name=".ui.MyNotificationListener"
