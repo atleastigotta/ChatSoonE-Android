@@ -9,6 +9,13 @@
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.26666666666666666" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/drawable/ic_baseline_menu_black_24.xml" value="0.2564814814814815" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/drawable/selector_chat_list.xml" value="0.22685185185185186" />
+        <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/drawable/selector_switch.xml" value="0.2037037037037037" />
+        <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/drawable/selector_thumb.xml" value="0.2037037037037037" />
+        <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/drawable/shape_switch_track_off.xml" value="0.2037037037037037" />
+        <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/drawable/shape_switch_track_on.xml" value="0.2037037037037037" />
+        <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/drawable/shape_thumb.xml" value="0.2037037037037037" />
+        <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/drawable/shape_thumb_off.xml" value="0.2037037037037037" />
+        <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/drawable/shape_thumb_on.xml" value="0.2037037037037037" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/activity_chat.xml" value="0.12208713272543059" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/activity_create_password.xml" value="0.10081053698074975" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/activity_create_pattern.xml" value="0.2" />
@@ -21,7 +28,7 @@
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/activity_main_drawer.xml" value="0.10277777777777777" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/activity_main_drawer_header.xml" value="0.10005065856129686" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/activity_main_drawer_image.xml" value="0.18342391304347827" />
-        <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/activity_main_drawer_switch.xml" value="0.18342391304347827" />
+        <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/activity_main_drawer_switch.xml" value="0.4" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/activity_main_drawer_toggle_off.xml" value="0.18342391304347827" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/activity_main_drawer_toggle_on.xml" value="0.264" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/activity_main_layout.xml" value="0.2223731884057971" />
@@ -36,7 +43,7 @@
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/toolbar_main.xml" value="0.2223731884057971" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/menu/navi_main_drawer.xml" value="0.30416666666666664" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/menu/navi_menu.xml" value="0.25052083333333336" />
-        <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/menu/navi_setting_menu.xml" value="0.264" />
+        <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/menu/navi_setting_menu.xml" value="0.2" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/menu/popup_folder_edit_menu.xml" value="0.14629629629629629" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/menu/popup_folder_menu.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/menu/popup_folder_option_menu.xml" value="0.1" />

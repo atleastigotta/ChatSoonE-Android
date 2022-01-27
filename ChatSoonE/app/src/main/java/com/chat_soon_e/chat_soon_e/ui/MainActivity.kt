@@ -1,5 +1,6 @@
 package com.chat_soon_e.chat_soon_e.ui
 
+import android.annotation.SuppressLint
 import android.util.Log
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.chat_soon_e.chat_soon_e.data.entities.Chat
@@ -10,16 +11,19 @@ import android.graphics.Color
 import android.graphics.Rect
 import android.view.MenuItem
 import android.view.View
+import android.widget.CompoundButton
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.chat_soon_e.chat_soon_e.R
 import com.google.android.material.navigation.NavigationView
+import android.widget.Switch
+
+import androidx.appcompat.widget.SwitchCompat
+import com.chat_soon_e.chat_soon_e.R
 
 class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate), NavigationView.OnNavigationItemSelectedListener {
-//    private lateinit var contentBinding: ActivityMainBinding
     private lateinit var chatDB: AppDatabase            // chat list를 담고 있는 데이터베이스
     private lateinit var mainRVAdapter: MainRVAdapter   // chat list recycler view adpater
     private var chatList = ArrayList<Chat>()            // 데이터베이스로부터 chat list를 받아올 변수
@@ -27,14 +31,6 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 
     // onCreate() 이후
     override fun initAfterBinding() {
-
-    }
-
-    // initAfterBinding() 이후 실행
-    override fun onStart() {
-        super.onStart()
-        Log.d("MAIN/LIFE-CYCLE", "onStart()")
-
         initNotificationListener()  // NotificationListener (알림 권한 허용)
         initChatList()              // chat list 데이터 초기화
         initRecyclerView()          // RecylcerView Adapter 연결 & 기타 설정
@@ -82,13 +78,10 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 //        chatDB.chatDao().insert(Chat(null, "남선우", "Android", "오후 5시"))
 //        chatDB.chatDao().insert(Chat(null, "변재호", "Server (node.js)", "오후 6시"))
 //        chatDB.chatDao().insert(Chat(null, "이주연", "Android", "오후 7시"))
-
-        Log.d("MAIN/DATA", chatDB.chatDao().getChatList().toString())
     }
 
     // RecyclerView
     private fun initRecyclerView() {
-//        val binding = ActivityMainContentBinding.inflate(layoutInflater)
 
         // RecyclerView 구분선
         val recyclerView = binding.mainContent.mainChatListRecyclerView
@@ -100,7 +93,8 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 //        val layoutParams = binding.mainContent.mainChatListRecyclerView.layoutParams
 //        layoutParams.height = 500
 //        binding.mainContent.mainChatListRecyclerView.requestLayout()
-//
+
+//        // 간격 설정
 //        val spaceDecoration = VerticalSpaceItemDecoration(200)
 //        recyclerView.addItemDecoration(spaceDecoration)
 
@@ -200,50 +194,48 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
     }
 
     // 설정 메뉴 창을 띄우는 DrawerLayout 초기화
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     private fun initDrawerLayout() {
-//        드로어를 꺼낼 홈버튼 활성화
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-//        홈버튼 이미지 변경
-//        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24)
-
         binding.mainNavigationView.setNavigationItemSelectedListener(this)
 
-        // 설정 메뉴창에서 알림 권한 허용 여부 표시해주기 위해
-        if(!permissionGrantred()) {
-            // 허용이 되어 있지 않다면
-            binding.mainNavigationView.menu.getItem(0).setActionView(R.layout.activity_main_drawer_toggle_off)
-        } else {
-            // 허용이 되어 있다면
-            binding.mainNavigationView.menu.getItem(0).setActionView(R.layout.activity_main_drawer_toggle_on)
-        }
-    }
+        // 알림 권한 허용 여부 스위치 리스너 설정
+        val menuItem = binding.mainNavigationView.menu.findItem(R.id.navi_setting_alarm_item)
+        val drawerSwitch = menuItem.actionView.findViewById(R.id.main_drawer_alarm_switch) as SwitchCompat
 
-//    툴바 메뉴 버튼이 클릭되었을 때 실행된다.
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        when(item.itemId) { // 메뉴 버튼
-//            android.R.id.home ->
-//                binding.mainDrawerLayout.openDrawer(GravityCompat.START)
+        // 알림 권한 허용 여부에 따라 스위치(토글) 초기 상태 지정
+        if(permissionGrantred()) {
+            // 알림 권한이 허용되어 있는 경우
+            drawerSwitch.toggle()
+            drawerSwitch.isChecked = true
+        } else {
+            // 알림 권한이 허용되어 있지 않은 경우
+            drawerSwitch.isChecked = false
+        }
+
+        // 스위치(토글)를 눌렀을 때, 즉 스위치 체크 상태[방향]가 변했을 때 처리해주는 리스너
+        drawerSwitch.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                // 알림 권한을 허용했을 때 코드를 작성해주시면 됩니다.
+                Toast.makeText(this, "알림 권한을 허용합니다.", Toast.LENGTH_SHORT).show()
+            } else {
+                // 알림 권한을 허용하지 않았을 때 코드를 작성해주시면 됩니다.
+                Toast.makeText(this, "알림 권한을 허용하지 않습니다.", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+//        // 스위치 클릭 리스너 설정 (위의 setOnCheckedChangeListener만으로도 구현이 되는 것 같아서 주석 처리해두었습니다.)
+//        drawerSwitch.setOnClickListener {
+//            if(drawerSwitch.isChecked) {
+//                Toast.makeText(this, "알림 권한을 허용하지 않습니다.", Toast.LENGTH_SHORT).show()
+//            } else {
+//                Toast.makeText(this, "알림 권한을 허용합니다.", Toast.LENGTH_SHORT).show()
+//            }
 //        }
-//        return super.onOptionsItemSelected(item)
-//    }
+    }
 
     // 설정 메뉴 창의 네비게이션 드로어의 아이템들에 대한 이벤트를 처리
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-//            R.id.main_drawer_alarm_toggle_on_layout -> {
-//                binding.mainNavigationView.menu.getItem(0).setActionView(R.layout.activity_main_drawer_toggle_off)
-//                Toast.makeText(this, "알림 권한을 허용하지 않습니다.", Toast.LENGTH_SHORT).show()
-//
-//                // 알림 허용을 꺼주는 코드 추가하기 (권한 해제)
-//            }
-//
-//            R.id.main_drawer_alarm_toggle_off_layout -> {
-//                binding.mainNavigationView.menu.getItem(0).setActionView(R.layout.activity_main_drawer_toggle_on)
-//                Toast.makeText(this, "알림 권한을 허용합니다.", Toast.LENGTH_SHORT).show()
-//
-//                // 알림 허용을 해주는 코드 추가하기 (권한 부여)
-//            }
-
             // 설정 메뉴창의 아이템(목록)들을 클릭했을 때
             // 알림 설정
             R.id.navi_setting_alarm_item -> {

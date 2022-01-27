@@ -2620,6 +2620,10 @@ drawable selector_navi_home
 drawable selector_navi_match
 drawable selector_navi_mypage
 drawable selector_navi_search
+drawable selector_switch
+drawable shape_switch_track_off
+drawable shape_switch_track_on
+drawable shape_thumb
 drawable test_custom_background
 drawable test_level_drawable
 drawable tooltip_frame_dark
@@ -2901,10 +2905,7 @@ id main_cancel_iv
 id main_chat_iv
 id main_chat_list_recycler_view
 id main_content
-id main_drawer_alarm_toggle_off_iv
-id main_drawer_alarm_toggle_off_layout
-id main_drawer_alarm_toggle_on_iv
-id main_drawer_alarm_toggle_on_layout
+id main_drawer_alarm_switch
 id main_drawer_layout
 id main_drawer_setting_menu_iv
 id main_folder_iv
@@ -3322,8 +3323,6 @@ layout activity_main
 layout activity_main_content
 layout activity_main_drawer_header
 layout activity_main_drawer_switch
-layout activity_main_drawer_toggle_off
-layout activity_main_drawer_toggle_on
 layout activity_main_toolbar
 layout activity_my_folder
 layout activity_permission

@@ -20,18 +20,18 @@ androidx/databinding/library/baseAdapters/BR.java
  androidx.databinding.library.baseAdapters.BR
 com/chat_soon_e/chat_soon_e/BR.java
  com.chat_soon_e.chat_soon_e.BR
-androidx/databinding/DataBindingComponent.java
- androidx.databinding.DataBindingComponent
+com/chat_soon_e/chat_soon_e/ui/CreatePatternActivity.java
+ com.chat_soon_e.chat_soon_e.ui.CreatePatternActivity
+ com.chat_soon_e.chat_soon_e.ui.CreatePatternActivity$1
 com/chat_soon_e/chat_soon_e/databinding/ActivityLoginBinding.java
  com.chat_soon_e.chat_soon_e.databinding.ActivityLoginBinding
-com/chat_soon_e/chat_soon_e/databinding/ActivityMainDrawerToggleOnBinding.java
- com.chat_soon_e.chat_soon_e.databinding.ActivityMainDrawerToggleOnBinding
 com/chat_soon_e/chat_soon_e/databinding/ActivityFolderBinding.java
  com.chat_soon_e.chat_soon_e.databinding.ActivityFolderBinding
 com/chat_soon_e/chat_soon_e/databinding/ActivityHiddenFolderBinding.java
  com.chat_soon_e.chat_soon_e.databinding.ActivityHiddenFolderBinding
-com/chat_soon_e/chat_soon_e/databinding/ActivityMainToolbarBinding.java
- com.chat_soon_e.chat_soon_e.databinding.ActivityMainToolbarBinding
+com/chat_soon_e/chat_soon_e/ui/InputPatternActivity.java
+ com.chat_soon_e.chat_soon_e.ui.InputPatternActivity
+ com.chat_soon_e.chat_soon_e.ui.InputPatternActivity$1
 com/chat_soon_e/chat_soon_e/data/local/FolderDao_Impl.java
  com.chat_soon_e.chat_soon_e.data.local.FolderDao_Impl
  com.chat_soon_e.chat_soon_e.data.local.FolderDao_Impl$1
@@ -47,8 +47,6 @@ com/chat_soon_e/chat_soon_e/databinding/ActivityPermissionBinding.java
  com.chat_soon_e.chat_soon_e.databinding.ActivityPermissionBinding
 com/chat_soon_e/chat_soon_e/databinding/ActivityInputPatternBinding.java
  com.chat_soon_e.chat_soon_e.databinding.ActivityInputPatternBinding
-com/chat_soon_e/chat_soon_e/databinding/ActivityMainDrawerToggleOffBinding.java
- com.chat_soon_e.chat_soon_e.databinding.ActivityMainDrawerToggleOffBinding
 com/chat_soon_e/chat_soon_e/BuildConfig.java
  com.chat_soon_e.chat_soon_e.BuildConfig
 com/chat_soon_e/chat_soon_e/databinding/FragmentMypageBinding.java
@@ -78,9 +76,7 @@ com/chat_soon_e/chat_soon_e/data/local/ChatDao_Impl.java
  com.chat_soon_e.chat_soon_e.data.local.ChatDao_Impl$3
 com/chat_soon_e/chat_soon_e/databinding/ActivityMainDrawerHeaderBinding.java
  com.chat_soon_e.chat_soon_e.databinding.ActivityMainDrawerHeaderBinding
-com/chat_soon_e/chat_soon_e/ui/InputPatternActivity.java
- com.chat_soon_e.chat_soon_e.ui.InputPatternActivity
- com.chat_soon_e.chat_soon_e.ui.InputPatternActivity$1
-com/chat_soon_e/chat_soon_e/ui/CreatePatternActivity.java
- com.chat_soon_e.chat_soon_e.ui.CreatePatternActivity
- com.chat_soon_e.chat_soon_e.ui.CreatePatternActivity$1
+androidx/databinding/DataBindingComponent.java
+ androidx.databinding.DataBindingComponent
+com/chat_soon_e/chat_soon_e/databinding/ActivityMainToolbarBinding.java
+ com.chat_soon_e.chat_soon_e.databinding.ActivityMainToolbarBinding

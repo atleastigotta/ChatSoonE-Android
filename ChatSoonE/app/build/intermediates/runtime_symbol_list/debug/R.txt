@@ -2619,6 +2619,10 @@ int drawable selector_navi_home 0x7f0700c1
 int drawable selector_navi_match 0x7f0700c2
 int drawable selector_navi_mypage 0x7f0700c3
 int drawable selector_navi_search 0x7f0700c4
+int drawable selector_switch 0x7f0700c9
+int drawable shape_switch_track_off 0x7f0700ca
+int drawable shape_switch_track_on 0x7f0700cb
+int drawable shape_thumb 0x7f0700cc
 int drawable test_custom_background 0x7f0700c5
 int drawable test_level_drawable 0x7f0700c6
 int drawable tooltip_frame_dark 0x7f0700c7
@@ -2900,10 +2904,7 @@ int id main_cancel_iv 0x7f080111
 int id main_chat_iv 0x7f080112
 int id main_chat_list_recycler_view 0x7f080113
 int id main_content 0x7f080114
-int id main_drawer_alarm_toggle_off_iv 0x7f080115
-int id main_drawer_alarm_toggle_off_layout 0x7f080116
-int id main_drawer_alarm_toggle_on_iv 0x7f080117
-int id main_drawer_alarm_toggle_on_layout 0x7f080118
+int id main_drawer_alarm_switch 0x7f08025a
 int id main_drawer_layout 0x7f080119
 int id main_drawer_setting_menu_iv 0x7f08011a
 int id main_folder_iv 0x7f08011b
@@ -3321,8 +3322,6 @@ int layout activity_main 0x7f0b0023
 int layout activity_main_content 0x7f0b0024
 int layout activity_main_drawer_header 0x7f0b0025
 int layout activity_main_drawer_switch 0x7f0b0026
-int layout activity_main_drawer_toggle_off 0x7f0b0027
-int layout activity_main_drawer_toggle_on 0x7f0b0028
 int layout activity_main_toolbar 0x7f0b0029
 int layout activity_my_folder 0x7f0b002a
 int layout activity_permission 0x7f0b002b

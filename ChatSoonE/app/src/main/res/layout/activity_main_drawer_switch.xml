@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.SwitchCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_drawer_alarm_switch"
     android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:gravity="end|center_vertical"
-    android:buttonTint="@android:color/transparent">
+    android:layout_height="wrap_content"
+    app:switchMinWidth="48dp"
+    android:text=""
+    android:thumb="@drawable/shape_thumb"
+    app:track="@drawable/selector_switch"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 </androidx.appcompat.widget.SwitchCompat>
+
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--android:id="@+id/main_drawer_alarm_switch_layout"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent"-->
+<!--android:orientation="horizontal"-->
+<!--xmlns:app="http://schemas.android.com/apk/res-auto">-->
+
+<!--<androidx.appcompat.widget.SwitchCompat-->
+<!--    android:id="@+id/main_drawer_alarm_switch"-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    app:switchMinWidth="48dp"-->
+<!--    android:text=""-->
+<!--    android:thumb="@drawable/shape_thumb"-->
+<!--    app:track="@drawable/selector_switch" />-->
+
+<!--</LinearLayout>-->
