@@ -18,11 +18,20 @@ import java.util.List;
 public class InputPatternActivity extends AppCompatActivity {
     PatternLockView mPatternLockView;
     String patternValue;
+    int mode = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_pattern);
+
+        // 패턴 모드 확인
+        // 0: 숨긴 폴더 목록을 확인하기 위한 입력 모드
+        // 1: 메인 화면의 설정창 -> 변경 모드
+        // 2: 폴더 화면의 설정창 -> 변경 모드
+        SharedPreferences modeSPF = getSharedPreferences("mode", 0);
+        mode = modeSPF.getInt("mode", 0);
+        Log.d("CREATE/MODE", String.valueOf(mode));
 
         SharedPreferences preferences = getSharedPreferences("lock", 0);
         patternValue = preferences.getString("pattern", "0");
@@ -43,9 +52,15 @@ public class InputPatternActivity extends AppCompatActivity {
             @Override
             public void onComplete(List<PatternLockView.Dot> pattern) {
                 if(patternValue.equals(PatternLockUtils.patternToString(mPatternLockView, pattern))) {
-                    Intent intent = new Intent(getApplicationContext(), HiddenFolderActivity.class);
-                    startActivity(intent);
-                    finish();
+                    if(mode == 0) { // 숨긴 폴더 목록을 보여주면 된다.
+                        Intent intent = new Intent(getApplicationContext(), HiddenFolderActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {  // 패턴 변경 모드이므로, 패턴을 생성하는 CreatePatternActivity로 가면 된다.
+                        Intent intent = new Intent(getApplicationContext(), CreatePatternActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 } else {
                     Toast.makeText(InputPatternActivity.this, "잘못된 패턴입니다.", Toast.LENGTH_SHORT).show();
                     mPatternLockView.clearPattern();

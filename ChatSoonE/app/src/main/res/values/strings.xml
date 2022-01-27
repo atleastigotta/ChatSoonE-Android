@@ -51,12 +51,14 @@
     <string name="hide_folder">숨기기</string>
 
     <!-- navigation drawer -->
+    <string name="setting">설정</string>
     <string name="setting_alarm">알림 설정</string>
     <string name="setting_block">차단 관리</string>
     <string name="setting_email">이메일 문의</string>
     <string name="setting_helper">사용 방법 도움말</string>
     <string name="setting_review">앱 리뷰하기</string>
     <string name="setting_share">공유하기</string>
+    <string name="pattern">패턴 변경하기</string>
     <string name="setting_privacy">개인정보 처리방침</string>
 
     <!-- folder activity -->

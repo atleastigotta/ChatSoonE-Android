@@ -82,7 +82,6 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 
     // RecyclerView
     private fun initRecyclerView() {
-
         // RecyclerView 구분선
         val recyclerView = binding.mainContent.mainChatListRecyclerView
         val dividerItemDecoration =
@@ -198,7 +197,6 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
     private fun initDrawerLayout() {
         binding.mainNavigationView.setNavigationItemSelectedListener(this)
 
-        // 알림 권한 허용 여부 스위치 리스너 설정
         val menuItem = binding.mainNavigationView.menu.findItem(R.id.navi_setting_alarm_item)
         val drawerSwitch = menuItem.actionView.findViewById(R.id.main_drawer_alarm_switch) as SwitchCompat
 
@@ -247,6 +245,37 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
                 Toast.makeText(this, "차단 관리", Toast.LENGTH_SHORT).show()
             }
 
+            // 패턴 변경하기
+            R.id.navi_setting_pattern_item -> {
+                val lockSPF = getSharedPreferences("lock", 0)
+                val pattern = lockSPF.getString("pattern", "0")
+
+                // 패턴 모드 설정
+                // 0: 숨긴 폴더 목록을 확인하기 위한 입력 모드
+                // 1: 메인 화면의 설정창 -> 변경 모드
+                // 2: 폴더 화면의 설정창 -> 변경 모드
+                val modeSPF = getSharedPreferences("mode", 0)
+                val editor = modeSPF.edit()
+                editor.putInt("mode", 1)
+                editor.apply()
+
+                if(pattern.equals("0")) {   // 패턴이 설정되어 있지 않은 경우 패턴 설정 페이지로
+                    startNextActivity(CreatePatternActivity::class.java)
+                } else {    // 패턴이 설정되어 있는 경우 입력 페이지로 (보안을 위해)
+                    startNextActivity(InputPatternActivity::class.java)
+                }
+            }
+
+            // 공유하기
+            R.id.navi_setting_share_item -> {
+                Toast.makeText(this, "공유하기", Toast.LENGTH_SHORT).show()
+            }
+
+            // 앱 리뷰하기
+            R.id.navi_setting_review_item -> {
+                Toast.makeText(this, "앱 리뷰하기", Toast.LENGTH_SHORT).show()
+            }
+
             // 이메일 문의
             R.id.navi_setting_email_item -> {
                 Toast.makeText(this, "이메일 문의", Toast.LENGTH_SHORT).show()
@@ -255,16 +284,6 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             // 사용 방법 도움말
             R.id.navi_setting_helper_item -> {
                 Toast.makeText(this, "사용 방법 도움말", Toast.LENGTH_SHORT).show()
-            }
-
-            // 앱 리뷰하기
-            R.id.navi_setting_review_item -> {
-                Toast.makeText(this, "앱 리뷰하기", Toast.LENGTH_SHORT).show()
-            }
-
-            // 공유하기
-            R.id.navi_setting_share_item -> {
-                Toast.makeText(this, "공유하기", Toast.LENGTH_SHORT).show()
             }
 
             // 개인정보 처리방침
@@ -339,14 +358,6 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             popup.show()    // 팝업 메뉴 보이도록
         }
 
-//        // 취소 버튼 클릭시 다시 초기 화면으로 (폴더 선택 모드 취소)
-//        binding.mainContent.mainCancelIv.setOnClickListener {
-//            binding.mainContent.mainFolderIv.visibility = View.VISIBLE
-//            binding.mainContent.mainFolderModeIv.visibility = View.GONE
-//            binding.mainContent.mainUpdateIv.visibility = View.VISIBLE
-//            binding.mainContent.mainCancelIv.visibility = View.GONE
-//        }
-
         // 설정 메뉴창을 여는 메뉴 아이콘 클릭시 설정 메뉴창 열리도록
         binding.mainContent.mainSettingMenuIv.setOnClickListener {
             if(!binding.mainDrawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -360,20 +371,6 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         headerView.setOnClickListener {
             binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
         }
-
-//        binding.mainNavigationView.menu.getItem(0).actionView.setOnClickListener {
-//            if(!permissionGrantred()) { // 허용이 안 되어 있는 경우
-//                // 허용이 안 된 (toggle off) 상태에서 허용된 (toggle on) 상태로 바꿔주고, 그에 맞춰 뷰 바인딩을 해준다.
-//                binding.mainNavigationView.menu.getItem(0).setActionView(R.layout.activity_main_drawer_toggle_on)
-//            } else {    // 허용이 되어있는 겨웅
-//                binding.mainNavigationView.menu.getItem(0).setActionView(R.layout.activity_main_drawer_toggle_off)
-//            }
-//        }
-
-//        업데이트 버튼을 클릭했을 때 업데이트 해주는 함수 실행
-//        binding.mainUpdateIv.setOnClickListener {
-//            update()
-//        }
     }
 
     // 팝업 메뉴 리스너
