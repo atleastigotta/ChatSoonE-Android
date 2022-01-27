@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:2:1-72:12
-INJECTED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:2:1-72:12
-INJECTED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:2:1-72:12
-INJECTED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:2:1-72:12
+ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:2:1-68:12
+INJECTED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:2:1-68:12
+INJECTED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:2:1-68:12
+INJECTED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:2:1-68:12
 MERGED from [androidx.databinding:databinding-adapters:7.0.3] C:\Users\82108\.gradle\caches\transforms-3\d58f644c965fe47190339b72d51c9214\transformed\databinding-adapters-7.0.3\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.databinding:databinding-ktx:7.0.3] C:\Users\82108\.gradle\caches\transforms-3\19d9d7e354eb13ff5fdd522be48730a3\transformed\jetified-databinding-ktx-7.0.3\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.databinding:databinding-runtime:7.0.3] C:\Users\82108\.gradle\caches\transforms-3\4a2e0ac50b75b0b283f0c56467ce588c\transformed\databinding-runtime-7.0.3\AndroidManifest.xml:17:1-22:12
@@ -28,6 +28,7 @@ MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\82108\.gradle\caches
 MERGED from [androidx.room:room-runtime:2.3.0] C:\Users\82108\.gradle\caches\transforms-3\4caaad01a284ca2170c6698a94c0c7b8\transformed\room-runtime-2.3.0\AndroidManifest.xml:17:1-31:12
 MERGED from [com.kakao.sdk:v2-common:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:2:1-21:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\82108\.gradle\caches\transforms-3\c4f72d47318f2a3af2c70a73484b019b\transformed\legacy-support-v4-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.markomilos:paginate:1.0.0] C:\Users\82108\.gradle\caches\transforms-3\68082fb35ba830eee1dd321d45b72caf\transformed\jetified-paginate-1.0.0\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.recyclerview:recyclerview:1.2.1] C:\Users\82108\.gradle\caches\transforms-3\d28d81d77548a209ea6fe89fa0aeb3bd\transformed\recyclerview-1.2.1\AndroidManifest.xml:17:1-24:12
 MERGED from [com.balysv:material-ripple:1.0.2] C:\Users\82108\.gradle\caches\transforms-3\d7751a7c345f95283ecd5cc3070042b0\transformed\jetified-material-ripple-1.0.2\AndroidManifest.xml:2:1-14:12
 MERGED from [androidx.security:security-crypto:1.0.0-rc03] C:\Users\82108\.gradle\caches\transforms-3\a9a1229f21e61e3346c9e2f316e41a3e\transformed\jetified-security-crypto-1.0.0-rc03\AndroidManifest.xml:17:1-24:12
@@ -83,20 +84,20 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\User
 MERGED from [androidx.print:print:1.0.0] C:\Users\82108\.gradle\caches\transforms-3\084d9626b7e6e1bb6f4b7736011c1b83\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\82108\.gradle\caches\transforms-3\e560ce8c3ecc8583efef93c2b780b83e\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\82108\.gradle\caches\transforms-3\c834ac66386d7ab1cc0524445ed4065d\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
-INJECTED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:2:1-72:12
-INJECTED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:2:1-72:12
-INJECTED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:2:1-72:12
+INJECTED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:2:1-68:12
+INJECTED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:2:1-68:12
+INJECTED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:2:1-68:12
 	package
 		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:3:5-42
 		INJECTED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml
 		INJECTED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml
-		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:2:1-72:12
+		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:2:1-68:12
 		INJECTED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml
-		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:2:1-72:12
+		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:2:1-68:12
 		INJECTED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:2:11-69
@@ -117,7 +118,7 @@ ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:
 	android:name
 		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:8:22-73
 application
-ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:9:5-70:19
+ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:9:5-66:19
 MERGED from [com.kakao.sdk:v2-auth:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\b24800abe53266e872f2560b76a0176a\transformed\jetified-v2-auth-2.4.2\AndroidManifest.xml:11:5-21:19
 MERGED from [com.kakao.sdk:v2-auth:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\b24800abe53266e872f2560b76a0176a\transformed\jetified-v2-auth-2.4.2\AndroidManifest.xml:11:5-21:19
 MERGED from [com.google.android.material:material:1.5.0] C:\Users\82108\.gradle\caches\transforms-3\49532273eabc3c40157164b634dd2e9a\transformed\material-1.5.0\AndroidManifest.xml:22:5-20
@@ -184,76 +185,70 @@ activity#com.chat_soon_e.chat_soon_e.ui.PermissionActivity
 ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:29:9-58
 	android:name
 		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:29:19-56
-activity#com.chat_soon_e.chat_soon_e.ui.LoginActivity
-ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:32:9-34:38
-	android:exported
-		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:34:13-36
-	android:name
-		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:33:13-72
 activity#com.chat_soon_e.chat_soon_e.ui.SignUpActivity
-ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:37:9-39:38
+ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:33:9-35:38
 	android:exported
-		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:39:13-36
+		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:35:13-36
 	android:name
-		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:38:13-73
+		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:34:13-73
 activity#com.chat_soon_e.chat_soon_e.ui.MainActivity
-ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:42:9-44:38
+ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:38:9-40:38
 	android:exported
-		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:44:13-36
+		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:40:13-36
 	android:name
-		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:43:13-71
+		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:39:13-71
 activity#com.kakao.sdk.auth.AuthCodeHandlerActivity
-ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:45:9-57:20
+ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:41:9-53:20
 MERGED from [com.kakao.sdk:v2-auth:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\b24800abe53266e872f2560b76a0176a\transformed\jetified-v2-auth-2.4.2\AndroidManifest.xml:17:9-20:56
 MERGED from [com.kakao.sdk:v2-auth:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\b24800abe53266e872f2560b76a0176a\transformed\jetified-v2-auth-2.4.2\AndroidManifest.xml:17:9-20:56
 	android:launchMode
 		ADDED from [com.kakao.sdk:v2-auth:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\b24800abe53266e872f2560b76a0176a\transformed\jetified-v2-auth-2.4.2\AndroidManifest.xml:19:13-44
 	android:exported
-		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:47:13-36
+		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:43:13-36
 	android:theme
 		ADDED from [com.kakao.sdk:v2-auth:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\b24800abe53266e872f2560b76a0176a\transformed\jetified-v2-auth-2.4.2\AndroidManifest.xml:20:13-53
 	android:name
-		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:46:13-70
+		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:42:13-70
 intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:oauth+data:scheme:kakao63ebc69c67adf9e9e8f147df6508dc35
-ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:48:13-56:29
+ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:44:13-52:29
 action#android.intent.action.VIEW
-ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:49:17-69
+ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:45:17-69
 	android:name
-		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:49:25-66
+		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:45:25-66
 category#android.intent.category.DEFAULT
-ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:50:17-76
+ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:46:17-76
 	android:name
-		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:50:27-73
+		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:46:27-73
 category#android.intent.category.BROWSABLE
-ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:51:17-78
+ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:47:17-78
 	android:name
-		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:51:27-75
+		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:47:27-75
 data
-ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:54:17-55:78
+ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:50:17-51:78
 	android:host
-		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:54:23-43
+		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:50:23-43
 	android:scheme
-		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:55:21-75
+		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:51:21-75
 activity#com.chat_soon_e.chat_soon_e.ui.FolderActivity
-ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:59:9-61:38
+ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:55:9-57:38
 	android:exported
-		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:61:13-36
+		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:57:13-36
 	android:name
-		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:60:13-46
+		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:56:13-46
 service#com.chat_soon_e.chat_soon_e.ui.MyNotificationListener
-ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:63:9-69:19
+ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:59:9-65:19
 	android:exported
-		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:65:13-37
+		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:61:13-37
 	android:permission
-		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:64:13-87
+		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:60:13-87
 	android:name
-		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:63:18-59
+		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:59:18-59
 intent-filter#action:name:android.service.notification.NotificationListenerService
-ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:66:13-68:29
+ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:62:13-64:29
 action#android.service.notification.NotificationListenerService
-ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:67:17-99
+ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:63:17-99
 	android:name
-		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:67:25-96
+		ADDED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml:63:25-96
 uses-sdk
 INJECTED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\gitfolder\UMC_ChatSoon\ChatSoonE\app\src\main\AndroidManifest.xml
@@ -306,6 +301,8 @@ MERGED from [com.kakao.sdk:v2-common:2.4.2] C:\Users\82108\.gradle\caches\transf
 MERGED from [com.kakao.sdk:v2-common:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\82108\.gradle\caches\transforms-3\c4f72d47318f2a3af2c70a73484b019b\transformed\legacy-support-v4-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\82108\.gradle\caches\transforms-3\c4f72d47318f2a3af2c70a73484b019b\transformed\legacy-support-v4-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.github.markomilos:paginate:1.0.0] C:\Users\82108\.gradle\caches\transforms-3\68082fb35ba830eee1dd321d45b72caf\transformed\jetified-paginate-1.0.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.markomilos:paginate:1.0.0] C:\Users\82108\.gradle\caches\transforms-3\68082fb35ba830eee1dd321d45b72caf\transformed\jetified-paginate-1.0.0\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.recyclerview:recyclerview:1.2.1] C:\Users\82108\.gradle\caches\transforms-3\d28d81d77548a209ea6fe89fa0aeb3bd\transformed\recyclerview-1.2.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.recyclerview:recyclerview:1.2.1] C:\Users\82108\.gradle\caches\transforms-3\d28d81d77548a209ea6fe89fa0aeb3bd\transformed\recyclerview-1.2.1\AndroidManifest.xml:20:5-22:41
 MERGED from [com.balysv:material-ripple:1.0.2] C:\Users\82108\.gradle\caches\transforms-3\d7751a7c345f95283ecd5cc3070042b0\transformed\jetified-material-ripple-1.0.2\AndroidManifest.xml:8:5-10:41

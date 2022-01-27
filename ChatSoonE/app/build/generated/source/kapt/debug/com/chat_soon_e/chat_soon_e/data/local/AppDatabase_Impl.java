@@ -31,22 +31,26 @@ public final class AppDatabase_Impl extends AppDatabase {
 
   private volatile UserDao _userDao;
 
+  private volatile OtherUserDao _otherUserDao;
+
   @Override
   protected SupportSQLiteOpenHelper createOpenHelper(DatabaseConfiguration configuration) {
     final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(2) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `ChatTable` (`user_idx` INTEGER NOT NULL, `groupName` TEXT, `name` TEXT, `image_name` TEXT, `latestTime` INTEGER, `postTime` INTEGER, `message` TEXT, `folderIdx` INTEGER NOT NULL, `createdAt` INTEGER, `updatedAt` INTEGER, `status` TEXT NOT NULL, `idx` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `ChatTable` (`user_idx` INTEGER NOT NULL, `other_user_idx` INTEGER NOT NULL, `groupName` TEXT, `message` TEXT, `postTime` INTEGER, `folderIdx` INTEGER NOT NULL, `status` TEXT NOT NULL, `idx` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `UserTable` (`idx` INTEGER NOT NULL, `nickname` TEXT, `email` TEXT, `status` TEXT NOT NULL, PRIMARY KEY(`idx`))");
         _db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS `index_UserTable_idx` ON `UserTable` (`idx`)");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `OtherUserTable` (`name` TEXT, `image` TEXT, `status` TEXT NOT NULL, `kakao_user_idx` INTEGER NOT NULL, `other_user_idx` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '99a657de0198df7af4bd78cbe99963f8')");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '164de128a622ff90454d6ce5b57433b3')");
       }
 
       @Override
       public void dropAllTables(SupportSQLiteDatabase _db) {
         _db.execSQL("DROP TABLE IF EXISTS `ChatTable`");
         _db.execSQL("DROP TABLE IF EXISTS `UserTable`");
+        _db.execSQL("DROP TABLE IF EXISTS `OtherUserTable`");
         if (mCallbacks != null) {
           for (int _i = 0, _size = mCallbacks.size(); _i < _size; _i++) {
             mCallbacks.get(_i).onDestructiveMigration(_db);
@@ -85,17 +89,13 @@ public final class AppDatabase_Impl extends AppDatabase {
 
       @Override
       protected RoomOpenHelper.ValidationResult onValidateSchema(SupportSQLiteDatabase _db) {
-        final HashMap<String, TableInfo.Column> _columnsChatTable = new HashMap<String, TableInfo.Column>(12);
+        final HashMap<String, TableInfo.Column> _columnsChatTable = new HashMap<String, TableInfo.Column>(8);
         _columnsChatTable.put("user_idx", new TableInfo.Column("user_idx", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsChatTable.put("other_user_idx", new TableInfo.Column("other_user_idx", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsChatTable.put("groupName", new TableInfo.Column("groupName", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsChatTable.put("name", new TableInfo.Column("name", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsChatTable.put("image_name", new TableInfo.Column("image_name", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsChatTable.put("latestTime", new TableInfo.Column("latestTime", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsChatTable.put("postTime", new TableInfo.Column("postTime", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsChatTable.put("message", new TableInfo.Column("message", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsChatTable.put("postTime", new TableInfo.Column("postTime", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsChatTable.put("folderIdx", new TableInfo.Column("folderIdx", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsChatTable.put("createdAt", new TableInfo.Column("createdAt", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsChatTable.put("updatedAt", new TableInfo.Column("updatedAt", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsChatTable.put("status", new TableInfo.Column("status", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsChatTable.put("idx", new TableInfo.Column("idx", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysChatTable = new HashSet<TableInfo.ForeignKey>(0);
@@ -122,9 +122,24 @@ public final class AppDatabase_Impl extends AppDatabase {
                   + " Expected:\n" + _infoUserTable + "\n"
                   + " Found:\n" + _existingUserTable);
         }
+        final HashMap<String, TableInfo.Column> _columnsOtherUserTable = new HashMap<String, TableInfo.Column>(5);
+        _columnsOtherUserTable.put("name", new TableInfo.Column("name", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsOtherUserTable.put("image", new TableInfo.Column("image", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsOtherUserTable.put("status", new TableInfo.Column("status", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsOtherUserTable.put("kakao_user_idx", new TableInfo.Column("kakao_user_idx", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsOtherUserTable.put("other_user_idx", new TableInfo.Column("other_user_idx", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysOtherUserTable = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesOtherUserTable = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoOtherUserTable = new TableInfo("OtherUserTable", _columnsOtherUserTable, _foreignKeysOtherUserTable, _indicesOtherUserTable);
+        final TableInfo _existingOtherUserTable = TableInfo.read(_db, "OtherUserTable");
+        if (! _infoOtherUserTable.equals(_existingOtherUserTable)) {
+          return new RoomOpenHelper.ValidationResult(false, "OtherUserTable(com.chat_soon_e.chat_soon_e.data.entities.OtherUser).\n"
+                  + " Expected:\n" + _infoOtherUserTable + "\n"
+                  + " Found:\n" + _existingOtherUserTable);
+        }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "99a657de0198df7af4bd78cbe99963f8", "b234dece2e2a4c524e212cf9b67e6cc4");
+    }, "164de128a622ff90454d6ce5b57433b3", "0133888f5b4f4a96afcfb951758771c8");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)
@@ -137,7 +152,7 @@ public final class AppDatabase_Impl extends AppDatabase {
   protected InvalidationTracker createInvalidationTracker() {
     final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
     HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "ChatTable","UserTable");
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "ChatTable","UserTable","OtherUserTable");
   }
 
   @Override
@@ -148,6 +163,7 @@ public final class AppDatabase_Impl extends AppDatabase {
       super.beginTransaction();
       _db.execSQL("DELETE FROM `ChatTable`");
       _db.execSQL("DELETE FROM `UserTable`");
+      _db.execSQL("DELETE FROM `OtherUserTable`");
       super.setTransactionSuccessful();
     } finally {
       super.endTransaction();
@@ -163,6 +179,7 @@ public final class AppDatabase_Impl extends AppDatabase {
     final HashMap<Class<?>, List<Class<?>>> _typeConvertersMap = new HashMap<Class<?>, List<Class<?>>>();
     _typeConvertersMap.put(ChatDao.class, ChatDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(UserDao.class, UserDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(OtherUserDao.class, OtherUserDao_Impl.getRequiredConverters());
     return _typeConvertersMap;
   }
 
@@ -190,6 +207,20 @@ public final class AppDatabase_Impl extends AppDatabase {
           _userDao = new UserDao_Impl(this);
         }
         return _userDao;
+      }
+    }
+  }
+
+  @Override
+  public OtherUserDao otherUserDao() {
+    if (_otherUserDao != null) {
+      return _otherUserDao;
+    } else {
+      synchronized(this) {
+        if(_otherUserDao == null) {
+          _otherUserDao = new OtherUserDao_Impl(this);
+        }
+        return _otherUserDao;
       }
     }
   }

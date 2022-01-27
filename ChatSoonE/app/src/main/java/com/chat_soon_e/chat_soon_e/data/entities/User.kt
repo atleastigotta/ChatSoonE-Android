@@ -7,13 +7,12 @@ import com.google.gson.annotations.SerializedName
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 
-@Entity(tableName = "UserTable", indices = [Index(value = ["idx"], unique = true)])
+@Entity(tableName = "UserTable", indices = [Index(value = ["idx"], unique = true)])//pk 중복 생성 방지
 data class User(
-    @PrimaryKey(autoGenerate = false)@SerializedName("kakaoUserIdx")var idx:Int=0,
-    //@SerializedName("id") val id: Int,//spf
+    @PrimaryKey(autoGenerate = false)@SerializedName("kakaoUserIdx")var idx:Long=0L,
     @SerializedName("nickname") val nickname: String?,
     @SerializedName("email") val email: String?,
-    @SerializedName("status") val status: String,
+    @SerializedName("status") val status: String,//activate: 로그인, inactivate: 로그아웃, delete:탈퇴
 ){
 
 }

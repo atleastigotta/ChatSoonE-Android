@@ -142,7 +142,7 @@ public final class UserDao_Impl implements UserDao {
   }
 
   @Override
-  public void updateStatus(final int id, final String status) {
+  public void updateStatus(final long id, final String status) {
     __db.assertNotSuspendingTransaction();
     final SupportSQLiteStatement _stmt = __preparedStmtOfUpdateStatus.acquire();
     int _argIndex = 1;
@@ -164,7 +164,7 @@ public final class UserDao_Impl implements UserDao {
   }
 
   @Override
-  public User getUser(final int id) {
+  public User getUser(final long id) {
     final String _sql = "SELECT * FROM UserTable WHERE idx= ?";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
@@ -178,8 +178,8 @@ public final class UserDao_Impl implements UserDao {
       final int _cursorIndexOfStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "status");
       final User _result;
       if(_cursor.moveToFirst()) {
-        final int _tmpIdx;
-        _tmpIdx = _cursor.getInt(_cursorIndexOfIdx);
+        final long _tmpIdx;
+        _tmpIdx = _cursor.getLong(_cursorIndexOfIdx);
         final String _tmpNickname;
         if (_cursor.isNull(_cursorIndexOfNickname)) {
           _tmpNickname = null;
@@ -223,8 +223,8 @@ public final class UserDao_Impl implements UserDao {
       final List<User> _result = new ArrayList<User>(_cursor.getCount());
       while(_cursor.moveToNext()) {
         final User _item;
-        final int _tmpIdx;
-        _tmpIdx = _cursor.getInt(_cursorIndexOfIdx);
+        final long _tmpIdx;
+        _tmpIdx = _cursor.getLong(_cursorIndexOfIdx);
         final String _tmpNickname;
         if (_cursor.isNull(_cursorIndexOfNickname)) {
           _tmpNickname = null;

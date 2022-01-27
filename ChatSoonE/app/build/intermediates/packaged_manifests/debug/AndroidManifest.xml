@@ -49,11 +49,6 @@
         </activity>
         <activity android:name="com.chat_soon_e.chat_soon_e.ui.PermissionActivity" />
 
-        <!-- LoginActivity -->
-        <activity
-            android:name="com.chat_soon_e.chat_soon_e.ui.LoginActivity"
-            android:exported="true" />
-
         <!-- SignUpActivity -->
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.SignUpActivity"

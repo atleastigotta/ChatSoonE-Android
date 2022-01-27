@@ -33,6 +33,7 @@ import android.net.NetworkCapabilities
 import android.os.Build
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
+import com.chat_soon_e.chat_soon_e.data.remote.auth.USER_ID
 import com.chat_soon_e.chat_soon_e.data.remote.auth.master
 
 
@@ -53,8 +54,8 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
 //                    startNextActivity(PermissionActivity::class.java)
             if(!permissionGrantred(this))
                 startNextActivity(PermissionActivity::class.java)
-        }, 1000)
-        //로딩바 설정
+        }, 1000)//1초 후 권한 페이지로
+        //로딩바 설정, 추후 서버와의 연동
         binding.splashProgressBar.setProgress(10)
         loginPermission()
         binding.splashKakaoLoginBtn.setOnClickListener {
@@ -68,11 +69,11 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
         binding.splashStartBtn.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
-        //로그인이 되었다면 로그인은 안뜨게
-        //데이터 다운이 완료되면 시작하기 버튼 활성화
+        //로그인이 되었다면 로그인은 안뜨게====O
+        //데이터 다운이 완료되면 시작하기 버튼 활성화====X
     }
+    //Token 존재 확인, 즉 로그인 확인
     fun loginPermission(){
-        //Token 존재 확인
         if (AuthApiClient.instance.hasToken()) {
             //Token 유효성 검증
             UserApiClient.instance.accessTokenInfo { _, error ->
@@ -98,8 +99,8 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
             binding.splashKakaoLoginBtn.visibility=View.VISIBLE
         }
     }
+    //카카오계정 로그인
     private fun login(){
-        //카카오계정 로그인
         val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
             if (error != null) {
                 Log.e(TAG, "카카오계정으로 로그인 실패", error)
@@ -154,6 +155,7 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
             }
         }
     }
+    //User 정보 업데이트 및 생성
     private fun saveUserInfo(state:String){
         UserApiClient.instance.me { user, error ->
             if (error != null){
@@ -162,43 +164,38 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
             else {
                 if (user != null) {
                     Log.d(TAG, user.id.toString())
-                    //id 암호화 후 spf 저장
-                    val spf = EncryptedSharedPreferences.create(
-                        "auth",
-                        master, this, EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-                        EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-                    )
-                    val editor = spf.edit()
-                    editor?.apply { putString("id", user.id.toString()) }
                     val database=AppDatabase.getInstance(this)!!
                     val dao=database.userDao()
                     if(state=="login"){
-                        var users=dao.getUser(user.id.toInt())
+                        //id 암호화(encrypted사용) 후 spf 저장, 일단은 그냥 local 사용해 저장=========================
+                        USER_ID=user.id
+                        //=====================================================================================
+                        var users=dao.getUser(user.id)
                         if(users==null){
-                            //유저 인포 저장====================
-                            dao.insert(User(user.id.toInt(), user.kakaoAccount?.profile?.nickname.toString(), user.kakaoAccount?.email.toString(), "activate"))
+                            //유저 인포 저장
+                            dao.insert(User(user.id, user.kakaoAccount?.profile?.nickname.toString(), user.kakaoAccount?.email.toString(), "activate"))
                         }else{
                             if(users.status=="delete")
-                            //유저 인포 업데이트====================
-                                dao.update(User(user.id.toInt(), user.kakaoAccount?.profile?.nickname.toString(), user.kakaoAccount?.email.toString(), "activate"))
+                            //유저 인포 업데이트
+                                dao.update(User(user.id, user.kakaoAccount?.profile?.nickname.toString(), user.kakaoAccount?.email.toString(), "activate"))
                             else if(users.status=="inactivate")
-                                dao.updateStatus(user.id.toInt(), "activate")
+                                dao.updateStatus(user.id, "activate")
                         }
                     }
                     //로그아웃 시
                     else if(state=="logout"){
-                        dao.updateStatus(user.id.toInt(), "inactivate")
+                        dao.updateStatus(user.id, "inactivate")
                     }
                     //탈퇴 시
                     else if(state=="withdraw")
-                        dao.updateStatus(user.id.toInt(), "delete")
+                        dao.updateStatus(user.id, "delete")
                     Log.d(TAG, dao.getUsers().toString())
                 }
             }
         }
     }
 
-    //인터넷 연결 확인
+    //인터넷 연결 확인====추후 서버와의 연동시
     fun getConnectivityStatus():Boolean {
         // 네트워크 연결 상태 확인하기 위한 ConnectivityManager 객체 생성
         val cm = this.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager

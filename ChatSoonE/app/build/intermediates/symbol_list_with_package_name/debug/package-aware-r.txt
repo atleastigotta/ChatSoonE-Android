@@ -2842,6 +2842,7 @@ id item4
 id item_chat_list_content_tv
 id item_chat_list_date_time_tv
 id item_chat_list_name_tv
+id item_chat_list_profile_cv
 id item_chat_list_profile_iv
 id item_touch_helper_previous_elevation
 id jumpToEnd
@@ -2856,18 +2857,6 @@ id line3
 id linear
 id listMode
 id list_item
-id login_address_underscore_view
-id login_at_sign_tv
-id login_direct_input_et
-id login_error_tv
-id login_flo_logo_iv
-id login_id_et
-id login_id_underscore_view
-id login_loading_pb
-id login_password_et
-id login_password_underscore_view
-id login_sign_in_btn
-id login_sign_up_tv
 id main_activity_navgraph
 id main_bottom_bar_view
 id main_cancel_iv
@@ -3107,6 +3096,7 @@ id stretch
 id submenuarrow
 id submit_area
 id supportScrollUp
+id switch_id
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -3269,7 +3259,6 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_folder
 layout activity_kakao_auth
-layout activity_login
 layout activity_main
 layout activity_main_content
 layout activity_main_drawer_header
@@ -3304,6 +3293,8 @@ layout fragment_match
 layout fragment_mypage
 layout fragment_search
 layout item_chat_list
+layout layout_switch
+layout loading_row
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title

@@ -15,16 +15,17 @@
         <!-- Remove the title bar -->
         <item name="windowNoTitle">true</item>
 
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">@android:color/transparent</item>
+        <!-- Status bar, text color. -->
+        <item name="colorPrimaryDark">#FFFFFF</item>
+        <item name="android:windowLightStatusBar">true</item>
 
         <!-- make status bar translucent(semitransparent) -->
-        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentStatus">false</item>
 
         <!-- draw status bar on background -->
         <item name="android:windowDrawsSystemBarBackgrounds" tools:targetApi="l">true</item>
 
         <!-- apply full screen mode -->
-        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowFullscreen">false</item>
     </style>
 </resources>

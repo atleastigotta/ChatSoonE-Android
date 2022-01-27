@@ -2841,6 +2841,7 @@ int id item4 0x7f0800ea
 int id item_chat_list_content_tv 0x7f0800eb
 int id item_chat_list_date_time_tv 0x7f0800ec
 int id item_chat_list_name_tv 0x7f0800ed
+int id item_chat_list_profile_cv 0x7f080241
 int id item_chat_list_profile_iv 0x7f0800ee
 int id item_touch_helper_previous_elevation 0x7f0800ef
 int id jumpToEnd 0x7f0800f0
@@ -2855,18 +2856,6 @@ int id line3 0x7f0800f8
 int id linear 0x7f0800f9
 int id listMode 0x7f0800fa
 int id list_item 0x7f0800fb
-int id login_address_underscore_view 0x7f0800fc
-int id login_at_sign_tv 0x7f0800fd
-int id login_direct_input_et 0x7f0800fe
-int id login_error_tv 0x7f0800ff
-int id login_flo_logo_iv 0x7f080100
-int id login_id_et 0x7f080101
-int id login_id_underscore_view 0x7f080102
-int id login_loading_pb 0x7f080103
-int id login_password_et 0x7f080104
-int id login_password_underscore_view 0x7f080105
-int id login_sign_in_btn 0x7f080106
-int id login_sign_up_tv 0x7f080107
 int id main_activity_navgraph 0x7f080108
 int id main_bottom_bar_view 0x7f080109
 int id main_cancel_iv 0x7f08010a
@@ -3106,6 +3095,7 @@ int id stretch 0x7f0801f3
 int id submenuarrow 0x7f0801f4
 int id submit_area 0x7f0801f5
 int id supportScrollUp 0x7f0801f6
+int id switch_id 0x7f080243
 int id tabMode 0x7f0801f7
 int id tag_accessibility_actions 0x7f0801f8
 int id tag_accessibility_clickable_spans 0x7f0801f9
@@ -3268,7 +3258,6 @@ int layout abc_select_dialog_material 0x7f0b001a
 int layout abc_tooltip 0x7f0b001b
 int layout activity_folder 0x7f0b001c
 int layout activity_kakao_auth 0x7f0b001d
-int layout activity_login 0x7f0b001e
 int layout activity_main 0x7f0b001f
 int layout activity_main_content 0x7f0b0020
 int layout activity_main_drawer_header 0x7f0b0021
@@ -3303,6 +3292,8 @@ int layout fragment_match 0x7f0b003d
 int layout fragment_mypage 0x7f0b003e
 int layout fragment_search 0x7f0b003f
 int layout item_chat_list 0x7f0b0040
+int layout layout_switch 0x7f0b0091
+int layout loading_row 0x7f0b0092
 int layout m3_alert_dialog 0x7f0b0041
 int layout m3_alert_dialog_actions 0x7f0b0042
 int layout m3_alert_dialog_title 0x7f0b0043
