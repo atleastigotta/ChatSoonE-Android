@@ -15,5 +15,5 @@ data class User(
     @SerializedName("createdAt") val createdAt: String,
     @SerializedName("updatedAt") val updatedAt: String
 ){
-    @PrimaryKey(autoGenerate = true)var idx:Int=0
+    @PrimaryKey(autoGenerate = true)var idx: Int=0
 }

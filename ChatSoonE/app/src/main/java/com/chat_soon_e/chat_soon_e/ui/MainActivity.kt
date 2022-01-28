@@ -19,6 +19,7 @@ import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
 import android.widget.Switch
+import androidx.activity.viewModels
 
 import androidx.appcompat.widget.SwitchCompat
 import com.chat_soon_e.chat_soon_e.R
@@ -27,7 +28,9 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
     private lateinit var chatDB: AppDatabase            // chat list를 담고 있는 데이터베이스
     private lateinit var mainRVAdapter: MainRVAdapter   // chat list recycler view adpater
     private var chatList = ArrayList<Chat>()            // 데이터베이스로부터 chat list를 받아올 변수
-    private var isSelectionMode: Boolean = false        // 폴더 이동 선택 모드인지 아닌지를 결정해주는 변수
+
+    // ViewModel
+    private val chatViewModel: ChatViewModel by viewModels()
 
     // onCreate() 이후
     override fun initAfterBinding() {
@@ -66,18 +69,21 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         // 이미 데이터가 있다는 것을 뜻하므로 함수를 리턴한다.
         if(chatList.isNotEmpty()) return
 
-//        // 만약 데이터베이스에서 받아온 chat list가 비어있는 경우
-//        // 더미 데이터
-//        chatDB.chatDao().insert(Chat(null, "강은서", "Designer", "오전 10시"))
-//        chatDB.chatDao().insert(Chat(null, "김민경", "PM\nServer(node.js)", "오전 11시"))
-//        chatDB.chatDao().insert(Chat(null, "남선우", "Android", "오전 12시"))
-//        chatDB.chatDao().insert(Chat(null, "변재호", "Server (node.js)", "오후 1시"))
-//        chatDB.chatDao().insert(Chat(null, "이주연", "Android", "오후 2시"))
-//        chatDB.chatDao().insert(Chat(null, "강은서", "Designer", "오후 3시"))
-//        chatDB.chatDao().insert(Chat(null, "김민경", "PM\nServer(node.js)", "오후 4시"))
-//        chatDB.chatDao().insert(Chat(null, "남선우", "Android", "오후 5시"))
-//        chatDB.chatDao().insert(Chat(null, "변재호", "Server (node.js)", "오후 6시"))
-//        chatDB.chatDao().insert(Chat(null, "이주연", "Android", "오후 7시"))
+        // 만약 데이터베이스에서 받아온 chat list가 비어있는 경우
+        chatDB.chatDao().insert(Chat("강은서", "designer"))
+        chatDB.chatDao().insert(Chat("김민경", "node.js"))
+        chatDB.chatDao().insert(Chat("남선우", "android"))
+        chatDB.chatDao().insert(Chat("변재호", "node.js"))
+        chatDB.chatDao().insert(Chat("이주연", "android"))
+        chatDB.chatDao().insert(Chat("UMC", "android & server"))
+        chatDB.chatDao().insert(Chat("친구1", "안녕?"))
+        chatDB.chatDao().insert(Chat("친구2", "Hello."))
+        chatDB.chatDao().insert(Chat("친구3", "봉쥬르"))
+        chatDB.chatDao().insert(Chat("친구4", "반가워"))
+        chatDB.chatDao().insert(Chat("친구5", "Hi!"))
+        chatDB.chatDao().insert(Chat("그룹1", "이모티콘"))
+        chatDB.chatDao().insert(Chat("그룹2", "이모티콘"))
+        chatDB.chatDao().insert(Chat("그룹3", "이모티콘"))
     }
 
     // RecyclerView
@@ -88,108 +94,66 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL)
         recyclerView.addItemDecoration(dividerItemDecoration)
 
-//        // 간격 설정
-//        val layoutParams = binding.mainContent.mainChatListRecyclerView.layoutParams
-//        layoutParams.height = 500
-//        binding.mainContent.mainChatListRecyclerView.requestLayout()
-
-//        // 간격 설정
-//        val spaceDecoration = VerticalSpaceItemDecoration(200)
-//        recyclerView.addItemDecoration(spaceDecoration)
-
         // 더미 데이터와 어댑터 연결
         chatDB = AppDatabase.getInstance(this)!!
         chatList = chatDB.chatDao().getChatList() as ArrayList
-        mainRVAdapter = MainRVAdapter(chatList, isSelectionMode)
-        binding.mainContent.mainChatListRecyclerView.adapter = mainRVAdapter
 
-        // '취소하기' 클릭시
-        binding.mainContent.mainModeCancelTv.setOnClickListener {
-            mainRVAdapter.clearSelectedItemList()
-            setBottomByMode(true)
-        }
+        // RecyclerView Click Listener
+        mainRVAdapter = MainRVAdapter(chatList, object: MainRVAdapter.MyItemClickListener {
+            // 선택 모드
+            override fun onChooseChatClick(view: View, position: Int) {
+                mainRVAdapter.setChecked(position)
+            }
+
+            // 이동 모드
+            override fun onDefaultChatClick(view: View, position: Int) {
+                startNextActivity(ChatActivity::class.java)
+                mainRVAdapter.clearSelectedItemList()
+            }
+        })
+
+        chatViewModel.mode.observe(this, {
+            if(it == 0) {
+                // 일반 모드
+                mainRVAdapter.clearSelectedItemList()
+                binding.mainContent.mainFolderIv.visibility = View.VISIBLE
+                binding.mainContent.mainFolderModeIv.visibility = View.GONE
+                binding.mainContent.mainUpdateIv.visibility = View.VISIBLE
+                binding.mainContent.mainCancelIv.visibility = View.GONE
+                binding.mainContent.mainChatIv.visibility = View.VISIBLE
+                binding.mainContent.mainDeleteIv.visibility = View.GONE
+                binding.mainContent.mainMyFolderIv.visibility = View.VISIBLE
+                binding.mainContent.mainBlockIv.visibility = View.GONE
+            } else {
+                // 선택 모드
+                mainRVAdapter.clearSelectedItemList()
+                binding.mainContent.mainFolderIv.visibility = View.GONE
+                binding.mainContent.mainFolderModeIv.visibility = View.VISIBLE
+                binding.mainContent.mainUpdateIv.visibility = View.GONE
+                binding.mainContent.mainCancelIv.visibility = View.VISIBLE
+                binding.mainContent.mainChatIv.visibility = View.GONE
+                binding.mainContent.mainDeleteIv.visibility = View.VISIBLE
+                binding.mainContent.mainMyFolderIv.visibility = View.GONE
+                binding.mainContent.mainBlockIv.visibility = View.VISIBLE
+            }
+            // 모든 데이터의 viewType 바꿔주기
+            mainRVAdapter.setViewType(currentMode = it)
+        })
+
+        binding.mainContent.mainChatListRecyclerView.adapter = mainRVAdapter
 
         // 취소 버튼 클릭시 다시 초기 화면으로 (폴더 선택 모드 취소)
         binding.mainContent.mainCancelIv.setOnClickListener {
+            // 현재 선택 모드 -> 일반 모드로 변경
+//            mainRVAdapter.removeSelectedItemList()
             mainRVAdapter.clearSelectedItemList()
-            setBottomByMode(true)
+            chatViewModel.setMode(mode = 0)
 
             binding.mainContent.mainFolderIv.visibility = View.VISIBLE
             binding.mainContent.mainFolderModeIv.visibility = View.GONE
             binding.mainContent.mainUpdateIv.visibility = View.VISIBLE
             binding.mainContent.mainCancelIv.visibility = View.GONE
         }
-
-        mainRVAdapter.setMyItemClickListener(object: MainRVAdapter.MyItemClickListener {
-            override fun onChatClick(view: View, position: Int) {
-                Log.d("MAIN/RV", "onChatClick()")
-//                mainRVAdapter.toggleItemSelected(position)
-            }
-
-            override fun onChatLongClick(view: View, position: Int) {
-                Log.d("MAIN/RV", "onChatLongClick()")
-                if(isSelectionMode) return
-                setBottomByMode(false)
-//                mainRVAdapter.toggleItemSelected(position)
-//                // 팝업 메뉴 나오도록
-//                // PopupMenu는 API 11 레벨부터 제공된다.
-//                Log.d("MAIN/LONG-CLICK", "onChatLongClick")
-//
-//                // 여기서 view는 클릭된 뷰를 의미한다.
-//                val popup = PopupMenu(this@MainActivity, view)
-//                menuInflater.inflate(R.menu.popup_menu, popup.menu)
-//
-//                // 리스너로 처리
-//                val listener = PopupMenuListener()
-//                popup.setOnMenuItemClickListener(listener)
-//                popup.show()    // 팝업 메뉴 보이도록
-            }
-
-            override fun onChatClickForFolder(view: View, position: Int) {
-                Log.d("MAIN/RV", "onChatClickForFolder()")
-//                mainRVAdapter.toggleItemSelected(position)
-                if(!isSelectionMode) return
-                setBottomByMode(true)
-            }
-
-        })
-
-//        if(isSelectionMode) {   // 만약 폴더 이동 선택 모드일 경우
-//            mainRVAdapter.setMyItemClickListener(object: MainRVAdapter.MyItemClickListener {
-//                override fun onChatClick(view: View, position: Int) {
-//                    Log.d("MAIN/RV", "onChatClick()")
-//                }
-//
-//                override fun onChatLongClick(view: View, position: Int) {
-//                    Log.d("MAIN/RV", "onChatLongClick()")
-//                }
-//
-//            })
-//        } else {    // 만약 폴더 이동 선택 모드가 아닐 경우
-//            // 아이템 뷰가 길게 클릭됐을 때 팝업 메뉴 띄우기
-//            mainRVAdapter.setMyItemClickListener(object: MainRVAdapter.MyItemClickListener {
-//                override fun onChatClick(view: View, position: Int) {
-//                    // 대화 목록으로 이동하는 코드 작성
-//                    // 논의 필요
-//                }
-//
-//                override fun onChatLongClick(view: View, position: Int) {
-//                    // 팝업 메뉴 나오도록
-//                    // PopupMenu는 API 11 레벨부터 제공된다.
-//                    Log.d("MAIN/LONG-CLICK", "onChatLongClick")
-//
-//                    // 여기서 view는 클릭된 뷰를 의미한다.
-//                    val popup = PopupMenu(this@MainActivity, view)
-//                    menuInflater.inflate(R.menu.popup_menu, popup.menu)
-//
-//                    // 리스너로 처리
-//                    val listener = PopupMenuListener()
-//                    popup.setOnMenuItemClickListener(listener)
-//                    popup.show()    // 팝업 메뉴 보이도록
-//                }
-//
-//            })
-//        }
     }
 
     // 설정 메뉴 창을 띄우는 DrawerLayout 초기화
@@ -306,23 +270,6 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         }
     }
 
-    private fun setBottomByMode(isSelectionMode: Boolean) {
-        // 폴더 이동 선택 모드 아닐 때
-        if(!isSelectionMode) {
-            binding.mainContent.mainBottomBarView.setBackgroundColor(Color.parseColor("#FED7D3"))
-            binding.mainContent.mainMyFolderIv.visibility = View.GONE
-            binding.mainContent.mainFolderIv.visibility = View.GONE
-            binding.mainContent.mainChatIv.visibility = View.GONE
-            binding.mainContent.mainModeBottomLayout.visibility = View.VISIBLE
-        } else {    // 폴더 이동 선택 모드일 때
-            binding.mainContent.mainBottomBarView.setBackgroundColor(Color.parseColor("#BFBFBF"))
-            binding.mainContent.mainMyFolderIv.visibility = View.VISIBLE
-            binding.mainContent.mainFolderIv.visibility = View.VISIBLE
-            binding.mainContent.mainChatIv.visibility = View.VISIBLE
-            binding.mainContent.mainModeBottomLayout.visibility = View.GONE
-        }
-    }
-
     private fun initClickListener() {
         // 내폴더 아이콘 클릭시 폴더 화면으로 이동
         binding.mainContent.mainMyFolderIv.setOnClickListener {
@@ -330,16 +277,13 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             startNextActivity(MyFolderActivity::class.java)
         }
 
-        // (특정 폴더로 옮길 특정 채팅을 선택하는 모드로 들어가게 해주는) 폴더 아이콘 클릭시
+        // 하단 중앙 아이콘 클릭시
         binding.mainContent.mainFolderIv.setOnClickListener {
-            binding.mainContent.mainFolderIv.visibility = View.GONE
-            binding.mainContent.mainFolderModeIv.visibility = View.VISIBLE
-            binding.mainContent.mainUpdateIv.visibility = View.GONE
-            binding.mainContent.mainCancelIv.visibility = View.VISIBLE
-
-            // RecyclerView의 아이템 클릭이벤트를 실행시킬 수 있도록
-            // 폴더 이동 선택 모드 설정
-            isSelectionMode = true
+            if(chatViewModel.mode.value == 0) {
+                chatViewModel.setMode(mode = 1)
+            } else {
+                chatViewModel.setMode(mode = 0)
+            }
         }
 
         // 폴더 이동 선택 모드 클릭시 팝업 메뉴

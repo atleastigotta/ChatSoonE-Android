@@ -31,6 +31,7 @@
         <activity android:name="com.chat_soon_e.chat_soon_e.ui.LoginActivity" android:exported="true" />
         <activity android:name="com.chat_soon_e.chat_soon_e.ui.SignUpActivity" android:exported="true" />
         <activity android:name="com.chat_soon_e.chat_soon_e.ui.MainActivity" android:exported="true" />
+        <activity android:name=".ui.ChatActivity" android:exported="true" />
 
         <!-- Folder -->
         <activity android:name=".ui.MyFolderActivity" android:exported="true" />
