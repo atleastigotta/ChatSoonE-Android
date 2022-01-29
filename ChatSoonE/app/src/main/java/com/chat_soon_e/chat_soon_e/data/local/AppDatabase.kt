@@ -6,14 +6,16 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.APP_DATABASE
 import com.chat_soon_e.chat_soon_e.data.entities.Chat
+import com.chat_soon_e.chat_soon_e.data.entities.Folder
 import com.chat_soon_e.chat_soon_e.data.entities.User
 
 // 따로 불러와서 작업하는 것들은 만들어두지 않았기 때문에
 // RoomDB를 사용해야 된다고 할 때는 추가적으로 설정해줘야 한다.
-@Database(entities = [Chat::class, User::class], version = 1)
+@Database(entities = [Chat::class, User::class, Folder::class], version = 1)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun chatDao(): ChatDao
-    abstract fun userDao():UserDao
+    abstract fun userDao(): UserDao
+    abstract fun folderDao(): FolderDao
 
     companion object {
         private var instance: AppDatabase? = null

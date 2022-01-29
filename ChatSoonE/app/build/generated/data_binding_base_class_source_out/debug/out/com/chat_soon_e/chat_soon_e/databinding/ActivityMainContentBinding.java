@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,6 +22,9 @@ public final class ActivityMainContentBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final ImageView mainBlockIv;
+
+  @NonNull
   public final View mainBottomBarView;
 
   @NonNull
@@ -38,28 +40,13 @@ public final class ActivityMainContentBinding implements ViewBinding {
   public final ConstraintLayout mainContent;
 
   @NonNull
+  public final ImageView mainDeleteIv;
+
+  @NonNull
   public final ImageView mainFolderIv;
 
   @NonNull
   public final ImageView mainFolderModeIv;
-
-  @NonNull
-  public final TextView mainModeBlockTv;
-
-  @NonNull
-  public final LinearLayout mainModeBottomLayout;
-
-  @NonNull
-  public final TextView mainModeCancelTv;
-
-  @NonNull
-  public final TextView mainModeDeleteTv;
-
-  @NonNull
-  public final TextView mainModeSeparator1Tv;
-
-  @NonNull
-  public final TextView mainModeSeparator2Tv;
 
   @NonNull
   public final ImageView mainMyFolderIv;
@@ -74,29 +61,23 @@ public final class ActivityMainContentBinding implements ViewBinding {
   public final ImageView mainUpdateIv;
 
   private ActivityMainContentBinding(@NonNull ConstraintLayout rootView,
-      @NonNull View mainBottomBarView, @NonNull ImageView mainCancelIv,
-      @NonNull ImageView mainChatIv, @NonNull RecyclerView mainChatListRecyclerView,
-      @NonNull ConstraintLayout mainContent, @NonNull ImageView mainFolderIv,
-      @NonNull ImageView mainFolderModeIv, @NonNull TextView mainModeBlockTv,
-      @NonNull LinearLayout mainModeBottomLayout, @NonNull TextView mainModeCancelTv,
-      @NonNull TextView mainModeDeleteTv, @NonNull TextView mainModeSeparator1Tv,
-      @NonNull TextView mainModeSeparator2Tv, @NonNull ImageView mainMyFolderIv,
+      @NonNull ImageView mainBlockIv, @NonNull View mainBottomBarView,
+      @NonNull ImageView mainCancelIv, @NonNull ImageView mainChatIv,
+      @NonNull RecyclerView mainChatListRecyclerView, @NonNull ConstraintLayout mainContent,
+      @NonNull ImageView mainDeleteIv, @NonNull ImageView mainFolderIv,
+      @NonNull ImageView mainFolderModeIv, @NonNull ImageView mainMyFolderIv,
       @NonNull ImageView mainSettingMenuIv, @NonNull TextView mainTitleTv,
       @NonNull ImageView mainUpdateIv) {
     this.rootView = rootView;
+    this.mainBlockIv = mainBlockIv;
     this.mainBottomBarView = mainBottomBarView;
     this.mainCancelIv = mainCancelIv;
     this.mainChatIv = mainChatIv;
     this.mainChatListRecyclerView = mainChatListRecyclerView;
     this.mainContent = mainContent;
+    this.mainDeleteIv = mainDeleteIv;
     this.mainFolderIv = mainFolderIv;
     this.mainFolderModeIv = mainFolderModeIv;
-    this.mainModeBlockTv = mainModeBlockTv;
-    this.mainModeBottomLayout = mainModeBottomLayout;
-    this.mainModeCancelTv = mainModeCancelTv;
-    this.mainModeDeleteTv = mainModeDeleteTv;
-    this.mainModeSeparator1Tv = mainModeSeparator1Tv;
-    this.mainModeSeparator2Tv = mainModeSeparator2Tv;
     this.mainMyFolderIv = mainMyFolderIv;
     this.mainSettingMenuIv = mainSettingMenuIv;
     this.mainTitleTv = mainTitleTv;
@@ -130,6 +111,12 @@ public final class ActivityMainContentBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.main_block_iv;
+      ImageView mainBlockIv = ViewBindings.findChildViewById(rootView, id);
+      if (mainBlockIv == null) {
+        break missingId;
+      }
+
       id = R.id.main_bottom_bar_view;
       View mainBottomBarView = ViewBindings.findChildViewById(rootView, id);
       if (mainBottomBarView == null) {
@@ -156,6 +143,12 @@ public final class ActivityMainContentBinding implements ViewBinding {
 
       ConstraintLayout mainContent = (ConstraintLayout) rootView;
 
+      id = R.id.main_delete_iv;
+      ImageView mainDeleteIv = ViewBindings.findChildViewById(rootView, id);
+      if (mainDeleteIv == null) {
+        break missingId;
+      }
+
       id = R.id.main_folder_iv;
       ImageView mainFolderIv = ViewBindings.findChildViewById(rootView, id);
       if (mainFolderIv == null) {
@@ -165,42 +158,6 @@ public final class ActivityMainContentBinding implements ViewBinding {
       id = R.id.main_folder_mode_iv;
       ImageView mainFolderModeIv = ViewBindings.findChildViewById(rootView, id);
       if (mainFolderModeIv == null) {
-        break missingId;
-      }
-
-      id = R.id.main_mode_block_tv;
-      TextView mainModeBlockTv = ViewBindings.findChildViewById(rootView, id);
-      if (mainModeBlockTv == null) {
-        break missingId;
-      }
-
-      id = R.id.main_mode_bottom_layout;
-      LinearLayout mainModeBottomLayout = ViewBindings.findChildViewById(rootView, id);
-      if (mainModeBottomLayout == null) {
-        break missingId;
-      }
-
-      id = R.id.main_mode_cancel_tv;
-      TextView mainModeCancelTv = ViewBindings.findChildViewById(rootView, id);
-      if (mainModeCancelTv == null) {
-        break missingId;
-      }
-
-      id = R.id.main_mode_delete_tv;
-      TextView mainModeDeleteTv = ViewBindings.findChildViewById(rootView, id);
-      if (mainModeDeleteTv == null) {
-        break missingId;
-      }
-
-      id = R.id.main_mode_separator_1_tv;
-      TextView mainModeSeparator1Tv = ViewBindings.findChildViewById(rootView, id);
-      if (mainModeSeparator1Tv == null) {
-        break missingId;
-      }
-
-      id = R.id.main_mode_separator_2_tv;
-      TextView mainModeSeparator2Tv = ViewBindings.findChildViewById(rootView, id);
-      if (mainModeSeparator2Tv == null) {
         break missingId;
       }
 
@@ -228,11 +185,10 @@ public final class ActivityMainContentBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainContentBinding((ConstraintLayout) rootView, mainBottomBarView,
-          mainCancelIv, mainChatIv, mainChatListRecyclerView, mainContent, mainFolderIv,
-          mainFolderModeIv, mainModeBlockTv, mainModeBottomLayout, mainModeCancelTv,
-          mainModeDeleteTv, mainModeSeparator1Tv, mainModeSeparator2Tv, mainMyFolderIv,
-          mainSettingMenuIv, mainTitleTv, mainUpdateIv);
+      return new ActivityMainContentBinding((ConstraintLayout) rootView, mainBlockIv,
+          mainBottomBarView, mainCancelIv, mainChatIv, mainChatListRecyclerView, mainContent,
+          mainDeleteIv, mainFolderIv, mainFolderModeIv, mainMyFolderIv, mainSettingMenuIv,
+          mainTitleTv, mainUpdateIv);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

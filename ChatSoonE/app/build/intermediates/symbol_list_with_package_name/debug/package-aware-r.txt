@@ -128,6 +128,8 @@ attr arcMode
 attr argType
 attr arrowHeadLength
 attr arrowShaftLength
+attr aspectRatio
+attr aspectRatioEnabled
 attr attributeName
 attr autoCompleteMode
 attr autoCompleteTextViewStyle
@@ -366,6 +368,7 @@ attr cornerSizeBottomLeft
 attr cornerSizeBottomRight
 attr cornerSizeTopLeft
 attr cornerSizeTopRight
+attr correctStateColor
 attr counterEnabled
 attr counterMaxLength
 attr counterOverflowTextAppearance
@@ -411,6 +414,10 @@ attr dividerInsetStart
 attr dividerPadding
 attr dividerThickness
 attr dividerVertical
+attr dotAnimationDuration
+attr dotCount
+attr dotNormalSize
+attr dotSelectedSize
 attr dragDirection
 attr dragScale
 attr dragThreshold
@@ -836,6 +843,7 @@ attr navigationViewStyle
 attr nestedScrollFlags
 attr nestedScrollViewStyle
 attr nestedScrollable
+attr normalStateColor
 attr nullable
 attr number
 attr numericModifiers
@@ -864,7 +872,9 @@ attr passwordToggleDrawable
 attr passwordToggleEnabled
 attr passwordToggleTint
 attr passwordToggleTintMode
+attr pathEndAnimationDuration
 attr pathMotionArc
+attr pathWidth
 attr path_percent
 attr percentHeight
 attr percentWidth
@@ -1197,6 +1207,7 @@ attr windowFixedWidthMinor
 attr windowMinWidthMajor
 attr windowMinWidthMinor
 attr windowNoTitle
+attr wrongStateColor
 attr yearSelectedStyle
 attr yearStyle
 attr yearTodayStyle
@@ -1792,6 +1803,7 @@ color notification_action_color_filter
 color notification_icon_bg_color
 color notification_material_background_media_default_color
 color pink
+color pomegranate
 color primary
 color primary_dark_material_dark
 color primary_dark_material_light
@@ -2390,6 +2402,9 @@ dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
+dimen pattern_lock_dot_selected_size
+dimen pattern_lock_dot_size
+dimen pattern_lock_path_width
 dimen subtitle_corner_radius
 dimen subtitle_outline_width
 dimen subtitle_shadow_offset
@@ -2513,11 +2528,24 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
-drawable ic_back
-drawable ic_baseline_black_menu_24
+drawable ic_all_chat
+drawable ic_baseline_account_circle_24
+drawable ic_baseline_arrow_back_ios_24
+drawable ic_baseline_block_24
 drawable ic_baseline_cached_24
 drawable ic_baseline_cancel_24
+drawable ic_baseline_chat_pink_24
+drawable ic_baseline_create_new_folder_24
+drawable ic_baseline_delete_24
+drawable ic_baseline_email_24
+drawable ic_baseline_folder_24
+drawable ic_baseline_help_24
 drawable ic_baseline_menu_24
+drawable ic_baseline_menu_black_24
+drawable ic_baseline_pattern_24
+drawable ic_baseline_phonelink_ring_24
+drawable ic_baseline_rate_review_24
+drawable ic_baseline_share_24
 drawable ic_baseline_toggle_off_24
 drawable ic_baseline_toggle_on_24
 drawable ic_clock_black_24dp
@@ -2551,6 +2579,7 @@ drawable icon_profile
 drawable icon_up_and_down_arrow
 drawable icon_update
 drawable img_background
+drawable img_background_folder
 drawable kakao_login_medium_narrow
 drawable m3_appbar_background
 drawable m3_popupmenu_background_overlay
@@ -2600,6 +2629,10 @@ drawable selector_navi_home
 drawable selector_navi_match
 drawable selector_navi_mypage
 drawable selector_navi_search
+drawable selector_switch
+drawable shape_switch_track_off
+drawable shape_switch_track_on
+drawable shape_thumb
 drawable test_custom_background
 drawable test_level_drawable
 drawable tooltip_frame_dark
@@ -2746,6 +2779,8 @@ id continuousVelocity
 id coordinator
 id cos
 id counterclockwise
+id create_pattern_lock_view
+id create_pattern_tv
 id currentState
 id custom
 id customPanel
@@ -2817,6 +2852,7 @@ id grouping
 id groups
 id guideline
 id header_title
+id height_bias
 id hideable
 id home
 id homeAsUp
@@ -2832,6 +2868,8 @@ id image
 id immediateStop
 id included
 id info
+id input_pattern_lock_view
+id input_pattern_tv
 id invisible
 id inward
 id italic
@@ -2839,10 +2877,14 @@ id item1
 id item2
 id item3
 id item4
+id item_chat_list_choose_layout
 id item_chat_list_content_tv
 id item_chat_list_date_time_tv
+id item_chat_list_default_layout
 id item_chat_list_name_tv
 id item_chat_list_profile_iv
+id item_my_folder_iv
+id item_my_folder_tv
 id item_touch_helper_previous_elevation
 id jumpToEnd
 id jumpToStart
@@ -2869,25 +2911,18 @@ id login_password_underscore_view
 id login_sign_in_btn
 id login_sign_up_tv
 id main_activity_navgraph
+id main_block_iv
 id main_bottom_bar_view
 id main_cancel_iv
 id main_chat_iv
 id main_chat_list_recycler_view
 id main_content
-id main_drawer_alarm_toggle_off_iv
-id main_drawer_alarm_toggle_off_layout
-id main_drawer_alarm_toggle_on_iv
-id main_drawer_alarm_toggle_on_layout
+id main_delete_iv
+id main_drawer_alarm_switch
 id main_drawer_layout
 id main_drawer_setting_menu_iv
 id main_folder_iv
 id main_folder_mode_iv
-id main_mode_block_tv
-id main_mode_bottom_layout
-id main_mode_cancel_tv
-id main_mode_delete_tv
-id main_mode_separator_1_tv
-id main_mode_separator_2_tv
 id main_my_folder_iv
 id main_navigation_view
 id main_setting_menu_iv
@@ -2952,6 +2987,19 @@ id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
+id my_folder_all_chat_iv
+id my_folder_background_layout
+id my_folder_bottom_bar_view
+id my_folder_chat_iv
+id my_folder_content
+id my_folder_create_new_folder_iv
+id my_folder_drawer_layout
+id my_folder_folder_list_recycler_view
+id my_folder_menu_iv
+id my_folder_my_folder_iv
+id my_folder_my_folder_line_view
+id my_folder_my_folder_tv
+id my_folder_navigation_view
 id mypageFragment
 id nav_controller_view_tag
 id nav_host_fragment_container
@@ -2959,6 +3007,7 @@ id navi_setting_alarm_item
 id navi_setting_block_item
 id navi_setting_email_item
 id navi_setting_helper_item
+id navi_setting_pattern_item
 id navi_setting_privacy_item
 id navi_setting_review_item
 id navi_setting_share_item
@@ -3004,7 +3053,13 @@ id pathRelative
 id peekHeight
 id percent
 id pin
+id popup_folder_edit_menu_1
+id popup_folder_edit_menu_2
+id popup_folder_edit_menu_3
+id popup_folder_edit_menu_4
 id popup_folder_menu
+id popup_folder_option_menu_1
+id popup_folder_option_menu_2
 id popup_menu_1
 id popup_menu_2
 id position
@@ -3173,6 +3228,7 @@ id visible
 id visible_removing_fragment_view_tag
 id webview
 id west
+id width_bias
 id withText
 id withinBounds
 id wrap
@@ -3267,16 +3323,20 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_chat
+layout activity_create_pattern
 layout activity_folder
+layout activity_hidden_folder
+layout activity_input_pattern
 layout activity_kakao_auth
 layout activity_login
 layout activity_main
 layout activity_main_content
 layout activity_main_drawer_header
 layout activity_main_drawer_switch
-layout activity_main_drawer_toggle_off
-layout activity_main_drawer_toggle_on
 layout activity_main_toolbar
+layout activity_my_folder
+layout activity_my_folder_content
 layout activity_permission
 layout activity_signup
 layout activity_splash
@@ -3303,7 +3363,9 @@ layout fragment_home
 layout fragment_match
 layout fragment_mypage
 layout fragment_search
-layout item_chat_list
+layout item_chat_list_choose
+layout item_chat_list_default
+layout item_my_folder
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
@@ -3388,7 +3450,9 @@ menu example_menu
 menu example_menu2
 menu navi_menu
 menu navi_setting_menu
+menu popup_folder_edit_menu
 menu popup_folder_menu
+menu popup_folder_option_menu
 menu popup_menu
 mipmap ic_launcher
 mipmap ic_launcher_foreground
@@ -3429,6 +3493,8 @@ string block
 string bottom_sheet_behavior
 string bottomsheet_action_expand_halfway
 string cancel
+string change_folder_icon
+string change_folder_name
 string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern
@@ -3439,18 +3505,24 @@ string chat_list_name
 string chip_text
 string clear_text_end_icon_content_description
 string com_kakao_talk_chooser_text
+string create_folder
 string default_fail
 string delete
+string delete_folder
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string folder
+string folder_name
+string hidden_folder
 string hide_bottom_view_on_scroll_behavior
+string hide_folder
 string ic_back
 string icon_content_description
 string img_app_logo
 string item_view_role_description
+string lib_name
 string login
 string login_email_delimiter
 string login_email_hint
@@ -3506,6 +3578,10 @@ string menu_home
 string menu_matching
 string menu_mypage
 string menu_search
+string message_pattern_cleared
+string message_pattern_detected
+string message_pattern_dot_added
+string message_pattern_started
 string mtrl_badge_numberless_content_description
 string mtrl_chip_close_icon_content_description
 string mtrl_exceed_max_badge_number_content_description
@@ -3542,6 +3618,7 @@ string mtrl_picker_toggle_to_day_selection
 string mtrl_picker_toggle_to_text_input_mode
 string mtrl_picker_toggle_to_year_selection
 string mtrl_timepicker_confirm
+string my_folder
 string nav_app_bar_navigate_up_description
 string nav_app_bar_open_drawer_description
 string password_toggle_content_description
@@ -3549,8 +3626,10 @@ string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
+string pattern
 string search_menu_title
 string separator
+string setting
 string setting_alarm
 string setting_block
 string setting_email
@@ -4716,6 +4795,7 @@ styleable NavigationView android_layout_gravity android_background android_fitsS
 styleable Navigator android_label android_id
 styleable OnClick clickAction targetId
 styleable OnSwipe autoCompleteMode dragDirection dragScale dragThreshold limitBoundsTo maxAcceleration maxVelocity moveWhenScrollAtTop nestedScrollFlags onTouchUp rotationCenterId springBoundary springDamping springMass springStiffness springStopThreshold touchAnchorId touchAnchorSide touchRegionId
+styleable PatternLockView aspectRatio aspectRatioEnabled correctStateColor dotAnimationDuration dotCount dotNormalSize dotSelectedSize normalStateColor pathEndAnimationDuration pathWidth wrongStateColor
 styleable PopupWindow android_popupBackground android_popupAnimationStyle overlapAnchor
 styleable PopupWindowBackgroundState state_above_anchor
 styleable PropertySet android_visibility android_alpha layout_constraintTag motionProgress visibilityMode

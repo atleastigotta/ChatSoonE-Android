@@ -2,55 +2,43 @@ package com.chat_soon_e.chat_soon_e.ui;
 
 import java.lang.System;
 
-@kotlin.Metadata(mv = {1, 6, 0}, k = 1, d1 = {"\u0000V\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000b\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\b\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0002\b\u0003\n\u0002\u0010 \n\u0002\b\u0006\n\u0002\u0018\u0002\n\u0002\b\u0007\n\u0002\u0018\u0002\n\u0002\b\u0004\u0018\u00002\f\u0012\b\u0012\u00060\u0002R\u00020\u00000\u0001:\u0002&\'B%\u0012\u0016\u0010\u0003\u001a\u0012\u0012\u0004\u0012\u00020\u00050\u0004j\b\u0012\u0004\u0012\u00020\u0005`\u0006\u0012\u0006\u0010\u0007\u001a\u00020\b\u00a2\u0006\u0002\u0010\tJ\b\u0010\u0010\u001a\u00020\u0011H\u0002J\b\u0010\u0012\u001a\u00020\u0011H\u0007J\b\u0010\u0013\u001a\u00020\rH\u0016J\f\u0010\u0014\u001a\b\u0012\u0004\u0012\u00020\r0\u0015J\u0010\u0010\u0016\u001a\u00020\b2\u0006\u0010\u0017\u001a\u00020\rH\u0002J\u001c\u0010\u0018\u001a\u00020\u00112\n\u0010\u0019\u001a\u00060\u0002R\u00020\u00002\u0006\u0010\u0017\u001a\u00020\rH\u0016J\u001c\u0010\u001a\u001a\u00060\u0002R\u00020\u00002\u0006\u0010\u001b\u001a\u00020\u001c2\u0006\u0010\u001d\u001a\u00020\rH\u0017J\u000e\u0010\u001e\u001a\u00020\u00112\u0006\u0010\u0017\u001a\u00020\rJ\u0006\u0010\u001f\u001a\u00020\rJ\u000e\u0010 \u001a\u00020\u00112\u0006\u0010!\u001a\u00020\u000bJ\u0018\u0010\"\u001a\u00020\u00112\u0006\u0010#\u001a\u00020$2\u0006\u0010\u0017\u001a\u00020\rH\u0002J\u0010\u0010%\u001a\u00020\u00112\u0006\u0010\u0017\u001a\u00020\rH\u0002R\u001e\u0010\u0003\u001a\u0012\u0012\u0004\u0012\u00020\u00050\u0004j\b\u0012\u0004\u0012\u00020\u0005`\u0006X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0007\u001a\u00020\bX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\n\u001a\u00020\u000bX\u0082.\u00a2\u0006\u0002\n\u0000R\u000e\u0010\f\u001a\u00020\rX\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u000e\u001a\u00020\u000fX\u0082\u000e\u00a2\u0006\u0002\n\u0000\u00a8\u0006("}, d2 = {"Lcom/chat_soon_e/chat_soon_e/ui/MainRVAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/chat_soon_e/chat_soon_e/ui/MainRVAdapter$ViewHolder;", "chatList", "Ljava/util/ArrayList;", "Lcom/chat_soon_e/chat_soon_e/data/entities/Chat;", "Lkotlin/collections/ArrayList;", "isSelectionMode", "", "(Ljava/util/ArrayList;Z)V", "mItemClickListener", "Lcom/chat_soon_e/chat_soon_e/ui/MainRVAdapter$MyItemClickListener;", "selectedIndex", "", "selectedItemList", "Landroid/util/SparseBooleanArray;", "clear", "", "clearSelectedItemList", "getItemCount", "getSelectedItemList", "", "isItemSelected", "position", "onBindViewHolder", "holder", "onCreateViewHolder", "viewGroup", "Landroid/view/ViewGroup;", "viewType", "removeItem", "selectedItemCount", "setMyItemClickListener", "itemClickListener", "toggleIcon", "binding", "Lcom/chat_soon_e/chat_soon_e/databinding/ItemChatListBinding;", "toggleItemSelected", "MyItemClickListener", "ViewHolder", "app_debug"})
-public final class MainRVAdapter extends androidx.recyclerview.widget.RecyclerView.Adapter<com.chat_soon_e.chat_soon_e.ui.MainRVAdapter.ViewHolder> {
-    private final java.util.ArrayList<com.chat_soon_e.chat_soon_e.data.entities.Chat> chatList = null;
-    private final boolean isSelectionMode = false;
+@kotlin.Metadata(mv = {1, 6, 0}, k = 1, d1 = {"\u0000P\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\b\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0002\b\u0004\n\u0002\u0010\u000b\n\u0002\b\u0004\n\u0002\u0018\u0002\n\u0002\b\u0007\n\u0002\u0018\u0002\n\u0002\b\u0004\u0018\u00002\b\u0012\u0004\u0012\u00020\u00020\u0001:\u0003\"#$B%\u0012\u0016\u0010\u0003\u001a\u0012\u0012\u0004\u0012\u00020\u00050\u0004j\b\u0012\u0004\u0012\u00020\u0005`\u0006\u0012\u0006\u0010\u0007\u001a\u00020\b\u00a2\u0006\u0002\u0010\tJ\b\u0010\u000e\u001a\u00020\u000fH\u0007J\b\u0010\u0010\u001a\u00020\u000bH\u0016J\u0010\u0010\u0011\u001a\u00020\u000b2\u0006\u0010\u0012\u001a\u00020\u000bH\u0016J\u0010\u0010\u0013\u001a\u00020\u00142\u0006\u0010\u0012\u001a\u00020\u000bH\u0002J\u0018\u0010\u0015\u001a\u00020\u000f2\u0006\u0010\u0016\u001a\u00020\u00022\u0006\u0010\u0012\u001a\u00020\u000bH\u0016J\u0018\u0010\u0017\u001a\u00020\u00022\u0006\u0010\u0018\u001a\u00020\u00192\u0006\u0010\u001a\u001a\u00020\u000bH\u0016J\b\u0010\u001b\u001a\u00020\u000fH\u0007J\u000e\u0010\u001c\u001a\u00020\u000f2\u0006\u0010\u0012\u001a\u00020\u000bJ\u0010\u0010\u001d\u001a\u00020\u000f2\u0006\u0010\u001e\u001a\u00020\u000bH\u0007J\u001a\u0010\u001f\u001a\u00020\u000f2\b\u0010 \u001a\u0004\u0018\u00010!2\u0006\u0010\u0012\u001a\u00020\u000bH\u0002R\u001e\u0010\u0003\u001a\u0012\u0012\u0004\u0012\u00020\u00050\u0004j\b\u0012\u0004\u0012\u00020\u0005`\u0006X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0007\u001a\u00020\bX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\n\u001a\u00020\u000bX\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010\f\u001a\u00020\rX\u0082\u000e\u00a2\u0006\u0002\n\u0000\u00a8\u0006%"}, d2 = {"Lcom/chat_soon_e/chat_soon_e/ui/MainRVAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "chatList", "Ljava/util/ArrayList;", "Lcom/chat_soon_e/chat_soon_e/data/entities/Chat;", "Lkotlin/collections/ArrayList;", "mItemClickListener", "Lcom/chat_soon_e/chat_soon_e/ui/MainRVAdapter$MyItemClickListener;", "(Ljava/util/ArrayList;Lcom/chat_soon_e/chat_soon_e/ui/MainRVAdapter$MyItemClickListener;)V", "selectedIndex", "", "selectedItemList", "Landroid/util/SparseBooleanArray;", "clearSelectedItemList", "", "getItemCount", "getItemViewType", "position", "isItemSelected", "", "onBindViewHolder", "holder", "onCreateViewHolder", "viewGroup", "Landroid/view/ViewGroup;", "viewType", "removeSelectedItemList", "setChecked", "setViewType", "currentMode", "toggleItemSelected", "view", "Landroid/view/View;", "ChooseViewHolder", "DefaultViewHolder", "MyItemClickListener", "app_debug"})
+public final class MainRVAdapter extends androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder> {
+    private java.util.ArrayList<com.chat_soon_e.chat_soon_e.data.entities.Chat> chatList;
+    private final com.chat_soon_e.chat_soon_e.ui.MainRVAdapter.MyItemClickListener mItemClickListener = null;
     private int selectedIndex = -1;
     private android.util.SparseBooleanArray selectedItemList;
-    private com.chat_soon_e.chat_soon_e.ui.MainRVAdapter.MyItemClickListener mItemClickListener;
     
     public MainRVAdapter(@org.jetbrains.annotations.NotNull()
-    java.util.ArrayList<com.chat_soon_e.chat_soon_e.data.entities.Chat> chatList, boolean isSelectionMode) {
+    java.util.ArrayList<com.chat_soon_e.chat_soon_e.data.entities.Chat> chatList, @org.jetbrains.annotations.NotNull()
+    com.chat_soon_e.chat_soon_e.ui.MainRVAdapter.MyItemClickListener mItemClickListener) {
         super();
     }
     
-    public final void setMyItemClickListener(@org.jetbrains.annotations.NotNull()
-    com.chat_soon_e.chat_soon_e.ui.MainRVAdapter.MyItemClickListener itemClickListener) {
-    }
-    
     @org.jetbrains.annotations.NotNull()
-    @android.annotation.SuppressLint(value = {"NotifyDataSetChanged"})
     @java.lang.Override()
-    public com.chat_soon_e.chat_soon_e.ui.MainRVAdapter.ViewHolder onCreateViewHolder(@org.jetbrains.annotations.NotNull()
+    public androidx.recyclerview.widget.RecyclerView.ViewHolder onCreateViewHolder(@org.jetbrains.annotations.NotNull()
     android.view.ViewGroup viewGroup, int viewType) {
         return null;
     }
     
     @java.lang.Override()
     public void onBindViewHolder(@org.jetbrains.annotations.NotNull()
-    com.chat_soon_e.chat_soon_e.ui.MainRVAdapter.ViewHolder holder, int position) {
+    androidx.recyclerview.widget.RecyclerView.ViewHolder holder, int position) {
     }
     
-    private final void toggleIcon(com.chat_soon_e.chat_soon_e.databinding.ItemChatListBinding binding, int position) {
-    }
-    
-    @org.jetbrains.annotations.NotNull()
-    public final java.util.List<java.lang.Integer> getSelectedItemList() {
-        return null;
-    }
-    
-    public final void removeItem(int position) {
-    }
-    
-    private final void clear() {
+    @android.annotation.SuppressLint(value = {"NotifyDataSetChanged"})
+    public final void removeSelectedItemList() {
     }
     
     @android.annotation.SuppressLint(value = {"NotifyDataSetChanged"})
     public final void clearSelectedItemList() {
     }
     
-    private final void toggleItemSelected(int position) {
+    private final void toggleItemSelected(android.view.View view, int position) {
+    }
+    
+    public final void setChecked(int position) {
     }
     
     private final boolean isItemSelected(int position) {
@@ -62,29 +50,47 @@ public final class MainRVAdapter extends androidx.recyclerview.widget.RecyclerVi
         return 0;
     }
     
-    public final int selectedItemCount() {
+    @java.lang.Override()
+    public int getItemViewType(int position) {
         return 0;
     }
     
-    @kotlin.Metadata(mv = {1, 6, 0}, k = 1, d1 = {"\u0000\u001e\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\b\n\u0002\b\u0003\bf\u0018\u00002\u00020\u0001J\u0018\u0010\u0002\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u00052\u0006\u0010\u0006\u001a\u00020\u0007H&J\u0018\u0010\b\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u00052\u0006\u0010\u0006\u001a\u00020\u0007H&J\u0018\u0010\t\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u00052\u0006\u0010\u0006\u001a\u00020\u0007H&\u00a8\u0006\n"}, d2 = {"Lcom/chat_soon_e/chat_soon_e/ui/MainRVAdapter$MyItemClickListener;", "", "onChatClick", "", "view", "Landroid/view/View;", "position", "", "onChatClickForFolder", "onChatLongClick", "app_debug"})
+    @android.annotation.SuppressLint(value = {"NotifyDataSetChanged"})
+    public final void setViewType(int currentMode) {
+    }
+    
+    @kotlin.Metadata(mv = {1, 6, 0}, k = 1, d1 = {"\u0000\u001e\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\b\n\u0002\b\u0002\bf\u0018\u00002\u00020\u0001J\u0018\u0010\u0002\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u00052\u0006\u0010\u0006\u001a\u00020\u0007H&J\u0018\u0010\b\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u00052\u0006\u0010\u0006\u001a\u00020\u0007H&\u00a8\u0006\t"}, d2 = {"Lcom/chat_soon_e/chat_soon_e/ui/MainRVAdapter$MyItemClickListener;", "", "onChooseChatClick", "", "view", "Landroid/view/View;", "position", "", "onDefaultChatClick", "app_debug"})
     public static abstract interface MyItemClickListener {
         
-        public abstract void onChatClick(@org.jetbrains.annotations.NotNull()
+        public abstract void onDefaultChatClick(@org.jetbrains.annotations.NotNull()
         android.view.View view, int position);
         
-        public abstract void onChatLongClick(@org.jetbrains.annotations.NotNull()
-        android.view.View view, int position);
-        
-        public abstract void onChatClickForFolder(@org.jetbrains.annotations.NotNull()
+        public abstract void onChooseChatClick(@org.jetbrains.annotations.NotNull()
         android.view.View view, int position);
     }
     
-    @kotlin.Metadata(mv = {1, 6, 0}, k = 1, d1 = {"\u0000\u001e\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\b\u0086\u0004\u0018\u00002\u00020\u0001B\r\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\u0002\u0010\u0004J\u000e\u0010\u0005\u001a\u00020\u00062\u0006\u0010\u0007\u001a\u00020\bR\u000e\u0010\u0002\u001a\u00020\u0003X\u0082\u0004\u00a2\u0006\u0002\n\u0000\u00a8\u0006\t"}, d2 = {"Lcom/chat_soon_e/chat_soon_e/ui/MainRVAdapter$ViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "binding", "Lcom/chat_soon_e/chat_soon_e/databinding/ItemChatListBinding;", "(Lcom/chat_soon_e/chat_soon_e/ui/MainRVAdapter;Lcom/chat_soon_e/chat_soon_e/databinding/ItemChatListBinding;)V", "bind", "", "chat", "Lcom/chat_soon_e/chat_soon_e/data/entities/Chat;", "app_debug"})
-    public final class ViewHolder extends androidx.recyclerview.widget.RecyclerView.ViewHolder {
-        private final com.chat_soon_e.chat_soon_e.databinding.ItemChatListBinding binding = null;
+    @kotlin.Metadata(mv = {1, 6, 0}, k = 1, d1 = {"\u0000\u001e\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\b\u0086\u0004\u0018\u00002\u00020\u0001B\r\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\u0002\u0010\u0004J\u000e\u0010\u0005\u001a\u00020\u00062\u0006\u0010\u0007\u001a\u00020\bR\u000e\u0010\u0002\u001a\u00020\u0003X\u0082\u0004\u00a2\u0006\u0002\n\u0000\u00a8\u0006\t"}, d2 = {"Lcom/chat_soon_e/chat_soon_e/ui/MainRVAdapter$DefaultViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "binding", "Lcom/chat_soon_e/chat_soon_e/databinding/ItemChatListDefaultBinding;", "(Lcom/chat_soon_e/chat_soon_e/ui/MainRVAdapter;Lcom/chat_soon_e/chat_soon_e/databinding/ItemChatListDefaultBinding;)V", "bind", "", "chat", "Lcom/chat_soon_e/chat_soon_e/data/entities/Chat;", "app_debug"})
+    public final class DefaultViewHolder extends androidx.recyclerview.widget.RecyclerView.ViewHolder {
+        private final com.chat_soon_e.chat_soon_e.databinding.ItemChatListDefaultBinding binding = null;
         
-        public ViewHolder(@org.jetbrains.annotations.NotNull()
-        com.chat_soon_e.chat_soon_e.databinding.ItemChatListBinding binding) {
+        public DefaultViewHolder(@org.jetbrains.annotations.NotNull()
+        com.chat_soon_e.chat_soon_e.databinding.ItemChatListDefaultBinding binding) {
+            super(null);
+        }
+        
+        public final void bind(@org.jetbrains.annotations.NotNull()
+        com.chat_soon_e.chat_soon_e.data.entities.Chat chat) {
+        }
+    }
+    
+    @kotlin.Metadata(mv = {1, 6, 0}, k = 1, d1 = {"\u0000$\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\b\u0086\u0004\u0018\u00002\u00020\u0001B\u0015\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\u0006\u0010\u0004\u001a\u00020\u0005\u00a2\u0006\u0002\u0010\u0006J\u000e\u0010\u0007\u001a\u00020\b2\u0006\u0010\t\u001a\u00020\nR\u000e\u0010\u0002\u001a\u00020\u0003X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0004\u001a\u00020\u0005X\u0082\u0004\u00a2\u0006\u0002\n\u0000\u00a8\u0006\u000b"}, d2 = {"Lcom/chat_soon_e/chat_soon_e/ui/MainRVAdapter$ChooseViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "binding", "Lcom/chat_soon_e/chat_soon_e/databinding/ItemChatListChooseBinding;", "mItemClickListener", "Lcom/chat_soon_e/chat_soon_e/ui/MainRVAdapter$MyItemClickListener;", "(Lcom/chat_soon_e/chat_soon_e/ui/MainRVAdapter;Lcom/chat_soon_e/chat_soon_e/databinding/ItemChatListChooseBinding;Lcom/chat_soon_e/chat_soon_e/ui/MainRVAdapter$MyItemClickListener;)V", "bind", "", "chat", "Lcom/chat_soon_e/chat_soon_e/data/entities/Chat;", "app_debug"})
+    public final class ChooseViewHolder extends androidx.recyclerview.widget.RecyclerView.ViewHolder {
+        private final com.chat_soon_e.chat_soon_e.databinding.ItemChatListChooseBinding binding = null;
+        private final com.chat_soon_e.chat_soon_e.ui.MainRVAdapter.MyItemClickListener mItemClickListener = null;
+        
+        public ChooseViewHolder(@org.jetbrains.annotations.NotNull()
+        com.chat_soon_e.chat_soon_e.databinding.ItemChatListChooseBinding binding, @org.jetbrains.annotations.NotNull()
+        com.chat_soon_e.chat_soon_e.ui.MainRVAdapter.MyItemClickListener mItemClickListener) {
             super(null);
         }
         

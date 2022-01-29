@@ -16,5 +16,5 @@ interface UserDao {
     fun delete(user:User)
 
     @Query("SELECT * FROM UserTable WHERE id= :id")
-    fun getUser(id:Int):User
+    fun getUser(id: Int):User
 }

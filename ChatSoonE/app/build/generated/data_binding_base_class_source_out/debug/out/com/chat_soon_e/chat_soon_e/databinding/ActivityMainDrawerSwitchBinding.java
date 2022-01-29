@@ -16,8 +16,13 @@ public final class ActivityMainDrawerSwitchBinding implements ViewBinding {
   @NonNull
   private final SwitchCompat rootView;
 
-  private ActivityMainDrawerSwitchBinding(@NonNull SwitchCompat rootView) {
+  @NonNull
+  public final SwitchCompat mainDrawerAlarmSwitch;
+
+  private ActivityMainDrawerSwitchBinding(@NonNull SwitchCompat rootView,
+      @NonNull SwitchCompat mainDrawerAlarmSwitch) {
     this.rootView = rootView;
+    this.mainDrawerAlarmSwitch = mainDrawerAlarmSwitch;
   }
 
   @Override
@@ -47,6 +52,8 @@ public final class ActivityMainDrawerSwitchBinding implements ViewBinding {
       throw new NullPointerException("rootView");
     }
 
-    return new ActivityMainDrawerSwitchBinding((SwitchCompat) rootView);
+    SwitchCompat mainDrawerAlarmSwitch = (SwitchCompat) rootView;
+
+    return new ActivityMainDrawerSwitchBinding((SwitchCompat) rootView, mainDrawerAlarmSwitch);
   }
 }

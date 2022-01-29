@@ -649,7 +649,7 @@
     <color name="highlighted_text_material_dark">#6680cbc4</color>
     <color name="highlighted_text_material_light">#66009688</color>
     <color name="ic_launcher_background">#3DDC84</color>
-    <color name="light_gray">#F3F3F3</color>
+    <color name="light_gray">#D8D8D8</color>
     <color name="login_button">#FFC107</color>
     <color name="m3_ref_palette_error0">#ff000000</color>
     <color name="m3_ref_palette_error10">#ff410e0b</color>
@@ -805,6 +805,7 @@
     <color name="notification_icon_bg_color">#ff9e9e9e</color>
     <color name="notification_material_background_media_default_color">#ff424242</color>
     <color name="pink">#FED7D3</color>
+    <color name="pomegranate">#f4511e</color>
     <color name="primary">#F84D17</color>
     <color name="primary_dark_material_dark">@android:color/black</color>
     <color name="primary_dark_material_light">@color/material_grey_600</color>
@@ -1398,6 +1399,9 @@
     <dimen name="notification_subtext_size">13sp</dimen>
     <dimen name="notification_top_pad">10dp</dimen>
     <dimen name="notification_top_pad_large_text">5dp</dimen>
+    <dimen name="pattern_lock_dot_selected_size">24dp</dimen>
+    <dimen name="pattern_lock_dot_size">10dp</dimen>
+    <dimen name="pattern_lock_path_width">3dp</dimen>
     <dimen name="subtitle_corner_radius">2dp</dimen>
     <dimen name="subtitle_outline_width">2dp</dimen>
     <dimen name="subtitle_shadow_offset">2dp</dimen>
@@ -1624,6 +1628,8 @@
     <string name="bottom_sheet_behavior" translatable="false">com.google.android.material.bottomsheet.BottomSheetBehavior</string>
     <string description="A description of an action that a user of an accessibility service can perform to expand a bottomsheet halfway to its full height. [CHAR LIMIT=25]" name="bottomsheet_action_expand_halfway">Expand halfway</string>
     <string name="cancel">취소하기</string>
+    <string name="change_folder_icon">아이콘 바꾸기</string>
+    <string name="change_folder_name">이름 바꾸기</string>
     <string name="character_counter_content_description">Characters entered %1$d of %2$d</string>
     <string name="character_counter_overflowed_content_description">Character limit exceeded %1$d of %2$d</string>
     <string name="character_counter_pattern" translatable="false">%1$d/%2$d</string>
@@ -1634,18 +1640,24 @@
     <string name="chip_text">Chip text</string>
     <string name="clear_text_end_icon_content_description">Clear text</string>
     <string name="com_kakao_talk_chooser_text">Which version of KakaoTalk would you like to use?</string>
+    <string name="create_folder">폴더 생성하기</string>
     <string name="default_fail">네트워크연결이 원활하지 않습니다</string>
     <string name="delete">삭제하기</string>
+    <string name="delete_folder">삭제하기</string>
     <string name="error_icon_content_description">Error</string>
     <string name="exposed_dropdown_menu_content_description">Show dropdown menu</string>
     <string name="fab_transformation_scrim_behavior" translatable="false">com.google.android.material.transformation.FabTransformationScrimBehavior</string>
     <string name="fab_transformation_sheet_behavior" translatable="false">com.google.android.material.transformation.FabTransformationSheetBehavior</string>
     <string name="folder">폴더로 보내기</string>
+    <string name="folder_name">폴더 이름</string>
+    <string name="hidden_folder">숨긴 폴더 목록</string>
     <string name="hide_bottom_view_on_scroll_behavior" translatable="false">com.google.android.material.behavior.HideBottomViewOnScrollBehavior</string>
+    <string name="hide_folder">숨기기</string>
     <string name="ic_back">back icon</string>
     <string description="Content description for an icon that appears in the title area of a dialog" name="icon_content_description">Dialog Icon</string>
     <string name="img_app_logo">logo image</string>
     <string name="item_view_role_description">Tab</string>
+    <string name="lib_name">PatternLockView</string>
     <string name="login">로그인</string>
     <string name="login_email_delimiter">\@</string>
     <string name="login_email_hint">직접입력</string>
@@ -1701,6 +1713,10 @@
     <string name="menu_matching">매칭</string>
     <string name="menu_mypage">마이페이지</string>
     <string name="menu_search">찾기</string>
+    <string name="message_pattern_cleared">Pattern cleared</string>
+    <string name="message_pattern_detected">Pattern drawing completed</string>
+    <string name="message_pattern_dot_added">Dot added to pattern</string>
+    <string name="message_pattern_started">Pattern drawing started</string>
     <string description="Content description for new notification (no number count) [CHAR_LIMIT=NONE]" name="mtrl_badge_numberless_content_description">New notification</string>
     <string description="Content description for a close icon that lets the user remove content from the screen" name="mtrl_chip_close_icon_content_description">Remove %1$s</string>
     <string description="Plural form content description for when the number of new notifications exceeds a maximum count[CHAR_LIMIT=NONE]" name="mtrl_exceed_max_badge_number_content_description" ns1:ignore="PluralsCandidate">More than <ns2:g example="999" id="maximum number">%1$d</ns2:g> new notifications</string>
@@ -1737,6 +1753,7 @@
     <string description="a11y string to indicate this button changes the input mode to a text field [CHAR_LIMIT=NONE]" name="mtrl_picker_toggle_to_text_input_mode">Switch to text input mode</string>
     <string description="a11y string to indicate this button switches the user to choosing a year [CHAR_LIMIT=NONE]" name="mtrl_picker_toggle_to_year_selection">Tap to switch to selecting a year</string>
     <string description="Button text to indicate that the widget will save the user&apos;s selection [CHAR_LIMIT=16]" name="mtrl_timepicker_confirm">OK</string>
+    <string name="my_folder">내폴더</string>
     <string name="nav_app_bar_navigate_up_description">Navigate up</string>
     <string name="nav_app_bar_open_drawer_description">Open navigation drawer</string>
     <string name="password_toggle_content_description">Show password</string>
@@ -1744,8 +1761,10 @@
     <string name="path_password_eye_mask_strike_through" translatable="false">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_eye_mask_visible" translatable="false">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_strike_through" translatable="false">M3.27,4.27 L19.74,20.74</string>
+    <string name="pattern">패턴 변경하기</string>
     <string name="search_menu_title">Search</string>
     <string name="separator">  |  </string>
+    <string name="setting">설정</string>
     <string name="setting_alarm">알림 설정</string>
     <string name="setting_block">차단 관리</string>
     <string name="setting_email">이메일 문의</string>
@@ -11523,6 +11542,11 @@
         </attr>
 
     </declare-styleable>
+    <declare-styleable name="PatternLockView"><attr format="boolean" name="aspectRatioEnabled"/><attr format="enum" name="aspectRatio">
+            <enum name="square" value="0"/>
+            <enum name="width_bias" value="1"/>
+            <enum name="height_bias" value="2"/>
+        </attr><attr format="dimension" name="pathWidth"/><attr format="dimension" name="dotNormalSize"/><attr format="dimension" name="dotSelectedSize"/><attr format="integer" name="dotCount"/><attr format="color" name="normalStateColor"/><attr format="color" name="correctStateColor"/><attr format="color" name="wrongStateColor"/><attr format="integer" name="dotAnimationDuration"/><attr format="integer" name="pathEndAnimationDuration"/></declare-styleable>
     <declare-styleable name="PopupWindow">
         <!-- Whether the popup window should overlap its anchor view. -->
         <attr format="boolean" name="overlapAnchor"/>

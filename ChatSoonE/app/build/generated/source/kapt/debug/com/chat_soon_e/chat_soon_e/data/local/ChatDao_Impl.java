@@ -32,31 +32,25 @@ public final class ChatDao_Impl implements ChatDao {
     this.__insertionAdapterOfChat = new EntityInsertionAdapter<Chat>(__db) {
       @Override
       public String createQuery() {
-        return "INSERT OR ABORT INTO `ChatTable` (`image_name`,`user_idx`,`name`,`dateTime`,`idx`) VALUES (?,?,?,?,nullif(?, 0))";
+        return "INSERT OR ABORT INTO `ChatTable` (`name`,`message`,`viewType`,`isChecked`,`idx`) VALUES (?,?,?,?,nullif(?, 0))";
       }
 
       @Override
       public void bind(SupportSQLiteStatement stmt, Chat value) {
-        if (value.getImage_name() == null) {
+        if (value.getName() == null) {
           stmt.bindNull(1);
         } else {
-          stmt.bindString(1, value.getImage_name());
+          stmt.bindString(1, value.getName());
         }
-        if (value.getUser_idx() == null) {
+        if (value.getMessage() == null) {
           stmt.bindNull(2);
         } else {
-          stmt.bindString(2, value.getUser_idx());
+          stmt.bindString(2, value.getMessage());
         }
-        if (value.getName() == null) {
-          stmt.bindNull(3);
-        } else {
-          stmt.bindString(3, value.getName());
-        }
-        if (value.getDateTime() == null) {
-          stmt.bindNull(4);
-        } else {
-          stmt.bindString(4, value.getDateTime());
-        }
+        stmt.bindLong(3, value.getViewType());
+        final int _tmp;
+        _tmp = value.isChecked() ? 1 : 0;
+        stmt.bindLong(4, _tmp);
         stmt.bindLong(5, value.getIdx());
       }
     };
@@ -74,31 +68,25 @@ public final class ChatDao_Impl implements ChatDao {
     this.__updateAdapterOfChat = new EntityDeletionOrUpdateAdapter<Chat>(__db) {
       @Override
       public String createQuery() {
-        return "UPDATE OR ABORT `ChatTable` SET `image_name` = ?,`user_idx` = ?,`name` = ?,`dateTime` = ?,`idx` = ? WHERE `idx` = ?";
+        return "UPDATE OR ABORT `ChatTable` SET `name` = ?,`message` = ?,`viewType` = ?,`isChecked` = ?,`idx` = ? WHERE `idx` = ?";
       }
 
       @Override
       public void bind(SupportSQLiteStatement stmt, Chat value) {
-        if (value.getImage_name() == null) {
+        if (value.getName() == null) {
           stmt.bindNull(1);
         } else {
-          stmt.bindString(1, value.getImage_name());
+          stmt.bindString(1, value.getName());
         }
-        if (value.getUser_idx() == null) {
+        if (value.getMessage() == null) {
           stmt.bindNull(2);
         } else {
-          stmt.bindString(2, value.getUser_idx());
+          stmt.bindString(2, value.getMessage());
         }
-        if (value.getName() == null) {
-          stmt.bindNull(3);
-        } else {
-          stmt.bindString(3, value.getName());
-        }
-        if (value.getDateTime() == null) {
-          stmt.bindNull(4);
-        } else {
-          stmt.bindString(4, value.getDateTime());
-        }
+        stmt.bindLong(3, value.getViewType());
+        final int _tmp;
+        _tmp = value.isChecked() ? 1 : 0;
+        stmt.bindLong(4, _tmp);
         stmt.bindLong(5, value.getIdx());
         stmt.bindLong(6, value.getIdx());
       }
@@ -148,39 +136,33 @@ public final class ChatDao_Impl implements ChatDao {
     __db.assertNotSuspendingTransaction();
     final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
     try {
-      final int _cursorIndexOfImageName = CursorUtil.getColumnIndexOrThrow(_cursor, "image_name");
-      final int _cursorIndexOfUserIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "user_idx");
       final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "name");
-      final int _cursorIndexOfDateTime = CursorUtil.getColumnIndexOrThrow(_cursor, "dateTime");
+      final int _cursorIndexOfMessage = CursorUtil.getColumnIndexOrThrow(_cursor, "message");
+      final int _cursorIndexOfViewType = CursorUtil.getColumnIndexOrThrow(_cursor, "viewType");
+      final int _cursorIndexOfIsChecked = CursorUtil.getColumnIndexOrThrow(_cursor, "isChecked");
       final int _cursorIndexOfIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "idx");
       final List<Chat> _result = new ArrayList<Chat>(_cursor.getCount());
       while(_cursor.moveToNext()) {
         final Chat _item;
-        final String _tmpImage_name;
-        if (_cursor.isNull(_cursorIndexOfImageName)) {
-          _tmpImage_name = null;
-        } else {
-          _tmpImage_name = _cursor.getString(_cursorIndexOfImageName);
-        }
-        final String _tmpUser_idx;
-        if (_cursor.isNull(_cursorIndexOfUserIdx)) {
-          _tmpUser_idx = null;
-        } else {
-          _tmpUser_idx = _cursor.getString(_cursorIndexOfUserIdx);
-        }
         final String _tmpName;
         if (_cursor.isNull(_cursorIndexOfName)) {
           _tmpName = null;
         } else {
           _tmpName = _cursor.getString(_cursorIndexOfName);
         }
-        final String _tmpDateTime;
-        if (_cursor.isNull(_cursorIndexOfDateTime)) {
-          _tmpDateTime = null;
+        final String _tmpMessage;
+        if (_cursor.isNull(_cursorIndexOfMessage)) {
+          _tmpMessage = null;
         } else {
-          _tmpDateTime = _cursor.getString(_cursorIndexOfDateTime);
+          _tmpMessage = _cursor.getString(_cursorIndexOfMessage);
         }
-        _item = new Chat(_tmpImage_name,_tmpUser_idx,_tmpName,_tmpDateTime);
+        final int _tmpViewType;
+        _tmpViewType = _cursor.getInt(_cursorIndexOfViewType);
+        final boolean _tmpIsChecked;
+        final int _tmp;
+        _tmp = _cursor.getInt(_cursorIndexOfIsChecked);
+        _tmpIsChecked = _tmp != 0;
+        _item = new Chat(_tmpName,_tmpMessage,_tmpViewType,_tmpIsChecked);
         final int _tmpIdx;
         _tmpIdx = _cursor.getInt(_cursorIndexOfIdx);
         _item.setIdx(_tmpIdx);
@@ -202,38 +184,32 @@ public final class ChatDao_Impl implements ChatDao {
     __db.assertNotSuspendingTransaction();
     final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
     try {
-      final int _cursorIndexOfImageName = CursorUtil.getColumnIndexOrThrow(_cursor, "image_name");
-      final int _cursorIndexOfUserIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "user_idx");
       final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "name");
-      final int _cursorIndexOfDateTime = CursorUtil.getColumnIndexOrThrow(_cursor, "dateTime");
+      final int _cursorIndexOfMessage = CursorUtil.getColumnIndexOrThrow(_cursor, "message");
+      final int _cursorIndexOfViewType = CursorUtil.getColumnIndexOrThrow(_cursor, "viewType");
+      final int _cursorIndexOfIsChecked = CursorUtil.getColumnIndexOrThrow(_cursor, "isChecked");
       final int _cursorIndexOfIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "idx");
       final Chat _result;
       if(_cursor.moveToFirst()) {
-        final String _tmpImage_name;
-        if (_cursor.isNull(_cursorIndexOfImageName)) {
-          _tmpImage_name = null;
-        } else {
-          _tmpImage_name = _cursor.getString(_cursorIndexOfImageName);
-        }
-        final String _tmpUser_idx;
-        if (_cursor.isNull(_cursorIndexOfUserIdx)) {
-          _tmpUser_idx = null;
-        } else {
-          _tmpUser_idx = _cursor.getString(_cursorIndexOfUserIdx);
-        }
         final String _tmpName;
         if (_cursor.isNull(_cursorIndexOfName)) {
           _tmpName = null;
         } else {
           _tmpName = _cursor.getString(_cursorIndexOfName);
         }
-        final String _tmpDateTime;
-        if (_cursor.isNull(_cursorIndexOfDateTime)) {
-          _tmpDateTime = null;
+        final String _tmpMessage;
+        if (_cursor.isNull(_cursorIndexOfMessage)) {
+          _tmpMessage = null;
         } else {
-          _tmpDateTime = _cursor.getString(_cursorIndexOfDateTime);
+          _tmpMessage = _cursor.getString(_cursorIndexOfMessage);
         }
-        _result = new Chat(_tmpImage_name,_tmpUser_idx,_tmpName,_tmpDateTime);
+        final int _tmpViewType;
+        _tmpViewType = _cursor.getInt(_cursorIndexOfViewType);
+        final boolean _tmpIsChecked;
+        final int _tmp;
+        _tmp = _cursor.getInt(_cursorIndexOfIsChecked);
+        _tmpIsChecked = _tmp != 0;
+        _result = new Chat(_tmpName,_tmpMessage,_tmpViewType,_tmpIsChecked);
         final int _tmpIdx;
         _tmpIdx = _cursor.getInt(_cursorIndexOfIdx);
         _result.setIdx(_tmpIdx);
