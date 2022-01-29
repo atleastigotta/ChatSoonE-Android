@@ -20,4 +20,5 @@
 
     <!-- 로그인 -->
     <color name="login_button">#FFC107</color>
+
 </resources>

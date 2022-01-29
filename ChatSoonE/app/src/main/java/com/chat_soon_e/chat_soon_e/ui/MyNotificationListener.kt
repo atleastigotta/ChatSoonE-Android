@@ -1,13 +1,23 @@
 package com.chat_soon_e.chat_soon_e.ui
 
 import android.app.Notification
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.Icon
 import android.os.Build
 import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
 import android.util.Log
 import androidx.annotation.RequiresApi
+import androidx.core.graphics.drawable.toBitmap
 import com.chat_soon_e.chat_soon_e.data.entities.Chat
+import com.chat_soon_e.chat_soon_e.data.entities.OtherUser
 import com.chat_soon_e.chat_soon_e.data.local.AppDatabase
+import com.chat_soon_e.chat_soon_e.data.remote.auth.USER_ID
+import java.io.File
+import java.io.FileNotFoundException
+import java.io.FileOutputStream
+import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -15,6 +25,7 @@ import java.util.*
 class MyNotificationListener: NotificationListenerService() {
     private lateinit var chatDB: AppDatabase
     val TAG = "NotificationListener"
+    private lateinit var database: AppDatabase
 
     override fun onListenerConnected() {
         super.onListenerConnected()
@@ -30,34 +41,69 @@ class MyNotificationListener: NotificationListenerService() {
         if(packageName != null && packageName == "com.kakao.talk") {
             // 데이터베이스 연결
             chatDB = AppDatabase.getInstance(this)!!
-
             val extras = sbn.notification.extras
-            val name = extras.getString(Notification.EXTRA_TITLE)
-            val text = extras.getCharSequence(Notification.EXTRA_TEXT)
-            val subText = extras.getCharSequence(Notification.EXTRA_SUB_TEXT)
+            val name = extras.getString(Notification.EXTRA_TITLE)//발신자
+            val text = extras.getCharSequence(Notification.EXTRA_TEXT)//내용
+            val subText = extras.getCharSequence(Notification.EXTRA_SUB_TEXT)//그룹톡일 경우
+            //postTime, mill->Date 변환
+            val millisecond = sbn.postTime
+            val date = Date(millisecond)
+            //Icon, cache에 png 전환 후 저장
+            val largeIcon: Icon? = notification.getLargeIcon()
 
-            // millisecond로 받아와지는 값을 변환
-//            val millisecond = sbn.postTime
-//            val date = Date(millisecond)
-//            val dateFormat = SimpleDateFormat("yyyy-MM-dd kk:mm:ss E", Locale("ko", "KR"))
-//            val dateString = dateFormat.format(dateFormat)
+            //알림 메세지(264개의 메세지 등) 제외 대화 내용 DB 저장
+            if(name!=null){
+                database= AppDatabase.getInstance(this)!!
+                var otherUser=database.otherUserDao().getOtherUserByNameId(name.toString(), USER_ID)
+                //이미 있던 유저인지 확인
 
-            // 사진 저장, value icon (아직 확인 X)
-            // val smallIcon: Icon = notification.smallIcon()//이거는 확인 안함, 사진 저장, value icon
-            // val largeIcon: Icon = notification.getLargeIcon()
-
-            // 데이터베이스에 받아온 내용 저장
-            //chatDB.chatDao().insert(Chat(null, name.toString(), text.toString(), "f"))
-
+                //이미 있던 유저라면 Chat 만 추가
+                if(otherUser!=null){
+                    database.chatDao().insert(Chat(USER_ID,otherUser.other_user_idx, subText.toString(),text.toString(), date, -1, "activate" ))
+                    Log.d(TAG,database.chatDao().getChatByIdx(otherUser.other_user_idx).toString())
+                }else{//새로운 유저라면 otherUser, Chat 저장, 사진 이름(image): otherUser.name_postTime.millsecond.png
+                    var fileName:String=""
+                    if(largeIcon!=null){
+                        fileName=saveCache(convertIconToBitmap(largeIcon), name+"_"+millisecond.toString())
+                    }
+                    database.otherUserDao().insert(OtherUser(name.toString(), fileName, "activate", USER_ID))
+                    val other=database.otherUserDao().getOtherUserByNameId(name.toString(), USER_ID)
+                    database.chatDao().insert(Chat(USER_ID,other.other_user_idx, subText.toString(),text.toString(), date, -1, "activate"))
+                    Log.d(TAG, "database: "+database.chatDao().getChatByIdx(other.other_user_idx).toString())
+                }
+            }
             Log.d(
                 TAG, "onNotificationPosted ~ " +
-                        " packageName: " + sbn.packageName + // 앱 이름
-                        " id: " + sbn.id + // id
-                        //" postTime: " + dateString +
-                        " name: " + name + // 이름
-                        " text : " + text // 내용
-                        + "subtext: "+ subText // 그룹 채팅방 일때 그룹명
+                        " id: " + sbn.id +
+                        " name: " + name +
+                        " text : " + text
+                        + "subtext: "+ subText+
+                        "postTime: "+date.toString()
             )
         }
+
+    }
+    //Icon을 Bitmap으로 전환
+    private fun convertIconToBitmap(icon:Icon): Bitmap {
+        val drawable=icon.loadDrawable(this)
+        val bitmap=drawable.toBitmap()
+        return bitmap
+    }
+    //Bitmap을 캐시 디렉토리에 저장, 파일 이름 저장
+    private fun saveCache(bitmap:Bitmap, name:String):String{
+        val storage=cacheDir//cacheDir 경로
+        val tempFile= File(storage, name)
+        try{
+            tempFile.createNewFile()
+            val out= FileOutputStream(tempFile)
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
+            out.close()
+
+        }catch (e: FileNotFoundException){
+            Log.e("MyTag","FileNotFoundException : " + e.message);
+        }catch (e: IOException) {
+            Log.e("MyTag", "IOException : " + e.message)
+        }
+        return name
     }
 }

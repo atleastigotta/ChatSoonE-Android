@@ -2882,6 +2882,7 @@ id item_chat_list_content_tv
 id item_chat_list_date_time_tv
 id item_chat_list_default_layout
 id item_chat_list_name_tv
+id item_chat_list_profile_cv
 id item_chat_list_profile_iv
 id item_my_folder_iv
 id item_my_folder_tv
@@ -2898,18 +2899,6 @@ id line3
 id linear
 id listMode
 id list_item
-id login_address_underscore_view
-id login_at_sign_tv
-id login_direct_input_et
-id login_error_tv
-id login_flo_logo_iv
-id login_id_et
-id login_id_underscore_view
-id login_loading_pb
-id login_password_et
-id login_password_underscore_view
-id login_sign_in_btn
-id login_sign_up_tv
 id main_activity_navgraph
 id main_block_iv
 id main_bottom_bar_view
@@ -3162,6 +3151,7 @@ id stretch
 id submenuarrow
 id submit_area
 id supportScrollUp
+id switch_id
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -3329,7 +3319,6 @@ layout activity_folder
 layout activity_hidden_folder
 layout activity_input_pattern
 layout activity_kakao_auth
-layout activity_login
 layout activity_main
 layout activity_main_content
 layout activity_main_drawer_header
@@ -3363,9 +3352,15 @@ layout fragment_home
 layout fragment_match
 layout fragment_mypage
 layout fragment_search
+<<<<<<< HEAD
 layout item_chat_list_choose
 layout item_chat_list_default
 layout item_my_folder
+=======
+layout item_chat_list
+layout layout_switch
+layout loading_row
+>>>>>>> upstream/juyeon
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title

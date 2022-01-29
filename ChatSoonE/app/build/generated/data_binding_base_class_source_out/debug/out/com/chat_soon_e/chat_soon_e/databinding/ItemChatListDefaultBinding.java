@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
@@ -33,17 +34,25 @@ public final class ItemChatListDefaultBinding implements ViewBinding {
   public final TextView itemChatListNameTv;
 
   @NonNull
+  public final CardView itemChatListProfileCv;
+
+  @NonNull
   public final ImageView itemChatListProfileIv;
 
   private ItemChatListDefaultBinding(@NonNull ConstraintLayout rootView,
       @NonNull TextView itemChatListContentTv, @NonNull TextView itemChatListDateTimeTv,
+<<<<<<< HEAD:ChatSoonE/app/build/generated/data_binding_base_class_source_out/debug/out/com/chat_soon_e/chat_soon_e/databinding/ItemChatListDefaultBinding.java
       @NonNull ConstraintLayout itemChatListDefaultLayout, @NonNull TextView itemChatListNameTv,
+=======
+      @NonNull TextView itemChatListNameTv, @NonNull CardView itemChatListProfileCv,
+>>>>>>> upstream/juyeon:ChatSoonE/app/build/generated/data_binding_base_class_source_out/debug/out/com/chat_soon_e/chat_soon_e/databinding/ItemChatListBinding.java
       @NonNull ImageView itemChatListProfileIv) {
     this.rootView = rootView;
     this.itemChatListContentTv = itemChatListContentTv;
     this.itemChatListDateTimeTv = itemChatListDateTimeTv;
     this.itemChatListDefaultLayout = itemChatListDefaultLayout;
     this.itemChatListNameTv = itemChatListNameTv;
+    this.itemChatListProfileCv = itemChatListProfileCv;
     this.itemChatListProfileIv = itemChatListProfileIv;
   }
 
@@ -94,15 +103,26 @@ public final class ItemChatListDefaultBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.item_chat_list_profile_cv;
+      CardView itemChatListProfileCv = ViewBindings.findChildViewById(rootView, id);
+      if (itemChatListProfileCv == null) {
+        break missingId;
+      }
+
       id = R.id.item_chat_list_profile_iv;
       ImageView itemChatListProfileIv = ViewBindings.findChildViewById(rootView, id);
       if (itemChatListProfileIv == null) {
         break missingId;
       }
 
+<<<<<<< HEAD:ChatSoonE/app/build/generated/data_binding_base_class_source_out/debug/out/com/chat_soon_e/chat_soon_e/databinding/ItemChatListDefaultBinding.java
       return new ItemChatListDefaultBinding((ConstraintLayout) rootView, itemChatListContentTv,
           itemChatListDateTimeTv, itemChatListDefaultLayout, itemChatListNameTv,
           itemChatListProfileIv);
+=======
+      return new ItemChatListBinding((ConstraintLayout) rootView, itemChatListContentTv,
+          itemChatListDateTimeTv, itemChatListNameTv, itemChatListProfileCv, itemChatListProfileIv);
+>>>>>>> upstream/juyeon:ChatSoonE/app/build/generated/data_binding_base_class_source_out/debug/out/com/chat_soon_e/chat_soon_e/databinding/ItemChatListBinding.java
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

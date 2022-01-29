@@ -8,6 +8,7 @@
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/drawable/ic_baseline_create_new_folder_24.xml" value="0.2564814814814815" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.26666666666666666" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/drawable/ic_baseline_menu_black_24.xml" value="0.2564814814814815" />
+        <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/drawable/selector_chat.xml" value="0.1" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/drawable/selector_chat_list.xml" value="0.22685185185185186" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/drawable/selector_switch.xml" value="0.2037037037037037" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/drawable/selector_thumb.xml" value="0.2037037037037037" />
@@ -19,13 +20,14 @@
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/font-v26/font.xml" value="0.2037037037037037" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/font/bmjua.xml" value="0.28125" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/font/font.xml" value="0.2037037037037037" />
-        <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/activity_chat.xml" value="0.12208713272543059" />
+        <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/activity_chat.xml" value="0.2" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/activity_create_password.xml" value="0.10081053698074975" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/activity_create_pattern.xml" value="0.2" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/activity_folder.xml" value="0.264" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/activity_hidden_folder.xml" value="0.1" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/activity_input_password.xml" value="0.10081053698074975" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/activity_input_pattern.xml" value="0.2" />
+        <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/activity_login.xml" value="0.25104166666666666" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/activity_main_content.xml" value="0.2" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/activity_main_drawer.xml" value="0.10277777777777777" />
@@ -41,6 +43,8 @@
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/activity_signup.xml" value="0.13179347826086957" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/drawer_main.xml" value="0.16893115942028986" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/drawer_main_header.xml" value="0.2223731884057971" />
+        <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/item_chat.xml" value="0.25104166666666666" />
+        <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/item_chat_choose.xml" value="0.25104166666666666" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/item_chat_list.xml" value="0.16" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/item_chat_list_choose.xml" value="0.10916919959473151" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/item_my_folder.xml" value="0.2" />

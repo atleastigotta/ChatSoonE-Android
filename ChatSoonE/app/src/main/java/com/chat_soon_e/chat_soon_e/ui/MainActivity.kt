@@ -7,51 +7,53 @@ import com.chat_soon_e.chat_soon_e.data.entities.Chat
 import com.chat_soon_e.chat_soon_e.data.local.AppDatabase
 import com.chat_soon_e.chat_soon_e.databinding.ActivityMainBinding
 import android.content.Intent
-import android.graphics.Color
 import android.graphics.Rect
+import android.os.Build
 import android.view.MenuItem
 import android.view.View
-import android.widget.CompoundButton
 import android.widget.PopupMenu
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.navigation.NavigationView
-import android.widget.Switch
 import androidx.activity.viewModels
+import com.chat_soon_e.chat_soon_e.data.entities.ChatList
+import com.chat_soon_e.chat_soon_e.data.remote.auth.USER_ID
+import java.util.*
+import kotlin.collections.ArrayList
 
 import androidx.appcompat.widget.SwitchCompat
 import com.chat_soon_e.chat_soon_e.R
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate), NavigationView.OnNavigationItemSelectedListener {
-    private lateinit var chatDB: AppDatabase            // chat list를 담고 있는 데이터베이스
+//    private lateinit var chatDB: AppDatabase            // chat list를 담고 있는 데이터베이스
     private lateinit var mainRVAdapter: MainRVAdapter   // chat list recycler view adpater
     private var chatList = ArrayList<Chat>()            // 데이터베이스로부터 chat list를 받아올 변수
+    private var permission: Boolean = true              // 알림 허용 변수
 
     // ViewModel
     private val chatViewModel: ChatViewModel by viewModels()
 
     // onCreate() 이후
     override fun initAfterBinding() {
-        initNotificationListener()  // NotificationListener (알림 권한 허용)
+        Log.d("MAIN/LIFE-CYCLE", "after onCreate()")
         initChatList()              // chat list 데이터 초기화
+    }
+
+    // initAfterBinding() 이후 실행
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onStart() {
+        super.onStart()
+        Log.d("MAIN/LIFE-CYCLE", "onStart()")
+
+        //initNotificationListener()  // NotificationListener (알림 권한 허용)
+        //initChatList()              // chat list 데이터 초기화
         initRecyclerView()          // RecylcerView Adapter 연결 & 기타 설정
         initDrawerLayout()          // 설정 메뉴창 설정
         initClickListener()         // 여러 ClickListener 초기화
     }
-
-    // NotificationListener 실행
-    private fun initNotificationListener() {
-        // 권한 허용이 안 되어 있다면 권한 허용을 하는 action을 시작한다.
-        if(!permissionGrantred()) {
-            val intent = Intent(
-                "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"
-            )
-            startActivity(intent)
-        }
-    }
-
     // 권한 체크
     private fun permissionGrantred(): Boolean {
         return NotificationManagerCompat.getEnabledListenerPackages(this).any {
@@ -59,47 +61,48 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         }
     }
 
-    // chat list를 불러와 화면에 띄워주는 역할
-    // 일단 더미 데이터로 구현
+    // chat list를 불러와 화면의 띄워주는 역할
     private fun initChatList() {
-        chatDB = AppDatabase.getInstance(this)!!
-        chatList = chatDB.chatDao().getChatList() as ArrayList
+        if(chatList.isNotEmpty()) return
+
+        val database = AppDatabase.getInstance(this)!!
+        val chatDB = database.chatDao().getRecentChat(USER_ID)
+        chatList.addAll(chatDB)
+        Log.d("DBCHECK", chatDB.toString())
 
         // 만약 데이터베이스에서 받아온 chat list가 비어있지 않을 경우
         // 이미 데이터가 있다는 것을 뜻하므로 함수를 리턴한다.
-        if(chatList.isNotEmpty()) return
-
         // 만약 데이터베이스에서 받아온 chat list가 비어있는 경우
-        chatDB.chatDao().insert(Chat("강은서", "designer"))
-        chatDB.chatDao().insert(Chat("김민경", "node.js"))
-        chatDB.chatDao().insert(Chat("남선우", "android"))
-        chatDB.chatDao().insert(Chat("변재호", "node.js"))
-        chatDB.chatDao().insert(Chat("이주연", "android"))
-        chatDB.chatDao().insert(Chat("UMC", "android & server"))
-        chatDB.chatDao().insert(Chat("친구1", "안녕?"))
-        chatDB.chatDao().insert(Chat("친구2", "Hello."))
-        chatDB.chatDao().insert(Chat("친구3", "봉쥬르"))
-        chatDB.chatDao().insert(Chat("친구4", "반가워"))
-        chatDB.chatDao().insert(Chat("친구5", "Hi!"))
-        chatDB.chatDao().insert(Chat("그룹1", "이모티콘"))
-        chatDB.chatDao().insert(Chat("그룹2", "이모티콘"))
-        chatDB.chatDao().insert(Chat("그룹3", "이모티콘"))
+//        chatDB.chatDao().insert(Chat("강은서", "designer"))
+//        chatDB.chatDao().insert(Chat("김민경", "node.js"))
+//        chatDB.chatDao().insert(Chat("남선우", "android"))
+//        chatDB.chatDao().insert(Chat("변재호", "node.js"))
+//        chatDB.chatDao().insert(Chat("이주연", "android"))
+//        chatDB.chatDao().insert(Chat("UMC", "android & server"))
+//        chatDB.chatDao().insert(Chat("친구1", "안녕?"))
+//        chatDB.chatDao().insert(Chat("친구2", "Hello."))
+//        chatDB.chatDao().insert(Chat("친구3", "봉쥬르"))
+//        chatDB.chatDao().insert(Chat("친구4", "반가워"))
+//        chatDB.chatDao().insert(Chat("친구5", "Hi!"))
+//        chatDB.chatDao().insert(Chat("그룹1", "이모티콘"))
+//        chatDB.chatDao().insert(Chat("그룹2", "이모티콘"))
+//        chatDB.chatDao().insert(Chat("그룹3", "이모티콘"))
     }
 
     // RecyclerView
     private fun initRecyclerView() {
+        val database = AppDatabase.getInstance(this)!!
+        val chatDB=database.chatDao().getRecentChat(USER_ID)
+        chatList.addAll(chatDB)
+
         // RecyclerView 구분선
         val recyclerView = binding.mainContent.mainChatListRecyclerView
         val dividerItemDecoration =
             DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL)
         recyclerView.addItemDecoration(dividerItemDecoration)
 
-        // 더미 데이터와 어댑터 연결
-        chatDB = AppDatabase.getInstance(this)!!
-        chatList = chatDB.chatDao().getChatList() as ArrayList
-
         // RecyclerView Click Listener
-        mainRVAdapter = MainRVAdapter(chatList, object: MainRVAdapter.MyItemClickListener {
+        mainRVAdapter = MainRVAdapter(chatList, this, object: MainRVAdapter.MyItemClickListener {
             // 선택 모드
             override fun onChooseChatClick(view: View, position: Int) {
                 mainRVAdapter.setChecked(position)
@@ -169,9 +172,11 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             // 알림 권한이 허용되어 있는 경우
             drawerSwitch.toggle()
             drawerSwitch.isChecked = true
+            permission = true
         } else {
             // 알림 권한이 허용되어 있지 않은 경우
             drawerSwitch.isChecked = false
+            permission = false
         }
 
         // 스위치(토글)를 눌렀을 때, 즉 스위치 체크 상태[방향]가 변했을 때 처리해주는 리스너
@@ -179,23 +184,17 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             if (isChecked) {
                 // 알림 권한을 허용했을 때 코드를 작성해주시면 됩니다.
                 Toast.makeText(this, "알림 권한을 허용합니다.", Toast.LENGTH_SHORT).show()
+                permission = true
             } else {
                 // 알림 권한을 허용하지 않았을 때 코드를 작성해주시면 됩니다.
                 Toast.makeText(this, "알림 권한을 허용하지 않습니다.", Toast.LENGTH_SHORT).show()
+                permission = false
             }
         }
-
-//        // 스위치 클릭 리스너 설정 (위의 setOnCheckedChangeListener만으로도 구현이 되는 것 같아서 주석 처리해두었습니다.)
-//        drawerSwitch.setOnClickListener {
-//            if(drawerSwitch.isChecked) {
-//                Toast.makeText(this, "알림 권한을 허용하지 않습니다.", Toast.LENGTH_SHORT).show()
-//            } else {
-//                Toast.makeText(this, "알림 권한을 허용합니다.", Toast.LENGTH_SHORT).show()
-//            }
-//        }
     }
 
     // 설정 메뉴 창의 네비게이션 드로어의 아이템들에 대한 이벤트를 처리
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             // 설정 메뉴창의 아이템(목록)들을 클릭했을 때
@@ -270,6 +269,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun initClickListener() {
         // 내폴더 아이콘 클릭시 폴더 화면으로 이동
         binding.mainContent.mainMyFolderIv.setOnClickListener {

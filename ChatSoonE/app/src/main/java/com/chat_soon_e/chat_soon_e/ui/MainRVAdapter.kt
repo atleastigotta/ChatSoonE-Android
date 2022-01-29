@@ -1,7 +1,9 @@
 package com.chat_soon_e.chat_soon_e.ui
 
 import android.annotation.SuppressLint
-import android.graphics.Color
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.util.Log
 import android.util.SparseBooleanArray
 import android.view.LayoutInflater
@@ -12,8 +14,15 @@ import com.chat_soon_e.chat_soon_e.data.entities.Chat
 import com.chat_soon_e.chat_soon_e.data.entities.ChatViewType
 import com.chat_soon_e.chat_soon_e.databinding.ItemChatListChooseBinding
 import com.chat_soon_e.chat_soon_e.databinding.ItemChatListDefaultBinding
+import com.chat_soon_e.chat_soon_e.data.entities.ChatList
+import com.chat_soon_e.chat_soon_e.data.local.AppDatabase
+import com.chat_soon_e.chat_soon_e.data.remote.auth.USER_ID
+import java.io.File
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
-class MainRVAdapter(private var chatList: ArrayList<Chat>, private val mItemClickListener: MyItemClickListener)
+class MainRVAdapter(private var chatList: ArrayList<Chat>, private val context: Context, private val mItemClickListener: MyItemClickListener)
     : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var selectedIndex = -1
     private var selectedItemList: SparseBooleanArray = SparseBooleanArray(0)
@@ -26,17 +35,21 @@ class MainRVAdapter(private var chatList: ArrayList<Chat>, private val mItemClic
 
     // 뷰홀더를 생성해줘야 할 때 호출되는 함수로, 아이템 뷰 객체를 만들어서 뷰 홀더에 던져준다.
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return when(viewType) {
+        return when (viewType) {
             ChatViewType.CHOOSE -> {
                 ChooseViewHolder(
                     ItemChatListChooseBinding.inflate(
-                    LayoutInflater.from(viewGroup.context), viewGroup, false),
-                    mItemClickListener = mItemClickListener)
+                        LayoutInflater.from(viewGroup.context), viewGroup, false
+                    ),
+                    mItemClickListener = mItemClickListener
+                )
             }
             else -> {
                 DefaultViewHolder(
                     ItemChatListDefaultBinding.inflate(
-                    LayoutInflater.from(viewGroup.context), viewGroup, false))
+                        LayoutInflater.from(viewGroup.context), viewGroup, false
+                    )
+                )
             }
         }
     }
@@ -126,9 +139,17 @@ class MainRVAdapter(private var chatList: ArrayList<Chat>, private val mItemClic
         }
 
         fun bind(chat: Chat) {
-            // 뷰 바인딩
-            binding.itemChatListNameTv.text = chat.name
+            val db = AppDatabase.getInstance(context)!!
+            val otherUser = db.otherUserDao().getOtherUserById(chat.other_user_idx)
+            val name = otherUser.name
+            if(name != null){
+                binding.itemChatListProfileIv.setImageBitmap(loadBitmap(name))
+            }
+            if(otherUser.name != null)
+                binding.itemChatListNameTv.text = otherUser.name
             binding.itemChatListContentTv.text = chat.message
+            if(chat.postTime != null)
+                binding.itemChatListDateTimeTv.text = dateToString(chat.postTime)
         }
     }
 
@@ -143,9 +164,49 @@ class MainRVAdapter(private var chatList: ArrayList<Chat>, private val mItemClic
         }
 
         fun bind(chat: Chat) {
-            // 뷰 바인딩
-            binding.itemChatListNameTv.text = chat.name
+            val db = AppDatabase.getInstance(context)!!
+            val otherUser = db.otherUserDao().getOtherUserById(chat.other_user_idx)
+            val name = otherUser.name
+            if(name != null){
+                binding.itemChatListProfileIv.setImageBitmap(loadBitmap(name))
+            }
+            if(otherUser.name != null)
+                binding.itemChatListNameTv.text = otherUser.name
             binding.itemChatListContentTv.text = chat.message
+            if(chat.postTime != null)
+                binding.itemChatListDateTimeTv.text = dateToString(chat.postTime)
         }
+    }
+
+    private fun dateToString(date:Date):String{
+        //오늘이 아니라면 날짜만
+        var str=""
+        val today=Date()
+        if(date.year == today.year && date.month == today.month && date.date==today.date){
+            val time = SimpleDateFormat("a hh:mm")
+            str= time.format(date).toString()
+        }
+        else{
+            val time = SimpleDateFormat("MM월 DD일")
+            str=time.format(time).toString()
+        }
+        return str
+    }
+
+    private fun loadBitmap(name: String): Bitmap {
+        val file = File(context.cacheDir.toString())
+        val files = file.listFiles()
+        var list: String=""
+        for (tempFile in files) {
+            Log.d("MyTag", tempFile.name)
+            //name이 들어가 있는 파일 찾기
+            if (tempFile.name.contains(name)) {
+                list=tempFile.name
+            }
+        }
+
+        val path = context.cacheDir.toString()+"/"+list
+        val bitmap = BitmapFactory.decodeFile(path)
+        return bitmap
     }
 }

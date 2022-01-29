@@ -48,9 +48,14 @@
             </intent-filter>
         </activity>
         <activity android:name="com.chat_soon_e.chat_soon_e.ui.PermissionActivity" />
+<<<<<<< HEAD
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.LoginActivity"
             android:exported="true" />
+=======
+
+        <!-- SignUpActivity -->
+>>>>>>> upstream/juyeon
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.SignUpActivity"
             android:exported="true" />

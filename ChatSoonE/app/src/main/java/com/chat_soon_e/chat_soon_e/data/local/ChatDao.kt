@@ -14,9 +14,14 @@ interface ChatDao {
     @Delete
     fun delete(chat: Chat)
 
+    // 상대방 대화 가져오기
+    @Query("SELECT * FROM ChatTable WHERE other_user_idx = :idx")
+    fun getChatByIdx(idx: Int): List<Chat>
+
+    // 채팅방 목록 구현을 위해 사용자의 각 other user idx(상대방)들의 대화 한개씩만 가져옴
+    @Query("SELECT * FROM ChatTable WHERE user_idx= :id GROUP BY other_user_idx ORDER BY postTime ASC")
+    fun getRecentChat(id:Long): List<Chat>
+
     @Query("SELECT * FROM ChatTable")
     fun getChatList(): List<Chat>
-
-    @Query("SELECT * FROM ChatTable WHERE idx = :idx")
-    fun getChatByIdx(idx: Int): Chat
 }
