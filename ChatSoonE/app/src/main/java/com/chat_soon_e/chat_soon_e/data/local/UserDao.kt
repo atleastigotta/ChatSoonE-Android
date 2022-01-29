@@ -10,6 +10,7 @@ interface UserDao {
 
     @Update
     fun update(user:User)
+
     //유저의 상태 업데이트
     @Query("UPDATE UserTable SET status= :status WHERE idx= :id")
     fun updateStatus(id:Long, status:String)

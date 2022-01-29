@@ -95,7 +95,7 @@ dependencies {
     // RecyclerView paging 라이브러리
     implementation 'com.github.markomilos:paginate:1.0.0'
 
-    //spf 보안
+    // spf 보안
     implementation "androidx.security:security-crypto:1.0.0-rc03"
 
     // PatternLockView
@@ -103,4 +103,11 @@ dependencies {
 
     // by viewmodels()
     implementation "androidx.activity:activity-ktx:1.3.1"
+
+    // FloatingActionButton
+    //noinspection GradleCompatible
+    implementation 'com.android.support:design:27.1.1'
+
+    // androidx
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }
