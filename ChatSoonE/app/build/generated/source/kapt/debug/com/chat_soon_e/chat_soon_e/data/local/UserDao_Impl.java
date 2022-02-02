@@ -35,11 +35,7 @@ public final class UserDao_Impl implements UserDao {
     this.__insertionAdapterOfUser = new EntityInsertionAdapter<User>(__db) {
       @Override
       public String createQuery() {
-<<<<<<< HEAD
-        return "INSERT OR ABORT INTO `UserTable` (`id`,`nickname`,`email`,`status`,`createdAt`,`updatedAt`,`idx`) VALUES (?,?,?,?,?,?,nullif(?, 0))";
-=======
         return "INSERT OR ABORT INTO `UserTable` (`idx`,`nickname`,`email`,`status`) VALUES (?,?,?,?)";
->>>>>>> upstream/juyeon
       }
 
       @Override
@@ -60,20 +56,6 @@ public final class UserDao_Impl implements UserDao {
         } else {
           stmt.bindString(4, value.getStatus());
         }
-<<<<<<< HEAD
-        if (value.getCreatedAt() == null) {
-          stmt.bindNull(5);
-        } else {
-          stmt.bindString(5, value.getCreatedAt());
-        }
-        if (value.getUpdatedAt() == null) {
-          stmt.bindNull(6);
-        } else {
-          stmt.bindString(6, value.getUpdatedAt());
-        }
-        stmt.bindLong(7, value.getIdx());
-=======
->>>>>>> upstream/juyeon
       }
     };
     this.__deletionAdapterOfUser = new EntityDeletionOrUpdateAdapter<User>(__db) {
@@ -90,11 +72,7 @@ public final class UserDao_Impl implements UserDao {
     this.__updateAdapterOfUser = new EntityDeletionOrUpdateAdapter<User>(__db) {
       @Override
       public String createQuery() {
-<<<<<<< HEAD
-        return "UPDATE OR ABORT `UserTable` SET `id` = ?,`nickname` = ?,`email` = ?,`status` = ?,`createdAt` = ?,`updatedAt` = ?,`idx` = ? WHERE `idx` = ?";
-=======
         return "UPDATE OR ABORT `UserTable` SET `idx` = ?,`nickname` = ?,`email` = ?,`status` = ? WHERE `idx` = ?";
->>>>>>> upstream/juyeon
       }
 
       @Override
@@ -115,22 +93,7 @@ public final class UserDao_Impl implements UserDao {
         } else {
           stmt.bindString(4, value.getStatus());
         }
-<<<<<<< HEAD
-        if (value.getCreatedAt() == null) {
-          stmt.bindNull(5);
-        } else {
-          stmt.bindString(5, value.getCreatedAt());
-        }
-        if (value.getUpdatedAt() == null) {
-          stmt.bindNull(6);
-        } else {
-          stmt.bindString(6, value.getUpdatedAt());
-        }
-        stmt.bindLong(7, value.getIdx());
-        stmt.bindLong(8, value.getIdx());
-=======
         stmt.bindLong(5, value.getIdx());
->>>>>>> upstream/juyeon
       }
     };
     this.__preparedStmtOfUpdateStatus = new SharedSQLiteStatement(__db) {
@@ -213,12 +176,6 @@ public final class UserDao_Impl implements UserDao {
       final int _cursorIndexOfNickname = CursorUtil.getColumnIndexOrThrow(_cursor, "nickname");
       final int _cursorIndexOfEmail = CursorUtil.getColumnIndexOrThrow(_cursor, "email");
       final int _cursorIndexOfStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "status");
-<<<<<<< HEAD
-      final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
-      final int _cursorIndexOfUpdatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "updatedAt");
-      final int _cursorIndexOfIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "idx");
-=======
->>>>>>> upstream/juyeon
       final User _result;
       if(_cursor.moveToFirst()) {
         final long _tmpIdx;
@@ -241,26 +198,7 @@ public final class UserDao_Impl implements UserDao {
         } else {
           _tmpStatus = _cursor.getString(_cursorIndexOfStatus);
         }
-<<<<<<< HEAD
-        final String _tmpCreatedAt;
-        if (_cursor.isNull(_cursorIndexOfCreatedAt)) {
-          _tmpCreatedAt = null;
-        } else {
-          _tmpCreatedAt = _cursor.getString(_cursorIndexOfCreatedAt);
-        }
-        final String _tmpUpdatedAt;
-        if (_cursor.isNull(_cursorIndexOfUpdatedAt)) {
-          _tmpUpdatedAt = null;
-        } else {
-          _tmpUpdatedAt = _cursor.getString(_cursorIndexOfUpdatedAt);
-        }
-        _result = new User(_tmpId,_tmpNickname,_tmpEmail,_tmpStatus,_tmpCreatedAt,_tmpUpdatedAt);
-        final int _tmpIdx;
-        _tmpIdx = _cursor.getInt(_cursorIndexOfIdx);
-        _result.setIdx(_tmpIdx);
-=======
         _result = new User(_tmpIdx,_tmpNickname,_tmpEmail,_tmpStatus);
->>>>>>> upstream/juyeon
       } else {
         _result = null;
       }

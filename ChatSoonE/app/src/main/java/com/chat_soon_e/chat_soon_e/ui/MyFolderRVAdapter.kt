@@ -10,11 +10,12 @@ import com.chat_soon_e.chat_soon_e.databinding.ItemMyFolderBinding
 class MyFolderRVAdapter(private val folderList: ArrayList<Folder>): RecyclerView.Adapter<MyFolderRVAdapter.ViewHolder>() {
     // 클릭 인터페이스
     interface MyItemClickListener {
+        fun onFolderNameLongClick(binding: ItemMyFolderBinding, position: Int)
         fun onFolderClick(view: View, position: Int)
-        fun onFolderLongClick(view: View, position: Int)
+        fun onFolderLongClick(view: View, position: Int, binding: ItemMyFolderBinding)
     }
 
-    // 리스너 객체를 저장하는 변수수
+    // 리스너 객체를 저장하는 변수
    private lateinit var mItemClickListener: MyItemClickListener
 
    // 리스너 객체를 외부에서 전달받는 함수
@@ -32,12 +33,18 @@ class MyFolderRVAdapter(private val folderList: ArrayList<Folder>): RecyclerView
     // 뷰홀더에 데이터 바인딩을 해줘야 할 때마다 호출되는 함수
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(folderList[position])
+
+        holder.binding.itemMyFolderTv.setOnLongClickListener {
+            mItemClickListener.onFolderNameLongClick(holder.binding, position)
+            return@setOnLongClickListener false
+        }
+
         holder.binding.itemMyFolderIv.setOnClickListener {
             mItemClickListener.onFolderClick(holder.binding.itemMyFolderIv, position)
         }
 
         holder.binding.itemMyFolderIv.setOnLongClickListener {
-            mItemClickListener.onFolderLongClick(holder.binding.itemMyFolderIv, position)
+            mItemClickListener.onFolderLongClick(holder.binding.itemMyFolderIv, position, holder.binding)
             return@setOnLongClickListener false
         }
     }

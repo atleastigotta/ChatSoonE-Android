@@ -8,17 +8,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!-- 새로 정의한 색상 -->
     <color name="gray">#BFBFBF</color>
     <color name="pink">#FED7D3</color>
+    <color name="mauve">#C1C1FD</color>
     <color name="light_gray">#D8D8D8</color>
-
-    <!-- 공통 -->
+    <color name="mint">#8DD7CF</color>
     <color name="primary">#F84D17</color>
     <color name="transparent">#00ff0000</color>
     <color name="form_error">#F44336</color>
-
-    <!-- 로그인 -->
     <color name="login_button">#FFC107</color>
 
 </resources>

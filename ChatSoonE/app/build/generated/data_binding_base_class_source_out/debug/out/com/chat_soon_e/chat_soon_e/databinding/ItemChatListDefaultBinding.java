@@ -41,12 +41,8 @@ public final class ItemChatListDefaultBinding implements ViewBinding {
 
   private ItemChatListDefaultBinding(@NonNull ConstraintLayout rootView,
       @NonNull TextView itemChatListContentTv, @NonNull TextView itemChatListDateTimeTv,
-<<<<<<< HEAD:ChatSoonE/app/build/generated/data_binding_base_class_source_out/debug/out/com/chat_soon_e/chat_soon_e/databinding/ItemChatListDefaultBinding.java
       @NonNull ConstraintLayout itemChatListDefaultLayout, @NonNull TextView itemChatListNameTv,
-=======
-      @NonNull TextView itemChatListNameTv, @NonNull CardView itemChatListProfileCv,
->>>>>>> upstream/juyeon:ChatSoonE/app/build/generated/data_binding_base_class_source_out/debug/out/com/chat_soon_e/chat_soon_e/databinding/ItemChatListBinding.java
-      @NonNull ImageView itemChatListProfileIv) {
+      @NonNull CardView itemChatListProfileCv, @NonNull ImageView itemChatListProfileIv) {
     this.rootView = rootView;
     this.itemChatListContentTv = itemChatListContentTv;
     this.itemChatListDateTimeTv = itemChatListDateTimeTv;
@@ -115,14 +111,9 @@ public final class ItemChatListDefaultBinding implements ViewBinding {
         break missingId;
       }
 
-<<<<<<< HEAD:ChatSoonE/app/build/generated/data_binding_base_class_source_out/debug/out/com/chat_soon_e/chat_soon_e/databinding/ItemChatListDefaultBinding.java
       return new ItemChatListDefaultBinding((ConstraintLayout) rootView, itemChatListContentTv,
           itemChatListDateTimeTv, itemChatListDefaultLayout, itemChatListNameTv,
-          itemChatListProfileIv);
-=======
-      return new ItemChatListBinding((ConstraintLayout) rootView, itemChatListContentTv,
-          itemChatListDateTimeTv, itemChatListNameTv, itemChatListProfileCv, itemChatListProfileIv);
->>>>>>> upstream/juyeon:ChatSoonE/app/build/generated/data_binding_base_class_source_out/debug/out/com/chat_soon_e/chat_soon_e/databinding/ItemChatListBinding.java
+          itemChatListProfileCv, itemChatListProfileIv);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -19,4 +19,7 @@ interface FolderDao {
 
     @Query("SELECT * FROM FolderTable WHERE idx = :idx")
     fun getFolderByIdx(idx: Int): Folder
+
+    @Query("SELECT * FROM FolderTable WHERE name = :name")
+    fun getFolderByName(name: String): Folder
 }

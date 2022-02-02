@@ -48,14 +48,6 @@
             </intent-filter>
         </activity>
         <activity android:name="com.chat_soon_e.chat_soon_e.ui.PermissionActivity" />
-<<<<<<< HEAD
-        <activity
-            android:name="com.chat_soon_e.chat_soon_e.ui.LoginActivity"
-            android:exported="true" />
-=======
-
-        <!-- SignUpActivity -->
->>>>>>> upstream/juyeon
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.SignUpActivity"
             android:exported="true" />
@@ -65,16 +57,12 @@
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.ChatActivity"
             android:exported="true" />
-
-        <!-- Folder -->
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.MyFolderActivity"
             android:exported="true" />
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.FolderActivity"
             android:exported="true" />
-
-        <!-- PatternLockView -->
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.CreatePatternActivity"
             android:exported="true" />
@@ -98,7 +86,7 @@
                 <!-- Redirect URI: "kakao{NATIVE_APP_KEY}://oauth" -->
                 <data
                     android:host="oauth"
-                    android:scheme="kakao63ebc69c67adf9e9e8f147df6508dc35" />
+                    android:scheme="kakao" />
             </intent-filter>
         </activity>
 

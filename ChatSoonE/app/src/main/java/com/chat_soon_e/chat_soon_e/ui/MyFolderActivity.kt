@@ -2,11 +2,12 @@ package com.chat_soon_e.chat_soon_e.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Build
 import android.util.Log
-import android.view.MenuItem
-import android.view.View
-import android.widget.PopupMenu
-import android.widget.Toast
+import android.view.*
+import android.widget.*
+import androidx.annotation.RequiresApi
+import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.view.GravityCompat
@@ -15,13 +16,21 @@ import com.chat_soon_e.chat_soon_e.R
 import com.chat_soon_e.chat_soon_e.data.entities.Folder
 import com.chat_soon_e.chat_soon_e.data.local.AppDatabase
 import com.chat_soon_e.chat_soon_e.databinding.ActivityMyFolderBinding
+import com.chat_soon_e.chat_soon_e.databinding.ItemMyFolderBinding
+import com.chat_soon_e.chat_soon_e.databinding.PopupWindowChangeNameBinding
 import com.chat_soon_e.chat_soon_e.utils.permissionGrantred
 import com.google.android.material.navigation.NavigationView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.databinding.DataBindingUtil
+
 
 class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBinding::inflate), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var folderDB: AppDatabase
     private lateinit var folderRVAdapter: MyFolderRVAdapter
     private var folderList = ArrayList<Folder>()
+    private lateinit var itemBinding: ItemMyFolderBinding
+    private lateinit var popup: PopupMenu
+    private lateinit var mPopupWindow: PopupWindow
 
     // onCreate() 이후
     override fun initAfterBinding() {
@@ -59,18 +68,26 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
 
         // 폴더 아이콘 클릭시
         folderRVAdapter.setMyItemClickListener(object: MyFolderRVAdapter.MyItemClickListener {
+            // 폴더 이름 길게 클릭시 폴더 이름 변경
+            @RequiresApi(Build.VERSION_CODES.O)
+            override fun onFolderNameLongClick(binding: ItemMyFolderBinding, position: Int) {
+                itemBinding = binding
+                changeFolderName(itemBinding)
+            }
+
             // 폴더 아이콘 클릭시 해당 폴더로 이동
             override fun onFolderClick(view: View, position: Int) {
                 startNextActivity(FolderActivity::class.java)
             }
 
             // 폴더 아이콘 롱클릭시 팝업 메뉴 뜨도록
-            override fun onFolderLongClick(view: View, position: Int) {
+            override fun onFolderLongClick(view: View, position: Int, binding: ItemMyFolderBinding) {
                 // 아이콘 클릭시 이름 바꾸기, 아이콘 바꾸기, 삭제하기, 숨기기 목록 표시
-                val popup = PopupMenu(this@MyFolderActivity, view)
+                popup = PopupMenu(this@MyFolderActivity, view)
                 menuInflater.inflate(R.menu.popup_folder_edit_menu, popup.menu)
 
                 // 팝업 메뉴 리스너
+                itemBinding = binding
                 val listener = PopupMenuEditListener()
                 popup.setOnMenuItemClickListener(listener)
                 popup.show()
@@ -251,11 +268,61 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
     }
 
     // 폴더 옵션 팝업 메뉴
-    inner class PopupMenuEditListener: PopupMenu.OnMenuItemClickListener {
+    inner class PopupMenuEditListener(): PopupMenu.OnMenuItemClickListener {
         override fun onMenuItemClick(item: MenuItem?): Boolean {
             when(item?.itemId) {
+                R.id.popup_folder_edit_menu_1 -> {
+                    // 이름 바꾸기 메뉴
+                    changeFolderName(itemBinding)
+                }
+
+                R.id.popup_folder_edit_menu_2 -> {
+                    // 아이콘 바꾸기 메뉴
+                }
+
+                R.id.popup_folder_edit_menu_3 -> {
+                    // 삭제하기 메뉴
+                }
+
+                R.id.popup_folder_edit_menu_4 -> {
+                    // 숨기기 메뉴
+                }
             }
             return false
+        }
+    }
+
+    // 이름 바꾸기 팝업 윈도우를 띄워서 폴더 이름을 변경할 수 있도록 해준다.
+    private fun changeFolderName(binding: ItemMyFolderBinding) {
+        // 이름 바꾸기 팝업 윈도우
+        val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val popupView = inflater.inflate(R.layout.popup_window_change_name, null)
+        mPopupWindow = PopupWindow(popupView, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT)
+
+        mPopupWindow.animationStyle = -1        // 애니메이션 설정 (-1: 설정 안 함, 0: 설정)
+        mPopupWindow.isFocusable = true         // 외부 영역 선택 시 팝업 윈도우 종료
+        mPopupWindow.isOutsideTouchable = true
+        mPopupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0)
+
+        // 기존 폴더 이름을 팝업 윈도우의 EditText에 넘겨준다.
+        var text: String = binding.itemMyFolderTv.text.toString()
+        Log.d("MYFOLDER/FOLDER-NAME", text)
+        mPopupWindow.contentView.findViewById<EditText>(R.id.popup_window_change_name_et).setText(text)
+
+        // RoomDB
+        folderDB = AppDatabase.getInstance(this@MyFolderActivity)!!
+        val folder = folderDB.folderDao().getFolderByName(text)
+
+        // 입력 완료했을 때 누르는 버튼
+        mPopupWindow.contentView.findViewById<AppCompatButton>(R.id.popup_window_change_name_button).setOnClickListener {
+            text = mPopupWindow.contentView.findViewById<EditText>(R.id.popup_window_change_name_et).text.toString()
+            binding.itemMyFolderTv.text = text
+
+            folder.name = text
+            folderDB.folderDao().update(folder)
+
+            // 팝업 윈도우 종료
+            mPopupWindow.dismiss()
         }
     }
 }

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-#Sat Jan 29 01:48:17 KST 2022
-=======
-#Thu Jan 27 22:00:01 KST 2022
->>>>>>> upstream/juyeon
+#Thu Feb 03 05:18:01 KST 2022
 path.4=13/classes.dex
 path.3=11/classes.dex
 path.2=10/classes.dex

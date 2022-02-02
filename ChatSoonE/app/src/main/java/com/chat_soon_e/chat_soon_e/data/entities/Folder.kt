@@ -7,5 +7,5 @@ import com.google.gson.annotations.SerializedName
 @Entity(tableName = "FolderTable")
 data class Folder(
     @PrimaryKey(autoGenerate = false) var idx: Int = 0,
-    @SerializedName("folderName") val name: String
+    @SerializedName("folderName") var name: String
 )

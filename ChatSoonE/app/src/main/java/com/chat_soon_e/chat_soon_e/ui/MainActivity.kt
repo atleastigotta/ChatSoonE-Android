@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import com.chat_soon_e.chat_soon_e.data.entities.Chat
 import com.chat_soon_e.chat_soon_e.data.local.AppDatabase
 import com.chat_soon_e.chat_soon_e.databinding.ActivityMainBinding
-import android.content.Intent
 import android.graphics.Rect
 import android.os.Build
 import android.view.MenuItem
@@ -18,7 +17,6 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.activity.viewModels
-import com.chat_soon_e.chat_soon_e.data.entities.ChatList
 import com.chat_soon_e.chat_soon_e.data.remote.auth.USER_ID
 import java.util.*
 import kotlin.collections.ArrayList

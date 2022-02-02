@@ -31,42 +31,30 @@ public final class AppDatabase_Impl extends AppDatabase {
 
   private volatile UserDao _userDao;
 
-<<<<<<< HEAD
-  private volatile FolderDao _folderDao;
-=======
   private volatile OtherUserDao _otherUserDao;
->>>>>>> upstream/juyeon
+
+  private volatile FolderDao _folderDao;
 
   @Override
   protected SupportSQLiteOpenHelper createOpenHelper(DatabaseConfiguration configuration) {
     final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(2) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
-<<<<<<< HEAD
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `ChatTable` (`name` TEXT, `message` TEXT NOT NULL, `viewType` INTEGER NOT NULL, `isChecked` INTEGER NOT NULL, `idx` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `UserTable` (`id` INTEGER NOT NULL, `nickname` TEXT NOT NULL, `email` TEXT NOT NULL, `status` TEXT NOT NULL, `createdAt` TEXT NOT NULL, `updatedAt` TEXT NOT NULL, `idx` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `FolderTable` (`idx` INTEGER NOT NULL, `name` TEXT NOT NULL, PRIMARY KEY(`idx`))");
-        _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6d429a39793aa6fbf811869aa1643011')");
-=======
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `ChatTable` (`user_idx` INTEGER NOT NULL, `other_user_idx` INTEGER NOT NULL, `groupName` TEXT, `message` TEXT, `postTime` INTEGER, `folderIdx` INTEGER NOT NULL, `status` TEXT NOT NULL, `idx` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `ChatTable` (`user_idx` INTEGER NOT NULL, `other_user_idx` INTEGER NOT NULL, `groupName` TEXT, `message` TEXT, `postTime` INTEGER, `folderIdx` INTEGER NOT NULL, `status` TEXT NOT NULL, `viewType` INTEGER NOT NULL, `isChecked` INTEGER NOT NULL, `idx` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `UserTable` (`idx` INTEGER NOT NULL, `nickname` TEXT, `email` TEXT, `status` TEXT NOT NULL, PRIMARY KEY(`idx`))");
         _db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS `index_UserTable_idx` ON `UserTable` (`idx`)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `OtherUserTable` (`name` TEXT, `image` TEXT, `status` TEXT NOT NULL, `kakao_user_idx` INTEGER NOT NULL, `other_user_idx` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `FolderTable` (`idx` INTEGER NOT NULL, `name` TEXT NOT NULL, PRIMARY KEY(`idx`))");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '164de128a622ff90454d6ce5b57433b3')");
->>>>>>> upstream/juyeon
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5114daed0e8f912b710f5e8428846561')");
       }
 
       @Override
       public void dropAllTables(SupportSQLiteDatabase _db) {
         _db.execSQL("DROP TABLE IF EXISTS `ChatTable`");
         _db.execSQL("DROP TABLE IF EXISTS `UserTable`");
-<<<<<<< HEAD
-        _db.execSQL("DROP TABLE IF EXISTS `FolderTable`");
-=======
         _db.execSQL("DROP TABLE IF EXISTS `OtherUserTable`");
->>>>>>> upstream/juyeon
+        _db.execSQL("DROP TABLE IF EXISTS `FolderTable`");
         if (mCallbacks != null) {
           for (int _i = 0, _size = mCallbacks.size(); _i < _size; _i++) {
             mCallbacks.get(_i).onDestructiveMigration(_db);
@@ -105,14 +93,7 @@ public final class AppDatabase_Impl extends AppDatabase {
 
       @Override
       protected RoomOpenHelper.ValidationResult onValidateSchema(SupportSQLiteDatabase _db) {
-<<<<<<< HEAD
-        final HashMap<String, TableInfo.Column> _columnsChatTable = new HashMap<String, TableInfo.Column>(5);
-        _columnsChatTable.put("name", new TableInfo.Column("name", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsChatTable.put("message", new TableInfo.Column("message", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsChatTable.put("viewType", new TableInfo.Column("viewType", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsChatTable.put("isChecked", new TableInfo.Column("isChecked", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-=======
-        final HashMap<String, TableInfo.Column> _columnsChatTable = new HashMap<String, TableInfo.Column>(8);
+        final HashMap<String, TableInfo.Column> _columnsChatTable = new HashMap<String, TableInfo.Column>(10);
         _columnsChatTable.put("user_idx", new TableInfo.Column("user_idx", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsChatTable.put("other_user_idx", new TableInfo.Column("other_user_idx", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsChatTable.put("groupName", new TableInfo.Column("groupName", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
@@ -120,7 +101,8 @@ public final class AppDatabase_Impl extends AppDatabase {
         _columnsChatTable.put("postTime", new TableInfo.Column("postTime", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsChatTable.put("folderIdx", new TableInfo.Column("folderIdx", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsChatTable.put("status", new TableInfo.Column("status", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
->>>>>>> upstream/juyeon
+        _columnsChatTable.put("viewType", new TableInfo.Column("viewType", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsChatTable.put("isChecked", new TableInfo.Column("isChecked", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsChatTable.put("idx", new TableInfo.Column("idx", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysChatTable = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesChatTable = new HashSet<TableInfo.Index>(0);
@@ -131,17 +113,7 @@ public final class AppDatabase_Impl extends AppDatabase {
                   + " Expected:\n" + _infoChatTable + "\n"
                   + " Found:\n" + _existingChatTable);
         }
-<<<<<<< HEAD
-        final HashMap<String, TableInfo.Column> _columnsUserTable = new HashMap<String, TableInfo.Column>(7);
-        _columnsUserTable.put("id", new TableInfo.Column("id", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsUserTable.put("nickname", new TableInfo.Column("nickname", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsUserTable.put("email", new TableInfo.Column("email", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsUserTable.put("status", new TableInfo.Column("status", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsUserTable.put("createdAt", new TableInfo.Column("createdAt", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsUserTable.put("updatedAt", new TableInfo.Column("updatedAt", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-=======
         final HashMap<String, TableInfo.Column> _columnsUserTable = new HashMap<String, TableInfo.Column>(4);
->>>>>>> upstream/juyeon
         _columnsUserTable.put("idx", new TableInfo.Column("idx", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsUserTable.put("nickname", new TableInfo.Column("nickname", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsUserTable.put("email", new TableInfo.Column("email", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
@@ -156,23 +128,6 @@ public final class AppDatabase_Impl extends AppDatabase {
                   + " Expected:\n" + _infoUserTable + "\n"
                   + " Found:\n" + _existingUserTable);
         }
-<<<<<<< HEAD
-        final HashMap<String, TableInfo.Column> _columnsFolderTable = new HashMap<String, TableInfo.Column>(2);
-        _columnsFolderTable.put("idx", new TableInfo.Column("idx", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsFolderTable.put("name", new TableInfo.Column("name", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        final HashSet<TableInfo.ForeignKey> _foreignKeysFolderTable = new HashSet<TableInfo.ForeignKey>(0);
-        final HashSet<TableInfo.Index> _indicesFolderTable = new HashSet<TableInfo.Index>(0);
-        final TableInfo _infoFolderTable = new TableInfo("FolderTable", _columnsFolderTable, _foreignKeysFolderTable, _indicesFolderTable);
-        final TableInfo _existingFolderTable = TableInfo.read(_db, "FolderTable");
-        if (! _infoFolderTable.equals(_existingFolderTable)) {
-          return new RoomOpenHelper.ValidationResult(false, "FolderTable(com.chat_soon_e.chat_soon_e.data.entities.Folder).\n"
-                  + " Expected:\n" + _infoFolderTable + "\n"
-                  + " Found:\n" + _existingFolderTable);
-        }
-        return new RoomOpenHelper.ValidationResult(true, null);
-      }
-    }, "6d429a39793aa6fbf811869aa1643011", "82d266141cead559e2bd3f61da0957fd");
-=======
         final HashMap<String, TableInfo.Column> _columnsOtherUserTable = new HashMap<String, TableInfo.Column>(5);
         _columnsOtherUserTable.put("name", new TableInfo.Column("name", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsOtherUserTable.put("image", new TableInfo.Column("image", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
@@ -188,10 +143,21 @@ public final class AppDatabase_Impl extends AppDatabase {
                   + " Expected:\n" + _infoOtherUserTable + "\n"
                   + " Found:\n" + _existingOtherUserTable);
         }
+        final HashMap<String, TableInfo.Column> _columnsFolderTable = new HashMap<String, TableInfo.Column>(2);
+        _columnsFolderTable.put("idx", new TableInfo.Column("idx", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsFolderTable.put("name", new TableInfo.Column("name", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysFolderTable = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesFolderTable = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoFolderTable = new TableInfo("FolderTable", _columnsFolderTable, _foreignKeysFolderTable, _indicesFolderTable);
+        final TableInfo _existingFolderTable = TableInfo.read(_db, "FolderTable");
+        if (! _infoFolderTable.equals(_existingFolderTable)) {
+          return new RoomOpenHelper.ValidationResult(false, "FolderTable(com.chat_soon_e.chat_soon_e.data.entities.Folder).\n"
+                  + " Expected:\n" + _infoFolderTable + "\n"
+                  + " Found:\n" + _existingFolderTable);
+        }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "164de128a622ff90454d6ce5b57433b3", "0133888f5b4f4a96afcfb951758771c8");
->>>>>>> upstream/juyeon
+    }, "5114daed0e8f912b710f5e8428846561", "6dc688f81b0445cff06d5254205d068f");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)
@@ -204,11 +170,7 @@ public final class AppDatabase_Impl extends AppDatabase {
   protected InvalidationTracker createInvalidationTracker() {
     final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
     HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
-<<<<<<< HEAD
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "ChatTable","UserTable","FolderTable");
-=======
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "ChatTable","UserTable","OtherUserTable");
->>>>>>> upstream/juyeon
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "ChatTable","UserTable","OtherUserTable","FolderTable");
   }
 
   @Override
@@ -219,11 +181,8 @@ public final class AppDatabase_Impl extends AppDatabase {
       super.beginTransaction();
       _db.execSQL("DELETE FROM `ChatTable`");
       _db.execSQL("DELETE FROM `UserTable`");
-<<<<<<< HEAD
-      _db.execSQL("DELETE FROM `FolderTable`");
-=======
       _db.execSQL("DELETE FROM `OtherUserTable`");
->>>>>>> upstream/juyeon
+      _db.execSQL("DELETE FROM `FolderTable`");
       super.setTransactionSuccessful();
     } finally {
       super.endTransaction();
@@ -239,11 +198,8 @@ public final class AppDatabase_Impl extends AppDatabase {
     final HashMap<Class<?>, List<Class<?>>> _typeConvertersMap = new HashMap<Class<?>, List<Class<?>>>();
     _typeConvertersMap.put(ChatDao.class, ChatDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(UserDao.class, UserDao_Impl.getRequiredConverters());
-<<<<<<< HEAD
-    _typeConvertersMap.put(FolderDao.class, FolderDao_Impl.getRequiredConverters());
-=======
     _typeConvertersMap.put(OtherUserDao.class, OtherUserDao_Impl.getRequiredConverters());
->>>>>>> upstream/juyeon
+    _typeConvertersMap.put(FolderDao.class, FolderDao_Impl.getRequiredConverters());
     return _typeConvertersMap;
   }
 
@@ -276,17 +232,6 @@ public final class AppDatabase_Impl extends AppDatabase {
   }
 
   @Override
-<<<<<<< HEAD
-  public FolderDao folderDao() {
-    if (_folderDao != null) {
-      return _folderDao;
-    } else {
-      synchronized(this) {
-        if(_folderDao == null) {
-          _folderDao = new FolderDao_Impl(this);
-        }
-        return _folderDao;
-=======
   public OtherUserDao otherUserDao() {
     if (_otherUserDao != null) {
       return _otherUserDao;
@@ -296,7 +241,20 @@ public final class AppDatabase_Impl extends AppDatabase {
           _otherUserDao = new OtherUserDao_Impl(this);
         }
         return _otherUserDao;
->>>>>>> upstream/juyeon
+      }
+    }
+  }
+
+  @Override
+  public FolderDao folderDao() {
+    if (_folderDao != null) {
+      return _folderDao;
+    } else {
+      synchronized(this) {
+        if(_folderDao == null) {
+          _folderDao = new FolderDao_Impl(this);
+        }
+        return _folderDao;
       }
     }
   }
