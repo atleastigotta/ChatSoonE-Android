@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/drawable/background_edit_text.xml" value="0.1388888888888889" />
+        <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/drawable/background_folder_bottom_popup_menu.xml" value="0.2671875" />
+        <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/drawable/background_folder_option_popup_menu.xml" value="0.2671875" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/drawable/background_icon_folder.xml" value="0.2" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/drawable/background_mauve_corner.xml" value="0.2601851851851852" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/drawable/background_mouve_corner.xml" value="0.2601851851851852" />

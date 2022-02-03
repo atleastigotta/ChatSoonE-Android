@@ -99,6 +99,7 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
             binding.splashKakaoLoginBtn.visibility=View.VISIBLE
         }
     }
+
     //카카오계정 로그인
     private fun login(){
         val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
@@ -110,6 +111,7 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
                 saveUserInfo("login")
             }
         }
+
         //카카오톡 로그인 가능하다면 카카오톡으로 로그인
         if (UserApiClient.instance.isKakaoTalkLoginAvailable(this)) {
             UserApiClient.instance.loginWithKakaoTalk(this) { token, error ->
@@ -131,8 +133,8 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
         } else {
             UserApiClient.instance.loginWithKakaoAccount(this, callback = callback)
         }
-
     }
+
     //로그아웃
     private fun logout(){
         UserApiClient.instance.logout { error->
@@ -140,7 +142,6 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
                 Log.d(TAG, "로그아웃 실패")
             else{
                 val user=AppDatabase.getInstance(this)!!.userDao()
-
             }
         }
     }

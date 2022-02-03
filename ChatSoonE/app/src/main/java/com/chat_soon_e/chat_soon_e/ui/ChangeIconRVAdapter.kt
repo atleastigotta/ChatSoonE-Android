@@ -13,9 +13,7 @@ import com.chat_soon_e.chat_soon_e.databinding.ItemMyFolderBinding
 class ChangeIconRVAdapter(private val iconList: ArrayList<Icon>): RecyclerView.Adapter<ChangeIconRVAdapter.ViewHolder>() {
     // 클릭 인터페이스
     interface MyItemClickListener {
-        fun onIconClick(itemBinding: ItemIconBinding, position: Int)
-//        fun onInsertIcon(view: View, position: Int)
-//        fun onRemoveIcon(view: View, position: Int)
+        fun onIconClick(itemBinding: ItemIconBinding, itemPosition: Int)
     }
 
     // 리스너 객체를 저장하는 변수
@@ -45,13 +43,6 @@ class ChangeIconRVAdapter(private val iconList: ArrayList<Icon>): RecyclerView.A
 
     // 데아터셋의 크기 반환
     override fun getItemCount(): Int = iconList.size
-
-    // 아이템 삭제
-    @SuppressLint("NotifyDataSetChanged")
-    private fun removeIcon(position: Int) {
-        iconList.removeAt(position)
-        notifyDataSetChanged()
-    }
 
     // 뷰홀더
     inner class ViewHolder(val binding: ItemIconBinding): RecyclerView.ViewHolder(binding.root) {

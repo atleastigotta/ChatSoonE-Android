@@ -2519,6 +2519,8 @@ drawable background
 drawable background2
 drawable background_chat
 drawable background_edit_text
+drawable background_folder_bottom_popup_menu
+drawable background_folder_option_popup_menu
 drawable background_icon_folder
 drawable background_mauve_corner
 drawable background_white_corner
@@ -3975,6 +3977,8 @@ style MaterialAlertDialog_MaterialComponents_Title_Panel
 style MaterialAlertDialog_MaterialComponents_Title_Panel_CenterStacked
 style MaterialAlertDialog_MaterialComponents_Title_Text
 style MaterialAlertDialog_MaterialComponents_Title_Text_CenterStacked
+style MyFolderBottomPopupMenuTheme
+style MyFolderOptionPopupMenuTheme
 style Platform_AppCompat
 style Platform_AppCompat_Light
 style Platform_MaterialComponents

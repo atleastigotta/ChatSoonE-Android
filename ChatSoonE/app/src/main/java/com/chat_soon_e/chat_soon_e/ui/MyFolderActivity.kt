@@ -50,11 +50,11 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
         // 만약 데이터베이스에서 받아온 folder list가 비어있는 경우
         // 더미 데이터
         if(folderList.isEmpty()) {
-            appDB.folderDao().insert(Folder(0, 0, null, "추억", R.drawable.ic_baseline_folder_24, "ACTIVE", null, null))
-            appDB.folderDao().insert(Folder(1, 0, null, "여행", R.drawable.ic_baseline_folder_24, "ACTIVE", null, null))
-            appDB.folderDao().insert(Folder(2, 0, null, "음식", R.drawable.ic_baseline_folder_24, "ACTIVE", null, null))
-            appDB.folderDao().insert(Folder(3, 0, null, "학교", R.drawable.ic_baseline_folder_24, "ACTIVE", null, null))
-            appDB.folderDao().insert(Folder(4, 0, null, "게임", R.drawable.ic_baseline_folder_24, "ACTIVE", null, null))
+            appDB.folderDao().insert(Folder(0, 0, null, "추억", R.drawable.ic_baseline_folder_24, "active", null, null))
+            appDB.folderDao().insert(Folder(1, 0, null, "여행", R.drawable.ic_baseline_folder_24, "active", null, null))
+            appDB.folderDao().insert(Folder(2, 0, null, "음식", R.drawable.ic_baseline_folder_24, "active", null, null))
+            appDB.folderDao().insert(Folder(3, 0, null, "학교", R.drawable.ic_baseline_folder_24, "active", null, null))
+            appDB.folderDao().insert(Folder(4, 0, null, "게임", R.drawable.ic_baseline_folder_24, "active", null, null))
             folderList = appDB.folderDao().getFolderList() as ArrayList
         }
 
@@ -80,20 +80,19 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
             // 폴더 아이콘 롱클릭 시 팝업 메뉴 뜨도록
             override fun onFolderLongClick(popup: PopupMenu) {
                 popup.show()
-                Log.d("MY-FOLDER", "onFolderLongClick()")
             }
 
             // 폴더 삭제하기
             override fun onRemoveFolder(idx: Int) {
-                appDB.folderDao().updateStatusByIdx("DELETE", idx)
+                appDB.folderDao().updateStatusByIdx("delete", idx)
             }
 
             // 폴더 숨기기
             override fun onHideFolder(idx: Int) {
-                appDB.folderDao().updateStatusByIdx("HIDDEN", idx)
+                appDB.folderDao().updateStatusByIdx("hidden", idx)
             }
         })
-        folderRVAdapter.addFolderList(appDB.folderDao().getFolderByStatus("ACTIVE") as ArrayList)
+        folderRVAdapter.addFolderList(appDB.folderDao().getFolderByStatus("active") as ArrayList)
     }
 
     private fun initIcon() {
@@ -238,7 +237,7 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
         // 하단 중앙의 버튼을 눌렀을 때
         binding.myFolderContent.myFolderCreateNewFolderIv.setOnClickListener {
             // 아이콘 클릭시 폴더 생성하기, 숨긴 폴더 목록 표시
-            val popup = PopupMenu(this@MyFolderActivity, binding.myFolderContent.myFolderCreateNewFolderIv)
+            val popup = PopupMenu(this@MyFolderActivity, binding.myFolderContent.myFolderCreateNewFolderIv, Gravity.BOTTOM, 0, R.style.MyFolderBottomPopupMenuTheme)
             menuInflater.inflate(R.menu.popup_folder_option_menu, popup.menu)
 
             // 팝업 메뉴 리스너
@@ -303,7 +302,6 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
 
         // 기존 폴더 이름을 팝업 윈도우의 EditText에 넘겨준다.
         var text: String = binding.itemMyFolderTv.text.toString()
-        Log.d("MYFOLDER/FOLDER-NAME", text)
         mPopupWindow.contentView.findViewById<EditText>(R.id.popup_window_change_name_et).setText(text)
 
         // RoomDB
@@ -321,11 +319,11 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
             // 팝업 윈도우 종료
             mPopupWindow.dismiss()
         }
-        folderRVAdapter.addFolderList(appDB.folderDao().getFolderByStatus("ACTIVE") as ArrayList)
+        folderRVAdapter.addFolderList(appDB.folderDao().getFolderByStatus("active") as ArrayList)
     }
 
     @SuppressLint("InflateParams")
-    fun changeIcon(binding: ItemMyFolderBinding) {
+    fun changeIcon(binding: ItemMyFolderBinding, position: Int, folderList: ArrayList<Folder>) {
         // 팝업 윈도우 사이즈를 잘못 맞추면 아이템들이 안 뜨므로 하드 코딩으로 사이즈 조정해주기
         // 아이콘 16개 (기본)
         val size = windowManager.currentWindowMetricsPointCompat()
@@ -349,55 +347,26 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
 
         iconRVAdapter.setMyItemClickListener(object: ChangeIconRVAdapter.MyItemClickListener {
             // 아이콘을 하나 선택했을 경우
-            override fun onIconClick(itemBinding: ItemIconBinding, position: Int) {
+            override fun onIconClick(itemBinding: ItemIconBinding, itemPosition: Int) {
                 // 선택한 아이콘으로 폴더 이미지 변경
-                val selectedIcon = iconList[position]
-                Log.d("MY-FOLDER", "selectedIcon: $selectedIcon")
+                val selectedIcon = iconList[itemPosition]
                 binding.itemMyFolderIv.setImageResource(selectedIcon.iconImage)
 
                 // RoomDB 적용
-                val folder = folderList[itemPosition]
-                folder.folderImg = selectedIcon.iconImage
-                appDB.folderDao().update(folder)
+                val folder = appDB.folderDao().getFolderByIdx(folderList[position].idx)
+                appDB.folderDao().updateFolderImgByIdx(selectedIcon.iconImage, folder.idx)
+
+                Log.d("MY-FOLDER", "selectedIcon: $selectedIcon")
+                Log.d("MY-FOLDER", "position: $position")
+                Log.d("MY-FOLDER", "itemPosition: $itemPosition")
+                Log.d("MY-FOLDER", "folderImg: ${appDB.folderDao().getFolderByIdx(folder.idx)}")
 
                 // 팝업 윈도우 종료
                 mPopupWindow.dismiss()
             }
         })
-        folderRVAdapter.addFolderList(appDB.folderDao().getFolderByStatus("ACTIVE") as ArrayList)
+        folderRVAdapter.addFolderList(appDB.folderDao().getFolderByStatus("active") as ArrayList)
     }
-
-//    // 폴더 삭제 함수
-//    private fun deleteFolder() {
-//        // RoomDB에서 해당 폴더를 삭제한다.
-//        appDB = AppDatabase.getInstance(this)!!
-//        appDB.folderDao().delete(folderList[itemPosition])
-//
-//        // RecyclerView 아이템 목록에서 해당 폴더를 지운다.
-//        folderList.removeAt(itemPosition)
-//
-//        // 변동 사항 다시 RecyclerView 전달
-//        // 이 부분은 RecyclerView 내부에서 할 수 없을까?
-//        folderRVAdapter = MyFolderRVAdapter(folderList)
-//        binding.myFolderContent.myFolderFolderListRecyclerView.adapter = folderRVAdapter
-//    }
-//
-//    // 폴더 숨기기 함수
-//    private fun hideFolder() {
-//        // 폴더 숨기기 처리
-//        appDB = AppDatabase.getInstance(this)!!
-//        val folder = folderList[itemPosition]
-//        folder.status = "HIDDEN"
-//        appDB.folderDao().update(folder)
-//
-//        // RecyclerView 아이템 목록에서 해당 폴더를 지운다.
-//        folderList.removeAt(itemPosition)
-//
-//        // 변동 사항 다시 RecyclerView 전달
-//        // 이 부분은 RecyclerView 내부에서 할 수 없을까?
-//        folderRVAdapter = MyFolderRVAdapter(folderList)
-//        binding.myFolderContent.myFolderFolderListRecyclerView.adapter = folderRVAdapter
-//    }
 
     // 디바이스 크기에 사이즈를 맞추기 위한 함수
     private fun WindowManager.currentWindowMetricsPointCompat(): Point {

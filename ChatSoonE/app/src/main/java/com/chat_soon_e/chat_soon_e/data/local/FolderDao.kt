@@ -28,4 +28,7 @@ interface FolderDao {
 
     @Query("SELECT * FROM FolderTable WHERE status = :status")
     fun getFolderByStatus(status: String): List<Folder>
+
+    @Query("UPDATE FolderTable SET folderImg = :folderImg WHERE idx = :idx")
+    fun updateFolderImgByIdx(folderImg: Int, idx: Int)
 }

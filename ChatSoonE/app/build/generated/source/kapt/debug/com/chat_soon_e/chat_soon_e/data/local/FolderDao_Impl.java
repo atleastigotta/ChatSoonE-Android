@@ -31,6 +31,8 @@ public final class FolderDao_Impl implements FolderDao {
 
   private final SharedSQLiteStatement __preparedStmtOfUpdateStatusByIdx;
 
+  private final SharedSQLiteStatement __preparedStmtOfUpdateFolderImgByIdx;
+
   public FolderDao_Impl(RoomDatabase __db) {
     this.__db = __db;
     this.__insertionAdapterOfFolder = new EntityInsertionAdapter<Folder>(__db) {
@@ -128,6 +130,13 @@ public final class FolderDao_Impl implements FolderDao {
         return _query;
       }
     };
+    this.__preparedStmtOfUpdateFolderImgByIdx = new SharedSQLiteStatement(__db) {
+      @Override
+      public String createQuery() {
+        final String _query = "UPDATE FolderTable SET folderImg = ? WHERE idx = ?";
+        return _query;
+      }
+    };
   }
 
   @Override
@@ -185,6 +194,24 @@ public final class FolderDao_Impl implements FolderDao {
     } finally {
       __db.endTransaction();
       __preparedStmtOfUpdateStatusByIdx.release(_stmt);
+    }
+  }
+
+  @Override
+  public void updateFolderImgByIdx(final int folderImg, final int idx) {
+    __db.assertNotSuspendingTransaction();
+    final SupportSQLiteStatement _stmt = __preparedStmtOfUpdateFolderImgByIdx.acquire();
+    int _argIndex = 1;
+    _stmt.bindLong(_argIndex, folderImg);
+    _argIndex = 2;
+    _stmt.bindLong(_argIndex, idx);
+    __db.beginTransaction();
+    try {
+      _stmt.executeUpdateDelete();
+      __db.setTransactionSuccessful();
+    } finally {
+      __db.endTransaction();
+      __preparedStmtOfUpdateFolderImgByIdx.release(_stmt);
     }
   }
 
