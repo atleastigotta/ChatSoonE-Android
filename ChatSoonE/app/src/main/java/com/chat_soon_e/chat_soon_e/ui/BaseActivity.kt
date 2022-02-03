@@ -20,13 +20,9 @@ abstract class BaseActivity<T: ViewBinding>(private val inflate: (LayoutInflater
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d("BASE/LIFE-CYCLE", "onCreate()")
-
         binding = inflate(layoutInflater)
         setContentView(binding.root)
-
         imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager?
-
         initAfterBinding()
     }
 

@@ -224,6 +224,10 @@
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\drawable-xhdpi\\icon_24_search_off.png"
     },
     {
+        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_insert_emoticon_24.xml.flat",
+        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_baseline_insert_emoticon_24.xml"
+    },
+    {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxhdpi_icon_24_user_on.png.flat",
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\drawable-xxhdpi\\icon_24_user_on.png"
     },
@@ -274,6 +278,10 @@
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxhdpi_icon_24_user_off.png.flat",
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\drawable-xxhdpi\\icon_24_user_off.png"
+    },
+    {
+        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_background_white_corner_button.xml.flat",
+        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\drawable\\background_white_corner_button.xml"
     },
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
@@ -410,6 +418,14 @@
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\navigation_navigation.xml.flat",
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\navigation\\navigation.xml"
+    },
+    {
+        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_popup_window_change_icon.xml.flat",
+        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\layout\\popup_window_change_icon.xml"
+    },
+    {
+        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_item_icon.xml.flat",
+        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\layout\\item_icon.xml"
     },
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxhdpi_icon_24_match_on.png.flat",

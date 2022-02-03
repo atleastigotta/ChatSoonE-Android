@@ -2521,6 +2521,7 @@ int drawable background_edit_text 0x7f0700d8
 int drawable background_icon_folder 0x7f07005b
 int drawable background_mauve_corner 0x7f0700da
 int drawable background_white_corner 0x7f07005c
+int drawable background_white_corner_button 0x7f0700dc
 int drawable btn_checkbox_checked_mtrl 0x7f07005d
 int drawable btn_checkbox_checked_to_unchecked_mtrl_animation 0x7f07005e
 int drawable btn_checkbox_unchecked_mtrl 0x7f07005f
@@ -2548,6 +2549,7 @@ int drawable ic_baseline_delete_24 0x7f070073
 int drawable ic_baseline_email_24 0x7f070074
 int drawable ic_baseline_folder_24 0x7f070075
 int drawable ic_baseline_help_24 0x7f070076
+int drawable ic_baseline_insert_emoticon_24 0x7f0700db
 int drawable ic_baseline_menu_24 0x7f070077
 int drawable ic_baseline_menu_black_24 0x7f070078
 int drawable ic_baseline_pattern_24 0x7f070079
@@ -2902,6 +2904,8 @@ int id item_chat_list_profile_iv 0x7f0800fd
 int id item_chat_message_tv 0x7f0800fe
 int id item_chat_name_tv 0x7f0800ff
 int id item_chat_profile_iv 0x7f080100
+int id item_icon_iv 0x7f08025e
+int id item_icon_layout 0x7f08025f
 int id item_my_folder 0x7f08025a
 int id item_my_folder_iv 0x7f080101
 int id item_my_folder_tv 0x7f080102
@@ -3070,6 +3074,8 @@ int id popup_folder_option_menu_1 0x7f0801a4
 int id popup_folder_option_menu_2 0x7f0801a5
 int id popup_menu_1 0x7f0801a6
 int id popup_menu_2 0x7f0801a7
+int id popup_window_change_icon_recycler_view 0x7f080260
+int id popup_window_change_icon_tv 0x7f080261
 int id popup_window_change_name_button 0x7f08025b
 int id popup_window_change_name_et 0x7f08025c
 int id popup_window_change_name_tv 0x7f08025d
@@ -3377,6 +3383,7 @@ int layout fragment_search 0x7f0b0042
 int layout item_chat 0x7f0b0043
 int layout item_chat_list_choose 0x7f0b0044
 int layout item_chat_list_default 0x7f0b0045
+int layout item_icon 0x7f0b009a
 int layout item_my_folder 0x7f0b0046
 int layout layout_switch 0x7f0b0047
 int layout loading_row 0x7f0b0048
@@ -3441,6 +3448,7 @@ int layout notification_template_media 0x7f0b0082
 int layout notification_template_media_custom 0x7f0b0083
 int layout notification_template_part_chronometer 0x7f0b0084
 int layout notification_template_part_time 0x7f0b0085
+int layout popup_window_change_icon 0x7f0b009b
 int layout popup_window_change_name 0x7f0b0099
 int layout select_dialog_item_material 0x7f0b0086
 int layout select_dialog_multichoice_material 0x7f0b0087
@@ -3510,6 +3518,7 @@ int string bottomsheet_action_expand_halfway 0x7f100020
 int string cancel 0x7f100021
 int string change_folder_icon 0x7f100022
 int string change_folder_name 0x7f100023
+int string change_icon 0x7f1000c2
 int string change_name 0x7f1000c0
 int string change_name_button 0x7f1000c1
 int string character_counter_content_description 0x7f100024

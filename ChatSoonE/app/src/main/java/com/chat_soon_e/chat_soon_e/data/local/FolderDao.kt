@@ -20,6 +20,12 @@ interface FolderDao {
     @Query("SELECT * FROM FolderTable WHERE idx = :idx")
     fun getFolderByIdx(idx: Int): Folder
 
-    @Query("SELECT * FROM FolderTable WHERE name = :name")
-    fun getFolderByName(name: String): Folder
+    @Query("SELECT * FROM FolderTable WHERE folderName = :folderName")
+    fun getFolderByName(folderName: String): Folder
+
+    @Query("UPDATE FolderTable SET status = :status WHERE idx = :idx")
+    fun updateStatusByIdx(status: String, idx: Int)
+
+    @Query("SELECT * FROM FolderTable WHERE status = :status")
+    fun getFolderByStatus(status: String): List<Folder>
 }

@@ -35,18 +35,21 @@ public final class AppDatabase_Impl extends AppDatabase {
 
   private volatile FolderDao _folderDao;
 
+  private volatile IconDao _iconDao;
+
   @Override
   protected SupportSQLiteOpenHelper createOpenHelper(DatabaseConfiguration configuration) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(2) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(1) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
         _db.execSQL("CREATE TABLE IF NOT EXISTS `ChatTable` (`user_idx` INTEGER NOT NULL, `other_user_idx` INTEGER NOT NULL, `groupName` TEXT, `message` TEXT, `postTime` INTEGER, `folderIdx` INTEGER NOT NULL, `status` TEXT NOT NULL, `viewType` INTEGER NOT NULL, `isChecked` INTEGER NOT NULL, `idx` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `UserTable` (`idx` INTEGER NOT NULL, `nickname` TEXT, `email` TEXT, `status` TEXT NOT NULL, PRIMARY KEY(`idx`))");
         _db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS `index_UserTable_idx` ON `UserTable` (`idx`)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `OtherUserTable` (`name` TEXT, `image` TEXT, `status` TEXT NOT NULL, `kakao_user_idx` INTEGER NOT NULL, `other_user_idx` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `FolderTable` (`idx` INTEGER NOT NULL, `name` TEXT NOT NULL, PRIMARY KEY(`idx`))");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `FolderTable` (`idx` INTEGER NOT NULL, `kakaoUserIdx` INTEGER NOT NULL, `parentFolderIdx` INTEGER, `folderName` TEXT NOT NULL, `folderImg` INTEGER NOT NULL, `status` TEXT NOT NULL, `createdAt` TEXT, `updatedAt` TEXT, PRIMARY KEY(`idx`))");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `IconTable` (`iconImage` INTEGER NOT NULL, `idx` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5114daed0e8f912b710f5e8428846561')");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '8205b6f7fd70a3560d55c1a52798d8b2')");
       }
 
       @Override
@@ -55,6 +58,7 @@ public final class AppDatabase_Impl extends AppDatabase {
         _db.execSQL("DROP TABLE IF EXISTS `UserTable`");
         _db.execSQL("DROP TABLE IF EXISTS `OtherUserTable`");
         _db.execSQL("DROP TABLE IF EXISTS `FolderTable`");
+        _db.execSQL("DROP TABLE IF EXISTS `IconTable`");
         if (mCallbacks != null) {
           for (int _i = 0, _size = mCallbacks.size(); _i < _size; _i++) {
             mCallbacks.get(_i).onDestructiveMigration(_db);
@@ -143,9 +147,15 @@ public final class AppDatabase_Impl extends AppDatabase {
                   + " Expected:\n" + _infoOtherUserTable + "\n"
                   + " Found:\n" + _existingOtherUserTable);
         }
-        final HashMap<String, TableInfo.Column> _columnsFolderTable = new HashMap<String, TableInfo.Column>(2);
+        final HashMap<String, TableInfo.Column> _columnsFolderTable = new HashMap<String, TableInfo.Column>(8);
         _columnsFolderTable.put("idx", new TableInfo.Column("idx", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsFolderTable.put("name", new TableInfo.Column("name", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsFolderTable.put("kakaoUserIdx", new TableInfo.Column("kakaoUserIdx", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsFolderTable.put("parentFolderIdx", new TableInfo.Column("parentFolderIdx", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsFolderTable.put("folderName", new TableInfo.Column("folderName", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsFolderTable.put("folderImg", new TableInfo.Column("folderImg", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsFolderTable.put("status", new TableInfo.Column("status", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsFolderTable.put("createdAt", new TableInfo.Column("createdAt", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsFolderTable.put("updatedAt", new TableInfo.Column("updatedAt", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysFolderTable = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesFolderTable = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoFolderTable = new TableInfo("FolderTable", _columnsFolderTable, _foreignKeysFolderTable, _indicesFolderTable);
@@ -155,9 +165,21 @@ public final class AppDatabase_Impl extends AppDatabase {
                   + " Expected:\n" + _infoFolderTable + "\n"
                   + " Found:\n" + _existingFolderTable);
         }
+        final HashMap<String, TableInfo.Column> _columnsIconTable = new HashMap<String, TableInfo.Column>(2);
+        _columnsIconTable.put("iconImage", new TableInfo.Column("iconImage", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsIconTable.put("idx", new TableInfo.Column("idx", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysIconTable = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesIconTable = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoIconTable = new TableInfo("IconTable", _columnsIconTable, _foreignKeysIconTable, _indicesIconTable);
+        final TableInfo _existingIconTable = TableInfo.read(_db, "IconTable");
+        if (! _infoIconTable.equals(_existingIconTable)) {
+          return new RoomOpenHelper.ValidationResult(false, "IconTable(com.chat_soon_e.chat_soon_e.data.entities.Icon).\n"
+                  + " Expected:\n" + _infoIconTable + "\n"
+                  + " Found:\n" + _existingIconTable);
+        }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "5114daed0e8f912b710f5e8428846561", "6dc688f81b0445cff06d5254205d068f");
+    }, "8205b6f7fd70a3560d55c1a52798d8b2", "cd695444263b08758212aa3216f62985");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)
@@ -170,7 +192,7 @@ public final class AppDatabase_Impl extends AppDatabase {
   protected InvalidationTracker createInvalidationTracker() {
     final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
     HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "ChatTable","UserTable","OtherUserTable","FolderTable");
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "ChatTable","UserTable","OtherUserTable","FolderTable","IconTable");
   }
 
   @Override
@@ -183,6 +205,7 @@ public final class AppDatabase_Impl extends AppDatabase {
       _db.execSQL("DELETE FROM `UserTable`");
       _db.execSQL("DELETE FROM `OtherUserTable`");
       _db.execSQL("DELETE FROM `FolderTable`");
+      _db.execSQL("DELETE FROM `IconTable`");
       super.setTransactionSuccessful();
     } finally {
       super.endTransaction();
@@ -200,6 +223,7 @@ public final class AppDatabase_Impl extends AppDatabase {
     _typeConvertersMap.put(UserDao.class, UserDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(OtherUserDao.class, OtherUserDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(FolderDao.class, FolderDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(IconDao.class, IconDao_Impl.getRequiredConverters());
     return _typeConvertersMap;
   }
 
@@ -255,6 +279,20 @@ public final class AppDatabase_Impl extends AppDatabase {
           _folderDao = new FolderDao_Impl(this);
         }
         return _folderDao;
+      }
+    }
+  }
+
+  @Override
+  public IconDao iconDao() {
+    if (_iconDao != null) {
+      return _iconDao;
+    } else {
+      synchronized(this) {
+        if(_iconDao == null) {
+          _iconDao = new IconDao_Impl(this);
+        }
+        return _iconDao;
       }
     }
   }

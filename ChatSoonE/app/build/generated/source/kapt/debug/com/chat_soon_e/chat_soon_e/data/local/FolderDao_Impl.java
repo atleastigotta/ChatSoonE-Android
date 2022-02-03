@@ -5,11 +5,13 @@ import androidx.room.EntityDeletionOrUpdateAdapter;
 import androidx.room.EntityInsertionAdapter;
 import androidx.room.RoomDatabase;
 import androidx.room.RoomSQLiteQuery;
+import androidx.room.SharedSQLiteStatement;
 import androidx.room.util.CursorUtil;
 import androidx.room.util.DBUtil;
 import androidx.sqlite.db.SupportSQLiteStatement;
 import com.chat_soon_e.chat_soon_e.data.entities.Folder;
 import java.lang.Class;
+import java.lang.Integer;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
@@ -27,21 +29,45 @@ public final class FolderDao_Impl implements FolderDao {
 
   private final EntityDeletionOrUpdateAdapter<Folder> __updateAdapterOfFolder;
 
+  private final SharedSQLiteStatement __preparedStmtOfUpdateStatusByIdx;
+
   public FolderDao_Impl(RoomDatabase __db) {
     this.__db = __db;
     this.__insertionAdapterOfFolder = new EntityInsertionAdapter<Folder>(__db) {
       @Override
       public String createQuery() {
-        return "INSERT OR ABORT INTO `FolderTable` (`idx`,`name`) VALUES (?,?)";
+        return "INSERT OR ABORT INTO `FolderTable` (`idx`,`kakaoUserIdx`,`parentFolderIdx`,`folderName`,`folderImg`,`status`,`createdAt`,`updatedAt`) VALUES (?,?,?,?,?,?,?,?)";
       }
 
       @Override
       public void bind(SupportSQLiteStatement stmt, Folder value) {
         stmt.bindLong(1, value.getIdx());
-        if (value.getName() == null) {
-          stmt.bindNull(2);
+        stmt.bindLong(2, value.getKakaoUserIdx());
+        if (value.getParentFolderIdx() == null) {
+          stmt.bindNull(3);
         } else {
-          stmt.bindString(2, value.getName());
+          stmt.bindLong(3, value.getParentFolderIdx());
+        }
+        if (value.getFolderName() == null) {
+          stmt.bindNull(4);
+        } else {
+          stmt.bindString(4, value.getFolderName());
+        }
+        stmt.bindLong(5, value.getFolderImg());
+        if (value.getStatus() == null) {
+          stmt.bindNull(6);
+        } else {
+          stmt.bindString(6, value.getStatus());
+        }
+        if (value.getCreatedAt() == null) {
+          stmt.bindNull(7);
+        } else {
+          stmt.bindString(7, value.getCreatedAt());
+        }
+        if (value.getUpdatedAt() == null) {
+          stmt.bindNull(8);
+        } else {
+          stmt.bindString(8, value.getUpdatedAt());
         }
       }
     };
@@ -59,18 +85,47 @@ public final class FolderDao_Impl implements FolderDao {
     this.__updateAdapterOfFolder = new EntityDeletionOrUpdateAdapter<Folder>(__db) {
       @Override
       public String createQuery() {
-        return "UPDATE OR ABORT `FolderTable` SET `idx` = ?,`name` = ? WHERE `idx` = ?";
+        return "UPDATE OR ABORT `FolderTable` SET `idx` = ?,`kakaoUserIdx` = ?,`parentFolderIdx` = ?,`folderName` = ?,`folderImg` = ?,`status` = ?,`createdAt` = ?,`updatedAt` = ? WHERE `idx` = ?";
       }
 
       @Override
       public void bind(SupportSQLiteStatement stmt, Folder value) {
         stmt.bindLong(1, value.getIdx());
-        if (value.getName() == null) {
-          stmt.bindNull(2);
+        stmt.bindLong(2, value.getKakaoUserIdx());
+        if (value.getParentFolderIdx() == null) {
+          stmt.bindNull(3);
         } else {
-          stmt.bindString(2, value.getName());
+          stmt.bindLong(3, value.getParentFolderIdx());
         }
-        stmt.bindLong(3, value.getIdx());
+        if (value.getFolderName() == null) {
+          stmt.bindNull(4);
+        } else {
+          stmt.bindString(4, value.getFolderName());
+        }
+        stmt.bindLong(5, value.getFolderImg());
+        if (value.getStatus() == null) {
+          stmt.bindNull(6);
+        } else {
+          stmt.bindString(6, value.getStatus());
+        }
+        if (value.getCreatedAt() == null) {
+          stmt.bindNull(7);
+        } else {
+          stmt.bindString(7, value.getCreatedAt());
+        }
+        if (value.getUpdatedAt() == null) {
+          stmt.bindNull(8);
+        } else {
+          stmt.bindString(8, value.getUpdatedAt());
+        }
+        stmt.bindLong(9, value.getIdx());
+      }
+    };
+    this.__preparedStmtOfUpdateStatusByIdx = new SharedSQLiteStatement(__db) {
+      @Override
+      public String createQuery() {
+        final String _query = "UPDATE FolderTable SET status = ? WHERE idx = ?";
+        return _query;
       }
     };
   }
@@ -112,6 +167,28 @@ public final class FolderDao_Impl implements FolderDao {
   }
 
   @Override
+  public void updateStatusByIdx(final String status, final int idx) {
+    __db.assertNotSuspendingTransaction();
+    final SupportSQLiteStatement _stmt = __preparedStmtOfUpdateStatusByIdx.acquire();
+    int _argIndex = 1;
+    if (status == null) {
+      _stmt.bindNull(_argIndex);
+    } else {
+      _stmt.bindString(_argIndex, status);
+    }
+    _argIndex = 2;
+    _stmt.bindLong(_argIndex, idx);
+    __db.beginTransaction();
+    try {
+      _stmt.executeUpdateDelete();
+      __db.setTransactionSuccessful();
+    } finally {
+      __db.endTransaction();
+      __preparedStmtOfUpdateStatusByIdx.release(_stmt);
+    }
+  }
+
+  @Override
   public List<Folder> getFolderList() {
     final String _sql = "SELECT * FROM FolderTable";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
@@ -119,19 +196,53 @@ public final class FolderDao_Impl implements FolderDao {
     final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
     try {
       final int _cursorIndexOfIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "idx");
-      final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "name");
+      final int _cursorIndexOfKakaoUserIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "kakaoUserIdx");
+      final int _cursorIndexOfParentFolderIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "parentFolderIdx");
+      final int _cursorIndexOfFolderName = CursorUtil.getColumnIndexOrThrow(_cursor, "folderName");
+      final int _cursorIndexOfFolderImg = CursorUtil.getColumnIndexOrThrow(_cursor, "folderImg");
+      final int _cursorIndexOfStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "status");
+      final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
+      final int _cursorIndexOfUpdatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "updatedAt");
       final List<Folder> _result = new ArrayList<Folder>(_cursor.getCount());
       while(_cursor.moveToNext()) {
         final Folder _item;
         final int _tmpIdx;
         _tmpIdx = _cursor.getInt(_cursorIndexOfIdx);
-        final String _tmpName;
-        if (_cursor.isNull(_cursorIndexOfName)) {
-          _tmpName = null;
+        final int _tmpKakaoUserIdx;
+        _tmpKakaoUserIdx = _cursor.getInt(_cursorIndexOfKakaoUserIdx);
+        final Integer _tmpParentFolderIdx;
+        if (_cursor.isNull(_cursorIndexOfParentFolderIdx)) {
+          _tmpParentFolderIdx = null;
         } else {
-          _tmpName = _cursor.getString(_cursorIndexOfName);
+          _tmpParentFolderIdx = _cursor.getInt(_cursorIndexOfParentFolderIdx);
         }
-        _item = new Folder(_tmpIdx,_tmpName);
+        final String _tmpFolderName;
+        if (_cursor.isNull(_cursorIndexOfFolderName)) {
+          _tmpFolderName = null;
+        } else {
+          _tmpFolderName = _cursor.getString(_cursorIndexOfFolderName);
+        }
+        final int _tmpFolderImg;
+        _tmpFolderImg = _cursor.getInt(_cursorIndexOfFolderImg);
+        final String _tmpStatus;
+        if (_cursor.isNull(_cursorIndexOfStatus)) {
+          _tmpStatus = null;
+        } else {
+          _tmpStatus = _cursor.getString(_cursorIndexOfStatus);
+        }
+        final String _tmpCreatedAt;
+        if (_cursor.isNull(_cursorIndexOfCreatedAt)) {
+          _tmpCreatedAt = null;
+        } else {
+          _tmpCreatedAt = _cursor.getString(_cursorIndexOfCreatedAt);
+        }
+        final String _tmpUpdatedAt;
+        if (_cursor.isNull(_cursorIndexOfUpdatedAt)) {
+          _tmpUpdatedAt = null;
+        } else {
+          _tmpUpdatedAt = _cursor.getString(_cursorIndexOfUpdatedAt);
+        }
+        _item = new Folder(_tmpIdx,_tmpKakaoUserIdx,_tmpParentFolderIdx,_tmpFolderName,_tmpFolderImg,_tmpStatus,_tmpCreatedAt,_tmpUpdatedAt);
         _result.add(_item);
       }
       return _result;
@@ -151,18 +262,52 @@ public final class FolderDao_Impl implements FolderDao {
     final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
     try {
       final int _cursorIndexOfIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "idx");
-      final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "name");
+      final int _cursorIndexOfKakaoUserIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "kakaoUserIdx");
+      final int _cursorIndexOfParentFolderIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "parentFolderIdx");
+      final int _cursorIndexOfFolderName = CursorUtil.getColumnIndexOrThrow(_cursor, "folderName");
+      final int _cursorIndexOfFolderImg = CursorUtil.getColumnIndexOrThrow(_cursor, "folderImg");
+      final int _cursorIndexOfStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "status");
+      final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
+      final int _cursorIndexOfUpdatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "updatedAt");
       final Folder _result;
       if(_cursor.moveToFirst()) {
         final int _tmpIdx;
         _tmpIdx = _cursor.getInt(_cursorIndexOfIdx);
-        final String _tmpName;
-        if (_cursor.isNull(_cursorIndexOfName)) {
-          _tmpName = null;
+        final int _tmpKakaoUserIdx;
+        _tmpKakaoUserIdx = _cursor.getInt(_cursorIndexOfKakaoUserIdx);
+        final Integer _tmpParentFolderIdx;
+        if (_cursor.isNull(_cursorIndexOfParentFolderIdx)) {
+          _tmpParentFolderIdx = null;
         } else {
-          _tmpName = _cursor.getString(_cursorIndexOfName);
+          _tmpParentFolderIdx = _cursor.getInt(_cursorIndexOfParentFolderIdx);
         }
-        _result = new Folder(_tmpIdx,_tmpName);
+        final String _tmpFolderName;
+        if (_cursor.isNull(_cursorIndexOfFolderName)) {
+          _tmpFolderName = null;
+        } else {
+          _tmpFolderName = _cursor.getString(_cursorIndexOfFolderName);
+        }
+        final int _tmpFolderImg;
+        _tmpFolderImg = _cursor.getInt(_cursorIndexOfFolderImg);
+        final String _tmpStatus;
+        if (_cursor.isNull(_cursorIndexOfStatus)) {
+          _tmpStatus = null;
+        } else {
+          _tmpStatus = _cursor.getString(_cursorIndexOfStatus);
+        }
+        final String _tmpCreatedAt;
+        if (_cursor.isNull(_cursorIndexOfCreatedAt)) {
+          _tmpCreatedAt = null;
+        } else {
+          _tmpCreatedAt = _cursor.getString(_cursorIndexOfCreatedAt);
+        }
+        final String _tmpUpdatedAt;
+        if (_cursor.isNull(_cursorIndexOfUpdatedAt)) {
+          _tmpUpdatedAt = null;
+        } else {
+          _tmpUpdatedAt = _cursor.getString(_cursorIndexOfUpdatedAt);
+        }
+        _result = new Folder(_tmpIdx,_tmpKakaoUserIdx,_tmpParentFolderIdx,_tmpFolderName,_tmpFolderImg,_tmpStatus,_tmpCreatedAt,_tmpUpdatedAt);
       } else {
         _result = null;
       }
@@ -174,33 +319,137 @@ public final class FolderDao_Impl implements FolderDao {
   }
 
   @Override
-  public Folder getFolderByName(final String name) {
-    final String _sql = "SELECT * FROM FolderTable WHERE name = ?";
+  public Folder getFolderByName(final String folderName) {
+    final String _sql = "SELECT * FROM FolderTable WHERE folderName = ?";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
-    if (name == null) {
+    if (folderName == null) {
       _statement.bindNull(_argIndex);
     } else {
-      _statement.bindString(_argIndex, name);
+      _statement.bindString(_argIndex, folderName);
     }
     __db.assertNotSuspendingTransaction();
     final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
     try {
       final int _cursorIndexOfIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "idx");
-      final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "name");
+      final int _cursorIndexOfKakaoUserIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "kakaoUserIdx");
+      final int _cursorIndexOfParentFolderIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "parentFolderIdx");
+      final int _cursorIndexOfFolderName = CursorUtil.getColumnIndexOrThrow(_cursor, "folderName");
+      final int _cursorIndexOfFolderImg = CursorUtil.getColumnIndexOrThrow(_cursor, "folderImg");
+      final int _cursorIndexOfStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "status");
+      final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
+      final int _cursorIndexOfUpdatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "updatedAt");
       final Folder _result;
       if(_cursor.moveToFirst()) {
         final int _tmpIdx;
         _tmpIdx = _cursor.getInt(_cursorIndexOfIdx);
-        final String _tmpName;
-        if (_cursor.isNull(_cursorIndexOfName)) {
-          _tmpName = null;
+        final int _tmpKakaoUserIdx;
+        _tmpKakaoUserIdx = _cursor.getInt(_cursorIndexOfKakaoUserIdx);
+        final Integer _tmpParentFolderIdx;
+        if (_cursor.isNull(_cursorIndexOfParentFolderIdx)) {
+          _tmpParentFolderIdx = null;
         } else {
-          _tmpName = _cursor.getString(_cursorIndexOfName);
+          _tmpParentFolderIdx = _cursor.getInt(_cursorIndexOfParentFolderIdx);
         }
-        _result = new Folder(_tmpIdx,_tmpName);
+        final String _tmpFolderName;
+        if (_cursor.isNull(_cursorIndexOfFolderName)) {
+          _tmpFolderName = null;
+        } else {
+          _tmpFolderName = _cursor.getString(_cursorIndexOfFolderName);
+        }
+        final int _tmpFolderImg;
+        _tmpFolderImg = _cursor.getInt(_cursorIndexOfFolderImg);
+        final String _tmpStatus;
+        if (_cursor.isNull(_cursorIndexOfStatus)) {
+          _tmpStatus = null;
+        } else {
+          _tmpStatus = _cursor.getString(_cursorIndexOfStatus);
+        }
+        final String _tmpCreatedAt;
+        if (_cursor.isNull(_cursorIndexOfCreatedAt)) {
+          _tmpCreatedAt = null;
+        } else {
+          _tmpCreatedAt = _cursor.getString(_cursorIndexOfCreatedAt);
+        }
+        final String _tmpUpdatedAt;
+        if (_cursor.isNull(_cursorIndexOfUpdatedAt)) {
+          _tmpUpdatedAt = null;
+        } else {
+          _tmpUpdatedAt = _cursor.getString(_cursorIndexOfUpdatedAt);
+        }
+        _result = new Folder(_tmpIdx,_tmpKakaoUserIdx,_tmpParentFolderIdx,_tmpFolderName,_tmpFolderImg,_tmpStatus,_tmpCreatedAt,_tmpUpdatedAt);
       } else {
         _result = null;
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
+  public List<Folder> getFolderByStatus(final String status) {
+    final String _sql = "SELECT * FROM FolderTable WHERE status = ?";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    if (status == null) {
+      _statement.bindNull(_argIndex);
+    } else {
+      _statement.bindString(_argIndex, status);
+    }
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _cursorIndexOfIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "idx");
+      final int _cursorIndexOfKakaoUserIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "kakaoUserIdx");
+      final int _cursorIndexOfParentFolderIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "parentFolderIdx");
+      final int _cursorIndexOfFolderName = CursorUtil.getColumnIndexOrThrow(_cursor, "folderName");
+      final int _cursorIndexOfFolderImg = CursorUtil.getColumnIndexOrThrow(_cursor, "folderImg");
+      final int _cursorIndexOfStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "status");
+      final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
+      final int _cursorIndexOfUpdatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "updatedAt");
+      final List<Folder> _result = new ArrayList<Folder>(_cursor.getCount());
+      while(_cursor.moveToNext()) {
+        final Folder _item;
+        final int _tmpIdx;
+        _tmpIdx = _cursor.getInt(_cursorIndexOfIdx);
+        final int _tmpKakaoUserIdx;
+        _tmpKakaoUserIdx = _cursor.getInt(_cursorIndexOfKakaoUserIdx);
+        final Integer _tmpParentFolderIdx;
+        if (_cursor.isNull(_cursorIndexOfParentFolderIdx)) {
+          _tmpParentFolderIdx = null;
+        } else {
+          _tmpParentFolderIdx = _cursor.getInt(_cursorIndexOfParentFolderIdx);
+        }
+        final String _tmpFolderName;
+        if (_cursor.isNull(_cursorIndexOfFolderName)) {
+          _tmpFolderName = null;
+        } else {
+          _tmpFolderName = _cursor.getString(_cursorIndexOfFolderName);
+        }
+        final int _tmpFolderImg;
+        _tmpFolderImg = _cursor.getInt(_cursorIndexOfFolderImg);
+        final String _tmpStatus;
+        if (_cursor.isNull(_cursorIndexOfStatus)) {
+          _tmpStatus = null;
+        } else {
+          _tmpStatus = _cursor.getString(_cursorIndexOfStatus);
+        }
+        final String _tmpCreatedAt;
+        if (_cursor.isNull(_cursorIndexOfCreatedAt)) {
+          _tmpCreatedAt = null;
+        } else {
+          _tmpCreatedAt = _cursor.getString(_cursorIndexOfCreatedAt);
+        }
+        final String _tmpUpdatedAt;
+        if (_cursor.isNull(_cursorIndexOfUpdatedAt)) {
+          _tmpUpdatedAt = null;
+        } else {
+          _tmpUpdatedAt = _cursor.getString(_cursorIndexOfUpdatedAt);
+        }
+        _item = new Folder(_tmpIdx,_tmpKakaoUserIdx,_tmpParentFolderIdx,_tmpFolderName,_tmpFolderImg,_tmpStatus,_tmpCreatedAt,_tmpUpdatedAt);
+        _result.add(_item);
       }
       return _result;
     } finally {
