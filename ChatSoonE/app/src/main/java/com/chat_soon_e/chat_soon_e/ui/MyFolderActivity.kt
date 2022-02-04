@@ -39,7 +39,7 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
         initFolder()                // 폴더 초기화
         initIcon()                  // 아이콘 초기화
         initDrawerLayout()          // 설정 메뉴창 설정
-        initClickListener()         // 여러 ClickListener 초기화
+        initClickListener()         // 여러 click listener 초기화
     }
 
     // 폴더 초기화
@@ -237,14 +237,6 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
         // 하단 중앙의 버튼을 눌렀을 때
         binding.myFolderContent.myFolderCreateNewFolderIv.setOnClickListener {
             popupFolderBottomMenu()
-//            // 아이콘 클릭시 폴더 생성하기, 숨긴 폴더 목록 표시
-//            val popup = PopupMenu(this@MyFolderActivity, binding.myFolderContent.myFolderCreateNewFolderIv, Gravity.BOTTOM, 0, R.style.MyFolderBottomPopupMenuTheme)
-//            menuInflater.inflate(R.menu.popup_folder_bottom_menu, popup.menu)
-//
-//            // 팝업 메뉴 리스너
-//            val listener = PopupFolderMenuOptionListener()
-//            popup.setOnMenuItemClickListener(listener)
-//            popup.show()
         }
 
         // 설정 메뉴창에 있는 메뉴 아이콘 클릭시 설정 메뉴창 닫히도록

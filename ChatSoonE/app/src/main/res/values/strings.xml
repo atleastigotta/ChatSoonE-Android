@@ -74,4 +74,8 @@
     <string name="name">이름</string>
     <string name="message">메시지</string>
     <string name="date_time">날짜와 시간</string>
+
+    <!-- hidden folder -->
+    <string name="hidden_folder_title">숨긴 폴더</string>
+    <string name="show_folder">내폴더로 보내기</string>
 </resources>
