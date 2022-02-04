@@ -236,14 +236,15 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
 
         // 하단 중앙의 버튼을 눌렀을 때
         binding.myFolderContent.myFolderCreateNewFolderIv.setOnClickListener {
-            // 아이콘 클릭시 폴더 생성하기, 숨긴 폴더 목록 표시
-            val popup = PopupMenu(this@MyFolderActivity, binding.myFolderContent.myFolderCreateNewFolderIv, Gravity.BOTTOM, 0, R.style.MyFolderBottomPopupMenuTheme)
-            menuInflater.inflate(R.menu.popup_folder_option_menu, popup.menu)
-
-            // 팝업 메뉴 리스너
-            val listener = PopupFolderMenuOptionListener()
-            popup.setOnMenuItemClickListener(listener)
-            popup.show()
+            popupFolderBottomMenu()
+//            // 아이콘 클릭시 폴더 생성하기, 숨긴 폴더 목록 표시
+//            val popup = PopupMenu(this@MyFolderActivity, binding.myFolderContent.myFolderCreateNewFolderIv, Gravity.BOTTOM, 0, R.style.MyFolderBottomPopupMenuTheme)
+//            menuInflater.inflate(R.menu.popup_folder_bottom_menu, popup.menu)
+//
+//            // 팝업 메뉴 리스너
+//            val listener = PopupFolderMenuOptionListener()
+//            popup.setOnMenuItemClickListener(listener)
+//            popup.show()
         }
 
         // 설정 메뉴창에 있는 메뉴 아이콘 클릭시 설정 메뉴창 닫히도록
@@ -323,7 +324,7 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
     }
 
     @SuppressLint("InflateParams")
-    fun changeIcon(binding: ItemMyFolderBinding, position: Int, folderList: ArrayList<Folder>) {
+    fun changeIcon(binding: ItemMyFolderBinding, position: Int, folderListFromAdapter: ArrayList<Folder>) {
         // 팝업 윈도우 사이즈를 잘못 맞추면 아이템들이 안 뜨므로 하드 코딩으로 사이즈 조정해주기
         // 아이콘 16개 (기본)
         val size = windowManager.currentWindowMetricsPointCompat()
@@ -352,9 +353,13 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
                 val selectedIcon = iconList[itemPosition]
                 binding.itemMyFolderIv.setImageResource(selectedIcon.iconImage)
 
+                appDB = AppDatabase.getInstance(this@MyFolderActivity)!!
+
                 // RoomDB 적용
-                val folder = appDB.folderDao().getFolderByIdx(folderList[position].idx)
+                val folder = appDB.folderDao().getFolderByIdx(folderListFromAdapter[position].idx)
                 appDB.folderDao().updateFolderImgByIdx(selectedIcon.iconImage, folder.idx)
+                folderList = appDB.folderDao().getFolderList() as ArrayList
+                folderRVAdapter.addFolderList(appDB.folderDao().getFolderByStatus("active") as ArrayList)
 
                 Log.d("MY-FOLDER", "selectedIcon: $selectedIcon")
                 Log.d("MY-FOLDER", "position: $position")
@@ -365,7 +370,121 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
                 mPopupWindow.dismiss()
             }
         })
-        folderRVAdapter.addFolderList(appDB.folderDao().getFolderByStatus("active") as ArrayList)
+//        folderRVAdapter.addFolderList(appDB.folderDao().getFolderByStatus("active") as ArrayList)
+    }
+
+    private fun popupFolderBottomMenu() {
+        val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val popupView = inflater.inflate(R.layout.popup_window_folder_bottom_menu, null)
+        mPopupWindow = PopupWindow(popupView, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT)
+
+        mPopupWindow.animationStyle = -1        // 애니메이션 설정 (-1: 설정 안 함, 0: 설정)
+        mPopupWindow.isFocusable = true         // 외부 영역 선택 시 팝업 윈도우 종료
+        mPopupWindow.isOutsideTouchable = true
+        mPopupWindow.showAtLocation(popupView, Gravity.BOTTOM, 0, 0)
+
+        // 폴더 생성하기 클릭
+        mPopupWindow.contentView.findViewById<TextView>(R.id.popup_window_folder_bottom_menu_create_folder_tv).setOnClickListener {
+            // 폴더 이름을 입력하라는 윈도우 띄우기
+            // 그 다음 폴더 아이콘을 선택하라는 윈도우 띄우기
+            // 리사이클러뷰 & RoomDB에 반영해주기
+            mPopupWindow.dismiss()
+            setFolderName()
+        }
+
+        // 숨긴 폴더 목록 클릭
+        mPopupWindow.contentView.findViewById<TextView>(R.id.popup_window_folder_bottom_menu_hidden_folder_tv).setOnClickListener {
+            mPopupWindow.dismiss()
+
+            // 숨긴 폴더 목록 보기
+            val lockSPF = getSharedPreferences("lock", 0)
+            val pattern = lockSPF.getString("pattern", "0")
+
+            // 패턴 모드 설정
+            // 0: 숨긴 폴더 목록을 확인하기 위한 입력 모드
+            // 1: 메인 화면의 설정창 -> 변경 모드
+            // 2: 폴더 화면의 설정창 -> 변경 모드
+            val modeSPF = getSharedPreferences("mode", 0)
+            val editor = modeSPF.edit()
+            editor.putInt("mode", 0)
+            editor.apply()
+
+            if(pattern.equals("0")) {   // 패턴이 설정되어 있지 않은 경우 패턴 설정 페이지로
+                Toast.makeText(this@MyFolderActivity, "패턴이 설정되어 있지 않습니다. 패턴을 설정해주세요.", Toast.LENGTH_SHORT).show()
+                startNextActivity(CreatePatternActivity::class.java)
+            } else {
+                startNextActivity(InputPatternActivity::class.java)
+            }
+        }
+    }
+
+    private fun setFolderName() {
+        // 이름 바꾸기 팝업 윈도우
+        val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val popupView = inflater.inflate(R.layout.popup_window_set_folder_name, null)
+        mPopupWindow = PopupWindow(popupView, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT)
+
+        mPopupWindow.animationStyle = -1        // 애니메이션 설정 (-1: 설정 안 함, 0: 설정)
+        mPopupWindow.isFocusable = true         // 외부 영역 선택 시 팝업 윈도우 종료
+        mPopupWindow.isOutsideTouchable = true
+        mPopupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0)
+
+        // 입력 완료했을 때 누르는 버튼
+        mPopupWindow.contentView.findViewById<AppCompatButton>(R.id.popup_window_set_name_button).setOnClickListener {
+            // 작성한 폴더 이름을 반영한 새폴더를 만들어준다.
+            val name = mPopupWindow.contentView.findViewById<EditText>(R.id.popup_window_set_name_et).text.toString()
+
+            // 팝업 윈도우 종료
+            mPopupWindow.dismiss()
+
+            // 작성한 폴더 이름을 setFolderIcon 함수로 넘겨준다.
+            setFolderIcon(name)
+        }
+//        folderRVAdapter.addFolderList(appDB.folderDao().getFolderByStatus("active") as ArrayList)
+    }
+
+    private fun setFolderIcon(name: String) {
+        // 팝업 윈도우 사이즈를 잘못 맞추면 아이템들이 안 뜨므로 하드 코딩으로 사이즈 조정해주기
+        // 아이콘 16개 (기본)
+        val size = windowManager.currentWindowMetricsPointCompat()
+        val width = (size.x * 0.8f).toInt()
+        val height = (size.y * 0.3f).toInt()
+
+        // 아이콘 바꾸기 팝업 윈도우
+        val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val popupView = inflater.inflate(R.layout.popup_window_change_icon, null)
+        mPopupWindow = PopupWindow(popupView, width, height)
+
+        mPopupWindow.animationStyle = -1        // 애니메이션 설정 (-1: 설정 안 함, 0: 설정)
+        mPopupWindow.isFocusable = true
+        mPopupWindow.isOutsideTouchable = true
+        mPopupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0)
+
+        // RecyclerView 초기화
+        // 더미 데이터와 어댑터 연결
+        iconRVAdapter = ChangeIconRVAdapter(iconList)
+        popupView.findViewById<RecyclerView>(R.id.popup_window_change_icon_recycler_view).adapter = iconRVAdapter
+
+        iconRVAdapter.setMyItemClickListener(object: ChangeIconRVAdapter.MyItemClickListener {
+            // 아이콘을 하나 선택했을 경우
+            override fun onIconClick(itemBinding: ItemIconBinding, itemPosition: Int) {
+                val selectedIcon = iconList[itemPosition]
+                val lastIdx = folderList.size
+
+                Log.d("MY-FOLDER", "folder list size: ${folderList.size}")
+
+                // 선택한 아이콘과 전달받은 폴더 이름으로 폴더 하나 생성한 후 RoomDB에 적용
+                val newFolder = Folder(lastIdx, 0, null, name, selectedIcon.iconImage, "active", null, null)
+                appDB = AppDatabase.getInstance(this@MyFolderActivity)!!
+                appDB.folderDao().insert(newFolder)
+                folderList = appDB.folderDao().getFolderList() as ArrayList
+                Log.d("MY-FOLDER", "folder list size: ${folderList.size}")
+                folderRVAdapter.addFolderList(appDB.folderDao().getFolderByStatus("active") as ArrayList)
+
+                // 팝업 윈도우 종료
+                mPopupWindow.dismiss()
+            }
+        })
     }
 
     // 디바이스 크기에 사이즈를 맞추기 위한 함수

@@ -66,7 +66,9 @@
     <string name="folder_name">폴더 이름</string>
     <string name="change_name">변경할 폴더 이름을 적어주세요.</string>
     <string name="change_name_button">이름 변경</string>
-    <string name="change_icon">변경할 아이콘을 선택해주세요.</string>
+    <string name="set_name_button">확인</string>
+    <string name="change_icon">아이콘을 선택해주세요.</string>
+    <string name="set_folder_name">폴더 이름을 적어주세요.</string>
 
     <!-- chat activity -->
     <string name="name">이름</string>

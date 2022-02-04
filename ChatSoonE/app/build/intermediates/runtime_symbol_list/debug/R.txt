@@ -3081,6 +3081,12 @@ int id popup_window_change_icon_tv 0x7f0801ac
 int id popup_window_change_name_button 0x7f0801ad
 int id popup_window_change_name_et 0x7f0801ae
 int id popup_window_change_name_tv 0x7f0801af
+int id popup_window_folder_bottom_menu_create_folder_tv 0x7f080260
+int id popup_window_folder_bottom_menu_hidden_folder_tv 0x7f080261
+int id popup_window_folder_bottom_menu_line_view 0x7f080262
+int id popup_window_set_name_button 0x7f080263
+int id popup_window_set_name_et 0x7f080264
+int id popup_window_set_name_tv 0x7f080265
 int id position 0x7f0801b0
 int id postLayout 0x7f0801b1
 int id progress_circular 0x7f0801b2
@@ -3452,6 +3458,8 @@ int layout notification_template_part_chronometer 0x7f0b0085
 int layout notification_template_part_time 0x7f0b0086
 int layout popup_window_change_icon 0x7f0b0087
 int layout popup_window_change_name 0x7f0b0088
+int layout popup_window_folder_bottom_menu 0x7f0b009c
+int layout popup_window_set_folder_name 0x7f0b009d
 int layout select_dialog_item_material 0x7f0b0089
 int layout select_dialog_multichoice_material 0x7f0b008a
 int layout select_dialog_singlechoice_material 0x7f0b008b
@@ -3475,7 +3483,7 @@ int menu example_menu 0x7f0c0000
 int menu example_menu2 0x7f0c0001
 int menu navi_menu 0x7f0c0002
 int menu navi_setting_menu 0x7f0c0003
-int menu popup_folder_edit_menu 0x7f0c0004
+int menu popup_folder_bottom_menu 0x7f0c0008
 int menu popup_folder_menu 0x7f0c0005
 int menu popup_folder_option_menu 0x7f0c0006
 int menu popup_menu 0x7f0c0007
@@ -3660,6 +3668,8 @@ int string path_password_strike_through 0x7f1000ac
 int string pattern 0x7f1000ad
 int string search_menu_title 0x7f1000ae
 int string separator 0x7f1000af
+int string set_folder_name 0x7f1000c3
+int string set_name_button 0x7f1000c4
 int string setting 0x7f1000b0
 int string setting_alarm 0x7f1000b1
 int string setting_block 0x7f1000b2

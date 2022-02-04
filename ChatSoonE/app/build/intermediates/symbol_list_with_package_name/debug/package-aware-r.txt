@@ -3082,6 +3082,12 @@ id popup_window_change_icon_tv
 id popup_window_change_name_button
 id popup_window_change_name_et
 id popup_window_change_name_tv
+id popup_window_folder_bottom_menu_create_folder_tv
+id popup_window_folder_bottom_menu_hidden_folder_tv
+id popup_window_folder_bottom_menu_line_view
+id popup_window_set_name_button
+id popup_window_set_name_et
+id popup_window_set_name_tv
 id position
 id postLayout
 id progress_circular
@@ -3453,6 +3459,8 @@ layout notification_template_part_chronometer
 layout notification_template_part_time
 layout popup_window_change_icon
 layout popup_window_change_name
+layout popup_window_folder_bottom_menu
+layout popup_window_set_folder_name
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
@@ -3476,7 +3484,7 @@ menu example_menu
 menu example_menu2
 menu navi_menu
 menu navi_setting_menu
-menu popup_folder_edit_menu
+menu popup_folder_bottom_menu
 menu popup_folder_menu
 menu popup_folder_option_menu
 menu popup_menu
@@ -3661,6 +3669,8 @@ string path_password_strike_through
 string pattern
 string search_menu_title
 string separator
+string set_folder_name
+string set_name_button
 string setting
 string setting_alarm
 string setting_block

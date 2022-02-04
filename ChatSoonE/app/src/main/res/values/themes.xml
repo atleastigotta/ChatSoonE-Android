@@ -40,7 +40,7 @@
     </style>
 
     <!-- MyFolder bottom PopupMenu -->
-    <style name="MyFolderBottomPopupMenuTheme" parent="Theme.Template_Basic">
+    <style name="MyFolderBottomPopupMenuTheme" parent="android:style/Widget.PopupMenu">
         <item name="android:popupBackground">@drawable/background_folder_bottom_popup_menu</item>
     </style>
 </resources>

@@ -1,7 +1,6 @@
 package com.chat_soon_e.chat_soon_e.ui
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.*
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
@@ -60,7 +59,7 @@ class MyFolderRVAdapter(private val mContext: MyFolderActivity): RecyclerView.Ad
         holder.binding.itemMyFolderIv.setOnLongClickListener {
             // 팝업 메뉴: 이름 바꾸기, 아이콘 바꾸기, 삭제하기, 숨기기
             popup = PopupMenu(mContext, holder.itemView, Gravity.START, 0, R.style.MyFolderOptionPopupMenuTheme)
-            popup.menuInflater.inflate(R.menu.popup_folder_edit_menu, popup.menu)
+            popup.menuInflater.inflate(R.menu.popup_folder_option_menu, popup.menu)
             popup.setOnMenuItemClickListener { item ->
                 when (item?.itemId) {
                     R.id.popup_folder_edit_menu_1 -> {
@@ -95,20 +94,15 @@ class MyFolderRVAdapter(private val mContext: MyFolderActivity): RecyclerView.Ad
     // 데아터셋의 크기 반환
     override fun getItemCount(): Int = folderList.size
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun addFolderList(folderList: ArrayList<Folder>) {
+//    @SuppressLint("NotifyDataSetChanged")
+@SuppressLint("NotifyDataSetChanged")
+fun addFolderList(folderList: ArrayList<Folder>) {
         this.folderList.clear()
         this.folderList.addAll(folderList)
         notifyDataSetChanged()
     }
 
     private fun removeFolder(position: Int) {
-        folderList.removeAt(position)
-        notifyItemRemoved(position)
-        notifyItemRangeChanged(position, itemCount);
-    }
-
-    private fun hideFolder(position: Int) {
         folderList.removeAt(position)
         notifyItemRemoved(position)
         notifyItemRangeChanged(position, itemCount);
