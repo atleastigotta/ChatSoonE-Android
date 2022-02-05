@@ -14,5 +14,5 @@
 
     <item
         android:id="@+id/popup_folder_edit_menu_4"
-        android:title="@string/hide_folder" />
+        android:title="@string/show_folder" />
 </menu>

@@ -35,7 +35,11 @@ public final class UserDao_Impl implements UserDao {
     this.__insertionAdapterOfUser = new EntityInsertionAdapter<User>(__db) {
       @Override
       public String createQuery() {
+<<<<<<< HEAD
         return "INSERT OR ABORT INTO `UserTable` (`kakaoUserIdx`,`nickname`,`email`,`status`) VALUES (?,?,?,?)";
+=======
+        return "INSERT OR ABORT INTO `UserTable` (`idx`,`nickname`,`email`,`status`) VALUES (?,?,?,?)";
+>>>>>>> f3b6f2dde75ddd688d0d416880f477ca55112bdb
       }
 
       @Override
@@ -72,7 +76,11 @@ public final class UserDao_Impl implements UserDao {
     this.__updateAdapterOfUser = new EntityDeletionOrUpdateAdapter<User>(__db) {
       @Override
       public String createQuery() {
+<<<<<<< HEAD
         return "UPDATE OR ABORT `UserTable` SET `kakaoUserIdx` = ?,`nickname` = ?,`email` = ?,`status` = ? WHERE `kakaoUserIdx` = ?";
+=======
+        return "UPDATE OR ABORT `UserTable` SET `idx` = ?,`nickname` = ?,`email` = ?,`status` = ? WHERE `idx` = ?";
+>>>>>>> f3b6f2dde75ddd688d0d416880f477ca55112bdb
       }
 
       @Override
@@ -93,7 +101,11 @@ public final class UserDao_Impl implements UserDao {
         } else {
           stmt.bindString(4, value.getStatus());
         }
+<<<<<<< HEAD
         stmt.bindLong(5, value.getKakaoUserIdx());
+=======
+        stmt.bindLong(5, value.getIdx());
+>>>>>>> f3b6f2dde75ddd688d0d416880f477ca55112bdb
       }
     };
     this.__preparedStmtOfUpdateStatus = new SharedSQLiteStatement(__db) {
@@ -202,7 +214,11 @@ public final class UserDao_Impl implements UserDao {
         } else {
           _tmpStatus = _cursor.getString(_cursorIndexOfStatus);
         }
+<<<<<<< HEAD
         _result.setStatus(_tmpStatus);
+=======
+        _result = new User(_tmpIdx,_tmpNickname,_tmpEmail,_tmpStatus);
+>>>>>>> f3b6f2dde75ddd688d0d416880f477ca55112bdb
       } else {
         _result = null;
       }

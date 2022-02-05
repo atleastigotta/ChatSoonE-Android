@@ -44,12 +44,21 @@ public final class ChatDao_Impl implements ChatDao {
     this.__insertionAdapterOfChat = new EntityInsertionAdapter<Chat>(__db) {
       @Override
       public String createQuery() {
+<<<<<<< HEAD
         return "INSERT OR ABORT INTO `ChatTable` (`otherUserIdx`,`groupName`,`message`,`postTime`,`folderIdx`,`status`,`viewType`,`isChecked`,`isNew`,`chatIdx`) VALUES (?,?,?,?,?,?,?,?,?,nullif(?, 0))";
+=======
+        return "INSERT OR ABORT INTO `ChatTable` (`user_idx`,`other_user_idx`,`groupName`,`message`,`postTime`,`folderIdx`,`status`,`viewType`,`isChecked`,`idx`) VALUES (?,?,?,?,?,?,?,?,?,nullif(?, 0))";
+>>>>>>> f3b6f2dde75ddd688d0d416880f477ca55112bdb
       }
 
       @Override
       public void bind(SupportSQLiteStatement stmt, Chat value) {
+<<<<<<< HEAD
         stmt.bindLong(1, value.getOtherUserIdx());
+=======
+        stmt.bindLong(1, value.getUser_idx());
+        stmt.bindLong(2, value.getOther_user_idx());
+>>>>>>> f3b6f2dde75ddd688d0d416880f477ca55112bdb
         if (value.getGroupName() == null) {
           stmt.bindNull(2);
         } else {
@@ -73,6 +82,7 @@ public final class ChatDao_Impl implements ChatDao {
         } else {
           stmt.bindString(6, value.getStatus());
         }
+<<<<<<< HEAD
         stmt.bindLong(7, value.getViewType());
         final int _tmp_1;
         _tmp_1 = value.isChecked() ? 1 : 0;
@@ -83,6 +93,13 @@ public final class ChatDao_Impl implements ChatDao {
           stmt.bindLong(9, value.isNew());
         }
         stmt.bindLong(10, value.getChatIdx());
+=======
+        stmt.bindLong(8, value.getViewType());
+        final int _tmp_1;
+        _tmp_1 = value.isChecked() ? 1 : 0;
+        stmt.bindLong(9, _tmp_1);
+        stmt.bindLong(10, value.getIdx());
+>>>>>>> f3b6f2dde75ddd688d0d416880f477ca55112bdb
       }
     };
     this.__deletionAdapterOfChat = new EntityDeletionOrUpdateAdapter<Chat>(__db) {
@@ -99,12 +116,21 @@ public final class ChatDao_Impl implements ChatDao {
     this.__updateAdapterOfChat = new EntityDeletionOrUpdateAdapter<Chat>(__db) {
       @Override
       public String createQuery() {
+<<<<<<< HEAD
         return "UPDATE OR ABORT `ChatTable` SET `otherUserIdx` = ?,`groupName` = ?,`message` = ?,`postTime` = ?,`folderIdx` = ?,`status` = ?,`viewType` = ?,`isChecked` = ?,`isNew` = ?,`chatIdx` = ? WHERE `chatIdx` = ?";
+=======
+        return "UPDATE OR ABORT `ChatTable` SET `user_idx` = ?,`other_user_idx` = ?,`groupName` = ?,`message` = ?,`postTime` = ?,`folderIdx` = ?,`status` = ?,`viewType` = ?,`isChecked` = ?,`idx` = ? WHERE `idx` = ?";
+>>>>>>> f3b6f2dde75ddd688d0d416880f477ca55112bdb
       }
 
       @Override
       public void bind(SupportSQLiteStatement stmt, Chat value) {
+<<<<<<< HEAD
         stmt.bindLong(1, value.getOtherUserIdx());
+=======
+        stmt.bindLong(1, value.getUser_idx());
+        stmt.bindLong(2, value.getOther_user_idx());
+>>>>>>> f3b6f2dde75ddd688d0d416880f477ca55112bdb
         if (value.getGroupName() == null) {
           stmt.bindNull(2);
         } else {
@@ -137,6 +163,7 @@ public final class ChatDao_Impl implements ChatDao {
         } else {
           stmt.bindLong(9, value.isNew());
         }
+<<<<<<< HEAD
         stmt.bindLong(10, value.getChatIdx());
         stmt.bindLong(11, value.getChatIdx());
       }
@@ -146,6 +173,14 @@ public final class ChatDao_Impl implements ChatDao {
       public String createQuery() {
         final String _query = "UPDATE ChatTable SET isNew= ? WHERE chatIdx= ?";
         return _query;
+=======
+        stmt.bindLong(8, value.getViewType());
+        final int _tmp_1;
+        _tmp_1 = value.isChecked() ? 1 : 0;
+        stmt.bindLong(9, _tmp_1);
+        stmt.bindLong(10, value.getIdx());
+        stmt.bindLong(11, value.getIdx());
+>>>>>>> f3b6f2dde75ddd688d0d416880f477ca55112bdb
       }
     };
   }
@@ -213,7 +248,12 @@ public final class ChatDao_Impl implements ChatDao {
     __db.assertNotSuspendingTransaction();
     final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
     try {
+<<<<<<< HEAD
       final int _cursorIndexOfOtherUserIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "otherUserIdx");
+=======
+      final int _cursorIndexOfUserIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "user_idx");
+      final int _cursorIndexOfOtherUserIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "other_user_idx");
+>>>>>>> f3b6f2dde75ddd688d0d416880f477ca55112bdb
       final int _cursorIndexOfGroupName = CursorUtil.getColumnIndexOrThrow(_cursor, "groupName");
       final int _cursorIndexOfMessage = CursorUtil.getColumnIndexOrThrow(_cursor, "message");
       final int _cursorIndexOfPostTime = CursorUtil.getColumnIndexOrThrow(_cursor, "postTime");
@@ -221,12 +261,23 @@ public final class ChatDao_Impl implements ChatDao {
       final int _cursorIndexOfStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "status");
       final int _cursorIndexOfViewType = CursorUtil.getColumnIndexOrThrow(_cursor, "viewType");
       final int _cursorIndexOfIsChecked = CursorUtil.getColumnIndexOrThrow(_cursor, "isChecked");
+<<<<<<< HEAD
       final int _cursorIndexOfIsNew = CursorUtil.getColumnIndexOrThrow(_cursor, "isNew");
       final int _cursorIndexOfChatIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "chatIdx");
       final Chat _result;
       if(_cursor.moveToFirst()) {
         final int _tmpOtherUserIdx;
         _tmpOtherUserIdx = _cursor.getInt(_cursorIndexOfOtherUserIdx);
+=======
+      final int _cursorIndexOfIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "idx");
+      final List<Chat> _result = new ArrayList<Chat>(_cursor.getCount());
+      while(_cursor.moveToNext()) {
+        final Chat _item;
+        final long _tmpUser_idx;
+        _tmpUser_idx = _cursor.getLong(_cursorIndexOfUserIdx);
+        final int _tmpOther_user_idx;
+        _tmpOther_user_idx = _cursor.getInt(_cursorIndexOfOtherUserIdx);
+>>>>>>> f3b6f2dde75ddd688d0d416880f477ca55112bdb
         final String _tmpGroupName;
         if (_cursor.isNull(_cursorIndexOfGroupName)) {
           _tmpGroupName = null;
@@ -246,6 +297,7 @@ public final class ChatDao_Impl implements ChatDao {
         } else {
           _tmp = _cursor.getLong(_cursorIndexOfPostTime);
         }
+<<<<<<< HEAD
         _tmpPostTime = __converter.fromTimestamp(_tmp);
         final int _tmpFolderIdx;
         _tmpFolderIdx = _cursor.getInt(_cursorIndexOfFolderIdx);
@@ -324,6 +376,8 @@ public final class ChatDao_Impl implements ChatDao {
         } else {
           _tmp = _cursor.getLong(_cursorIndexOfPostTime);
         }
+=======
+>>>>>>> f3b6f2dde75ddd688d0d416880f477ca55112bdb
         _tmpPostTime = __converter.fromTimestamp(_tmp);
         final int _tmpFolderIdx;
         _tmpFolderIdx = _cursor.getInt(_cursorIndexOfFolderIdx);
@@ -339,6 +393,7 @@ public final class ChatDao_Impl implements ChatDao {
         final int _tmp_1;
         _tmp_1 = _cursor.getInt(_cursorIndexOfIsChecked);
         _tmpIsChecked = _tmp_1 != 0;
+<<<<<<< HEAD
         final Integer _tmpIsNew;
         if (_cursor.isNull(_cursorIndexOfIsNew)) {
           _tmpIsNew = null;
@@ -349,6 +404,12 @@ public final class ChatDao_Impl implements ChatDao {
         final int _tmpChatIdx;
         _tmpChatIdx = _cursor.getInt(_cursorIndexOfChatIdx);
         _item.setChatIdx(_tmpChatIdx);
+=======
+        _item = new Chat(_tmpUser_idx,_tmpOther_user_idx,_tmpGroupName,_tmpMessage,_tmpPostTime,_tmpFolderIdx,_tmpStatus,_tmpViewType,_tmpIsChecked);
+        final int _tmpIdx;
+        _tmpIdx = _cursor.getInt(_cursorIndexOfIdx);
+        _item.setIdx(_tmpIdx);
+>>>>>>> f3b6f2dde75ddd688d0d416880f477ca55112bdb
         _result.add(_item);
       }
       return _result;
@@ -445,7 +506,12 @@ public final class ChatDao_Impl implements ChatDao {
     __db.assertNotSuspendingTransaction();
     final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
     try {
+<<<<<<< HEAD
       final int _cursorIndexOfOtherUserIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "otherUserIdx");
+=======
+      final int _cursorIndexOfUserIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "user_idx");
+      final int _cursorIndexOfOtherUserIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "other_user_idx");
+>>>>>>> f3b6f2dde75ddd688d0d416880f477ca55112bdb
       final int _cursorIndexOfGroupName = CursorUtil.getColumnIndexOrThrow(_cursor, "groupName");
       final int _cursorIndexOfMessage = CursorUtil.getColumnIndexOrThrow(_cursor, "message");
       final int _cursorIndexOfPostTime = CursorUtil.getColumnIndexOrThrow(_cursor, "postTime");
@@ -453,8 +519,12 @@ public final class ChatDao_Impl implements ChatDao {
       final int _cursorIndexOfStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "status");
       final int _cursorIndexOfViewType = CursorUtil.getColumnIndexOrThrow(_cursor, "viewType");
       final int _cursorIndexOfIsChecked = CursorUtil.getColumnIndexOrThrow(_cursor, "isChecked");
+<<<<<<< HEAD
       final int _cursorIndexOfIsNew = CursorUtil.getColumnIndexOrThrow(_cursor, "isNew");
       final int _cursorIndexOfChatIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "chatIdx");
+=======
+      final int _cursorIndexOfIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "idx");
+>>>>>>> f3b6f2dde75ddd688d0d416880f477ca55112bdb
       final List<Chat> _result = new ArrayList<Chat>(_cursor.getCount());
       while(_cursor.moveToNext()) {
         final Chat _item;
@@ -479,6 +549,8 @@ public final class ChatDao_Impl implements ChatDao {
         } else {
           _tmp = _cursor.getLong(_cursorIndexOfPostTime);
         }
+<<<<<<< HEAD
+=======
         _tmpPostTime = __converter.fromTimestamp(_tmp);
         final int _tmpFolderIdx;
         _tmpFolderIdx = _cursor.getInt(_cursorIndexOfFolderIdx);
@@ -494,6 +566,79 @@ public final class ChatDao_Impl implements ChatDao {
         final int _tmp_1;
         _tmp_1 = _cursor.getInt(_cursorIndexOfIsChecked);
         _tmpIsChecked = _tmp_1 != 0;
+        _item = new Chat(_tmpUser_idx,_tmpOther_user_idx,_tmpGroupName,_tmpMessage,_tmpPostTime,_tmpFolderIdx,_tmpStatus,_tmpViewType,_tmpIsChecked);
+        final int _tmpIdx;
+        _tmpIdx = _cursor.getInt(_cursorIndexOfIdx);
+        _item.setIdx(_tmpIdx);
+        _result.add(_item);
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
+  public List<Chat> getChatList() {
+    final String _sql = "SELECT * FROM ChatTable";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _cursorIndexOfUserIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "user_idx");
+      final int _cursorIndexOfOtherUserIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "other_user_idx");
+      final int _cursorIndexOfGroupName = CursorUtil.getColumnIndexOrThrow(_cursor, "groupName");
+      final int _cursorIndexOfMessage = CursorUtil.getColumnIndexOrThrow(_cursor, "message");
+      final int _cursorIndexOfPostTime = CursorUtil.getColumnIndexOrThrow(_cursor, "postTime");
+      final int _cursorIndexOfFolderIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "folderIdx");
+      final int _cursorIndexOfStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "status");
+      final int _cursorIndexOfViewType = CursorUtil.getColumnIndexOrThrow(_cursor, "viewType");
+      final int _cursorIndexOfIsChecked = CursorUtil.getColumnIndexOrThrow(_cursor, "isChecked");
+      final int _cursorIndexOfIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "idx");
+      final List<Chat> _result = new ArrayList<Chat>(_cursor.getCount());
+      while(_cursor.moveToNext()) {
+        final Chat _item;
+        final long _tmpUser_idx;
+        _tmpUser_idx = _cursor.getLong(_cursorIndexOfUserIdx);
+        final int _tmpOther_user_idx;
+        _tmpOther_user_idx = _cursor.getInt(_cursorIndexOfOtherUserIdx);
+        final String _tmpGroupName;
+        if (_cursor.isNull(_cursorIndexOfGroupName)) {
+          _tmpGroupName = null;
+        } else {
+          _tmpGroupName = _cursor.getString(_cursorIndexOfGroupName);
+        }
+        final String _tmpMessage;
+        if (_cursor.isNull(_cursorIndexOfMessage)) {
+          _tmpMessage = null;
+        } else {
+          _tmpMessage = _cursor.getString(_cursorIndexOfMessage);
+        }
+        final Date _tmpPostTime;
+        final Long _tmp;
+        if (_cursor.isNull(_cursorIndexOfPostTime)) {
+          _tmp = null;
+        } else {
+          _tmp = _cursor.getLong(_cursorIndexOfPostTime);
+        }
+>>>>>>> f3b6f2dde75ddd688d0d416880f477ca55112bdb
+        _tmpPostTime = __converter.fromTimestamp(_tmp);
+        final int _tmpFolderIdx;
+        _tmpFolderIdx = _cursor.getInt(_cursorIndexOfFolderIdx);
+        final String _tmpStatus;
+        if (_cursor.isNull(_cursorIndexOfStatus)) {
+          _tmpStatus = null;
+        } else {
+          _tmpStatus = _cursor.getString(_cursorIndexOfStatus);
+        }
+        final int _tmpViewType;
+        _tmpViewType = _cursor.getInt(_cursorIndexOfViewType);
+        final boolean _tmpIsChecked;
+        final int _tmp_1;
+        _tmp_1 = _cursor.getInt(_cursorIndexOfIsChecked);
+        _tmpIsChecked = _tmp_1 != 0;
+<<<<<<< HEAD
         final Integer _tmpIsNew;
         if (_cursor.isNull(_cursorIndexOfIsNew)) {
           _tmpIsNew = null;
@@ -504,6 +649,12 @@ public final class ChatDao_Impl implements ChatDao {
         final int _tmpChatIdx;
         _tmpChatIdx = _cursor.getInt(_cursorIndexOfChatIdx);
         _item.setChatIdx(_tmpChatIdx);
+=======
+        _item = new Chat(_tmpUser_idx,_tmpOther_user_idx,_tmpGroupName,_tmpMessage,_tmpPostTime,_tmpFolderIdx,_tmpStatus,_tmpViewType,_tmpIsChecked);
+        final int _tmpIdx;
+        _tmpIdx = _cursor.getInt(_cursorIndexOfIdx);
+        _item.setIdx(_tmpIdx);
+>>>>>>> f3b6f2dde75ddd688d0d416880f477ca55112bdb
         _result.add(_item);
       }
       return _result;

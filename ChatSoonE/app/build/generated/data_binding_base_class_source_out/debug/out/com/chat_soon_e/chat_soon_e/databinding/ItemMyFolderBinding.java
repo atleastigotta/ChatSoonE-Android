@@ -21,14 +21,19 @@ public final class ItemMyFolderBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final ConstraintLayout itemMyFolder;
+
+  @NonNull
   public final ImageView itemMyFolderIv;
 
   @NonNull
   public final TextView itemMyFolderTv;
 
-  private ItemMyFolderBinding(@NonNull ConstraintLayout rootView, @NonNull ImageView itemMyFolderIv,
+  private ItemMyFolderBinding(@NonNull ConstraintLayout rootView,
+      @NonNull ConstraintLayout itemMyFolder, @NonNull ImageView itemMyFolderIv,
       @NonNull TextView itemMyFolderTv) {
     this.rootView = rootView;
+    this.itemMyFolder = itemMyFolder;
     this.itemMyFolderIv = itemMyFolderIv;
     this.itemMyFolderTv = itemMyFolderTv;
   }
@@ -60,6 +65,8 @@ public final class ItemMyFolderBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      ConstraintLayout itemMyFolder = (ConstraintLayout) rootView;
+
       id = R.id.item_my_folder_iv;
       ImageView itemMyFolderIv = ViewBindings.findChildViewById(rootView, id);
       if (itemMyFolderIv == null) {
@@ -72,7 +79,8 @@ public final class ItemMyFolderBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ItemMyFolderBinding((ConstraintLayout) rootView, itemMyFolderIv, itemMyFolderTv);
+      return new ItemMyFolderBinding((ConstraintLayout) rootView, itemMyFolder, itemMyFolderIv,
+          itemMyFolderTv);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

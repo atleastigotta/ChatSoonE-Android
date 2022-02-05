@@ -9,8 +9,6 @@
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <!-- Customize your theme here. -->
 
         <!-- Remove the title bar -->
         <item name="windowNoTitle">true</item>
@@ -25,7 +23,24 @@
         <!-- draw status bar on background -->
         <item name="android:windowDrawsSystemBarBackgrounds" tools:targetApi="l">true</item>
 
-        <!-- apply full screen mode -->
+        <!-- full screen mode -->
         <item name="android:windowFullscreen">false</item>
+    </style>
+
+    <!-- EditText -->
+    <style name="EditTheme" parent="Theme.Template_Basic">
+        <!-- 커서 색, 드래그 시 하이라이트 색, EditText 선택 시 밑줄 하이라이트 색 등 강조 색 변경 -->
+        <item name="colorAccent">@color/mauve</item>
+        <item name="colorControlActivated">@color/mauve</item>
+    </style>
+
+    <!-- MyFolder option PopupMenu -->
+    <style name="MyFolderOptionPopupMenuTheme" parent="Theme.Template_Basic">
+        <item name="android:popupBackground">@drawable/background_folder_option_popup_menu</item>
+    </style>
+
+    <!-- MyFolder bottom PopupMenu -->
+    <style name="MyFolderBottomPopupMenuTheme" parent="android:style/Widget.PopupMenu">
+        <item name="android:popupBackground">@drawable/background_folder_bottom_popup_menu</item>
     </style>
 </resources>

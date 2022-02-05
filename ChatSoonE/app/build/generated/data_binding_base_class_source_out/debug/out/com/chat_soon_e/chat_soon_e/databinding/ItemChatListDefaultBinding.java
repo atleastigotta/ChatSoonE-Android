@@ -45,8 +45,12 @@ public final class ItemChatListDefaultBinding implements ViewBinding {
   private ItemChatListDefaultBinding(@NonNull ConstraintLayout rootView,
       @NonNull TextView itemChatListContentTv, @NonNull TextView itemChatListDateTimeTv,
       @NonNull ConstraintLayout itemChatListDefaultLayout, @NonNull TextView itemChatListNameTv,
+<<<<<<< HEAD
       @NonNull CardView itemChatListNewCv, @NonNull CardView itemChatListProfileCv,
       @NonNull ImageView itemChatListProfileIv) {
+=======
+      @NonNull CardView itemChatListProfileCv, @NonNull ImageView itemChatListProfileIv) {
+>>>>>>> f3b6f2dde75ddd688d0d416880f477ca55112bdb
     this.rootView = rootView;
     this.itemChatListContentTv = itemChatListContentTv;
     this.itemChatListDateTimeTv = itemChatListDateTimeTv;
@@ -123,7 +127,11 @@ public final class ItemChatListDefaultBinding implements ViewBinding {
       }
 
       return new ItemChatListDefaultBinding((ConstraintLayout) rootView, itemChatListContentTv,
+<<<<<<< HEAD
           itemChatListDateTimeTv, itemChatListDefaultLayout, itemChatListNameTv, itemChatListNewCv,
+=======
+          itemChatListDateTimeTv, itemChatListDefaultLayout, itemChatListNameTv,
+>>>>>>> f3b6f2dde75ddd688d0d416880f477ca55112bdb
           itemChatListProfileCv, itemChatListProfileIv);
     }
     String missingId = rootView.getResources().getResourceName(id);
