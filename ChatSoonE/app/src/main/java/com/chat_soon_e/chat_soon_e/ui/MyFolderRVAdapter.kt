@@ -1,5 +1,6 @@
 package com.chat_soon_e.chat_soon_e.ui
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,14 +8,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.chat_soon_e.chat_soon_e.data.entities.Folder
 import com.chat_soon_e.chat_soon_e.databinding.ItemMyFolderBinding
 
-class MyFolderRVAdapter(private val folderList: ArrayList<Folder>): RecyclerView.Adapter<MyFolderRVAdapter.ViewHolder>() {
+class MyFolderRVAdapter(): RecyclerView.Adapter<MyFolderRVAdapter.ViewHolder>() {
     // 클릭 인터페이스
+    private val folderList=ArrayList<Folder>()
+
     interface MyItemClickListener {
         fun onFolderClick(view: View, position: Int)
         fun onFolderLongClick(view: View, position: Int)
     }
 
-    // 리스너 객체를 저장하는 변수수
+    // 리스너 객체를 저장하는 변수
    private lateinit var mItemClickListener: MyItemClickListener
 
    // 리스너 객체를 외부에서 전달받는 함수
@@ -41,6 +44,14 @@ class MyFolderRVAdapter(private val folderList: ArrayList<Folder>): RecyclerView
             return@setOnLongClickListener false
         }
     }
+    //Folder list 추가
+    @SuppressLint("NotifyDataSetChanged")
+    fun addItem(folder:List<Folder>){
+        folderList.clear()
+        folderList.addAll(folder as ArrayList)
+
+        notifyDataSetChanged()
+    }
 
     // 데아터셋의 크기 반환
     override fun getItemCount(): Int = folderList.size
@@ -48,7 +59,7 @@ class MyFolderRVAdapter(private val folderList: ArrayList<Folder>): RecyclerView
     // 뷰홀더
     inner class ViewHolder(val binding: ItemMyFolderBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(folder: Folder) {
-            binding.itemMyFolderTv.text = folder.name
+            binding.itemMyFolderTv.text = folder.folderName
         }
     }
 }

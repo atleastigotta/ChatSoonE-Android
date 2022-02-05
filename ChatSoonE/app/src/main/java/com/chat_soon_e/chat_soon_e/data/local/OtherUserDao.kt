@@ -15,14 +15,18 @@ interface OtherUserDao {
     fun delete(otherUser: OtherUser)
 
     //임시
-    @Query("SELECT * FROM OtherUserTable WHERE name =:name AND kakao_user_idx =:id")
+    @Query("SELECT * FROM OtherUserTable WHERE nickname =:name AND kakaoUserIdx =:id")
     fun getOtherUserByNameId(name:String, id:Long): OtherUser
 
     //임시
-    @Query("SELECT OU.other_user_idx FROM OtherUserTable as OU WHERE kakao_user_idx= :id")
+    @Query("SELECT OU.otherUserIdx FROM OtherUserTable as OU WHERE kakaoUserIdx= :id")
     fun getOtherUserIdxList(id:Long): List<Int>
 
     //임시
-    @Query("SELECT * FROM OtherUserTable WHERE other_user_idx= :id")
+    @Query("SELECT * FROM OtherUserTable WHERE otherUserIdx= :id")
     fun getOtherUserById(id:Int): OtherUser
+
+    //해당 유저의 모든 other 목록 불러오기
+    @Query("SELECT * FROM OtherUserTable WHERE kakaoUserIdx= :id")
+    fun getAllOtherUser(id:Long):List<OtherUser>
 }

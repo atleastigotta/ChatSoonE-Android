@@ -11,13 +11,13 @@ interface UserDao {
     @Update
     fun update(user:User)
     //유저의 상태 업데이트
-    @Query("UPDATE UserTable SET status= :status WHERE idx= :id")
+    @Query("UPDATE UserTable SET status= :status WHERE kakaoUserIdx= :id")
     fun updateStatus(id:Long, status:String)
 
     @Delete
     fun delete(user:User)
 
-    @Query("SELECT * FROM UserTable WHERE idx= :id")
+    @Query("SELECT * FROM UserTable WHERE kakaoUserIdx= :id")
     fun getUser(id:Long):User?
 
     @Query("SELECT * FROM UserTable")

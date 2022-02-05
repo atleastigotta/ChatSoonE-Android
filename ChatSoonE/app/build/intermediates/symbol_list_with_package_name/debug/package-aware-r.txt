@@ -2575,6 +2575,7 @@ drawable icon_folder_2
 drawable icon_menu
 drawable icon_move
 drawable icon_my_folder
+drawable icon_my_folder_2
 drawable icon_profile
 drawable icon_up_and_down_arrow
 drawable icon_update
@@ -2630,6 +2631,7 @@ drawable selector_navi_match
 drawable selector_navi_mypage
 drawable selector_navi_search
 drawable selector_switch
+drawable shadow
 drawable shape_switch_track_off
 drawable shape_switch_track_on
 drawable shape_thumb
@@ -2882,6 +2884,7 @@ id item_chat_list_content_tv
 id item_chat_list_date_time_tv
 id item_chat_list_default_layout
 id item_chat_list_name_tv
+id item_chat_list_new_cv
 id item_chat_list_profile_cv
 id item_chat_list_profile_iv
 id item_my_folder_iv
@@ -3352,15 +3355,11 @@ layout fragment_home
 layout fragment_match
 layout fragment_mypage
 layout fragment_search
-<<<<<<< HEAD
 layout item_chat_list_choose
 layout item_chat_list_default
 layout item_my_folder
-=======
-layout item_chat_list
 layout layout_switch
 layout loading_row
->>>>>>> upstream/juyeon
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title

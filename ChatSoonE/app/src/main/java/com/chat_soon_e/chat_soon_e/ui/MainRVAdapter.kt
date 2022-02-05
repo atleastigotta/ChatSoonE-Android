@@ -4,29 +4,33 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.os.Build
 import android.util.Log
 import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.chat_soon_e.chat_soon_e.data.entities.Chat
 import com.chat_soon_e.chat_soon_e.data.entities.ChatViewType
 import com.chat_soon_e.chat_soon_e.databinding.ItemChatListChooseBinding
 import com.chat_soon_e.chat_soon_e.databinding.ItemChatListDefaultBinding
 import com.chat_soon_e.chat_soon_e.data.entities.ChatList
+import com.chat_soon_e.chat_soon_e.data.entities.ChatListViewType
 import com.chat_soon_e.chat_soon_e.data.local.AppDatabase
 import com.chat_soon_e.chat_soon_e.data.remote.auth.USER_ID
 import java.io.File
 import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 
-class MainRVAdapter(private var chatList: ArrayList<Chat>, private val context: Context, private val mItemClickListener: MyItemClickListener)
+class MainRVAdapter(private val context: Context, private val mItemClickListener: MyItemClickListener)
     : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    var chatList=ArrayList<ChatList>()
     private var selectedIndex = -1
-    private var selectedItemList: SparseBooleanArray = SparseBooleanArray(0)
-
+    var selectedItemList: SparseBooleanArray = SparseBooleanArray(0)
     // 클릭 인터페이스
     interface MyItemClickListener {
         fun onDefaultChatClick(view: View, position: Int)   // 채팅 대화 화면으로 이동
@@ -36,7 +40,7 @@ class MainRVAdapter(private var chatList: ArrayList<Chat>, private val context: 
     // 뷰홀더를 생성해줘야 할 때 호출되는 함수로, 아이템 뷰 객체를 만들어서 뷰 홀더에 던져준다.
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
-            ChatViewType.CHOOSE -> {
+            ChatListViewType.CHOOSE -> {
                 ChooseViewHolder(
                     ItemChatListChooseBinding.inflate(
                         LayoutInflater.from(viewGroup.context), viewGroup, false
@@ -55,9 +59,10 @@ class MainRVAdapter(private var chatList: ArrayList<Chat>, private val context: 
     }
 
     // 뷰홀더에 데이터 바인딩을 해줘야 할 때마다 호출되는 함수
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(chatList[position].viewType) {
-            ChatViewType.CHOOSE -> {
+            ChatListViewType.CHOOSE -> {
                 (holder as ChooseViewHolder).bind(chatList[position])
                 (holder as ChooseViewHolder).itemView.isSelected = isItemSelected(position)
             }
@@ -68,11 +73,25 @@ class MainRVAdapter(private var chatList: ArrayList<Chat>, private val context: 
         }
     }
 
+    //selectedItemList 삭제
     @SuppressLint("NotifyDataSetChanged")
     fun removeSelectedItemList() {
-        val newChatList = chatList.filter { chat -> !chat.isChecked }
-        chatList = newChatList as ArrayList<Chat>
+        //checked 안 된 것들로 교체
+        val newChatList=chatList.filter { chatList -> !(chatList.isChecked as Boolean) }
+        //val newChatList = chatList.filter { chat -> !chat.isChecked }
+        chatList = newChatList as ArrayList<ChatList>
         notifyDataSetChanged()
+    }
+
+    //selectedItemList 차단
+    @SuppressLint("NotifyDataSetChanged")
+    fun blockSelectedItemList() {
+        //삭제하고
+        val newChatList=chatList.filter { chatList -> !(chatList.isChecked as Boolean) }
+        //val newChatList = chatList.filter { chat -> !chat.isChecked }
+        chatList = newChatList as ArrayList<ChatList>
+        notifyDataSetChanged()
+        //
     }
 
     // selectedItemList 초기화
@@ -91,12 +110,14 @@ class MainRVAdapter(private var chatList: ArrayList<Chat>, private val context: 
             selectedItemList.put(position, true)
 //            view?.setBackgroundColor((Color.parseColor("#FED7D3")))
         }
+
+        //선택된 itmelist 들의 로그
         Log.d("MAIN/SELECTED-LIST", selectedItemList.toString())
         notifyItemChanged(position)
     }
 
     fun setChecked(position: Int) {
-        chatList[position].isChecked = !chatList[position].isChecked
+        chatList[position].isChecked = !chatList[position].isChecked!!
         notifyItemChanged(position)
     }
 
@@ -109,25 +130,39 @@ class MainRVAdapter(private var chatList: ArrayList<Chat>, private val context: 
     override fun getItemCount(): Int = chatList.size
 
     // 직접 설정한 뷰타입으로 설정되게 만든다.
-    override fun getItemViewType(position: Int): Int = chatList[position].viewType
+    override fun getItemViewType(position: Int): Int = chatList[position].viewType!!
 
     // 뷰타입 설정
     @SuppressLint("NotifyDataSetChanged")
     fun setViewType(currentMode: Int) {
-        val newChatList = ArrayList<Chat>()
+        val newChatList = ArrayList<ChatList>()
         for(i in 0 until chatList.size) {
             if(currentMode == 0) {
                 // 일반 모드
-                chatList[i].viewType = ChatViewType.DEFAULT
+                chatList[i].viewType = ChatListViewType.DEFAULT
             } else {
                 // 선택 모드
-                chatList[i].viewType = ChatViewType.CHOOSE
+                chatList[i].viewType = ChatListViewType.CHOOSE
             }
             newChatList.add(chatList[i])
         }
         this.chatList = newChatList
         notifyDataSetChanged()
     }
+
+    //AddData
+    @SuppressLint("NotifyDataSetChanged")
+    fun addItem(chats:List<ChatList>){
+        chatList.clear()
+        chatList.addAll(chats as ArrayList)
+
+        notifyDataSetChanged()
+    }
+    //chatIdx를 가져온다.
+//    fun getSelectedItem():List<Int>{
+//        //chatlist에서 checked 된 list들의 chatIdx를 저장하고 가져온다
+//        //선택된 item의 position을 이용해
+//    }
 
     // 디폴트 뷰홀더
     inner class DefaultViewHolder(private val binding: ItemChatListDefaultBinding): RecyclerView.ViewHolder(binding.root) {
@@ -138,18 +173,20 @@ class MainRVAdapter(private var chatList: ArrayList<Chat>, private val context: 
             }
         }
 
-        fun bind(chat: Chat) {
-            val db = AppDatabase.getInstance(context)!!
-            val otherUser = db.otherUserDao().getOtherUserById(chat.other_user_idx)
-            val name = otherUser.name
-            if(name != null){
-                binding.itemChatListProfileIv.setImageBitmap(loadBitmap(name))
+        @RequiresApi(Build.VERSION_CODES.O)
+        fun bind(chat: ChatList) {
+            if(chat.profileImg != null){
+                binding.itemChatListProfileIv.setImageBitmap(loadBitmap(chat.profileImg!!))
             }
-            if(otherUser.name != null)
-                binding.itemChatListNameTv.text = otherUser.name
-            binding.itemChatListContentTv.text = chat.message
-            if(chat.postTime != null)
-                binding.itemChatListDateTimeTv.text = dateToString(chat.postTime)
+            if(chat.chat_name != null)
+                binding.itemChatListNameTv.text = chat.chat_name
+            binding.itemChatListContentTv.text = chat.latest_message
+            if(chat.latest_time != null)
+                binding.itemChatListDateTimeTv.text = dateToString(chat.latest_time)
+            if(chat.isNew==0)
+                binding.itemChatListNewCv.visibility=View.VISIBLE
+            else
+                binding.itemChatListNewCv.visibility=View.INVISIBLE
         }
     }
 
@@ -163,21 +200,22 @@ class MainRVAdapter(private var chatList: ArrayList<Chat>, private val context: 
             }
         }
 
-        fun bind(chat: Chat) {
-            val db = AppDatabase.getInstance(context)!!
-            val otherUser = db.otherUserDao().getOtherUserById(chat.other_user_idx)
-            val name = otherUser.name
-            if(name != null){
-                binding.itemChatListProfileIv.setImageBitmap(loadBitmap(name))
+        @RequiresApi(Build.VERSION_CODES.O)
+        fun bind(chat: ChatList) {
+            if(chat.profileImg != null){
+                binding.itemChatListProfileIv.setImageBitmap(loadBitmap(chat.profileImg!!))
             }
-            if(otherUser.name != null)
-                binding.itemChatListNameTv.text = otherUser.name
-            binding.itemChatListContentTv.text = chat.message
-            if(chat.postTime != null)
-                binding.itemChatListDateTimeTv.text = dateToString(chat.postTime)
+            if(chat.chat_name != null)
+                binding.itemChatListNameTv.text = chat.chat_name
+
+            binding.itemChatListContentTv.text = chat.latest_message
+
+            if(chat.latest_time != null)
+                binding.itemChatListDateTimeTv.text = dateToString(chat.latest_time)
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun dateToString(date:Date):String{
         //오늘이 아니라면 날짜만
         var str=""
@@ -187,13 +225,17 @@ class MainRVAdapter(private var chatList: ArrayList<Chat>, private val context: 
             str= time.format(date).toString()
         }
         else{
+            //simpleDateFormat은 thread에 안전하지 않습니다.
+            //DateTimeFormatter을 사용합시다. 아! Date를 LocalDate로도 바꿔야합니다!
+            //val time_formatter=DateTimeFormatter.ofPattern("MM월 dd일")
+            //date.format(time_formatter)
             val time = SimpleDateFormat("MM월 DD일")
-            str=time.format(time).toString()
+            str=time.format(date).toString()
         }
         return str
     }
 
-    private fun loadBitmap(name: String): Bitmap {
+    private fun loadBitmap(name: String): Bitmap? {
         val file = File(context.cacheDir.toString())
         val files = file.listFiles()
         var list: String=""

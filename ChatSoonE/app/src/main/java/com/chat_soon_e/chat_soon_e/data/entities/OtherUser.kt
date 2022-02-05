@@ -6,10 +6,11 @@ import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "OtherUserTable")
 data class OtherUser(
-    @SerializedName("nickname") val name: String?,
-    @SerializedName("profileImgUrl") val image: String?,
-    @SerializedName("status") val status: String,
-    @SerializedName("kakaoUserIdx") val kakao_user_idx:Long=0L
+    @SerializedName("nickname") var nickname: String,
+    @SerializedName("profileImgUrl") var image: String?=null,
+    //status: ACTIVE, INACTIVE, BLOCKED
+    @SerializedName("status") var status: String="ACTIVE",
+    @SerializedName("kakaoUserIdx") var kakaoUserIdx:Long=0L
 ){
-    @PrimaryKey(autoGenerate = true) var other_user_idx:Int=0
+    @PrimaryKey(autoGenerate = true) var otherUserIdx:Int=0
 }

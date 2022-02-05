@@ -14,7 +14,7 @@ public abstract interface UserDao {
     public abstract void update(@org.jetbrains.annotations.NotNull()
     com.chat_soon_e.chat_soon_e.data.entities.User user);
     
-    @androidx.room.Query(value = "UPDATE UserTable SET status= :status WHERE idx= :id")
+    @androidx.room.Query(value = "UPDATE UserTable SET status= :status WHERE kakaoUserIdx= :id")
     public abstract void updateStatus(long id, @org.jetbrains.annotations.NotNull()
     java.lang.String status);
     
@@ -23,7 +23,7 @@ public abstract interface UserDao {
     com.chat_soon_e.chat_soon_e.data.entities.User user);
     
     @org.jetbrains.annotations.Nullable()
-    @androidx.room.Query(value = "SELECT * FROM UserTable WHERE idx= :id")
+    @androidx.room.Query(value = "SELECT * FROM UserTable WHERE kakaoUserIdx= :id")
     public abstract com.chat_soon_e.chat_soon_e.data.entities.User getUser(long id);
     
     @org.jetbrains.annotations.Nullable()

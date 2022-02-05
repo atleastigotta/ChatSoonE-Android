@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
@@ -33,17 +34,21 @@ public final class ItemChatListChooseBinding implements ViewBinding {
   public final TextView itemChatListNameTv;
 
   @NonNull
+  public final CardView itemChatListProfileCv;
+
+  @NonNull
   public final ImageView itemChatListProfileIv;
 
   private ItemChatListChooseBinding(@NonNull ConstraintLayout rootView,
       @NonNull ConstraintLayout itemChatListChooseLayout, @NonNull TextView itemChatListContentTv,
       @NonNull TextView itemChatListDateTimeTv, @NonNull TextView itemChatListNameTv,
-      @NonNull ImageView itemChatListProfileIv) {
+      @NonNull CardView itemChatListProfileCv, @NonNull ImageView itemChatListProfileIv) {
     this.rootView = rootView;
     this.itemChatListChooseLayout = itemChatListChooseLayout;
     this.itemChatListContentTv = itemChatListContentTv;
     this.itemChatListDateTimeTv = itemChatListDateTimeTv;
     this.itemChatListNameTv = itemChatListNameTv;
+    this.itemChatListProfileCv = itemChatListProfileCv;
     this.itemChatListProfileIv = itemChatListProfileIv;
   }
 
@@ -94,6 +99,12 @@ public final class ItemChatListChooseBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.item_chat_list_profile_cv;
+      CardView itemChatListProfileCv = ViewBindings.findChildViewById(rootView, id);
+      if (itemChatListProfileCv == null) {
+        break missingId;
+      }
+
       id = R.id.item_chat_list_profile_iv;
       ImageView itemChatListProfileIv = ViewBindings.findChildViewById(rootView, id);
       if (itemChatListProfileIv == null) {
@@ -101,7 +112,8 @@ public final class ItemChatListChooseBinding implements ViewBinding {
       }
 
       return new ItemChatListChooseBinding((ConstraintLayout) rootView, itemChatListChooseLayout,
-          itemChatListContentTv, itemChatListDateTimeTv, itemChatListNameTv, itemChatListProfileIv);
+          itemChatListContentTv, itemChatListDateTimeTv, itemChatListNameTv, itemChatListProfileCv,
+          itemChatListProfileIv);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

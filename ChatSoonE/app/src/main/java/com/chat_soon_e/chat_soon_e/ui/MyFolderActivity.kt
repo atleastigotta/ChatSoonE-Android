@@ -11,17 +11,20 @@ import androidx.appcompat.widget.SwitchCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.GridLayoutManager
+import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.ACTIVE
+import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.HIDDEN
 import com.chat_soon_e.chat_soon_e.R
 import com.chat_soon_e.chat_soon_e.data.entities.Folder
 import com.chat_soon_e.chat_soon_e.data.local.AppDatabase
 import com.chat_soon_e.chat_soon_e.databinding.ActivityMyFolderBinding
+import com.chat_soon_e.chat_soon_e.utils.getID
 import com.chat_soon_e.chat_soon_e.utils.permissionGrantred
 import com.google.android.material.navigation.NavigationView
 
 class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBinding::inflate), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var folderDB: AppDatabase
     private lateinit var folderRVAdapter: MyFolderRVAdapter
-    private var folderList = ArrayList<Folder>()
+    private lateinit var folderList:List<Folder>
 
     // onCreate() 이후
     override fun initAfterBinding() {
@@ -35,7 +38,7 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
     // 일단 더미 데이터로 구현
     private fun initFolderList() {
         folderDB = AppDatabase.getInstance(this)!!
-        folderList = folderDB.folderDao().getFolderList() as ArrayList
+        folderList = folderDB.folderDao().getFolderList(getID())
 
         // 만약 데이터베이스에서 받아온 folder list가 비어있지 않을 경우
         // 이미 데이터가 있다는 것을 뜻하므로 함수를 리턴한다.
@@ -43,18 +46,17 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
 
         // 만약 데이터베이스에서 받아온 folder list가 비어있는 경우
         // 더미 데이터
-        folderDB.folderDao().insert(Folder(0, "추억"))
-        folderDB.folderDao().insert(Folder(1, "여행"))
-        folderDB.folderDao().insert(Folder(2, "음식"))
-        folderDB.folderDao().insert(Folder(3, "학교"))
-        folderDB.folderDao().insert(Folder(4, "게임"))
+        folderDB.folderDao().insert(Folder("추억", getID(),null,null, ACTIVE))
+        folderDB.folderDao().insert(Folder( "여행", getID(),null,null, ACTIVE))
     }
 
     private fun initRecyclerView() {
         // 더미 데이터와 어댑터 연결
         folderDB = AppDatabase.getInstance(this)!!
-        folderList = folderDB.folderDao().getFolderList() as ArrayList
-        folderRVAdapter = MyFolderRVAdapter(folderList)
+        folderList = folderDB.folderDao().getFolderList(getID())
+        folderRVAdapter = MyFolderRVAdapter()
+        folderRVAdapter.addItem(folderList)
+        Log.d("folderList", folderList.toString())
         binding.myFolderContent.myFolderFolderListRecyclerView.adapter = folderRVAdapter
 
         // 폴더 아이콘 클릭시

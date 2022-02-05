@@ -7,8 +7,11 @@ import com.chat_soon_e.chat_soon_e.data.entities.Chat
 import com.chat_soon_e.chat_soon_e.data.local.AppDatabase
 import com.chat_soon_e.chat_soon_e.databinding.ActivityMainBinding
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Rect
 import android.os.Build
+import android.util.Base64
+import android.util.SparseBooleanArray
 import android.view.MenuItem
 import android.view.View
 import android.widget.PopupMenu
@@ -24,22 +27,27 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 import androidx.appcompat.widget.SwitchCompat
+import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.chat_soon_e.chat_soon_e.R
+import com.chat_soon_e.chat_soon_e.utils.getID
+import com.chat_soon_e.chat_soon_e.utils.permissionGrantred
 import com.google.android.material.navigation.NavigationView
+import okhttp3.internal.notify
+import java.security.MessageDigest
 
 class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate), NavigationView.OnNavigationItemSelectedListener {
 //    private lateinit var chatDB: AppDatabase            // chat list를 담고 있는 데이터베이스
     private lateinit var mainRVAdapter: MainRVAdapter   // chat list recycler view adpater
-    private var chatList = ArrayList<Chat>()            // 데이터베이스로부터 chat list를 받아올 변수
+    private var chatList = ArrayList<ChatList>()            // 데이터베이스로부터 chat list를 받아올 변수
     private var permission: Boolean = true              // 알림 허용 변수
-
+    private var selectedItem=ArrayList<ChatList>()           //선택된 chatList를 담고 있는 Array
     // ViewModel
     private val chatViewModel: ChatViewModel by viewModels()
 
     // onCreate() 이후
     override fun initAfterBinding() {
         Log.d("MAIN/LIFE-CYCLE", "after onCreate()")
-        initChatList()              // chat list 데이터 초기화
     }
 
     // initAfterBinding() 이후 실행
@@ -54,46 +62,20 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         initDrawerLayout()          // 설정 메뉴창 설정
         initClickListener()         // 여러 ClickListener 초기화
     }
-    // 권한 체크
-    private fun permissionGrantred(): Boolean {
-        return NotificationManagerCompat.getEnabledListenerPackages(this).any {
-                enabledPackageName -> enabledPackageName == packageName
-        }
-    }
 
     // chat list를 불러와 화면의 띄워주는 역할
-    private fun initChatList() {
-        if(chatList.isNotEmpty()) return
-
-        val database = AppDatabase.getInstance(this)!!
-        val chatDB = database.chatDao().getRecentChat(USER_ID)
-        chatList.addAll(chatDB)
-        Log.d("DBCHECK", chatDB.toString())
-
-        // 만약 데이터베이스에서 받아온 chat list가 비어있지 않을 경우
-        // 이미 데이터가 있다는 것을 뜻하므로 함수를 리턴한다.
-        // 만약 데이터베이스에서 받아온 chat list가 비어있는 경우
-//        chatDB.chatDao().insert(Chat("강은서", "designer"))
-//        chatDB.chatDao().insert(Chat("김민경", "node.js"))
-//        chatDB.chatDao().insert(Chat("남선우", "android"))
-//        chatDB.chatDao().insert(Chat("변재호", "node.js"))
-//        chatDB.chatDao().insert(Chat("이주연", "android"))
-//        chatDB.chatDao().insert(Chat("UMC", "android & server"))
-//        chatDB.chatDao().insert(Chat("친구1", "안녕?"))
-//        chatDB.chatDao().insert(Chat("친구2", "Hello."))
-//        chatDB.chatDao().insert(Chat("친구3", "봉쥬르"))
-//        chatDB.chatDao().insert(Chat("친구4", "반가워"))
-//        chatDB.chatDao().insert(Chat("친구5", "Hi!"))
-//        chatDB.chatDao().insert(Chat("그룹1", "이모티콘"))
-//        chatDB.chatDao().insert(Chat("그룹2", "이모티콘"))
-//        chatDB.chatDao().insert(Chat("그룹3", "이모티콘"))
-    }
+//    private fun initChatList() {
+//        if(chatList.isNotEmpty()) return
+//
+//        val database = AppDatabase.getInstance(this)!!
+//        val chatDB = database.chatDao().getRecentChat(USER_ID)
+//        chatList.addAll(chatDB)
+//        Log.d("DBCHECK", chatDB.toString())
+//
+//    }
 
     // RecyclerView
     private fun initRecyclerView() {
-        val database = AppDatabase.getInstance(this)!!
-        val chatDB=database.chatDao().getRecentChat(USER_ID)
-        chatList.addAll(chatDB)
 
         // RecyclerView 구분선
         val recyclerView = binding.mainContent.mainChatListRecyclerView
@@ -101,17 +83,29 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL)
         recyclerView.addItemDecoration(dividerItemDecoration)
 
+        //LinearLayoutManager 설정, 새로운 데이터 추가 시 스크롤 맨 위로
+        val linearLayoutManager= LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true)
+        linearLayoutManager.stackFromEnd=true
+        binding.mainContent.mainChatListRecyclerView.layoutManager=linearLayoutManager
+
         // RecyclerView Click Listener
-        mainRVAdapter = MainRVAdapter(chatList, this, object: MainRVAdapter.MyItemClickListener {
+        mainRVAdapter = MainRVAdapter(this, object: MainRVAdapter.MyItemClickListener {
             // 선택 모드
             override fun onChooseChatClick(view: View, position: Int) {
+                //해당 item이 선택됬을 떄의 행동을 정의
                 mainRVAdapter.setChecked(position)
             }
-
             // 이동 모드
             override fun onDefaultChatClick(view: View, position: Int) {
                 startNextActivity(ChatActivity::class.java)
                 mainRVAdapter.clearSelectedItemList()
+                //눌렀을 경우 chatIdx의 isNew를 바꾼다.
+                val database=AppDatabase.getInstance(this@MainActivity)!!
+                database.chatDao().updateIsNew(chatList[position].chatIdx,1)
+                database.chatListDao().updateIsNew(chatList[position].chatIdx, 1)
+                Log.d("chatSelectedNew", database.chatDao().getChatByChatIdx(chatList[position].chatIdx).toString())
+                Log.d("chatSelectedNewChatList", chatList[position].isNew.toString())
+
             }
         })
 
@@ -145,6 +139,19 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 
         binding.mainContent.mainChatListRecyclerView.adapter = mainRVAdapter
 
+        //데이터 추가
+        val database = AppDatabase.getInstance(this)!!
+        database.chatDao().getRecentChat(getID()).observe(this, {
+            Log.d("liveDataAdd", it.toString())
+            //Log.d("liveDataAddUseID", getID().toString())
+            //Log.d("liveDataAllChat", database.chatDao().getChatList().toString())
+            //Log.d("liveDataAllOther",database.otherUserDao().getAllOtherUser(getID()).toString())
+            mainRVAdapter.addItem(it)
+            chatList.clear()
+            chatList.addAll(it)
+            binding.mainContent.mainChatListRecyclerView.scrollToPosition(mainRVAdapter.itemCount-1)
+        })
+
         // 취소 버튼 클릭시 다시 초기 화면으로 (폴더 선택 모드 취소)
         binding.mainContent.mainCancelIv.setOnClickListener {
             // 현재 선택 모드 -> 일반 모드로 변경
@@ -160,15 +167,17 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
     }
 
     // 설정 메뉴 창을 띄우는 DrawerLayout 초기화
+    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     private fun initDrawerLayout() {
         binding.mainNavigationView.setNavigationItemSelectedListener(this)
 
         val menuItem = binding.mainNavigationView.menu.findItem(R.id.navi_setting_alarm_item)
-        val drawerSwitch = menuItem.actionView.findViewById(R.id.main_drawer_alarm_switch) as SwitchCompat
+        val drawerSwitch =
+            menuItem.actionView.findViewById(R.id.main_drawer_alarm_switch) as SwitchCompat
 
         // 알림 권한 허용 여부에 따라 스위치(토글) 초기 상태 지정
-        if(permissionGrantred()) {
+        if (permissionGrantred(this)) {
             // 알림 권한이 허용되어 있는 경우
             drawerSwitch.toggle()
             drawerSwitch.isChecked = true
@@ -179,19 +188,30 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             permission = false
         }
 
-        // 스위치(토글)를 눌렀을 때, 즉 스위치 체크 상태[방향]가 변했을 때 처리해주는 리스너
-        drawerSwitch.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
+        drawerSwitch.setOnClickListener {
+            if (drawerSwitch.isChecked) {
                 // 알림 권한을 허용했을 때 코드를 작성해주시면 됩니다.
-                Toast.makeText(this, "알림 권한을 허용합니다.", Toast.LENGTH_SHORT).show()
                 permission = true
+                Log.d("toggleListener", "is Checked")
+                    startActivity(Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"))
+                    if(permissionGrantred(this)){
+                        Toast.makeText(this, "알림 권한을 허용합니다.", Toast.LENGTH_SHORT).show()
+                        startForegroundService(Intent(this, MyNotificationListener::class.java))
+                    }
+
             } else {
-                // 알림 권한을 허용하지 않았을 때 코드를 작성해주시면 됩니다.
-                Toast.makeText(this, "알림 권한을 허용하지 않습니다.", Toast.LENGTH_SHORT).show()
                 permission = false
+                Log.d("toggleListener", "is not Checked")
+                    startActivity(Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"))
+                    if(!permissionGrantred(this)){
+                        stopService(Intent(this, MyNotificationListener::class.java))
+                        Toast.makeText(this, "알림 권한을 허용하지 않습니다.", Toast.LENGTH_SHORT).show()
+                    }
             }
         }
+        // 스위치(토글)를 눌렀을 때, 즉 스위치 체크 상태[방향]가 변했을 때 처리해주는 리스너
     }
+
 
     // 설정 메뉴 창의 네비게이션 드로어의 아이템들에 대한 이벤트를 처리
     @RequiresApi(Build.VERSION_CODES.O)
@@ -213,6 +233,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
                 val lockSPF = getSharedPreferences("lock", 0)
                 val pattern = lockSPF.getString("pattern", "0")
 
+                //앱 삭제할때 같이 DB 저장 X
                 // 패턴 모드 설정
                 // 0: 숨긴 폴더 목록을 확인하기 위한 입력 모드
                 // 1: 메인 화면의 설정창 -> 변경 모드
@@ -275,6 +296,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         binding.mainContent.mainMyFolderIv.setOnClickListener {
             // startNextActivityWithClear()를 사용하는 게 좋을까?
             startNextActivity(MyFolderActivity::class.java)
+            Log.d("toggleListener", "folder")
         }
 
         // 하단 중앙 아이콘 클릭시
@@ -302,6 +324,25 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             popup.show()    // 팝업 메뉴 보이도록
         }
 
+        //선택모드 시
+        chatViewModel.mode.observe(this,{
+            if(it==1)
+            {
+                //해당 chat 삭제
+                binding.mainContent.mainDeleteIv.setOnClickListener {
+                    mainRVAdapter.removeSelectedItemList()
+                    Toast.makeText(this@MainActivity, "삭제하기", Toast.LENGTH_SHORT).show()
+                }
+                //해당 chat 차단
+                binding.mainContent.mainBlockIv.setOnClickListener {
+
+                }
+
+            }
+
+        }
+        )
+
         // 설정 메뉴창을 여는 메뉴 아이콘 클릭시 설정 메뉴창 열리도록
         binding.mainContent.mainSettingMenuIv.setOnClickListener {
             if(!binding.mainDrawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -315,6 +356,9 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         headerView.setOnClickListener {
             binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
         }
+
+
+
     }
 
     // 팝업 메뉴 리스너
@@ -322,7 +366,9 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         override fun onMenuItemClick(item: MenuItem?): Boolean {
             when(item?.itemId) {
                 R.id.popup_menu_1
-                        -> Toast.makeText(this@MainActivity, "삭제하기", Toast.LENGTH_SHORT).show()
+                        -> {
+                    Toast.makeText(this@MainActivity, "삭제하기", Toast.LENGTH_SHORT).show()
+                }
                 R.id.popup_menu_2
                         -> Toast.makeText(this@MainActivity, "차단하기", Toast.LENGTH_SHORT).show()
                 else
@@ -337,7 +383,32 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         override fun onMenuItemClick(item: MenuItem?): Boolean {
             when(item?.itemId) {
                 R.id.popup_folder_menu
-                -> Toast.makeText(this@MainActivity, "폴더로 보내기", Toast.LENGTH_SHORT).show()
+                -> {
+                    Toast.makeText(this@MainActivity, "폴더로 보내기", Toast.LENGTH_SHORT).show()
+                    //1번 더미데이터!
+                    //리싸이클러뷰 아이템 누르고 버튼을 누르면 db를 업데이트한다.
+                    //리싸이클러뷰 아이템 리스트를 가져와야한다.
+                    //어떻게 가져오지..?
+                    //인터페이스: main 에서 구현(정의)을 하고 item 별로 그 행동을 하게된다.
+                    var chat=ArrayList<Chat>()
+                    val rvChatList=mainRVAdapter.chatList
+                    val db=AppDatabase.getInstance(this@MainActivity)!!
+                    val dao=db.chatDao()
+                    val checkedList=mainRVAdapter.selectedItemList as ArrayList<Int>
+                    for(i in checkedList){
+                        chat.add(dao.getChatByChatIdx(rvChatList[i].chatIdx))
+                    }
+                    for(i in chat){
+                        if(i.groupName==null){
+                            db.folderContentDao().insertOtOChat(1, i.otherUserIdx)
+                        }
+                        else if(i.groupName!=null)
+                            db.folderContentDao().insertOrgChat(1, USER_ID, i.groupName!!)
+                    }
+                    Log.d("folderInsert", db.folderContentDao().getAllfolder().toString())
+
+                }
+
                 else
                 -> Toast.makeText(this@MainActivity, "잘못된 선택입니다.", Toast.LENGTH_SHORT).show()
             }
@@ -356,4 +427,6 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             outRect.bottom = verticalSpaceHeight
         }
     }
+
+
 }

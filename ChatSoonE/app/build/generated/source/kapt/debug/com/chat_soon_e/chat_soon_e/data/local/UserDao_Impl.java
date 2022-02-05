@@ -35,16 +35,12 @@ public final class UserDao_Impl implements UserDao {
     this.__insertionAdapterOfUser = new EntityInsertionAdapter<User>(__db) {
       @Override
       public String createQuery() {
-<<<<<<< HEAD
-        return "INSERT OR ABORT INTO `UserTable` (`id`,`nickname`,`email`,`status`,`createdAt`,`updatedAt`,`idx`) VALUES (?,?,?,?,?,?,nullif(?, 0))";
-=======
-        return "INSERT OR ABORT INTO `UserTable` (`idx`,`nickname`,`email`,`status`) VALUES (?,?,?,?)";
->>>>>>> upstream/juyeon
+        return "INSERT OR ABORT INTO `UserTable` (`kakaoUserIdx`,`nickname`,`email`,`status`) VALUES (?,?,?,?)";
       }
 
       @Override
       public void bind(SupportSQLiteStatement stmt, User value) {
-        stmt.bindLong(1, value.getIdx());
+        stmt.bindLong(1, value.getKakaoUserIdx());
         if (value.getNickname() == null) {
           stmt.bindNull(2);
         } else {
@@ -60,46 +56,28 @@ public final class UserDao_Impl implements UserDao {
         } else {
           stmt.bindString(4, value.getStatus());
         }
-<<<<<<< HEAD
-        if (value.getCreatedAt() == null) {
-          stmt.bindNull(5);
-        } else {
-          stmt.bindString(5, value.getCreatedAt());
-        }
-        if (value.getUpdatedAt() == null) {
-          stmt.bindNull(6);
-        } else {
-          stmt.bindString(6, value.getUpdatedAt());
-        }
-        stmt.bindLong(7, value.getIdx());
-=======
->>>>>>> upstream/juyeon
       }
     };
     this.__deletionAdapterOfUser = new EntityDeletionOrUpdateAdapter<User>(__db) {
       @Override
       public String createQuery() {
-        return "DELETE FROM `UserTable` WHERE `idx` = ?";
+        return "DELETE FROM `UserTable` WHERE `kakaoUserIdx` = ?";
       }
 
       @Override
       public void bind(SupportSQLiteStatement stmt, User value) {
-        stmt.bindLong(1, value.getIdx());
+        stmt.bindLong(1, value.getKakaoUserIdx());
       }
     };
     this.__updateAdapterOfUser = new EntityDeletionOrUpdateAdapter<User>(__db) {
       @Override
       public String createQuery() {
-<<<<<<< HEAD
-        return "UPDATE OR ABORT `UserTable` SET `id` = ?,`nickname` = ?,`email` = ?,`status` = ?,`createdAt` = ?,`updatedAt` = ?,`idx` = ? WHERE `idx` = ?";
-=======
-        return "UPDATE OR ABORT `UserTable` SET `idx` = ?,`nickname` = ?,`email` = ?,`status` = ? WHERE `idx` = ?";
->>>>>>> upstream/juyeon
+        return "UPDATE OR ABORT `UserTable` SET `kakaoUserIdx` = ?,`nickname` = ?,`email` = ?,`status` = ? WHERE `kakaoUserIdx` = ?";
       }
 
       @Override
       public void bind(SupportSQLiteStatement stmt, User value) {
-        stmt.bindLong(1, value.getIdx());
+        stmt.bindLong(1, value.getKakaoUserIdx());
         if (value.getNickname() == null) {
           stmt.bindNull(2);
         } else {
@@ -115,28 +93,13 @@ public final class UserDao_Impl implements UserDao {
         } else {
           stmt.bindString(4, value.getStatus());
         }
-<<<<<<< HEAD
-        if (value.getCreatedAt() == null) {
-          stmt.bindNull(5);
-        } else {
-          stmt.bindString(5, value.getCreatedAt());
-        }
-        if (value.getUpdatedAt() == null) {
-          stmt.bindNull(6);
-        } else {
-          stmt.bindString(6, value.getUpdatedAt());
-        }
-        stmt.bindLong(7, value.getIdx());
-        stmt.bindLong(8, value.getIdx());
-=======
-        stmt.bindLong(5, value.getIdx());
->>>>>>> upstream/juyeon
+        stmt.bindLong(5, value.getKakaoUserIdx());
       }
     };
     this.__preparedStmtOfUpdateStatus = new SharedSQLiteStatement(__db) {
       @Override
       public String createQuery() {
-        final String _query = "UPDATE UserTable SET status= ? WHERE idx= ?";
+        final String _query = "UPDATE UserTable SET status= ? WHERE kakaoUserIdx= ?";
         return _query;
       }
     };
@@ -202,65 +165,44 @@ public final class UserDao_Impl implements UserDao {
 
   @Override
   public User getUser(final long id) {
-    final String _sql = "SELECT * FROM UserTable WHERE idx= ?";
+    final String _sql = "SELECT * FROM UserTable WHERE kakaoUserIdx= ?";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
     _statement.bindLong(_argIndex, id);
     __db.assertNotSuspendingTransaction();
     final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
     try {
-      final int _cursorIndexOfIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "idx");
+      final int _cursorIndexOfKakaoUserIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "kakaoUserIdx");
       final int _cursorIndexOfNickname = CursorUtil.getColumnIndexOrThrow(_cursor, "nickname");
       final int _cursorIndexOfEmail = CursorUtil.getColumnIndexOrThrow(_cursor, "email");
       final int _cursorIndexOfStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "status");
-<<<<<<< HEAD
-      final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
-      final int _cursorIndexOfUpdatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "updatedAt");
-      final int _cursorIndexOfIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "idx");
-=======
->>>>>>> upstream/juyeon
       final User _result;
       if(_cursor.moveToFirst()) {
-        final long _tmpIdx;
-        _tmpIdx = _cursor.getLong(_cursorIndexOfIdx);
+        _result = new User();
+        final long _tmpKakaoUserIdx;
+        _tmpKakaoUserIdx = _cursor.getLong(_cursorIndexOfKakaoUserIdx);
+        _result.setKakaoUserIdx(_tmpKakaoUserIdx);
         final String _tmpNickname;
         if (_cursor.isNull(_cursorIndexOfNickname)) {
           _tmpNickname = null;
         } else {
           _tmpNickname = _cursor.getString(_cursorIndexOfNickname);
         }
+        _result.setNickname(_tmpNickname);
         final String _tmpEmail;
         if (_cursor.isNull(_cursorIndexOfEmail)) {
           _tmpEmail = null;
         } else {
           _tmpEmail = _cursor.getString(_cursorIndexOfEmail);
         }
+        _result.setEmail(_tmpEmail);
         final String _tmpStatus;
         if (_cursor.isNull(_cursorIndexOfStatus)) {
           _tmpStatus = null;
         } else {
           _tmpStatus = _cursor.getString(_cursorIndexOfStatus);
         }
-<<<<<<< HEAD
-        final String _tmpCreatedAt;
-        if (_cursor.isNull(_cursorIndexOfCreatedAt)) {
-          _tmpCreatedAt = null;
-        } else {
-          _tmpCreatedAt = _cursor.getString(_cursorIndexOfCreatedAt);
-        }
-        final String _tmpUpdatedAt;
-        if (_cursor.isNull(_cursorIndexOfUpdatedAt)) {
-          _tmpUpdatedAt = null;
-        } else {
-          _tmpUpdatedAt = _cursor.getString(_cursorIndexOfUpdatedAt);
-        }
-        _result = new User(_tmpId,_tmpNickname,_tmpEmail,_tmpStatus,_tmpCreatedAt,_tmpUpdatedAt);
-        final int _tmpIdx;
-        _tmpIdx = _cursor.getInt(_cursorIndexOfIdx);
-        _result.setIdx(_tmpIdx);
-=======
-        _result = new User(_tmpIdx,_tmpNickname,_tmpEmail,_tmpStatus);
->>>>>>> upstream/juyeon
+        _result.setStatus(_tmpStatus);
       } else {
         _result = null;
       }
@@ -278,34 +220,38 @@ public final class UserDao_Impl implements UserDao {
     __db.assertNotSuspendingTransaction();
     final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
     try {
-      final int _cursorIndexOfIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "idx");
+      final int _cursorIndexOfKakaoUserIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "kakaoUserIdx");
       final int _cursorIndexOfNickname = CursorUtil.getColumnIndexOrThrow(_cursor, "nickname");
       final int _cursorIndexOfEmail = CursorUtil.getColumnIndexOrThrow(_cursor, "email");
       final int _cursorIndexOfStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "status");
       final List<User> _result = new ArrayList<User>(_cursor.getCount());
       while(_cursor.moveToNext()) {
         final User _item;
-        final long _tmpIdx;
-        _tmpIdx = _cursor.getLong(_cursorIndexOfIdx);
+        _item = new User();
+        final long _tmpKakaoUserIdx;
+        _tmpKakaoUserIdx = _cursor.getLong(_cursorIndexOfKakaoUserIdx);
+        _item.setKakaoUserIdx(_tmpKakaoUserIdx);
         final String _tmpNickname;
         if (_cursor.isNull(_cursorIndexOfNickname)) {
           _tmpNickname = null;
         } else {
           _tmpNickname = _cursor.getString(_cursorIndexOfNickname);
         }
+        _item.setNickname(_tmpNickname);
         final String _tmpEmail;
         if (_cursor.isNull(_cursorIndexOfEmail)) {
           _tmpEmail = null;
         } else {
           _tmpEmail = _cursor.getString(_cursorIndexOfEmail);
         }
+        _item.setEmail(_tmpEmail);
         final String _tmpStatus;
         if (_cursor.isNull(_cursorIndexOfStatus)) {
           _tmpStatus = null;
         } else {
           _tmpStatus = _cursor.getString(_cursorIndexOfStatus);
         }
-        _item = new User(_tmpIdx,_tmpNickname,_tmpEmail,_tmpStatus);
+        _item.setStatus(_tmpStatus);
         _result.add(_item);
       }
       return _result;

@@ -14,6 +14,7 @@ import com.chat_soon_e.chat_soon_e.data.entities.Chat
 import com.chat_soon_e.chat_soon_e.data.entities.OtherUser
 import com.chat_soon_e.chat_soon_e.data.local.AppDatabase
 import com.chat_soon_e.chat_soon_e.data.remote.auth.USER_ID
+import com.chat_soon_e.chat_soon_e.utils.getID
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
@@ -54,22 +55,22 @@ class MyNotificationListener: NotificationListenerService() {
             //알림 메세지(264개의 메세지 등) 제외 대화 내용 DB 저장
             if(name!=null){
                 database= AppDatabase.getInstance(this)!!
-                var otherUser=database.otherUserDao().getOtherUserByNameId(name.toString(), USER_ID)
+                var otherUser=database.otherUserDao().getOtherUserByNameId(name.toString(), getID())
                 //이미 있던 유저인지 확인
 
                 //이미 있던 유저라면 Chat 만 추가
                 if(otherUser!=null){
-                    database.chatDao().insert(Chat(USER_ID,otherUser.other_user_idx, subText.toString(),text.toString(), date, -1, "activate" ))
-                    Log.d(TAG,database.chatDao().getChatByIdx(otherUser.other_user_idx).toString())
+                    database.chatDao().insert(Chat(otherUser.otherUserIdx, subText.toString(),text.toString(), date, -1, "activate" ))
+                    Log.d(TAG,database.chatDao().getChatByIdx(otherUser.otherUserIdx).toString())
                 }else{//새로운 유저라면 otherUser, Chat 저장, 사진 이름(image): otherUser.name_postTime.millsecond.png
                     var fileName:String=""
                     if(largeIcon!=null){
                         fileName=saveCache(convertIconToBitmap(largeIcon), name+"_"+millisecond.toString())
                     }
-                    database.otherUserDao().insert(OtherUser(name.toString(), fileName, "activate", USER_ID))
-                    val other=database.otherUserDao().getOtherUserByNameId(name.toString(), USER_ID)
-                    database.chatDao().insert(Chat(USER_ID,other.other_user_idx, subText.toString(),text.toString(), date, -1, "activate"))
-                    Log.d(TAG, "database: "+database.chatDao().getChatByIdx(other.other_user_idx).toString())
+                    database.otherUserDao().insert(OtherUser(name.toString(), fileName, "activate", getID()))
+                    val other=database.otherUserDao().getOtherUserByNameId(name.toString(), getID())
+                    database.chatDao().insert(Chat(other.otherUserIdx, subText.toString(),text.toString(), date, -1, "activate"))
+                    Log.d(TAG, "database: "+database.chatDao().getChatByIdx(other.otherUserIdx).toString())
                 }
             }
             Log.d(

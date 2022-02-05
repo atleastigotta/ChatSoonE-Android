@@ -1,6 +1,7 @@
 package com.chat_soon_e.chat_soon_e.ui
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.ConnectivityManager
 import android.net.Network
 import android.os.Handler
@@ -31,10 +32,14 @@ import android.net.NetworkInfo
 
 import android.net.NetworkCapabilities
 import android.os.Build
+import android.util.Base64
+import androidx.annotation.RequiresApi
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
 import com.chat_soon_e.chat_soon_e.data.remote.auth.USER_ID
 import com.chat_soon_e.chat_soon_e.data.remote.auth.master
+import com.chat_soon_e.chat_soon_e.utils.saveID
+import java.security.MessageDigest
 
 
 // BaseActivity를 상속받기 때문에 BaseActivity 안에서 onCreate() 실행되면서 자동적으로 뷰 바인딩을 해준다.
@@ -44,18 +49,22 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
     SplashView {
     val TAG = "splashtest"
     // BaseActivity onCreate()에서 바인딩 끝나고 자동적으로 호출이 되게끔 해준다.
+
+    @RequiresApi(Build.VERSION_CODES.P)
     override fun initAfterBinding() {
+        //현재 시각에서 1초 후 Runnable 객체 실행, MainThread(UI thread)로 보냄
         Handler(Looper.getMainLooper()).postDelayed({
             //최초 실행 때만 권한 얻기 페이지를 뜨게 함, spf를 사용해 최초 진입인지 아닌지 확인
             //일단 권한 없으면 무조건 페이지로 가게하기
 //            val spf=this.getSharedPreferences("firstRun",AppCompatActivity.MODE_PRIVATE)
-//            Log.d("splashactivityspf", spf.getInt("check", 0).toString())
+//            Log.d("splashactivityspf", spf.getInt("check", 0).toString())!
 //            if((spf==null) || (spf?.getInt("check", 0)!=1))
 //                    startNextActivity(PermissionActivity::class.java)
             if(!permissionGrantred(this))
                 startNextActivity(PermissionActivity::class.java)
         }, 1000)//1초 후 권한 페이지로
         //로딩바 설정, 추후 서버와의 연동
+
         binding.splashProgressBar.setProgress(10)
         loginPermission()
         binding.splashKakaoLoginBtn.setOnClickListener {
@@ -68,6 +77,7 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
         }
         binding.splashStartBtn.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
         //로그인이 되었다면 로그인은 안뜨게====O
         //데이터 다운이 완료되면 시작하기 버튼 활성화====X
@@ -169,6 +179,7 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
                     if(state=="login"){
                         //id 암호화(encrypted사용) 후 spf 저장, 일단은 그냥 local 사용해 저장=========================
                         USER_ID=user.id
+                        saveID(user.id)
                         //=====================================================================================
                         var users=dao.getUser(user.id)
                         if(users==null){
@@ -184,10 +195,12 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
                     }
                     //로그아웃 시
                     else if(state=="logout"){
+                        saveID(-1)
                         dao.updateStatus(user.id, "inactivate")
                     }
                     //탈퇴 시
                     else if(state=="withdraw")
+                        saveID(-1)
                         dao.updateStatus(user.id, "delete")
                     Log.d(TAG, dao.getUsers().toString())
                 }
@@ -238,6 +251,9 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
             return false
     }
 
+    override fun onBackPressed() {
+        //뒤로가기 못하게
+    }
     override fun onAutoLoginLoading() {
         TODO("Not yet implemented")
     }

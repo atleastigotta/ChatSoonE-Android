@@ -59,32 +59,44 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/background_white_corner"
-        android:scrollbars="vertical"
-        android:scrollbarFadeDuration="0"
-        android:overScrollMode="never"
-        tools:listitem="@layout/item_chat_list_default"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/main_title_tv"
+        android:overScrollMode="never"
+        android:scrollbarFadeDuration="0"
+        android:scrollbars="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/main_bottom_bar_view"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/main_title_tv"
+        tools:listitem="@layout/item_chat_list_default" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        app:layout_constraintStart_toStartOf="@id/main_bottom_bar_view"
+        app:layout_constraintEnd_toEndOf="@id/main_bottom_bar_view"
+        app:layout_constraintTop_toTopOf="@id/main_bottom_bar_view"
+        android:background="@drawable/shadow"
+        android:translationZ="10dp"
+        />
     <View
         android:id="@+id/main_bottom_bar_view"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/light_gray"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
     <ImageView
         android:id="@+id/main_chat_iv"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:src="@drawable/icon_chat"
         android:layout_marginStart="70dp"
+        android:layout_marginTop="7dp"
+        android:translationZ="2dp"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintTop_toTopOf="@+id/main_bottom_bar_view"
         app:layout_constraintBottom_toBottomOf="@+id/main_bottom_bar_view"
@@ -100,6 +112,7 @@
         android:layout_marginStart="70dp"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintTop_toTopOf="@+id/main_bottom_bar_view"
+        android:layout_marginTop="7dp"
         app:layout_constraintBottom_toBottomOf="@+id/main_bottom_bar_view"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/main_block_iv" />
@@ -116,7 +129,9 @@
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:translationZ="10dp"
+        android:outlineProvider="none"/>
 
     <ImageView
         android:id="@+id/main_folder_mode_iv"
@@ -130,30 +145,32 @@
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:translationZ="10dp"
+        android:outlineProvider="none"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/main_my_folder_iv"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:src="@drawable/icon_my_folder"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/icon_my_folder_2"
         android:layout_marginEnd="70dp"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintTop_toTopOf="@+id/main_bottom_bar_view"
-        app:layout_constraintBottom_toBottomOf="@+id/main_bottom_bar_view"
+        app:layout_constraintTop_toTopOf="@+id/main_chat_iv"
         app:layout_constraintStart_toEndOf="@+id/main_chat_iv"
+        app:layout_constraintBottom_toBottomOf="@id/main_chat_iv"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/main_block_iv"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:src="@drawable/ic_baseline_block_24"
         android:layout_marginEnd="70dp"
         android:visibility="gone"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintTop_toTopOf="@+id/main_bottom_bar_view"
-        app:layout_constraintBottom_toBottomOf="@+id/main_bottom_bar_view"
+        app:layout_constraintTop_toTopOf="@+id/main_delete_iv"
+        app:layout_constraintBottom_toBottomOf="@+id/main_delete_iv"
         app:layout_constraintStart_toEndOf="@+id/main_delete_iv"
         app:layout_constraintEnd_toEndOf="parent" />
 

@@ -1,5 +1,6 @@
 package com.chat_soon_e.chat_soon_e.utils
 
+import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.USER_INFO
 import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.X_ACCESS_TOKEN
 import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.mSharedPreferences
 
@@ -11,3 +12,10 @@ fun saveJwt(jwtToken: String) {
 }
 
 fun getJwt(): String? = mSharedPreferences.getString(X_ACCESS_TOKEN, null)
+
+fun saveID(user_id:Long){
+    val editor= mSharedPreferences.edit()
+    editor.putLong(USER_INFO, user_id)
+    editor.apply()
+}
+fun getID():Long= mSharedPreferences.getLong(USER_INFO, -1)
