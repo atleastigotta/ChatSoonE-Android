@@ -1,0 +1,81 @@
+<resources>
+    <string name="app_name">ChatSoonE</string>
+
+    <!-- 공통 -->
+    <string name="img_app_logo">logo image</string>
+    <string name="ic_back">back icon</string>
+
+    <!-- 메뉴 -->
+    <string name="menu_home">홈</string>
+    <string name="menu_search">찾기</string>
+    <string name="menu_matching">매칭</string>
+    <string name="menu_mypage">마이페이지</string>
+
+    <!-- 에러처리 -->
+    <string name="default_fail">네트워크연결이 원활하지 않습니다</string>
+
+    <!-- 로그인 -->
+    <string name="login">로그인</string>
+    <string name="login_id_hint">아이디(이메일)</string>
+    <string name="login_email_hint">직접입력</string>
+    <string name="login_email_delimiter">\@</string>
+    <string name="login_name_hint">이름</string>
+    <string name="login_signup">회원가입</string>
+
+    <!-- 회원가입 -->
+    <string name="signup">회원가입</string>
+    <string name="signup_id_hint">아이디(이메일)</string>
+    <string name="signup_email_hint">직접입력</string>
+    <string name="signup_email_delimiter">\@</string>
+    <string name="signup_name_hint">이름</string>
+    <string name="signup_password_hint">비밀번호</string>
+    <string name="signup_password_confirm_hint">비밀번호 확인</string>
+
+    <!-- 전체 채팅 -->
+    <string name="chat_list">All Chat</string>
+    <string name="chat_list_name">이름</string>
+    <string name="chat_list_content">내용</string>
+    <string name="chat_list_date_time">날짜와 시간</string>
+
+    <!-- 팝업 메뉴 -->
+    <string name="delete">삭제하기</string>
+    <string name="block">차단하기</string>
+    <string name="folder">폴더로 보내기</string>
+    <string name="separator">  |  </string>
+    <string name="cancel">취소하기</string>
+    <string name="create_folder">폴더 생성하기</string>
+    <string name="hidden_folder">숨긴 폴더 목록</string>
+    <string name="change_folder_name">이름 바꾸기</string>
+    <string name="change_folder_icon">아이콘 바꾸기</string>
+    <string name="delete_folder">삭제하기</string>
+    <string name="hide_folder">숨기기</string>
+
+    <!-- navigation drawer -->
+    <string name="setting">설정</string>
+    <string name="setting_alarm">알림 설정</string>
+    <string name="setting_block">차단 관리</string>
+    <string name="setting_email">이메일 문의</string>
+    <string name="setting_helper">사용 방법 도움말</string>
+    <string name="setting_review">앱 리뷰하기</string>
+    <string name="setting_share">공유하기</string>
+    <string name="pattern">패턴 변경하기</string>
+    <string name="setting_privacy">개인정보 처리방침</string>
+
+    <!-- my folder activity -->
+    <string name="my_folder">내폴더</string>
+    <string name="folder_name">폴더 이름</string>
+    <string name="change_name">변경할 폴더 이름을 적어주세요.</string>
+    <string name="change_name_button">이름 변경</string>
+    <string name="set_name_button">확인</string>
+    <string name="change_icon">아이콘을 선택해주세요.</string>
+    <string name="set_folder_name">폴더 이름을 적어주세요.</string>
+
+    <!-- chat activity -->
+    <string name="name">이름</string>
+    <string name="message">메시지</string>
+    <string name="date_time">날짜와 시간</string>
+
+    <!-- hidden folder -->
+    <string name="hidden_folder_title">숨긴 폴더</string>
+    <string name="show_folder">내폴더로 보내기</string>
+</resources>
