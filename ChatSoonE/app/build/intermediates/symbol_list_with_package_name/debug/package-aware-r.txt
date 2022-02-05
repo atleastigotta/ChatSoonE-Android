@@ -2585,9 +2585,11 @@ drawable icon_cloud_folder
 drawable icon_folder
 drawable icon_folder_1
 drawable icon_folder_2
+drawable icon_hidden_folder
 drawable icon_menu
 drawable icon_move
 drawable icon_my_folder
+drawable icon_my_folder2
 drawable icon_profile
 drawable icon_up_and_down_arrow
 drawable icon_update
@@ -2872,6 +2874,12 @@ id groups
 id guideline
 id header_title
 id height_bias
+id hidden_folder_hidden_folder_iv
+id hidden_folder_hidden_folder_tv
+id hidden_folder_line_view
+id hidden_folder_list_recycler_view
+id hidden_folder_my_folder_iv
+id hidden_folder_my_folder_tv
 id hideable
 id home
 id homeAsUp
@@ -2907,6 +2915,9 @@ id item_chat_list_profile_iv
 id item_chat_message_tv
 id item_chat_name_tv
 id item_chat_profile_iv
+id item_hidden_folder
+id item_hidden_folder_iv
+id item_hidden_folder_tv
 id item_icon_iv
 id item_icon_layout
 id item_my_folder
@@ -3392,6 +3403,7 @@ layout fragment_search
 layout item_chat
 layout item_chat_list_choose
 layout item_chat_list_default
+layout item_hidden_folder
 layout item_icon
 layout item_my_folder
 layout layout_switch
@@ -3487,6 +3499,7 @@ menu navi_setting_menu
 menu popup_folder_bottom_menu
 menu popup_folder_menu
 menu popup_folder_option_menu
+menu popup_hidden_folder_option_menu
 menu popup_menu
 mipmap ic_launcher
 mipmap ic_launcher_foreground
@@ -3554,6 +3567,7 @@ string fab_transformation_sheet_behavior
 string folder
 string folder_name
 string hidden_folder
+string hidden_folder_title
 string hide_bottom_view_on_scroll_behavior
 string hide_folder
 string ic_back
@@ -3679,6 +3693,7 @@ string setting_helper
 string setting_privacy
 string setting_review
 string setting_share
+string show_folder
 string signup
 string signup_email_delimiter
 string signup_email_hint

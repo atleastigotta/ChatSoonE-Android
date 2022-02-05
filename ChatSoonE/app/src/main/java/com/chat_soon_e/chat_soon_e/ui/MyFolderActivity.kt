@@ -50,11 +50,11 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
         // 만약 데이터베이스에서 받아온 folder list가 비어있는 경우
         // 더미 데이터
         if(folderList.isEmpty()) {
-            appDB.folderDao().insert(Folder(0, 0, null, "추억", R.drawable.ic_baseline_folder_24, "active", null, null))
-            appDB.folderDao().insert(Folder(1, 0, null, "여행", R.drawable.ic_baseline_folder_24, "active", null, null))
-            appDB.folderDao().insert(Folder(2, 0, null, "음식", R.drawable.ic_baseline_folder_24, "active", null, null))
-            appDB.folderDao().insert(Folder(3, 0, null, "학교", R.drawable.ic_baseline_folder_24, "active", null, null))
-            appDB.folderDao().insert(Folder(4, 0, null, "게임", R.drawable.ic_baseline_folder_24, "active", null, null))
+            appDB.folderDao().insert(Folder(0, 0, null, "추억", R.drawable.ic_baseline_folder_24, "active"))
+            appDB.folderDao().insert(Folder(1, 0, null, "여행", R.drawable.ic_baseline_folder_24, "active"))
+            appDB.folderDao().insert(Folder(2, 0, null, "음식", R.drawable.ic_baseline_folder_24, "active"))
+            appDB.folderDao().insert(Folder(3, 0, null, "학교", R.drawable.ic_baseline_folder_24, "active"))
+            appDB.folderDao().insert(Folder(4, 0, null, "게임", R.drawable.ic_baseline_folder_24, "active"))
             folderList = appDB.folderDao().getFolderList() as ArrayList
         }
 
@@ -466,7 +466,7 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
                 Log.d("MY-FOLDER", "folder list size: ${folderList.size}")
 
                 // 선택한 아이콘과 전달받은 폴더 이름으로 폴더 하나 생성한 후 RoomDB에 적용
-                val newFolder = Folder(lastIdx, 0, null, name, selectedIcon.iconImage, "active", null, null)
+                val newFolder = Folder(lastIdx, 0, null, name, selectedIcon.iconImage, "active")
                 appDB = AppDatabase.getInstance(this@MyFolderActivity)!!
                 appDB.folderDao().insert(newFolder)
                 folderList = appDB.folderDao().getFolderList() as ArrayList

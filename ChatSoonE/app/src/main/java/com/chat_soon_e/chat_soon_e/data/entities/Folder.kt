@@ -13,7 +13,5 @@ data class Folder(
     @SerializedName("parentFolderIdx") var parentFolderIdx: Int?,
     @SerializedName("folderName") var folderName: String,
     @SerializedName("folderImg") var folderImg: Int = R.drawable.ic_baseline_folder_24,
-    @SerializedName("status") var status: String,
-    @SerializedName("createdAt") var createdAt: String?,
-    @SerializedName("updatedAt") var updatedAt: String?
+    @SerializedName("status") var status: String
 )
