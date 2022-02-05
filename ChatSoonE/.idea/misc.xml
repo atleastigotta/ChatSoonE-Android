@@ -106,18 +106,28 @@
         <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/layout/activity_permission.xml" value="0.12132725430597771" />
         <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/layout/activity_signup.xml" value="0.12132725430597771" />
         <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/layout/activity_splash.xml" value="0.12132725430597771" />
+        <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/layout/fragment_match.xml" value="0.1" />
+        <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/layout/fragment_mypage.xml" value="0.1" />
         <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/layout/fragment_search.xml" value="0.1265625" />
         <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/layout/item_chat.xml" value="0.12132725430597771" />
         <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/layout/item_chat_list_choose.xml" value="0.4" />
         <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/layout/item_chat_list_default.xml" value="0.33" />
+        <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/layout/item_hidden_folder.xml" value="0.1" />
         <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/layout/item_icon.xml" value="0.12132725430597771" />
         <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/layout/item_my_folder.xml" value="0.1265625" />
         <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/layout/layout_switch.xml" value="0.1265625" />
+        <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/layout/popup_window_change_icon.xml" value="0.1" />
+        <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/layout/popup_window_change_name.xml" value="0.1" />
+        <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/layout/popup_window_folder_bottom_menu.xml" value="0.1" />
+        <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/layout/popup_window_set_folder_name.xml" value="0.1" />
         <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/menu/navi_menu.xml" value="0.1265625" />
         <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/menu/navi_setting_menu.xml" value="0.1265625" />
+        <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/menu/popup_folder_bottom_menu.xml" value="0.1125" />
         <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/menu/popup_folder_edit_menu.xml" value="0.1265625" />
         <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/menu/popup_folder_menu.xml" value="0.2" />
         <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/menu/popup_folder_option_menu.xml" value="0.1265625" />
+        <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/menu/popup_hidden_folder_option_menu.xml" value="0.1125" />
         <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/menu/popup_menu.xml" value="0.1265625" />
       </map>
     </option>

@@ -2589,11 +2589,8 @@ drawable icon_hidden_folder
 drawable icon_menu
 drawable icon_move
 drawable icon_my_folder
-<<<<<<< HEAD
-drawable icon_my_folder_2
-=======
 drawable icon_my_folder2
->>>>>>> f3b6f2dde75ddd688d0d416880f477ca55112bdb
+drawable icon_my_folder_2
 drawable icon_profile
 drawable icon_up_and_down_arrow
 drawable icon_update
@@ -3406,10 +3403,7 @@ layout fragment_home
 layout fragment_match
 layout fragment_mypage
 layout fragment_search
-<<<<<<< HEAD
-=======
 layout item_chat
->>>>>>> f3b6f2dde75ddd688d0d416880f477ca55112bdb
 layout item_chat_list_choose
 layout item_chat_list_default
 layout item_hidden_folder
