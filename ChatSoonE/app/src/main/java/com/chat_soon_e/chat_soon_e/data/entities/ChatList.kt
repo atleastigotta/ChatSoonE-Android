@@ -15,12 +15,13 @@ data class ChatList(
     var profileImg:String?=null,
     var latest_time:Date,
     var latest_message:String?,
+    var isGroup:Int,//-1이면 그룹, 0이면 개인
     @ColumnInfo(defaultValue = "0")@Ignore var viewType: Int=0,
     var isNew:Int=0,
     @ColumnInfo(defaultValue = "false") var isChecked: Boolean?=false
 ){
     @PrimaryKey(autoGenerate = true)var id:Int?=0
-    constructor(chatIdx: Int,chat_name:String?, profileImg: String?, latest_time: Date, latest_message: String?, isNew:Int, isChecked:Boolean?):this(chatIdx,chat_name, profileImg, latest_time, latest_message, 0, isNew,false)
+    constructor(chatIdx: Int,chat_name:String?, profileImg: String?, latest_time: Date, latest_message: String?, isGroup: Int,isNew:Int, isChecked:Boolean?):this(chatIdx,chat_name, profileImg, latest_time, latest_message, isGroup,0, isNew,false)
 }
 object ChatListViewType {
     const val DEFAULT = 0
