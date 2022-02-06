@@ -33,7 +33,7 @@ class ApplicationClass : Application() {
         // DB: 데이터베이스명
         const val APP_DATABASE = "$TAG-DB"
 
-        const val DEV_URL: String = "http://52.79.249.194/";       // 테스트 서버 주소
+        const val DEV_URL: String = "";       // 테스트 서버 주소
         const val PROD_URL: String = "https://api.template.com/"    // 실서버 주소
         const val BASE_URL: String = DEV_URL                      // apk 추출할 때 알맞게 바꾸면[넣어주면] 된다.
 
@@ -53,7 +53,7 @@ class ApplicationClass : Application() {
     override fun onCreate() {
         super.onCreate()
         //kakao sdk 연결
-        KakaoSdk.init(this,"63ebc69c67adf9e9e8f147df6508dc35" )
+        KakaoSdk.init(this,"" )
 
         // client definition
         // Http 통신할 때 클라이언트 옵션 설정해주는 부분

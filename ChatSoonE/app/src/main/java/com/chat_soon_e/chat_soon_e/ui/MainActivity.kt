@@ -39,6 +39,7 @@ import com.chat_soon_e.chat_soon_e.databinding.ItemFolderListBinding
 import com.chat_soon_e.chat_soon_e.utils.getID
 import com.chat_soon_e.chat_soon_e.utils.permissionGrantred
 import com.google.android.material.navigation.NavigationView
+import com.google.gson.Gson
 import okhttp3.internal.notify
 import java.security.MessageDigest
 
@@ -128,8 +129,17 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
                 mainRVAdapter.setChecked(position)
             }
             // 이동 모드
-            override fun onDefaultChatClick(view: View, position: Int) {
-                startNextActivity(ChatActivity::class.java)
+            @SuppressLint("RestrictedApi")
+            override fun onDefaultChatClick(view: View, position: Int, chat:ChatList) {
+                val gson= Gson()
+                val chatJson=gson.toJson(chat)
+                startActivity(Intent(this@MainActivity, ChatActivity::class.java).apply {
+                    putExtra("chatListJson", chatJson)
+                })
+
+//                startNextActivity(Intent(this@MainActivity, ChatActivity::class.java).apply {
+//                    putExtraData("chatListJson", chatJson)
+//                })
                 mainRVAdapter.clearSelectedItemList()
                 //눌렀을 경우 chatIdx의 isNew를 바꾼다.
                 val database=AppDatabase.getInstance(this@MainActivity)!!

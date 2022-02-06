@@ -19,6 +19,11 @@ com/chat_soon_e/chat_soon_e/data/local/UserDao_Impl.java
  com.chat_soon_e.chat_soon_e.data.local.UserDao_Impl$4
 androidx/databinding/DataBinderMapperImpl.java
  androidx.databinding.DataBinderMapperImpl
+<<<<<<< HEAD
+=======
+com/chat_soon_e/chat_soon_e/databinding/PopupWindowChangeNameBinding.java
+ com.chat_soon_e.chat_soon_e.databinding.PopupWindowChangeNameBinding
+>>>>>>> upstream/develope
 androidx/databinding/library/baseAdapters/BR.java
  androidx.databinding.library.baseAdapters.BR
 com/chat_soon_e/chat_soon_e/BR.java
@@ -40,6 +45,7 @@ com/chat_soon_e/chat_soon_e/data/local/IconDao_Impl.java
  com.chat_soon_e.chat_soon_e.data.local.IconDao_Impl$1
  com.chat_soon_e.chat_soon_e.data.local.IconDao_Impl$2
  com.chat_soon_e.chat_soon_e.data.local.IconDao_Impl$3
+<<<<<<< HEAD
 androidx/databinding/DataBindingComponent.java
  androidx.databinding.DataBindingComponent
 com/chat_soon_e/chat_soon_e/data/local/AppDatabase_Impl.java
@@ -57,6 +63,20 @@ com/chat_soon_e/chat_soon_e/data/local/ChatListDao_Impl.java
  com.chat_soon_e.chat_soon_e.data.local.ChatListDao_Impl$2
  com.chat_soon_e.chat_soon_e.data.local.ChatListDao_Impl$3
  com.chat_soon_e.chat_soon_e.data.local.ChatListDao_Impl$4
+=======
+com/chat_soon_e/chat_soon_e/databinding/ItemIconBinding.java
+ com.chat_soon_e.chat_soon_e.databinding.ItemIconBinding
+com/chat_soon_e/chat_soon_e/BR.java
+ com.chat_soon_e.chat_soon_e.BR
+androidx/databinding/DataBindingComponent.java
+ androidx.databinding.DataBindingComponent
+com/chat_soon_e/chat_soon_e/databinding/ActivityFolderBinding.java
+ com.chat_soon_e.chat_soon_e.databinding.ActivityFolderBinding
+com/chat_soon_e/chat_soon_e/databinding/ActivityHiddenFolderBinding.java
+ com.chat_soon_e.chat_soon_e.databinding.ActivityHiddenFolderBinding
+com/chat_soon_e/chat_soon_e/databinding/ActivityMainToolbarBinding.java
+ com.chat_soon_e.chat_soon_e.databinding.ActivityMainToolbarBinding
+>>>>>>> upstream/develope
 com/chat_soon_e/chat_soon_e/data/local/FolderDao_Impl.java
  com.chat_soon_e.chat_soon_e.data.local.FolderDao_Impl
  com.chat_soon_e.chat_soon_e.data.local.FolderDao_Impl$1
@@ -130,6 +150,7 @@ com/chat_soon_e/chat_soon_e/databinding/ActivityCreatePatternBinding.java
  com.chat_soon_e.chat_soon_e.databinding.ActivityCreatePatternBinding
 com/chat_soon_e/chat_soon_e/databinding/ActivityMyFolderContentBinding.java
  com.chat_soon_e.chat_soon_e.databinding.ActivityMyFolderContentBinding
+<<<<<<< HEAD
 com/chat_soon_e/chat_soon_e/databinding/ActivityMainDrawerHeaderBinding.java
  com.chat_soon_e.chat_soon_e.databinding.ActivityMainDrawerHeaderBinding
 com/chat_soon_e/chat_soon_e/databinding/PopupWindowMainBottomMenuBinding.java
@@ -137,6 +158,28 @@ com/chat_soon_e/chat_soon_e/databinding/PopupWindowMainBottomMenuBinding.java
 com/chat_soon_e/chat_soon_e/ui/InputPatternActivity.java
  com.chat_soon_e.chat_soon_e.ui.InputPatternActivity
  com.chat_soon_e.chat_soon_e.ui.InputPatternActivity$1
+=======
+com/chat_soon_e/chat_soon_e/databinding/ItemChatBinding.java
+ com.chat_soon_e.chat_soon_e.databinding.ItemChatBinding
+com/chat_soon_e/chat_soon_e/databinding/ActivityMainDrawerHeaderBinding.java
+ com.chat_soon_e.chat_soon_e.databinding.ActivityMainDrawerHeaderBinding
+com/chat_soon_e/chat_soon_e/ui/InputPatternActivity.java
+ com.chat_soon_e.chat_soon_e.ui.InputPatternActivity
+ com.chat_soon_e.chat_soon_e.ui.InputPatternActivity$1
+com/chat_soon_e/chat_soon_e/data/local/ChatDao_Impl.java
+ com.chat_soon_e.chat_soon_e.data.local.ChatDao_Impl
+ com.chat_soon_e.chat_soon_e.data.local.ChatDao_Impl$1
+ com.chat_soon_e.chat_soon_e.data.local.ChatDao_Impl$2
+ com.chat_soon_e.chat_soon_e.data.local.ChatDao_Impl$3
+ com.chat_soon_e.chat_soon_e.data.local.ChatDao_Impl$4
+ com.chat_soon_e.chat_soon_e.data.local.ChatDao_Impl$5
+ com.chat_soon_e.chat_soon_e.data.local.ChatDao_Impl$6
+ com.chat_soon_e.chat_soon_e.data.local.ChatDao_Impl$7
+ com.chat_soon_e.chat_soon_e.data.local.ChatDao_Impl$8
+com/chat_soon_e/chat_soon_e/data/local/AppDatabase_Impl.java
+ com.chat_soon_e.chat_soon_e.data.local.AppDatabase_Impl
+ com.chat_soon_e.chat_soon_e.data.local.AppDatabase_Impl$1
+>>>>>>> upstream/develope
 com/chat_soon_e/chat_soon_e/ui/CreatePatternActivity.java
  com.chat_soon_e.chat_soon_e.ui.CreatePatternActivity
  com.chat_soon_e.chat_soon_e.ui.CreatePatternActivity$1

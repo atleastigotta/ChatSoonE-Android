@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_background_folder_bottom_popup_menu.xml.flat",
-        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\drawable\\background_folder_bottom_popup_menu.xml"
-    },
-    {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_background.png.flat",
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\drawable\\background.png"
+    },
+    {
+        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_background_folder_bottom_popup_menu.xml.flat",
+        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\drawable\\background_folder_bottom_popup_menu.xml"
     },
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_popup_window_to_folder_menu.xml.flat",

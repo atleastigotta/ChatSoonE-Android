@@ -13,8 +13,10 @@ import com.chat_soon_e.chat_soon_e.R
 import com.chat_soon_e.chat_soon_e.data.entities.Chat
 import com.chat_soon_e.chat_soon_e.data.entities.TestChat
 import com.chat_soon_e.chat_soon_e.data.local.AppDatabase
+import com.chat_soon_e.chat_soon_e.data.entities.ChatList
 import com.chat_soon_e.chat_soon_e.databinding.ActivityChatBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.gson.Gson
 
 class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::inflate) {
     private var isFabOpen = false    // FAB(FloatingActionButton)가 열렸는지 체크해주는 변수
@@ -24,9 +26,11 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
     private var chatList = ArrayList<TestChat>()
     private lateinit var chatRVAdapter: ChatRVAdapter
     private val testChatViewModel: TestChatViewModel by viewModels()
+    private lateinit var chatListData:ChatList
 
     override fun initAfterBinding() {
         initTestChat()
+        initData()
         initFab()
         initRecyclerView()
         initClickListener()
@@ -137,7 +141,16 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
             finish()
         }
     }
-
+    //MainActivity 로 부터 데이터를 가져온다.
+    private fun initData(){
+        if(intent.hasExtra("chatListJson")){
+            var json=intent.getStringExtra("chatListJson")
+            val gson= Gson()
+            chatListData=gson.fromJson(json, ChatList::class.java)
+            binding.chatNameTv.text=chatListData.chat_name
+            Log.d("chatListInitData", chatListData.toString())
+        }
+    }
     // 폴더 이동 선택 모드 팝업 메뉴 리스너
     inner class PopupFolderMenuListener: PopupMenu.OnMenuItemClickListener {
         override fun onMenuItemClick(item: MenuItem?): Boolean {

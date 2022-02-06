@@ -55,8 +55,8 @@
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/item_chat_choose.xml" value="0.33" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/item_chat_default.xml" value="0.33" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/item_chat_list.xml" value="0.16" />
-        <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/item_chat_list_choose.xml" value="0.10916919959473151" />
-        <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/item_chat_list_default.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/item_chat_list_choose.xml" value="0.33" />
+        <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/item_chat_list_default.xml" value="0.9" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/item_folder_list.xml" value="0.3619791666666667" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/item_hidden_folder.xml" value="0.3619791666666667" />
         <entry key="..\:/Users/pc/projects/ChatSoonE-Android/ChatSoonE/app/src/main/res/layout/item_icon.xml" value="0.25104166666666666" />
@@ -99,7 +99,7 @@
         <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/drawable/background_white_corner.xml" value="0.30885416666666665" />
         <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.30885416666666665" />
         <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/drawable/shadow.xml" value="0.10925925925925926" />
-        <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/layout/activity_chat.xml" value="0.1" />
+        <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/layout/activity_chat.xml" value="0.22" />
         <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/layout/activity_create_pattern.xml" value="0.1265625" />
         <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/layout/activity_folder.xml" value="0.1265625" />
         <entry key="..\:/gitfolder/UMC_ChatSoon5/ChatSoonE/app/src/main/res/layout/activity_hidden_folder.xml" value="0.1265625" />

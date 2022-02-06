@@ -34,7 +34,7 @@ public final class ChatListDao_Impl implements ChatListDao {
     this.__insertionAdapterOfChatList = new EntityInsertionAdapter<ChatList>(__db) {
       @Override
       public String createQuery() {
-        return "INSERT OR ABORT INTO `ChatListTable` (`chatIdx`,`chat_name`,`profileImg`,`latest_time`,`latest_message`,`isNew`,`isChecked`,`id`) VALUES (?,?,?,?,?,?,?,?)";
+        return "INSERT OR ABORT INTO `ChatListTable` (`chatIdx`,`chat_name`,`profileImg`,`latest_time`,`latest_message`,`isGroup`,`isNew`,`isChecked`,`id`) VALUES (?,?,?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -62,18 +62,19 @@ public final class ChatListDao_Impl implements ChatListDao {
         } else {
           stmt.bindString(5, value.getLatest_message());
         }
-        stmt.bindLong(6, value.isNew());
+        stmt.bindLong(6, value.isGroup());
+        stmt.bindLong(7, value.isNew());
         final Integer _tmp_1;
         _tmp_1 = value.isChecked() == null ? null : (value.isChecked() ? 1 : 0);
         if (_tmp_1 == null) {
-          stmt.bindNull(7);
-        } else {
-          stmt.bindLong(7, _tmp_1);
-        }
-        if (value.getId() == null) {
           stmt.bindNull(8);
         } else {
-          stmt.bindLong(8, value.getId());
+          stmt.bindLong(8, _tmp_1);
+        }
+        if (value.getId() == null) {
+          stmt.bindNull(9);
+        } else {
+          stmt.bindLong(9, value.getId());
         }
       }
     };
@@ -95,7 +96,7 @@ public final class ChatListDao_Impl implements ChatListDao {
     this.__updateAdapterOfChatList = new EntityDeletionOrUpdateAdapter<ChatList>(__db) {
       @Override
       public String createQuery() {
-        return "UPDATE OR ABORT `ChatListTable` SET `chatIdx` = ?,`chat_name` = ?,`profileImg` = ?,`latest_time` = ?,`latest_message` = ?,`isNew` = ?,`isChecked` = ?,`id` = ? WHERE `id` = ?";
+        return "UPDATE OR ABORT `ChatListTable` SET `chatIdx` = ?,`chat_name` = ?,`profileImg` = ?,`latest_time` = ?,`latest_message` = ?,`isGroup` = ?,`isNew` = ?,`isChecked` = ?,`id` = ? WHERE `id` = ?";
       }
 
       @Override
@@ -123,23 +124,24 @@ public final class ChatListDao_Impl implements ChatListDao {
         } else {
           stmt.bindString(5, value.getLatest_message());
         }
-        stmt.bindLong(6, value.isNew());
+        stmt.bindLong(6, value.isGroup());
+        stmt.bindLong(7, value.isNew());
         final Integer _tmp_1;
         _tmp_1 = value.isChecked() == null ? null : (value.isChecked() ? 1 : 0);
         if (_tmp_1 == null) {
-          stmt.bindNull(7);
-        } else {
-          stmt.bindLong(7, _tmp_1);
-        }
-        if (value.getId() == null) {
           stmt.bindNull(8);
         } else {
-          stmt.bindLong(8, value.getId());
+          stmt.bindLong(8, _tmp_1);
         }
         if (value.getId() == null) {
           stmt.bindNull(9);
         } else {
           stmt.bindLong(9, value.getId());
+        }
+        if (value.getId() == null) {
+          stmt.bindNull(10);
+        } else {
+          stmt.bindLong(10, value.getId());
         }
       }
     };
