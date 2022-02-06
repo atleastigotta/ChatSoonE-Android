@@ -1,15 +1,15 @@
 [
     {
-        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main_drawer_header.xml",
-        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_main_drawer_header.xml"
+        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_icon.xml",
+        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\layout\\item_icon.xml"
     },
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_my_folder_content.xml",
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_my_folder_content.xml"
     },
     {
-        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_icon.xml",
-        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\layout\\item_icon.xml"
+        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main_drawer_header.xml",
+        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_main_drawer_header.xml"
     },
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_input_pattern.xml",

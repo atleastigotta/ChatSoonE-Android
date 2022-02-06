@@ -58,11 +58,7 @@ public final class AppDatabase_Impl extends AppDatabase {
         _db.execSQL("CREATE TABLE IF NOT EXISTS `IconTable` (`iconImage` INTEGER NOT NULL, `idx` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `TestChatTable` (`name` TEXT NOT NULL, `message` TEXT NOT NULL, `dateTime` TEXT, `viewType` INTEGER NOT NULL, `isChecked` INTEGER NOT NULL, `idx` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-<<<<<<< HEAD
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '474a214af8b386d6d22d25d2cb1f92d7')");
-=======
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5eeb62b58edb776b9865775980acd767')");
->>>>>>> upstream/develope
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f0e8323309ed6a1d0830ae7e4a7ee3d0')");
       }
 
       @Override
@@ -242,11 +238,7 @@ public final class AppDatabase_Impl extends AppDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-<<<<<<< HEAD
-    }, "474a214af8b386d6d22d25d2cb1f92d7", "5c236661c3e8cef346590eb124ed5a77");
-=======
-    }, "5eeb62b58edb776b9865775980acd767", "4816a5b1c941ea29b79339183c25f8ec");
->>>>>>> upstream/develope
+    }, "f0e8323309ed6a1d0830ae7e4a7ee3d0", "9544a31fd0792aaa550f2145d3c8b545");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)
