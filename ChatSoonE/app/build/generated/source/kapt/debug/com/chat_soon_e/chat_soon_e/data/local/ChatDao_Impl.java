@@ -37,6 +37,12 @@ public final class ChatDao_Impl implements ChatDao {
 
   private final EntityDeletionOrUpdateAdapter<Chat> __updateAdapterOfChat;
 
+  private final SharedSQLiteStatement __preparedStmtOfDeleteByChatIdx;
+
+  private final SharedSQLiteStatement __preparedStmtOfDeleteOneChat;
+
+  private final SharedSQLiteStatement __preparedStmtOfDeleteOrgChat;
+
   private final SharedSQLiteStatement __preparedStmtOfUpdateIsNew;
 
   public ChatDao_Impl(RoomDatabase __db) {
@@ -141,6 +147,27 @@ public final class ChatDao_Impl implements ChatDao {
         stmt.bindLong(11, value.getChatIdx());
       }
     };
+    this.__preparedStmtOfDeleteByChatIdx = new SharedSQLiteStatement(__db) {
+      @Override
+      public String createQuery() {
+        final String _query = "DELETE FROM ChatTable WHERE chatIdx = ?";
+        return _query;
+      }
+    };
+    this.__preparedStmtOfDeleteOneChat = new SharedSQLiteStatement(__db) {
+      @Override
+      public String createQuery() {
+        final String _query = "DELETE FROM ChatTable WHERE OtherUserIdx= ? AND groupName is 'null'";
+        return _query;
+      }
+    };
+    this.__preparedStmtOfDeleteOrgChat = new SharedSQLiteStatement(__db) {
+      @Override
+      public String createQuery() {
+        final String _query = "DELETE FROM ChatTable WHERE groupName = ? AND otherUserIdx IN (SELECT CD.otherUserIdx FROM (SELECT C.otherUserIdx fROM ChatTable C INNER JOIN OtherUserTable OU ON C.otherUserIdx=OU.otherUserIdx WHERE OU.kakaoUserIdx = ? AND C.groupName = ?) CD)";
+        return _query;
+      }
+    };
     this.__preparedStmtOfUpdateIsNew = new SharedSQLiteStatement(__db) {
       @Override
       public String createQuery() {
@@ -183,6 +210,66 @@ public final class ChatDao_Impl implements ChatDao {
       __db.setTransactionSuccessful();
     } finally {
       __db.endTransaction();
+    }
+  }
+
+  @Override
+  public void deleteByChatIdx(final int chatIdx) {
+    __db.assertNotSuspendingTransaction();
+    final SupportSQLiteStatement _stmt = __preparedStmtOfDeleteByChatIdx.acquire();
+    int _argIndex = 1;
+    _stmt.bindLong(_argIndex, chatIdx);
+    __db.beginTransaction();
+    try {
+      _stmt.executeUpdateDelete();
+      __db.setTransactionSuccessful();
+    } finally {
+      __db.endTransaction();
+      __preparedStmtOfDeleteByChatIdx.release(_stmt);
+    }
+  }
+
+  @Override
+  public void deleteOneChat(final int otherUserIdx) {
+    __db.assertNotSuspendingTransaction();
+    final SupportSQLiteStatement _stmt = __preparedStmtOfDeleteOneChat.acquire();
+    int _argIndex = 1;
+    _stmt.bindLong(_argIndex, otherUserIdx);
+    __db.beginTransaction();
+    try {
+      _stmt.executeUpdateDelete();
+      __db.setTransactionSuccessful();
+    } finally {
+      __db.endTransaction();
+      __preparedStmtOfDeleteOneChat.release(_stmt);
+    }
+  }
+
+  @Override
+  public void deleteOrgChat(final long use_id, final String groupName) {
+    __db.assertNotSuspendingTransaction();
+    final SupportSQLiteStatement _stmt = __preparedStmtOfDeleteOrgChat.acquire();
+    int _argIndex = 1;
+    if (groupName == null) {
+      _stmt.bindNull(_argIndex);
+    } else {
+      _stmt.bindString(_argIndex, groupName);
+    }
+    _argIndex = 2;
+    _stmt.bindLong(_argIndex, use_id);
+    _argIndex = 3;
+    if (groupName == null) {
+      _stmt.bindNull(_argIndex);
+    } else {
+      _stmt.bindString(_argIndex, groupName);
+    }
+    __db.beginTransaction();
+    try {
+      _stmt.executeUpdateDelete();
+      __db.setTransactionSuccessful();
+    } finally {
+      __db.endTransaction();
+      __preparedStmtOfDeleteOrgChat.release(_stmt);
     }
   }
 
@@ -360,9 +447,10 @@ public final class ChatDao_Impl implements ChatDao {
 
   @Override
   public LiveData<List<ChatList>> getRecentChat(final long id) {
-    final String _sql = "SELECT CL.chatName AS chat_name, CL.profileImg AS profileImg, CL.latestTime AS latest_time, CM.message AS latest_message, CL.isNew AS isNew, CL.chatIdx\n"
+    final String _sql = "SELECT CL.chatName AS chat_name, CL.profileImg AS profileImg, CL.latestTime AS latest_time, CM.message AS latest_message, CL.isNew AS isNew, CL.chatIdx, CL.isGroup AS isGroup\n"
             + "FROM\n"
             + "(SELECT (CASE WHEN C.groupName == \"null\" THEN OU.nickname ELSE C.groupName END) AS chatName,\n"
+            + "(CASE WHEN C.groupName == \"null\" THEN '0' ELSE '-1' END) AS isGroup,\n"
             + "(CASE WHEN C.groupName == \"null\" THEN OU.image ELSE NULL END) AS profileImg, C.isNew AS isNew,C.chatIdx AS chatIdx, MAX(C.postTime) as latestTime\n"
             + "FROM ChatTable as C INNER JOIN OtherUserTable as OU on C.otherUserIdx = OU.otherUserIdx\n"
             + "WHERE OU.kakaoUserIdx = ? AND C.status != 'DELETED'\n"
@@ -389,6 +477,7 @@ public final class ChatDao_Impl implements ChatDao {
           final int _cursorIndexOfLatestMessage = CursorUtil.getColumnIndexOrThrow(_cursor, "latest_message");
           final int _cursorIndexOfIsNew = CursorUtil.getColumnIndexOrThrow(_cursor, "isNew");
           final int _cursorIndexOfChatIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "chatIdx");
+          final int _cursorIndexOfIsGroup = CursorUtil.getColumnIndexOrThrow(_cursor, "isGroup");
           final List<ChatList> _result = new ArrayList<ChatList>(_cursor.getCount());
           while(_cursor.moveToNext()) {
             final ChatList _item;
@@ -422,7 +511,9 @@ public final class ChatDao_Impl implements ChatDao {
             _tmpIsNew = _cursor.getInt(_cursorIndexOfIsNew);
             final int _tmpChatIdx;
             _tmpChatIdx = _cursor.getInt(_cursorIndexOfChatIdx);
-            _item = new ChatList(_tmpChatIdx,_tmpChat_name,_tmpProfileImg,_tmpLatest_time,_tmpLatest_message,_tmpIsNew,null);
+            final int _tmpIsGroup;
+            _tmpIsGroup = _cursor.getInt(_cursorIndexOfIsGroup);
+            _item = new ChatList(_tmpChatIdx,_tmpChat_name,_tmpProfileImg,_tmpLatest_time,_tmpLatest_message,_tmpIsGroup,_tmpIsNew,null);
             _result.add(_item);
           }
           return _result;
@@ -505,6 +596,52 @@ public final class ChatDao_Impl implements ChatDao {
         _tmpChatIdx = _cursor.getInt(_cursorIndexOfChatIdx);
         _item.setChatIdx(_tmpChatIdx);
         _result.add(_item);
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
+  public List<Integer> getChatIdxList() {
+    final String _sql = "SELECT chatIdx FROM ChatTable";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final List<Integer> _result = new ArrayList<Integer>(_cursor.getCount());
+      while(_cursor.moveToNext()) {
+        final Integer _item;
+        if (_cursor.isNull(0)) {
+          _item = null;
+        } else {
+          _item = _cursor.getInt(0);
+        }
+        _result.add(_item);
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
+  public int getChatOtherIdx(final int chatIdx) {
+    final String _sql = "SELECT otherUserIdx FROM ChatTable WHERE chatIdx = ?";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    _statement.bindLong(_argIndex, chatIdx);
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _result;
+      if(_cursor.moveToFirst()) {
+        _result = _cursor.getInt(0);
+      } else {
+        _result = 0;
       }
       return _result;
     } finally {

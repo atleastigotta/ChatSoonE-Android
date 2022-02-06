@@ -20,10 +20,12 @@ import com.chat_soon_e.chat_soon_e.data.entities.ChatList
 import com.chat_soon_e.chat_soon_e.data.entities.ChatListViewType
 import com.chat_soon_e.chat_soon_e.data.local.AppDatabase
 import com.chat_soon_e.chat_soon_e.data.remote.auth.USER_ID
+import com.chat_soon_e.chat_soon_e.utils.getID
 import java.io.File
 import java.text.SimpleDateFormat
 import java.time.format.DateTimeFormatter
 import java.util.*
+import java.util.stream.Collectors
 import kotlin.collections.ArrayList
 
 class MainRVAdapter(private val context: Context, private val mItemClickListener: MyItemClickListener)
@@ -31,9 +33,10 @@ class MainRVAdapter(private val context: Context, private val mItemClickListener
     var chatList=ArrayList<ChatList>()
     private var selectedIndex = -1
     var selectedItemList: SparseBooleanArray = SparseBooleanArray(0)
+    var database=AppDatabase.getInstance(context)!!
     // 클릭 인터페이스
     interface MyItemClickListener {
-        fun onDefaultChatClick(view: View, position: Int)   // 채팅 대화 화면으로 이동
+        fun onDefaultChatClick(view: View, position: Int,chat:ChatList)   // 채팅 대화 화면으로 이동
         fun onChooseChatClick(view: View, position: Int)    // 목록 선택
     }
 
@@ -74,12 +77,28 @@ class MainRVAdapter(private val context: Context, private val mItemClickListener
     }
 
     //selectedItemList 삭제
+    @RequiresApi(Build.VERSION_CODES.N)
     @SuppressLint("NotifyDataSetChanged")
     fun removeSelectedItemList() {
-        //checked 안 된 것들로 교체
+        val TG="removeList"
+        //checked 안 된 것들로 교체해서 Activity애는 선택안된 것들만 남게한다.
         val newChatList=chatList.filter { chatList -> !(chatList.isChecked as Boolean) }
-        //val newChatList = chatList.filter { chat -> !chat.isChecked }
+        val selectedList=chatList.filter{ chatlist-> chatlist.isChecked as Boolean }
         chatList = newChatList as ArrayList<ChatList>
+        //DB 업데이트
+
+        for(i in selectedList){
+            if(i.isGroup==0){ //개인톡일 경우
+                //chatIdx 로 otherUserIdx를 검색한다.
+                val id=database.chatDao().getChatOtherIdx(i.chatIdx)
+                database.chatDao().deleteOneChat(id)
+            }
+            else{//단체톡일 경우 chatName 인 것들 다 삭제
+                database.chatDao().deleteOrgChat(getID(), i.chat_name!!)
+            }
+            Log.d(TG, i.chatIdx.toString())
+        }
+        Log.d(TG, "After delete Items"+database.chatDao().getChatIdxList().toString())
         notifyDataSetChanged()
     }
 
@@ -169,7 +188,7 @@ class MainRVAdapter(private val context: Context, private val mItemClickListener
         init {
             binding.itemChatListDefaultLayout.setOnClickListener {
                 toggleItemSelected(null, position = bindingAdapterPosition)
-                mItemClickListener.onDefaultChatClick(itemView, position = bindingAdapterPosition)
+                mItemClickListener.onDefaultChatClick(itemView, position = bindingAdapterPosition, chatList[bindingAdapterPosition])
             }
         }
 

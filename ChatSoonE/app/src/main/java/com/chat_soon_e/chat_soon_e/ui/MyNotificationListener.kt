@@ -53,7 +53,8 @@ class MyNotificationListener: NotificationListenerService() {
             val largeIcon: Icon? = notification.getLargeIcon()
 
             //알림 메세지(264개의 메세지 등) 제외 대화 내용 DB 저장
-            if(name!=null){
+            //음악 메세지(id==2016) 차단
+            if(name!=null && sbn.id!=2016){
                 database= AppDatabase.getInstance(this)!!
                 var otherUser=database.otherUserDao().getOtherUserByNameId(name.toString(), getID())
                 //이미 있던 유저인지 확인

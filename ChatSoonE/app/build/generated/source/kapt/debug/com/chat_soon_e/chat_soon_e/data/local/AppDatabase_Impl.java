@@ -52,10 +52,10 @@ public final class AppDatabase_Impl extends AppDatabase {
         _db.execSQL("CREATE TABLE IF NOT EXISTS `OtherUserTable` (`nickname` TEXT NOT NULL, `image` TEXT, `status` TEXT NOT NULL, `kakaoUserIdx` INTEGER NOT NULL, `otherUserIdx` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `FolderTable` (`idx` INTEGER NOT NULL, `kakaoUserIdx` INTEGER NOT NULL, `parentFolderIdx` INTEGER, `folderName` TEXT NOT NULL, `folderImg` INTEGER NOT NULL, `status` TEXT NOT NULL, PRIMARY KEY(`idx`))");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `FolderContentTable` (`folderIdx` INTEGER NOT NULL, `chatIdx` INTEGER NOT NULL, `status` TEXT NOT NULL, `folderContentIdx` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `ChatListTable` (`chatIdx` INTEGER NOT NULL, `chat_name` TEXT, `profileImg` TEXT, `latest_time` INTEGER NOT NULL, `latest_message` TEXT, `isNew` INTEGER NOT NULL, `isChecked` INTEGER DEFAULT false, `id` INTEGER PRIMARY KEY AUTOINCREMENT)");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `ChatListTable` (`chatIdx` INTEGER NOT NULL, `chat_name` TEXT, `profileImg` TEXT, `latest_time` INTEGER NOT NULL, `latest_message` TEXT, `isGroup` INTEGER NOT NULL, `isNew` INTEGER NOT NULL, `isChecked` INTEGER DEFAULT false, `id` INTEGER PRIMARY KEY AUTOINCREMENT)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `IconTable` (`iconImage` INTEGER NOT NULL, `idx` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a4d7104bdad124258d4f16487f3ca997')");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5eeb62b58edb776b9865775980acd767')");
       }
 
       @Override
@@ -185,12 +185,13 @@ public final class AppDatabase_Impl extends AppDatabase {
                   + " Expected:\n" + _infoFolderContentTable + "\n"
                   + " Found:\n" + _existingFolderContentTable);
         }
-        final HashMap<String, TableInfo.Column> _columnsChatListTable = new HashMap<String, TableInfo.Column>(8);
+        final HashMap<String, TableInfo.Column> _columnsChatListTable = new HashMap<String, TableInfo.Column>(9);
         _columnsChatListTable.put("chatIdx", new TableInfo.Column("chatIdx", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsChatListTable.put("chat_name", new TableInfo.Column("chat_name", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsChatListTable.put("profileImg", new TableInfo.Column("profileImg", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsChatListTable.put("latest_time", new TableInfo.Column("latest_time", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsChatListTable.put("latest_message", new TableInfo.Column("latest_message", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsChatListTable.put("isGroup", new TableInfo.Column("isGroup", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsChatListTable.put("isNew", new TableInfo.Column("isNew", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsChatListTable.put("isChecked", new TableInfo.Column("isChecked", "INTEGER", false, 0, "false", TableInfo.CREATED_FROM_ENTITY));
         _columnsChatListTable.put("id", new TableInfo.Column("id", "INTEGER", false, 1, null, TableInfo.CREATED_FROM_ENTITY));
@@ -217,7 +218,7 @@ public final class AppDatabase_Impl extends AppDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "a4d7104bdad124258d4f16487f3ca997", "a4e1097ce2f7df3a08225e217f1291d2");
+    }, "5eeb62b58edb776b9865775980acd767", "4816a5b1c941ea29b79339183c25f8ec");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)

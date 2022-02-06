@@ -1,122 +1,122 @@
 [
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_chat.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\item_chat.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_folder.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_folder.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_chat.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_chat.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main_drawer_switch.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_main_drawer_switch.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_mypage.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\fragment_mypage.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_splash.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_splash.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_hidden_folder.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_hidden_folder.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_input_pattern.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_input_pattern.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_chat_list_choose.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\item_chat_list_choose.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_search.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\fragment_search.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\popup_window_set_folder_name.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\popup_window_set_folder_name.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main_content.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_main_content.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_chat.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_chat.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_create_pattern.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_create_pattern.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_create_pattern.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_create_pattern.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_main.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_signup.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_signup.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_chat_list_choose.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\item_chat_list_choose.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_hidden_folder.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\item_hidden_folder.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_match.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\fragment_match.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main_drawer_header.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_main_drawer_header.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_mypage.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\fragment_mypage.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\popup_window_folder_bottom_menu.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\popup_window_folder_bottom_menu.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\layout_switch.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\layout_switch.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_my_folder_content.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_my_folder_content.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_my_folder.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\item_my_folder.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_my_folder.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_my_folder.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_home.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\fragment_home.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_icon.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\item_icon.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main_drawer_header.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_main_drawer_header.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main_content.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_main_content.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main_toolbar.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_main_toolbar.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\popup_window_change_name.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\popup_window_change_name.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_folder.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_folder.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_home.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\fragment_home.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\popup_window_change_icon.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\popup_window_change_icon.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_splash.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_splash.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\popup_window_folder_bottom_menu.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\popup_window_folder_bottom_menu.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_chat.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\item_chat.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\popup_window_set_folder_name.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\popup_window_set_folder_name.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_my_folder.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\item_my_folder.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_my_folder.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_my_folder.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_permission.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_permission.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_chat_list_default.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\item_chat_list_default.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\layout_switch.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\layout_switch.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\popup_window_change_name.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\popup_window_change_name.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\popup_window_change_icon.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\popup_window_change_icon.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_my_folder_content.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_my_folder_content.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_match.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\fragment_match.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_signup.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_signup.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main_drawer_switch.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_main_drawer_switch.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_permission.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_permission.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_chat_list_default.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\item_chat_list_default.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_hidden_folder.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\item_hidden_folder.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main_toolbar.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_main_toolbar.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_hidden_folder.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_hidden_folder.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_search.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\fragment_search.xml"
     },
     {
-        "merged": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_icon.xml",
-        "source": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\item_icon.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_input_pattern.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_input_pattern.xml"
     }
 ]
