@@ -41,6 +41,8 @@ public final class AppDatabase_Impl extends AppDatabase {
 
   private volatile IconDao _iconDao;
 
+  private volatile TestChatDao _testChatDao;
+
   @Override
   protected SupportSQLiteOpenHelper createOpenHelper(DatabaseConfiguration configuration) {
     final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(2) {
@@ -54,8 +56,9 @@ public final class AppDatabase_Impl extends AppDatabase {
         _db.execSQL("CREATE TABLE IF NOT EXISTS `FolderContentTable` (`folderIdx` INTEGER NOT NULL, `chatIdx` INTEGER NOT NULL, `status` TEXT NOT NULL, `folderContentIdx` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `ChatListTable` (`chatIdx` INTEGER NOT NULL, `chat_name` TEXT, `profileImg` TEXT, `latest_time` INTEGER NOT NULL, `latest_message` TEXT, `isNew` INTEGER NOT NULL, `isChecked` INTEGER DEFAULT false, `id` INTEGER PRIMARY KEY AUTOINCREMENT)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `IconTable` (`iconImage` INTEGER NOT NULL, `idx` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `TestChatTable` (`name` TEXT NOT NULL, `message` TEXT NOT NULL, `dateTime` TEXT, `viewType` INTEGER NOT NULL, `isChecked` INTEGER NOT NULL, `idx` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a4d7104bdad124258d4f16487f3ca997')");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '474a214af8b386d6d22d25d2cb1f92d7')");
       }
 
       @Override
@@ -67,6 +70,7 @@ public final class AppDatabase_Impl extends AppDatabase {
         _db.execSQL("DROP TABLE IF EXISTS `FolderContentTable`");
         _db.execSQL("DROP TABLE IF EXISTS `ChatListTable`");
         _db.execSQL("DROP TABLE IF EXISTS `IconTable`");
+        _db.execSQL("DROP TABLE IF EXISTS `TestChatTable`");
         if (mCallbacks != null) {
           for (int _i = 0, _size = mCallbacks.size(); _i < _size; _i++) {
             mCallbacks.get(_i).onDestructiveMigration(_db);
@@ -215,9 +219,25 @@ public final class AppDatabase_Impl extends AppDatabase {
                   + " Expected:\n" + _infoIconTable + "\n"
                   + " Found:\n" + _existingIconTable);
         }
+        final HashMap<String, TableInfo.Column> _columnsTestChatTable = new HashMap<String, TableInfo.Column>(6);
+        _columnsTestChatTable.put("name", new TableInfo.Column("name", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsTestChatTable.put("message", new TableInfo.Column("message", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsTestChatTable.put("dateTime", new TableInfo.Column("dateTime", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsTestChatTable.put("viewType", new TableInfo.Column("viewType", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsTestChatTable.put("isChecked", new TableInfo.Column("isChecked", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsTestChatTable.put("idx", new TableInfo.Column("idx", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysTestChatTable = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesTestChatTable = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoTestChatTable = new TableInfo("TestChatTable", _columnsTestChatTable, _foreignKeysTestChatTable, _indicesTestChatTable);
+        final TableInfo _existingTestChatTable = TableInfo.read(_db, "TestChatTable");
+        if (! _infoTestChatTable.equals(_existingTestChatTable)) {
+          return new RoomOpenHelper.ValidationResult(false, "TestChatTable(com.chat_soon_e.chat_soon_e.data.entities.TestChat).\n"
+                  + " Expected:\n" + _infoTestChatTable + "\n"
+                  + " Found:\n" + _existingTestChatTable);
+        }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "a4d7104bdad124258d4f16487f3ca997", "a4e1097ce2f7df3a08225e217f1291d2");
+    }, "474a214af8b386d6d22d25d2cb1f92d7", "5c236661c3e8cef346590eb124ed5a77");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)
@@ -230,7 +250,7 @@ public final class AppDatabase_Impl extends AppDatabase {
   protected InvalidationTracker createInvalidationTracker() {
     final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
     HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "ChatTable","UserTable","OtherUserTable","FolderTable","FolderContentTable","ChatListTable","IconTable");
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "ChatTable","UserTable","OtherUserTable","FolderTable","FolderContentTable","ChatListTable","IconTable","TestChatTable");
   }
 
   @Override
@@ -246,6 +266,7 @@ public final class AppDatabase_Impl extends AppDatabase {
       _db.execSQL("DELETE FROM `FolderContentTable`");
       _db.execSQL("DELETE FROM `ChatListTable`");
       _db.execSQL("DELETE FROM `IconTable`");
+      _db.execSQL("DELETE FROM `TestChatTable`");
       super.setTransactionSuccessful();
     } finally {
       super.endTransaction();
@@ -266,6 +287,7 @@ public final class AppDatabase_Impl extends AppDatabase {
     _typeConvertersMap.put(FolderDao.class, FolderDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(FolderContentDao.class, FolderContentDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(IconDao.class, IconDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(TestChatDao.class, TestChatDao_Impl.getRequiredConverters());
     return _typeConvertersMap;
   }
 
@@ -363,6 +385,20 @@ public final class AppDatabase_Impl extends AppDatabase {
           _iconDao = new IconDao_Impl(this);
         }
         return _iconDao;
+      }
+    }
+  }
+
+  @Override
+  public TestChatDao testChatDao() {
+    if (_testChatDao != null) {
+      return _testChatDao;
+    } else {
+      synchronized(this) {
+        if(_testChatDao == null) {
+          _testChatDao = new TestChatDao_Impl(this);
+        }
+        return _testChatDao;
       }
     }
   }

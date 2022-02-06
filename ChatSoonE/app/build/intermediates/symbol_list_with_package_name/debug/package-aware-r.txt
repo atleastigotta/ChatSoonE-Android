@@ -1806,6 +1806,7 @@ color mtrl_textinput_hovered_box_stroke_color
 color notification_action_color_filter
 color notification_icon_bg_color
 color notification_material_background_media_default_color
+color orange
 color pink
 color pomegranate
 color primary
@@ -2517,7 +2518,8 @@ drawable avd_hide_password
 drawable avd_show_password
 drawable background
 drawable background2
-drawable background_chat
+drawable background_chat_choose
+drawable background_chat_default
 drawable background_edit_text
 drawable background_folder_bottom_popup_menu
 drawable background_folder_option_popup_menu
@@ -2551,6 +2553,7 @@ drawable ic_baseline_create_new_folder_24
 drawable ic_baseline_delete_24
 drawable ic_baseline_email_24
 drawable ic_baseline_folder_24
+drawable ic_baseline_folder_large_24
 drawable ic_baseline_help_24
 drawable ic_baseline_insert_emoticon_24
 drawable ic_baseline_menu_24
@@ -2906,7 +2909,14 @@ id item1
 id item2
 id item3
 id item4
-id item_chat_date_time_tv
+id item_chat_choose_date_time_tv
+id item_chat_choose_message_tv
+id item_chat_choose_name_tv
+id item_chat_choose_profile_iv
+id item_chat_default_date_time_tv
+id item_chat_default_message_tv
+id item_chat_default_name_tv
+id item_chat_default_profile_iv
 id item_chat_list_choose_layout
 id item_chat_list_content_tv
 id item_chat_list_date_time_tv
@@ -2915,9 +2925,6 @@ id item_chat_list_name_tv
 id item_chat_list_new_cv
 id item_chat_list_profile_cv
 id item_chat_list_profile_iv
-id item_chat_message_tv
-id item_chat_name_tv
-id item_chat_profile_iv
 id item_hidden_folder
 id item_hidden_folder_iv
 id item_hidden_folder_tv
@@ -3082,6 +3089,7 @@ id pathRelative
 id peekHeight
 id percent
 id pin
+id popup_chat_option_menu_delete
 id popup_folder_edit_menu_1
 id popup_folder_edit_menu_2
 id popup_folder_edit_menu_3
@@ -3367,6 +3375,7 @@ layout abc_tooltip
 layout activity_chat
 layout activity_create_pattern
 layout activity_folder
+layout activity_folder_chat
 layout activity_hidden_folder
 layout activity_input_pattern
 layout activity_kakao_auth
@@ -3403,7 +3412,8 @@ layout fragment_home
 layout fragment_match
 layout fragment_mypage
 layout fragment_search
-layout item_chat
+layout item_chat_choose
+layout item_chat_default
 layout item_chat_list_choose
 layout item_chat_list_default
 layout item_hidden_folder
@@ -3499,6 +3509,7 @@ menu example_menu
 menu example_menu2
 menu navi_menu
 menu navi_setting_menu
+menu popup_chat_option_menu
 menu popup_folder_bottom_menu
 menu popup_folder_menu
 menu popup_folder_option_menu

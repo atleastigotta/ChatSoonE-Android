@@ -41,11 +41,13 @@
         android:id="@+id/chat_chat_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        tools:listitem="@layout/item_chat"
+        tools:listitem="@layout/item_chat_default"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="vertical"
         android:overScrollMode="never"
-        android:background="@color/mint"
+        android:background="@drawable/background"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         app:layout_constraintTop_toBottomOf="@+id/chat_line_view"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,37 +57,25 @@
         android:id="@+id/chat_cancel_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/light_gray"
+        android:backgroundTint="@color/white"
         android:src="@drawable/ic_baseline_cancel_24"
         app:borderWidth="0dp"
-        app:fabSize="mini"
-        android:visibility="gone"
-        android:layout_marginBottom="30dp"
-        android:layout_marginEnd="30dp"
-        app:layout_constraintTop_toTopOf="@+id/chat_main_fab"
-        app:layout_constraintBottom_toBottomOf="@+id/chat_main_fab"
+        app:maxImageSize="30dp"
+        app:fabCustomSize="60dp"
+        android:visibility="invisible"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/chat_main_fab"
         app:layout_constraintStart_toStartOf="@+id/chat_main_fab"
         app:layout_constraintEnd_toEndOf="@+id/chat_main_fab" />
-
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:id="@+id/chat_choose_fab"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:backgroundTint="@color/white"-->
-<!--        android:src="@drawable/icon_move"-->
-<!--        app:borderWidth="0dp"-->
-<!--        android:visibility="gone"-->
-<!--        android:layout_marginBottom="30dp"-->
-<!--        android:layout_marginEnd="30dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent" />-->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/chat_main_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
-        android:src="@drawable/icon_folder_1"
+        android:src="@drawable/ic_baseline_folder_large_24"
+        app:maxImageSize="40dp"
+        app:fabCustomSize="80dp"
         app:borderWidth="0dp"
         android:layout_marginBottom="30dp"
         android:layout_marginEnd="30dp"

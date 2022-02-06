@@ -4,6 +4,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
         <Switch
             android:id="@+id/switch_id"
             android:layout_width="fill_parent"

@@ -77,7 +77,6 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 
     // RecyclerView
     private fun initRecyclerView() {
-
         // RecyclerView 구분선
         val recyclerView = binding.mainContent.mainChatListRecyclerView
         val dividerItemDecoration =
@@ -358,8 +357,9 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
         }
 
-
-
+        binding.mainContent.mainChatIv.setOnClickListener {
+            startNextActivity(ChatActivity::class.java)
+        }
     }
 
     // 팝업 메뉴 리스너

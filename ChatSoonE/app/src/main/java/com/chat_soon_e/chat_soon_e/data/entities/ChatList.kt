@@ -22,6 +22,7 @@ data class ChatList(
     @PrimaryKey(autoGenerate = true)var id:Int?=0
     constructor(chatIdx: Int,chat_name:String?, profileImg: String?, latest_time: Date, latest_message: String?, isNew:Int, isChecked:Boolean?):this(chatIdx,chat_name, profileImg, latest_time, latest_message, 0, isNew,false)
 }
+
 object ChatListViewType {
     const val DEFAULT = 0
     const val CHOOSE = 1

@@ -17,5 +17,5 @@
     <color name="transparent">#00ff0000</color>
     <color name="form_error">#F44336</color>
     <color name="login_button">#FFC107</color>
-
+    <color name="orange">#F3C19D</color>
 </resources>

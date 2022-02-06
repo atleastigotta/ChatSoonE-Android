@@ -25,6 +25,7 @@ data class Chat(
 ) {
     @PrimaryKey(autoGenerate = true) @SerializedName("chatIdx") var chatIdx: Int = 0
 }
+
 object ChatViewType {
     const val DEFAULT = 0
     const val CHOOSE = 1

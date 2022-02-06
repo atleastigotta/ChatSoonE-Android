@@ -58,6 +58,9 @@
             android:name="com.chat_soon_e.chat_soon_e.ui.ChatActivity"
             android:exported="true" />
         <activity
+            android:name="com.chat_soon_e.chat_soon_e.ui.FolderChatActivity"
+            android:exported="true" />
+        <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.MyFolderActivity"
             android:exported="true" />
         <activity
