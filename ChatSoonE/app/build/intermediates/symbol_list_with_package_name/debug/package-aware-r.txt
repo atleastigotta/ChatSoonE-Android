@@ -2925,6 +2925,8 @@ id item_chat_list_name_tv
 id item_chat_list_new_cv
 id item_chat_list_profile_cv
 id item_chat_list_profile_iv
+id item_folder_list_iv
+id item_folder_list_tv
 id item_hidden_folder
 id item_hidden_folder_iv
 id item_hidden_folder_tv
@@ -3107,9 +3109,11 @@ id popup_window_change_name_tv
 id popup_window_folder_bottom_menu_create_folder_tv
 id popup_window_folder_bottom_menu_hidden_folder_tv
 id popup_window_folder_bottom_menu_line_view
+id popup_window_main_bottom_menu_to_folder_tv
 id popup_window_set_name_button
 id popup_window_set_name_et
 id popup_window_set_name_tv
+id popup_window_to_folder_menu_recycler_view
 id position
 id postLayout
 id progress_circular
@@ -3416,6 +3420,7 @@ layout item_chat_choose
 layout item_chat_default
 layout item_chat_list_choose
 layout item_chat_list_default
+layout item_folder_list
 layout item_hidden_folder
 layout item_icon
 layout item_my_folder
@@ -3485,7 +3490,9 @@ layout notification_template_part_time
 layout popup_window_change_icon
 layout popup_window_change_name
 layout popup_window_folder_bottom_menu
+layout popup_window_main_bottom_menu
 layout popup_window_set_folder_name
+layout popup_window_to_folder_menu
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
@@ -3719,6 +3726,7 @@ string status_bar_notification_info_overflow
 string tedpermission_close
 string tedpermission_confirm
 string tedpermission_setting
+string to_folder
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style AndroidThemeColorAccentYellow

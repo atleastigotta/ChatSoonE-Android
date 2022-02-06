@@ -44,6 +44,7 @@
     <string name="separator">  |  </string>
     <string name="cancel">취소하기</string>
     <string name="create_folder">폴더 생성하기</string>
+    <string name="to_folder">폴더로 보내기</string>
     <string name="hidden_folder">숨긴 폴더 목록</string>
     <string name="change_folder_name">이름 바꾸기</string>
     <string name="change_folder_icon">아이콘 바꾸기</string>

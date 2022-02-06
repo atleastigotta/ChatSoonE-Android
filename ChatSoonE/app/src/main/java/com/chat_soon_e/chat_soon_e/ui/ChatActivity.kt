@@ -39,13 +39,14 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
 
         if(chatList.isNotEmpty()) return
 
-        appDB.testChatDao().insert(TestChat("상대방", "안녕하세요.", null, 0, false))
-        appDB.testChatDao().insert(TestChat("상대방", "만나서 반가워", null, 0, false))
-        appDB.testChatDao().insert(TestChat("상대방", "잘가", null, 0, false))
-        appDB.testChatDao().insert(TestChat("상대방", "또 보자", null, 0, false))
-        appDB.testChatDao().insert(TestChat("상대방", "즐거웠어", null, 0, false))
-        appDB.testChatDao().insert(TestChat("상대방", "가나다라마바사아자차카타파하", null, 0, false))
-        appDB.testChatDao().insert(TestChat("상대방", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", null, 0, false))
+//        appDB.testChatDao().insert(TestChat("상대방", "안녕하세요.", null, 0, false))
+//        appDB.testChatDao().insert(TestChat("상대방", "만나서 반가워", null, 0, false))
+//        appDB.testChatDao().insert(TestChat("상대방", "잘가", null, 0, false))
+//        appDB.testChatDao().insert(TestChat("상대방", "또 보자", null, 0, false))
+//        appDB.testChatDao().insert(TestChat("상대방", "즐거웠어", null, 0, false))
+//        appDB.testChatDao().insert(TestChat("상대방", "가나다라마바사아자차카타파하", null, 0, false))
+//        appDB.testChatDao().insert(TestChat("상대방", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", null, 0, false))
+//        appDB.testChatDao().insert(TestChat("상대방", "한 번 띄어쓰기를 해보고, 줄바꿈도 해볼게요.\n그런데 이렇게 했을 때 어떻게 나올까요? 궁금한데 또 오류나면 어떡하지..", null, 0, false))
         chatList = appDB.testChatDao().getChatList() as ArrayList
     }
 

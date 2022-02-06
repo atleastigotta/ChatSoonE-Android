@@ -9,13 +9,16 @@ import com.chat_soon_e.chat_soon_e.databinding.ActivityMainBinding
 
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Insets
+import android.graphics.Point
 import android.graphics.Rect
 import android.os.Build
 import android.util.Base64
 import android.util.SparseBooleanArray
-import android.view.MenuItem
-import android.view.View
+import android.view.*
 import android.widget.PopupMenu
+import android.widget.PopupWindow
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationManagerCompat
@@ -31,6 +34,8 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chat_soon_e.chat_soon_e.R
 import com.chat_soon_e.chat_soon_e.data.entities.ChatList
+import com.chat_soon_e.chat_soon_e.data.entities.Folder
+import com.chat_soon_e.chat_soon_e.databinding.ItemFolderListBinding
 import com.chat_soon_e.chat_soon_e.utils.getID
 import com.chat_soon_e.chat_soon_e.utils.permissionGrantred
 import com.google.android.material.navigation.NavigationView
@@ -39,12 +44,15 @@ import java.security.MessageDigest
 
 class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate), NavigationView.OnNavigationItemSelectedListener {
 //    private lateinit var chatDB: AppDatabase            // chat list를 담고 있는 데이터베이스
+    private lateinit var appDB: AppDatabase
+    private var folderList = ArrayList<Folder>()
     private lateinit var mainRVAdapter: MainRVAdapter   // chat list recycler view adpater
     private var chatList = ArrayList<ChatList>()            // 데이터베이스로부터 chat list를 받아올 변수
     private var permission: Boolean = true              // 알림 허용 변수
     private var selectedItem=ArrayList<ChatList>()           //선택된 chatList를 담고 있는 Array
     // ViewModel
     private val chatViewModel: ChatViewModel by viewModels()
+    private lateinit var mPopupWindow: PopupWindow
 
     // onCreate() 이후
     override fun initAfterBinding() {
@@ -59,9 +67,33 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 
         //initNotificationListener()  // NotificationListener (알림 권한 허용)
         //initChatList()              // chat list 데이터 초기화
+        initFolder()
         initRecyclerView()          // RecylcerView Adapter 연결 & 기타 설정
         initDrawerLayout()          // 설정 메뉴창 설정
         initClickListener()         // 여러 ClickListener 초기화
+    }
+
+    // 폴더 초기화
+    private fun initFolder() {
+        appDB = AppDatabase.getInstance(this)!!
+        folderList = appDB.folderDao().getFolderList() as ArrayList
+
+        // 서버 동기화 -> 폴더 리스트 불러 오는?
+        // 만약 데이터베이스에서 받아온 folder list가 비어있는 경우
+        // 더미 데이터
+        if (folderList.isEmpty()) {
+            appDB.folderDao()
+                .insert(Folder(0, 0, null, "추억", R.drawable.ic_baseline_folder_24, "active"))
+            appDB.folderDao()
+                .insert(Folder(1, 0, null, "여행", R.drawable.ic_baseline_folder_24, "active"))
+            appDB.folderDao()
+                .insert(Folder(2, 0, null, "음식", R.drawable.ic_baseline_folder_24, "active"))
+            appDB.folderDao()
+                .insert(Folder(3, 0, null, "학교", R.drawable.ic_baseline_folder_24, "active"))
+            appDB.folderDao()
+                .insert(Folder(4, 0, null, "게임", R.drawable.ic_baseline_folder_24, "active"))
+            folderList = appDB.folderDao().getFolderList() as ArrayList
+        }
     }
 
     // chat list를 불러와 화면의 띄워주는 역할
@@ -310,18 +342,9 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 
         // 폴더 이동 선택 모드 클릭시 팝업 메뉴
         binding.mainContent.mainFolderModeIv.setOnClickListener {
-            // 팝업 메뉴 나오도록
-            // PopupMenu는 API 11 레벨부터 제공된다.
-            Log.d("MAIN/POPUP", "폴더 이동 선택 모드 팝업 메뉴")
-
-            // 여기서 view는 클릭된 뷰를 의미한다.
-            val popup = PopupMenu(this@MainActivity, binding.mainContent.mainFolderModeIv)
-            menuInflater.inflate(R.menu.popup_folder_menu, popup.menu)
-
-            // 리스너로 처리
-            val listener = PopupFolderMenuListener()
-            popup.setOnMenuItemClickListener(listener)
-            popup.show()    // 팝업 메뉴 보이도록
+            // 이 부분 띄우는 걸 생략했습니다.
+//            popupWindowMainBottomMenu()
+            popupWindowToFolderMenu()
         }
 
         //선택모드 시
@@ -429,5 +452,99 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         }
     }
 
+    // 이 부분 없애기
+    private fun popupWindowMainBottomMenu() {
+        val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val popupView = inflater.inflate(R.layout.popup_window_main_bottom_menu, null)
+        mPopupWindow = PopupWindow(popupView, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT)
 
+        mPopupWindow.animationStyle = -1        // 애니메이션 설정 (-1: 설정 안 함, 0: 설정)
+        mPopupWindow.isFocusable = true         // 외부 영역 선택 시 팝업 윈도우 종료
+        mPopupWindow.isOutsideTouchable = true
+        mPopupWindow.showAtLocation(popupView, Gravity.BOTTOM, 0, 0)
+
+        mPopupWindow.contentView.findViewById<TextView>(R.id.popup_window_main_bottom_menu_to_folder_tv).setOnClickListener {
+            // 폴더로 보내기 버튼 눌렀을 때 해당 팝업 윈도우는 사라지고,
+            // 보낼 폴더 리스트를 보여주는 팝업 윈도우를 띄운다.
+            mPopupWindow.dismiss()
+            popupWindowToFolderMenu()
+        }
+    }
+
+    // 폴더로 보내기 팝업 윈도우
+    private fun popupWindowToFolderMenu() {
+//        folderList = appDB.folderDao().getFolderByStatus("active") as ArrayList
+        folderList = appDB.folderDao().getFolderList() as ArrayList
+
+        // 팝업 윈도우 사이즈를 잘못 맞추면 아이템들이 안 뜨므로 하드 코딩으로 사이즈 조정해주기
+        // 아이콘 16개 (기본)
+        val size = windowManager.currentWindowMetricsPointCompat()
+        val width = (size.x * 0.8f).toInt()
+        val height = (size.y * 0.3f).toInt()
+
+        val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val popupView = inflater.inflate(R.layout.popup_window_to_folder_menu, null)
+        mPopupWindow = PopupWindow(popupView, width, height)
+
+        mPopupWindow.animationStyle = -1        // 애니메이션 설정 (-1: 설정 안 함, 0: 설정)
+        mPopupWindow.isFocusable = true         // 외부 영역 선택 시 팝업 윈도우 종료
+        mPopupWindow.isOutsideTouchable = true
+        mPopupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0)
+
+        // RecyclerView 구분선
+        val recyclerView = popupView.findViewById<RecyclerView>(R.id.popup_window_to_folder_menu_recycler_view)
+        val dividerItemDecoration =
+            DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL)
+
+        // RecyclerView 초기화
+        // 더미 데이터와 어댑터 연결
+        val folderListRVAdapter = FolderListRVAdapter(folderList)
+        popupView.findViewById<RecyclerView>(R.id.popup_window_to_folder_menu_recycler_view).adapter = folderListRVAdapter
+        folderListRVAdapter.setMyItemClickListener(object: FolderListRVAdapter.MyItemClickListener {
+            override fun onFolderClick(itemBinding: ItemFolderListBinding, itemPosition: Int) {
+                // 폴더 아이콘
+                // 폴더로 이동하는 코드 밑에 작성해주시면 됩니다.
+                val selectedFolder = folderList[itemPosition]
+
+                if (selectedFolder.status.equals("hidden")) {
+                    // 패턴
+                    // 0: 입력 모드
+                    val modeSPF = getSharedPreferences("mode", 0)
+                    val editor = modeSPF.edit()
+                    editor.putInt("mode", 3)
+                    editor.apply()
+
+                    startNextActivity(InputPatternActivity::class.java)
+
+                    // 폴더로 이동시키는 코드 작성
+
+                }
+
+                // 같이 해도 좋을듯
+
+                Toast.makeText(this@MainActivity, "selected folder: ${selectedFolder.folderName}", Toast.LENGTH_SHORT).show()
+
+                // 팝업 윈도우를 꺼주는 역할
+                mPopupWindow.dismiss()
+            }
+        })
+    }
+
+    // 디바이스 크기에 사이즈를 맞추기 위한 함수
+    private fun WindowManager.currentWindowMetricsPointCompat(): Point {
+        return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+            val windowInsets = currentWindowMetrics.windowInsets
+            var insets: Insets = windowInsets.getInsets(WindowInsets.Type.navigationBars())
+            windowInsets.displayCutout?.run {
+                insets = Insets.max(insets, Insets.of(safeInsetLeft, safeInsetTop, safeInsetRight, safeInsetBottom))
+            }
+            val insetsWidth = insets.right + insets.left
+            val insetsHeight = insets.top + insets.bottom
+            Point(currentWindowMetrics.bounds.width() - insetsWidth, currentWindowMetrics.bounds.height() - insetsHeight)
+        } else{
+            Point().apply {
+                defaultDisplay.getSize(this)
+            }
+        }
+    }
 }

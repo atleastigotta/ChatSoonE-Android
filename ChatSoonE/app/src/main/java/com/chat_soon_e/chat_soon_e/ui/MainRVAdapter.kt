@@ -31,6 +31,7 @@ class MainRVAdapter(private val context: Context, private val mItemClickListener
     var chatList=ArrayList<ChatList>()
     private var selectedIndex = -1
     var selectedItemList: SparseBooleanArray = SparseBooleanArray(0)
+
     // 클릭 인터페이스
     interface MyItemClickListener {
         fun onDefaultChatClick(view: View, position: Int)   // 채팅 대화 화면으로 이동

@@ -29,6 +29,7 @@ public class InputPatternActivity extends AppCompatActivity {
         // 0: 숨긴 폴더 목록을 확인하기 위한 입력 모드
         // 1: 메인 화면의 설정창 -> 변경 모드
         // 2: 폴더 화면의 설정창 -> 변경 모드
+        // 3: 폴더 리스트에서 숨김 폴더 클릭했을 때
         SharedPreferences modeSPF = getSharedPreferences("mode", 0);
         mode = modeSPF.getInt("mode", 0);
         Log.d("CREATE/MODE", String.valueOf(mode));
@@ -56,9 +57,11 @@ public class InputPatternActivity extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), HiddenFolderActivity.class);
                         startActivity(intent);
                         finish();
-                    } else {  // 패턴 변경 모드이므로, 패턴을 생성하는 CreatePatternActivity로 가면 된다.
+                    } else if(mode == 1 || mode == 2) {  // 패턴 변경 모드이므로, 패턴을 생성하는 CreatePatternActivity로 가면 된다.
                         Intent intent = new Intent(getApplicationContext(), CreatePatternActivity.class);
                         startActivity(intent);
+                        finish();
+                    } else { // 폴더 리스트에서 숨김 폴더 클릭했을 때
                         finish();
                     }
                 } else {
