@@ -1,11 +1,15 @@
 package com.chat_soon_e.chat_soon_e.data.local
 
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.Query
 import com.chat_soon_e.chat_soon_e.data.entities.FolderContent
 
 @Dao
 interface FolderContentDao {
+    @Insert
+    fun insert(folderContent:FolderContent)
+
     //채팅 한개를 폴더에 추가
     @Query("INSERT INTO FolderContentTable (folderIdx, chatIdx) VALUES (:folderIdx, :chatIdx)")
     fun insertChat(folderIdx:Int, chatIdx:Int)

@@ -1,6 +1,7 @@
 package com.chat_soon_e.chat_soon_e.data.local;
 
 import android.database.Cursor;
+import androidx.room.EntityInsertionAdapter;
 import androidx.room.RoomDatabase;
 import androidx.room.RoomSQLiteQuery;
 import androidx.room.SharedSQLiteStatement;
@@ -20,6 +21,8 @@ import java.util.List;
 public final class FolderContentDao_Impl implements FolderContentDao {
   private final RoomDatabase __db;
 
+  private final EntityInsertionAdapter<FolderContent> __insertionAdapterOfFolderContent;
+
   private final SharedSQLiteStatement __preparedStmtOfInsertChat;
 
   private final SharedSQLiteStatement __preparedStmtOfInsertOtOChat;
@@ -30,6 +33,24 @@ public final class FolderContentDao_Impl implements FolderContentDao {
 
   public FolderContentDao_Impl(RoomDatabase __db) {
     this.__db = __db;
+    this.__insertionAdapterOfFolderContent = new EntityInsertionAdapter<FolderContent>(__db) {
+      @Override
+      public String createQuery() {
+        return "INSERT OR ABORT INTO `FolderContentTable` (`folderIdx`,`chatIdx`,`status`,`folderContentIdx`) VALUES (?,?,?,nullif(?, 0))";
+      }
+
+      @Override
+      public void bind(SupportSQLiteStatement stmt, FolderContent value) {
+        stmt.bindLong(1, value.getFolderIdx());
+        stmt.bindLong(2, value.getChatIdx());
+        if (value.getStatus() == null) {
+          stmt.bindNull(3);
+        } else {
+          stmt.bindString(3, value.getStatus());
+        }
+        stmt.bindLong(4, value.getFolderContentIdx());
+      }
+    };
     this.__preparedStmtOfInsertChat = new SharedSQLiteStatement(__db) {
       @Override
       public String createQuery() {
@@ -58,6 +79,18 @@ public final class FolderContentDao_Impl implements FolderContentDao {
         return _query;
       }
     };
+  }
+
+  @Override
+  public void insert(final FolderContent folderContent) {
+    __db.assertNotSuspendingTransaction();
+    __db.beginTransaction();
+    try {
+      __insertionAdapterOfFolderContent.insert(folderContent);
+      __db.setTransactionSuccessful();
+    } finally {
+      __db.endTransaction();
+    }
   }
 
   @Override

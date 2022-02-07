@@ -45,6 +45,8 @@ public final class ChatDao_Impl implements ChatDao {
 
   private final SharedSQLiteStatement __preparedStmtOfUpdateIsNew;
 
+  private final SharedSQLiteStatement __preparedStmtOfUpdateFolder;
+
   public ChatDao_Impl(RoomDatabase __db) {
     this.__db = __db;
     this.__insertionAdapterOfChat = new EntityInsertionAdapter<Chat>(__db) {
@@ -175,6 +177,13 @@ public final class ChatDao_Impl implements ChatDao {
         return _query;
       }
     };
+    this.__preparedStmtOfUpdateFolder = new SharedSQLiteStatement(__db) {
+      @Override
+      public String createQuery() {
+        final String _query = "UPDATE ChatTable SET folderIdx= ? WHERE chatIdx= ?";
+        return _query;
+      }
+    };
   }
 
   @Override
@@ -288,6 +297,24 @@ public final class ChatDao_Impl implements ChatDao {
     } finally {
       __db.endTransaction();
       __preparedStmtOfUpdateIsNew.release(_stmt);
+    }
+  }
+
+  @Override
+  public void updateFolder(final int chatIdx, final int folderIdx) {
+    __db.assertNotSuspendingTransaction();
+    final SupportSQLiteStatement _stmt = __preparedStmtOfUpdateFolder.acquire();
+    int _argIndex = 1;
+    _stmt.bindLong(_argIndex, folderIdx);
+    _argIndex = 2;
+    _stmt.bindLong(_argIndex, chatIdx);
+    __db.beginTransaction();
+    try {
+      _stmt.executeUpdateDelete();
+      __db.setTransactionSuccessful();
+    } finally {
+      __db.endTransaction();
+      __preparedStmtOfUpdateFolder.release(_stmt);
     }
   }
 

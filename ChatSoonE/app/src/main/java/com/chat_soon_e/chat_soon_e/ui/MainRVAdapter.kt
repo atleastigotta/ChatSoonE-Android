@@ -174,6 +174,7 @@ class MainRVAdapter(private val context: Context, private val mItemClickListener
         chatList.addAll(chats as ArrayList)
         notifyDataSetChanged()
     }
+
     //선택된 chatIdx를 가져온다.
     fun getSelectedItem():ArrayList<Int>{
         //chatlist에서 checked 된 list들의 chatIdx를 저장하고 가져온다

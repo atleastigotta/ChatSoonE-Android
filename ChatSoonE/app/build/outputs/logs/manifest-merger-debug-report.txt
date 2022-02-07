@@ -241,9 +241,15 @@ MERGED from [com.kakao.sdk:v2-auth:2.4.2] C:\Users\pc\.gradle\caches\transforms-
 	android:theme
 		ADDED from [com.kakao.sdk:v2-auth:2.4.2] C:\Users\pc\.gradle\caches\transforms-3\b24800abe53266e872f2560b76a0176a\transformed\jetified-v2-auth-2.4.2\AndroidManifest.xml:20:13-53
 	android:name
+<<<<<<< HEAD
 		ADDED from C:\Users\pc\projects\ChatSoonE-Android\ChatSoonE\app\src\main\AndroidManifest.xml:40:13-70
 intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:oauth+data:scheme:kakao344ce6395e3e90c63689e4fef30067f0
 ADDED from C:\Users\pc\projects\ChatSoonE-Android\ChatSoonE\app\src\main\AndroidManifest.xml:42:13-50:29
+=======
+		ADDED from F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:40:13-70
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:oauth+data:scheme:kakao
+ADDED from F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:42:13-50:29
+>>>>>>> upstream/develope
 action#android.intent.action.VIEW
 ADDED from C:\Users\pc\projects\ChatSoonE-Android\ChatSoonE\app\src\main\AndroidManifest.xml:43:17-69
 	android:name
@@ -257,11 +263,19 @@ ADDED from C:\Users\pc\projects\ChatSoonE-Android\ChatSoonE\app\src\main\Android
 	android:name
 		ADDED from C:\Users\pc\projects\ChatSoonE-Android\ChatSoonE\app\src\main\AndroidManifest.xml:45:27-75
 data
+<<<<<<< HEAD
 ADDED from C:\Users\pc\projects\ChatSoonE-Android\ChatSoonE\app\src\main\AndroidManifest.xml:48:17-49:78
+=======
+ADDED from F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:48:17-49:46
+>>>>>>> upstream/develope
 	android:host
 		ADDED from C:\Users\pc\projects\ChatSoonE-Android\ChatSoonE\app\src\main\AndroidManifest.xml:48:23-43
 	android:scheme
+<<<<<<< HEAD
 		ADDED from C:\Users\pc\projects\ChatSoonE-Android\ChatSoonE\app\src\main\AndroidManifest.xml:49:21-75
+=======
+		ADDED from F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:49:21-43
+>>>>>>> upstream/develope
 service#com.chat_soon_e.chat_soon_e.ui.MyNotificationListener
 ADDED from C:\Users\pc\projects\ChatSoonE-Android\ChatSoonE\app\src\main\AndroidManifest.xml:54:9-60:19
 	android:exported
