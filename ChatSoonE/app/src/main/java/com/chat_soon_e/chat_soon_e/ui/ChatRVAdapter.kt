@@ -13,15 +13,18 @@ import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
+import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.dateToString
+import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.loadBitmap
 import com.chat_soon_e.chat_soon_e.R
 import com.chat_soon_e.chat_soon_e.data.entities.*
+import com.chat_soon_e.chat_soon_e.data.local.AppDatabase
 import com.chat_soon_e.chat_soon_e.databinding.ItemChatChooseBinding
 import com.chat_soon_e.chat_soon_e.databinding.ItemChatDefaultBinding
 import com.chat_soon_e.chat_soon_e.databinding.ItemChatListChooseBinding
 import com.chat_soon_e.chat_soon_e.databinding.ItemChatListDefaultBinding
 
 class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickListener: MyItemClickListener): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    var chatList = ArrayList<TestChat>()
+    var chatList = ArrayList<Chat>()
     var selectedItemList: SparseBooleanArray = SparseBooleanArray(0)
     private lateinit var popup: PopupMenu
     private lateinit var binding: ItemChatDefaultBinding
@@ -67,7 +70,7 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
     override fun getItemCount(): Int = chatList.size
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addChatList(chatList: ArrayList<TestChat>) {
+    fun addChatList(chatList: ArrayList<Chat>) {
         this.chatList.clear()
         this.chatList.addAll(chatList)
         notifyDataSetChanged()
@@ -81,7 +84,7 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
 
     //AddData
     @SuppressLint("NotifyDataSetChanged")
-    fun addItem(testChat: List<TestChat>){
+    fun addItem(testChat: List<Chat>){
         chatList.clear()
         chatList.addAll(testChat as ArrayList)
 
@@ -119,7 +122,7 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
     // 뷰타입 설정
     @SuppressLint("NotifyDataSetChanged")
     fun setViewType(currentMode: Int) {
-        val newChatList = ArrayList<TestChat>()
+        val newChatList = ArrayList<Chat>()
         for(i in 0 until chatList.size) {
             if(currentMode == 0) {
                 // 일반 모드
@@ -170,10 +173,14 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
         }
 
         @RequiresApi(Build.VERSION_CODES.O)
-        fun bind(testChat: TestChat) {
-            binding.itemChatDefaultNameTv.text = testChat.name
+        fun bind(testChat: Chat) {
+            val db=AppDatabase.getInstance(mContext)!!
+            val other=db.otherUserDao().getOtherUserById(testChat.otherUserIdx)
+
+            binding.itemChatDefaultNameTv.text = other.nickname
             binding.itemChatDefaultMessageTv.text = testChat.message
-            binding.itemChatDefaultDateTimeTv.text = testChat.dateTime
+            binding.itemChatDefaultDateTimeTv.text = dateToString(testChat.postTime!!)
+            binding.itemChatDefaultProfileIv.setImageBitmap(loadBitmap(other.image!!, mContext))
         }
     }
 
@@ -188,10 +195,16 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
         }
 
         @RequiresApi(Build.VERSION_CODES.O)
-        fun bind(testChat: TestChat) {
-            binding.itemChatChooseNameTv.text = testChat.name
+        fun bind(testChat: Chat) {
+            val db=AppDatabase.getInstance(mContext)!!
+            val other=db.otherUserDao().getOtherUserById(testChat.otherUserIdx)
+
+            binding.itemChatChooseNameTv.text = other.nickname
             binding.itemChatChooseMessageTv.text = testChat.message
-            binding.itemChatChooseDateTimeTv.text = testChat.dateTime
+            binding.itemChatChooseDateTimeTv.text = dateToString(testChat.postTime!!)
+            binding.itemChatChooseProfileIv.setImageBitmap(loadBitmap(other.image!!, mContext))
+
         }
     }
+
 }

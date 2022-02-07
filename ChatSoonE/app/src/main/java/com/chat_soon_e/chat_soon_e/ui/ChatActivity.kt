@@ -1,5 +1,8 @@
 package com.chat_soon_e.chat_soon_e.ui
 
+import android.content.Intent
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
@@ -15,6 +18,8 @@ import com.chat_soon_e.chat_soon_e.data.entities.TestChat
 import com.chat_soon_e.chat_soon_e.data.local.AppDatabase
 import com.chat_soon_e.chat_soon_e.data.entities.ChatList
 import com.chat_soon_e.chat_soon_e.databinding.ActivityChatBinding
+import com.chat_soon_e.chat_soon_e.utils.getID
+import com.chat_soon_e.chat_soon_e.utils.permissionGrantred
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 
@@ -23,23 +28,27 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
     private lateinit var fabOpen: Animation
     private lateinit var fabClose: Animation
     private lateinit var appDB: AppDatabase
-    private var chatList = ArrayList<TestChat>()
+    private var chatList = ArrayList<Chat>()
     private lateinit var chatRVAdapter: ChatRVAdapter
     private val testChatViewModel: TestChatViewModel by viewModels()
     private lateinit var chatListData:ChatList
+    private var isGroup:Boolean=false
+    private var isAll:Int=0 //모든 채팅을 불러오는지(1), 각 채팅방을 불러오는 것인지(-1)
 
     override fun initAfterBinding() {
-        initTestChat()
-        initData()
+        //initTestChat()
+
         initFab()
-        initRecyclerView()
+        Handler(Looper.getMainLooper()).postDelayed({
+            initData()
+            initRecyclerView()
+        }, 3000)//1초 후 권한 페이지로
         initClickListener()
     }
 
     // test chat 초기화 (테스트용)
     private fun initTestChat() {
-        appDB = AppDatabase.getInstance(this)!!
-        chatList = appDB.testChatDao().getChatList() as ArrayList
+        //chatList = appDB.testChatDao().getChatList() as ArrayList
 
         if(chatList.isNotEmpty()) return
 
@@ -51,7 +60,7 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
 //        appDB.testChatDao().insert(TestChat("상대방", "가나다라마바사아자차카타파하", null, 0, false))
 //        appDB.testChatDao().insert(TestChat("상대방", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", null, 0, false))
 //        appDB.testChatDao().insert(TestChat("상대방", "한 번 띄어쓰기를 해보고, 줄바꿈도 해볼게요.\n그런데 이렇게 했을 때 어떻게 나올까요? 궁금한데 또 오류나면 어떡하지..", null, 0, false))
-        chatList = appDB.testChatDao().getChatList() as ArrayList
+        //chatList = appDB.testChatDao().getChatList() as ArrayList
     }
 
     // FAB 애니메이션 초기화
@@ -66,7 +75,8 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
 
         chatRVAdapter = ChatRVAdapter(this, object: ChatRVAdapter.MyItemClickListener {
             override fun onRemoveChat(position: Int) {
-                appDB.testChatDao().delete(chatList[position])
+                //appDB.testChatDao().delete(chatList[position])
+                appDB.chatDao().deleteByChatIdx(chatList[position].chatIdx)
             }
 
             override fun onDefaultChatLongClick(popupMenu: PopupMenu) {
@@ -94,8 +104,19 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
         })
 
         binding.chatChatRecyclerView.adapter = chatRVAdapter
-        chatRVAdapter.addChatList(appDB.testChatDao().getChatList() as ArrayList)
 
+        if(isAll==-1)
+        {   //모든 톡 가져오기
+            appDB.chatDao().getUserAllChat(getID()).observe(this,{
+                chatRVAdapter.addItem(it)
+            })
+        }else if(isAll==1){
+            //특정 톡만 가져오기
+            val otherIdx=appDB.chatDao().getChatOtherIdx(chatListData.chatIdx)
+            appDB.chatDao().getOneChatList(otherIdx).observe(this,{
+                chatRVAdapter.addItem(it)
+            })
+        }
         // 폴더 선택 모드를 해제하기 위해
         binding.chatCancelFab.setOnClickListener {
             binding.chatMainFab.setImageResource(R.drawable.ic_baseline_folder_large_24)
@@ -141,15 +162,24 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
             finish()
         }
     }
-    //MainActivity 로 부터 데이터를 가져온다.
+    //MainActivity로 부터 데이터를 가져온다.
     private fun initData(){
+        //isGroup==-1, isNotGroup==1
+        isAll=getSharedPreferences("chatAll", MODE_PRIVATE).getInt("chatAll", 0)
+        
+        Log.d("isALLOR", isAll.toString())
         if(intent.hasExtra("chatListJson")){
-            var json=intent.getStringExtra("chatListJson")
-            val gson= Gson()
-            chatListData=gson.fromJson(json, ChatList::class.java)
+            chatListData=intent.getSerializableExtra("chatListJson") as ChatList
+            isGroup = chatListData.isGroup !=0
             binding.chatNameTv.text=chatListData.chat_name
             Log.d("chatListInitData", chatListData.toString())
         }
+
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this,MainActivity::class.java))
     }
     // 폴더 이동 선택 모드 팝업 메뉴 리스너
     inner class PopupFolderMenuListener: PopupMenu.OnMenuItemClickListener {
@@ -161,4 +191,5 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
             return false
         }
     }
+
 }

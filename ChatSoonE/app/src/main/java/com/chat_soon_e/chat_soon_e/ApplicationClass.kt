@@ -5,16 +5,22 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Build
 import android.util.Base64
 import android.util.Log
 import androidx.annotation.RequiresApi
 import com.chat_soon_e.chat_soon_e.config.XAccessTokenInterceptor
+import com.chat_soon_e.chat_soon_e.data.entities.ChatList
 import com.kakao.sdk.common.KakaoSdk
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.File
 import java.security.MessageDigest
+import java.text.SimpleDateFormat
+import java.util.*
 import java.util.Base64.getEncoder
 import java.util.concurrent.TimeUnit
 
@@ -33,7 +39,7 @@ class ApplicationClass : Application() {
         // DB: 데이터베이스명
         const val APP_DATABASE = "$TAG-DB"
 
-        const val DEV_URL: String = "";       // 테스트 서버 주소
+        const val DEV_URL: String = "http://";       // 테스트 서버 주소
         const val PROD_URL: String = "https://api.template.com/"    // 실서버 주소
         const val BASE_URL: String = DEV_URL                      // apk 추출할 때 알맞게 바꾸면[넣어주면] 된다.
 
@@ -47,6 +53,46 @@ class ApplicationClass : Application() {
         // 전체적으로 쓰일 수 있도록
         lateinit var mSharedPreferences: SharedPreferences
         lateinit var retrofit: Retrofit
+
+
+        //캐시 저장소로부터 이미지 불러오기
+        //추후 진짜 캐시를 사용해 볼 것
+        fun loadBitmap(name: String,context:Context): Bitmap? {
+            val file = File(context.cacheDir.toString())
+            val files = file.listFiles()
+            var list: String=""
+            for (tempFile in files) {
+                //Log.d("MyTag", tempFile.name)
+                //name이 들어가 있는 파일 찾기
+                if (tempFile.name.contains(name)) {
+                    list=tempFile.name
+                }
+            }
+            val path = context.cacheDir.toString()+"/"+list
+            val bitmap = BitmapFactory.decodeFile(path)
+            return bitmap
+        }
+
+        //simpleDataFormat 사용할 것
+        @RequiresApi(Build.VERSION_CODES.O)
+        fun dateToString(date: Date):String{
+            //오늘이 아니라면 날짜만
+            var str=""
+            val today= Date()
+            if(date.year == today.year && date.month == today.month && date.date==today.date){
+                val time = SimpleDateFormat("a hh:mm")
+                str= time.format(date).toString()
+            }
+            else{
+                //simpleDateFormat은 thread에 안전하지 않습니다.
+                //DateTimeFormatter을 사용합시다. 아! Date를 LocalDate로도 바꿔야합니다!
+                //val time_formatter=DateTimeFormatter.ofPattern("MM월 dd일")
+                //date.format(time_formatter)
+                val time = SimpleDateFormat("MM월 DD일")
+                str=time.format(date).toString()
+            }
+            return str
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.P)
@@ -71,5 +117,7 @@ class ApplicationClass : Application() {
 
         mSharedPreferences = applicationContext.getSharedPreferences(TAG, Context.MODE_PRIVATE)
     }
+
+    //
 
 }

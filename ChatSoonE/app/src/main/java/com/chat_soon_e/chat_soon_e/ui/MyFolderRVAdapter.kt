@@ -19,7 +19,7 @@ class MyFolderRVAdapter(private val mContext: MyFolderActivity): RecyclerView.Ad
         fun onRemoveFolder(idx: Int)
         fun onHideFolder(idx: Int)
         fun onFolderNameLongClick(binding: ItemMyFolderBinding, position: Int)
-        fun onFolderClick(view: View, position: Int)
+        fun onFolderClick(view: View, position: Int, folderIdx:Int)
         fun onFolderLongClick(popup: PopupMenu)
     }
 
@@ -52,7 +52,7 @@ class MyFolderRVAdapter(private val mContext: MyFolderActivity): RecyclerView.Ad
 
         // 폴더 클릭 시 해당 폴더로 이동할 수 있도록
         holder.binding.itemMyFolderIv.setOnClickListener {
-            mItemClickListener.onFolderClick(holder.binding.itemMyFolderIv, position)
+            mItemClickListener.onFolderClick(holder.binding.itemMyFolderIv, position,folderList[position].idx)
         }
 
         // 폴더 아이템 롱클릭 시 팝업 메뉴 뜨도록

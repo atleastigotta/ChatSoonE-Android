@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 import java.util.*
 
 //추후 서버와의 통신을 위한 데이터
@@ -19,7 +20,7 @@ data class ChatList(
     @ColumnInfo(defaultValue = "0")@Ignore var viewType: Int=0,
     var isNew:Int=0,
     @ColumnInfo(defaultValue = "false") var isChecked: Boolean?=false
-){
+):Serializable{
     @PrimaryKey(autoGenerate = true)var id:Int?=0
     constructor(chatIdx: Int,chat_name:String?, profileImg: String?, latest_time: Date, latest_message: String?, isGroup: Int,isNew:Int, isChecked:Boolean?):this(chatIdx,chat_name, profileImg, latest_time, latest_message, isGroup,0, isNew,false)
 }

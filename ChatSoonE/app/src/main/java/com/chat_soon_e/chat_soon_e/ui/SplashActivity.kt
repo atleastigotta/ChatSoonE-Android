@@ -174,7 +174,7 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
             }
             else {
                 if (user != null) {
-                    Log.d(TAG, user.id.toString())
+                    //Log.d(TAG, user.id.toString())
                     val database=AppDatabase.getInstance(this)!!
                     val dao=database.userDao()
                     if(state=="login"){
@@ -203,7 +203,7 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
                     else if(state=="withdraw")
                         saveID(-1)
                         dao.updateStatus(user.id, "delete")
-                    Log.d(TAG, dao.getUsers().toString())
+                    //Log.d(TAG, dao.getUsers().toString())
                 }
             }
         }

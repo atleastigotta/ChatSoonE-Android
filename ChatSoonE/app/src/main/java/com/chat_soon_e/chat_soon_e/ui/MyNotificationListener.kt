@@ -8,12 +8,15 @@ import android.os.Build
 import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
 import android.util.Log
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.graphics.drawable.toBitmap
 import com.chat_soon_e.chat_soon_e.data.entities.Chat
 import com.chat_soon_e.chat_soon_e.data.entities.OtherUser
 import com.chat_soon_e.chat_soon_e.data.local.AppDatabase
 import com.chat_soon_e.chat_soon_e.data.remote.auth.USER_ID
+import com.chat_soon_e.chat_soon_e.data.remote.chat.ChatService
+import com.chat_soon_e.chat_soon_e.ui.View.addChatView
 import com.chat_soon_e.chat_soon_e.utils.getID
 import java.io.File
 import java.io.FileNotFoundException
@@ -23,9 +26,9 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 @RequiresApi(Build.VERSION_CODES.M)
-class MyNotificationListener: NotificationListenerService() {
+class MyNotificationListener: NotificationListenerService(), addChatView {
     private lateinit var chatDB: AppDatabase
-    val TAG = "NotificationListener"
+    val TAG = "NotifiLog"
     private lateinit var database: AppDatabase
 
     override fun onListenerConnected() {
@@ -55,6 +58,8 @@ class MyNotificationListener: NotificationListenerService() {
             //알림 메세지(264개의 메세지 등) 제외 대화 내용 DB 저장
             //음악 메세지(id==2016) 차단
             if(name!=null && sbn.id!=2016){
+                //서버에 추가
+
                 database= AppDatabase.getInstance(this)!!
                 var otherUser=database.otherUserDao().getOtherUserByNameId(name.toString(), getID())
                 //이미 있던 유저인지 확인
@@ -73,15 +78,18 @@ class MyNotificationListener: NotificationListenerService() {
                     database.chatDao().insert(Chat(other.otherUserIdx, subText.toString(),text.toString(), date, -1, "activate"))
                     Log.d(TAG, "database: "+database.chatDao().getChatByIdx(other.otherUserIdx).toString())
                 }
+                val chatService=ChatService()
+                //chatService.addChat(this.vi, 1234,com.chat_soon_e.chat_soon_e.data.remote.chat.Chat(name, "null", "null", text.toString(), date ) )
+
             }
-            Log.d(
-                TAG, "onNotificationPosted ~ " +
-                        " id: " + sbn.id +
-                        " name: " + name +
-                        " text : " + text
-                        + "subtext: "+ subText+
-                        "postTime: "+date.toString()
-            )
+//            Log.d(
+//                TAG, "onNotificationPosted ~ " +
+//                        " id: " + sbn.id +
+//                        " name: " + name +
+//                        " text : " + text
+//                        + "subtext: "+ subText+
+//                        "postTime: "+date.toString()
+//            )
         }
 
     }
@@ -107,5 +115,21 @@ class MyNotificationListener: NotificationListenerService() {
             Log.e("MyTag", "IOException : " + e.message)
         }
         return name
+    }
+
+    override fun onAddChatSuccess() {
+        //채팅 넣어주는게 성공하면 끝
+        Log.d("NotifServer", "Complete")
+    }
+
+    override fun onAddChatFailure(code: Int, message: String) {
+        when(code){
+            2100 -> {
+                Log.d("NotifServer", message)
+            }
+            2202->{
+                Log.d("NotifServer", message)
+            }
+        }
     }
 }

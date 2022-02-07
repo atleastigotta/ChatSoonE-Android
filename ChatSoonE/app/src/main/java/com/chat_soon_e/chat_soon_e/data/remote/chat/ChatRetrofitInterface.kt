@@ -7,8 +7,8 @@ import retrofit2.http.*
 interface ChatRetrofitInterface {
 
     //채팅 추가하기
-    @POST("/app/chatlist/{kakaoUserIdx}")
-    fun addChat(@Path("kakaoUserIdx")kakaoUserIdx:Int, @Body chat:Chat):Call<AddChatResponse>
+    @POST("/app/chats/{kakaoUserIdx}/chat")
+    fun addChat(@Path("kakaoUserIdx")kakaoUserIdx:Long, @Body chat:com.chat_soon_e.chat_soon_e.data.remote.chat.Chat):Call<AddChatResponse>
 
     //모든 채팅 리스트 가져오기
     @GET("/app/chatlist/{kakaoUserIdx}")

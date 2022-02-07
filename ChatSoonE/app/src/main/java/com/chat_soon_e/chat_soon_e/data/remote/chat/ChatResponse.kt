@@ -9,6 +9,15 @@ import kotlin.collections.ArrayList
 
 //채팅 추가하기
 data class AddChatResponse(@SerializedName("isSuccess")val isSuccess: Boolean, @SerializedName("code") val code:Int, val message: String)
+data class Chat(
+    @SerializedName("nickname")var chatName:String,
+    @SerializedName("groupName")var groupName:String,
+    @SerializedName("profileImgUrl")var profileImgUrl:String,
+    @SerializedName("message")var message:String,
+    @SerializedName("postTime")var postTime:Date
+
+    )
+
 
 //전체 채팅 목록 가져오기(메인화면)
 data class ChatListResponse(@SerializedName("isSuccess")val isSuccess: Boolean, @SerializedName("code") val code:Int, val message: String, val result:JsonArray?)
@@ -20,11 +29,11 @@ data class ChatList(
 )
 //갠톡 or 단톡 채팅 가져오기
 data class ChatResponse(@SerializedName("isSuccess")val isSuccess: Boolean, @SerializedName("code") val code:Int, val message: String, val result:JsonArray?)
-data class Chat(
+data class Chatas(
     val nickname:String,
     val profileImgUrl:String,
     val message: String,
-    @SerializedName("chat_date")val chatDate:Date,
+    //@SerializedName("chat_date")val chatDate:Date,
     @SerializedName("post_time")val postTime:Date,
 )
 //폴더 안의 채팅 가져오기

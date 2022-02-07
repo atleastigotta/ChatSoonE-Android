@@ -12,6 +12,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
+import com.chat_soon_e.chat_soon_e.ApplicationClass
+import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.dateToString
+import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.loadBitmap
 import com.chat_soon_e.chat_soon_e.data.entities.Chat
 import com.chat_soon_e.chat_soon_e.data.entities.ChatViewType
 import com.chat_soon_e.chat_soon_e.databinding.ItemChatListChooseBinding
@@ -178,11 +181,20 @@ class MainRVAdapter(private val context: Context, private val mItemClickListener
 
         notifyDataSetChanged()
     }
-    //chatIdx를 가져온다.
-//    fun getSelectedItem():List<Int>{
-//        //chatlist에서 checked 된 list들의 chatIdx를 저장하고 가져온다
-//        //선택된 item의 position을 이용해
-//    }
+    //선택된 chatIdx를 가져온다.
+    fun getSelectedItem():ArrayList<Int>{
+        //chatlist에서 checked 된 list들의 chatIdx를 저장하고 가져온다
+        val TG="removeList"
+        var chatIdxList=ArrayList<Int>()
+        val selectedList=chatList.filter{ chatlist-> chatlist.isChecked as Boolean }
+
+        for(i in selectedList){
+            chatIdxList.add(i.chatIdx)
+        }
+        notifyDataSetChanged()
+        return chatIdxList
+        //선택된 item의 position을 이용해
+    }
 
     // 디폴트 뷰홀더
     inner class DefaultViewHolder(private val binding: ItemChatListDefaultBinding): RecyclerView.ViewHolder(binding.root) {
@@ -190,14 +202,17 @@ class MainRVAdapter(private val context: Context, private val mItemClickListener
             binding.itemChatListDefaultLayout.setOnClickListener {
                 toggleItemSelected(null, position = bindingAdapterPosition)
                 mItemClickListener.onDefaultChatClick(itemView, position = bindingAdapterPosition, chatList[bindingAdapterPosition])
+                Log.d("TESTPosition", bindingAdapterPosition.toString())
+                Log.d("TESTPosition", chatList[bindingAdapterPosition].profileImg.toString())
             }
         }
 
         @RequiresApi(Build.VERSION_CODES.O)
         fun bind(chat: ChatList) {
             if(chat.profileImg != null){
-                binding.itemChatListProfileIv.setImageBitmap(loadBitmap(chat.profileImg!!))
-            }
+                binding.itemChatListProfileIv.setImageBitmap(loadBitmap(chat.profileImg!!, context))
+            }else if(chat.profileImg == "null")
+                Log.d("RVAcheck", "null")
             if(chat.chat_name != null)
                 binding.itemChatListNameTv.text = chat.chat_name
             binding.itemChatListContentTv.text = chat.latest_message
@@ -217,14 +232,18 @@ class MainRVAdapter(private val context: Context, private val mItemClickListener
             binding.itemChatListChooseLayout.setOnClickListener {
                 toggleItemSelected(itemView, position = bindingAdapterPosition)
                 mItemClickListener.onChooseChatClick(itemView, position = bindingAdapterPosition)
+                //Log.d("TESTPosition", "selected"+bindingAdapterPosition.toString())
+                Log.d("TESTPosition", chatList[bindingAdapterPosition].profileImg.toString())
+
             }
         }
 
         @RequiresApi(Build.VERSION_CODES.O)
         fun bind(chat: ChatList) {
-            if(chat.profileImg != null){
-                binding.itemChatListProfileIv.setImageBitmap(loadBitmap(chat.profileImg!!))
-            }
+            if(chat.profileImg != null ){
+                binding.itemChatListProfileIv.setImageBitmap(loadBitmap(chat.profileImg!!, context))
+            }else if(chat.profileImg == "null")
+                Log.d("RVAcheck", "null")
             if(chat.chat_name != null)
                 binding.itemChatListNameTv.text = chat.chat_name
 
@@ -235,40 +254,4 @@ class MainRVAdapter(private val context: Context, private val mItemClickListener
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun dateToString(date:Date):String{
-        //오늘이 아니라면 날짜만
-        var str=""
-        val today=Date()
-        if(date.year == today.year && date.month == today.month && date.date==today.date){
-            val time = SimpleDateFormat("a hh:mm")
-            str= time.format(date).toString()
-        }
-        else{
-            //simpleDateFormat은 thread에 안전하지 않습니다.
-            //DateTimeFormatter을 사용합시다. 아! Date를 LocalDate로도 바꿔야합니다!
-            //val time_formatter=DateTimeFormatter.ofPattern("MM월 dd일")
-            //date.format(time_formatter)
-            val time = SimpleDateFormat("MM월 DD일")
-            str=time.format(date).toString()
-        }
-        return str
-    }
-
-    private fun loadBitmap(name: String): Bitmap? {
-        val file = File(context.cacheDir.toString())
-        val files = file.listFiles()
-        var list: String=""
-        for (tempFile in files) {
-            Log.d("MyTag", tempFile.name)
-            //name이 들어가 있는 파일 찾기
-            if (tempFile.name.contains(name)) {
-                list=tempFile.name
-            }
-        }
-
-        val path = context.cacheDir.toString()+"/"+list
-        val bitmap = BitmapFactory.decodeFile(path)
-        return bitmap
-    }
 }

@@ -29,4 +29,5 @@ interface OtherUserDao {
     //해당 유저의 모든 other 목록 불러오기
     @Query("SELECT * FROM OtherUserTable WHERE kakaoUserIdx= :id")
     fun getAllOtherUser(id:Long):List<OtherUser>
+
 }

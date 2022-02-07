@@ -1,6 +1,7 @@
 package com.chat_soon_e.chat_soon_e.ui
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Insets
 import android.graphics.Point
 import android.os.Build
@@ -21,6 +22,7 @@ import com.google.android.material.navigation.NavigationView
 import androidx.recyclerview.widget.RecyclerView
 import com.chat_soon_e.chat_soon_e.data.entities.Icon
 import com.chat_soon_e.chat_soon_e.databinding.ItemIconBinding
+import com.chat_soon_e.chat_soon_e.utils.getID
 
 class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBinding::inflate), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var appDB: AppDatabase
@@ -73,8 +75,12 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
             }
 
             // 폴더 아이콘 클릭 시 해당 폴더로 이동
-            override fun onFolderClick(view: View, position: Int) {
-                startNextActivity(FolderActivity::class.java)
+            override fun onFolderClick(view: View, position: Int, folderIdx:Int) {
+                Log.d("folderContents check", folderIdx.toString())
+                Log.d("folderContents check", appDB.chatDao().getFolderChat(getID(), folderIdx).toString())
+                startActivity(Intent(this@MyFolderActivity, FolderActivity::class.java).apply {
+                    putExtra("folderIdx",folderIdx)
+                })
             }
 
             // 폴더 아이콘 롱클릭 시 팝업 메뉴 뜨도록

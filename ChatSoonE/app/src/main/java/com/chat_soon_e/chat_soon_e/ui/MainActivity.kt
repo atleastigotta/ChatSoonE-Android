@@ -12,6 +12,7 @@ import android.content.pm.PackageManager
 import android.graphics.Insets
 import android.graphics.Point
 import android.graphics.Rect
+import android.icu.number.Scale.none
 import android.os.Build
 import android.util.Base64
 import android.util.SparseBooleanArray
@@ -126,27 +127,29 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             // 선택 모드
             override fun onChooseChatClick(view: View, position: Int) {
                 //해당 item이 선택됬을 떄의 행동을 정의
+                Log.d("TestPosition", mainRVAdapter.chatList[position].profileImg.toString())
                 mainRVAdapter.setChecked(position)
             }
             // 이동 모드
             @SuppressLint("RestrictedApi")
             override fun onDefaultChatClick(view: View, position: Int, chat:ChatList) {
-                val gson= Gson()
-                val chatJson=gson.toJson(chat)
-                startActivity(Intent(this@MainActivity, ChatActivity::class.java).apply {
-                    putExtra("chatListJson", chatJson)
-                })
+                val spf=this@MainActivity.getSharedPreferences("chatAll", MODE_PRIVATE)
+                var editor=spf.edit()
+                editor.putInt("chatAll", 1)
+                editor.commit()
 
-//                startNextActivity(Intent(this@MainActivity, ChatActivity::class.java).apply {
-//                    putExtraData("chatListJson", chatJson)
-//                })
+                var intent=Intent(this@MainActivity, ChatActivity::class.java)
+                //intent.putExtra("chatListJson", chatJson)
+                intent.putExtra("chatListJson", chat)
+                startActivity(intent)
+
                 mainRVAdapter.clearSelectedItemList()
                 //눌렀을 경우 chatIdx의 isNew를 바꾼다.
-                val database=AppDatabase.getInstance(this@MainActivity)!!
-                database.chatDao().updateIsNew(chatList[position].chatIdx,1)
-                database.chatListDao().updateIsNew(chatList[position].chatIdx, 1)
-                Log.d("chatSelectedNew", database.chatDao().getChatByChatIdx(chatList[position].chatIdx).toString())
-                Log.d("chatSelectedNewChatList", chatList[position].isNew.toString())
+//                val database=AppDatabase.getInstance(this@MainActivity)!!
+//                database.chatDao().updateIsNew(chatList[position].chatIdx,1)
+//                database.chatListDao().updateIsNew(chatList[position].chatIdx, 1)
+//                Log.d("chatSelectedNew", database.chatDao().getChatByChatIdx(chatList[position].chatIdx).toString())
+//                Log.d("chatSelectedNewChatList", chatList[position].isNew.toString())
 
             }
         })
@@ -185,9 +188,6 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         val database = AppDatabase.getInstance(this)!!
         database.chatDao().getRecentChat(getID()).observe(this, {
             Log.d("liveDataAdd", it.toString())
-            //Log.d("liveDataAddUseID", getID().toString())
-            //Log.d("liveDataAllChat", database.chatDao().getChatList().toString())
-            //Log.d("liveDataAllOther",database.otherUserDao().getAllOtherUser(getID()).toString())
             mainRVAdapter.addItem(it)
             chatList.clear()
             chatList.addAll(it)
@@ -341,6 +341,18 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             Log.d("toggleListener", "folder")
         }
 
+        binding.mainContent.mainChatIv.setOnClickListener {
+            //전체 채팅 목록으로
+            var spf=this@MainActivity.getSharedPreferences("chatAll", MODE_PRIVATE)
+            var editor=spf.edit()
+            editor.putInt("chatAll", -1)
+            editor.commit()
+
+            Log.d("isAllOR", "from btn"+getSharedPreferences("chatAll", MODE_PRIVATE).getInt("chatALl", 0).toString())
+            startNextActivity(ChatActivity::class.java)
+
+        }
+
         // 하단 중앙 아이콘 클릭시
         binding.mainContent.mainFolderIv.setOnClickListener {
             if(chatViewModel.mode.value == 0) {
@@ -352,8 +364,6 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 
         // 폴더 이동 선택 모드 클릭시 팝업 메뉴
         binding.mainContent.mainFolderModeIv.setOnClickListener {
-            // 이 부분 띄우는 걸 생략했습니다.
-//            popupWindowMainBottomMenu()
             popupWindowToFolderMenu()
         }
 
@@ -368,7 +378,6 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
                 }
                 //해당 chat 차단
                 binding.mainContent.mainBlockIv.setOnClickListener {
-
                 }
 
             }
@@ -390,9 +399,6 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
         }
 
-        binding.mainContent.mainChatIv.setOnClickListener {
-            startNextActivity(ChatActivity::class.java)
-        }
     }
 
     // 팝업 메뉴 리스너
@@ -526,11 +532,30 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 
                     startNextActivity(InputPatternActivity::class.java)
 
-                    // 폴더로 이동시키는 코드 작성
-
                 }
 
-                // 같이 해도 좋을듯
+                val chatDao=appDB.chatDao()
+                val folderContentDao=appDB.folderContentDao()
+                var chatIdxList=mainRVAdapter.getSelectedItem()
+                val folderIdx=folderList[itemPosition].idx
+                //갠톡: folderIdx, otherUserIdx
+                //단톡: folderIdx, userIdx, groupName
+                //이동
+                for(i in chatIdxList) {
+                    val chat = chatDao.getChatByChatIdx(i)
+                    if (chat.groupName != null)
+                        folderContentDao.insertOtOChat(
+                            folderIdx,
+                            chat.otherUserIdx
+                        )
+                    else
+                        folderContentDao.insertOrgChat(
+                            folderIdx,
+                            getID(),
+                            chat.groupName!!
+                        )
+                }
+                Log.d("folderContents", appDB.chatDao().getFolderChat(getID(), folderIdx).toString())
 
                 Toast.makeText(this@MainActivity, "selected folder: ${selectedFolder.folderName}", Toast.LENGTH_SHORT).show()
 

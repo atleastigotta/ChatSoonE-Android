@@ -40,7 +40,7 @@ interface ChatDao {
     @Query("SELECT * FROM ChatTable WHERE otherUserIdx = :idx")
     fun getChatByIdx(idx: Int): List<Chat>
 
-    //chatId도 가져와야함,
+    // Main Activity 최근 대화 목록 가져오기
     @Query("SELECT CL.chatName AS chat_name, CL.profileImg AS profileImg, CL.latestTime AS latest_time, CM.message AS latest_message, CL.isNew AS isNew, CL.chatIdx, CL.isGroup AS isGroup\n" +
             "FROM\n" +
             "(SELECT (CASE WHEN C.groupName == \"null\" THEN OU.nickname ELSE C.groupName END) AS chatName,\n" +
@@ -58,8 +58,23 @@ interface ChatDao {
             "ORDER BY latest_time DESC")
     fun getRecentChat(id:Long):LiveData<List<ChatList>>
 
+    //갠톡 가져오기
+    @Query("SELECT * FROM ChatTable WHERE otherUserIdx= :otherIdx ORDER BY postTime DESC")
+    fun getOneChatList(otherIdx:Int):LiveData<List<Chat>>
+
+    //단톡 가져오기
+
+    //모든 챗 목록
     @Query("SELECT * FROM ChatTable")
-    fun getChatList(): List<Chat>
+    fun getChatList():List<Chat>
+
+    //사용자의 챗 목록을 가져오기
+    @Query("SELECT C.otherUserIdx,C.groupName,C.message,C.postTime,C.folderIdx,C.status,C.viewType,C.isChecked,C.chatIdx  FROM ChatTable C INNER JOIN OtherUserTable OU ON OU.otherUserIdx=C.otherUserIdx AND OU.kakaoUserIdx= :user_id ORDER BY C.postTime DESC")
+    fun getUserAllChat(user_id:Long):LiveData<List<Chat>>
+
+    //폴더의 모든 챗 가져오기
+    @Query("SELECT C.postTime, C.folderIdx, C.chatIdx, C.otherUserIdx, C.isChecked, C.message, C.groupName, C.status, C.isNew, C.viewType FROM ChatTable C INNER JOIN OtherUserTable OU ON C.otherUserIdx=OU.otherUserIdx INNER JOIN FolderContentTable FC ON C.chatIdx=FC.chatIdx INNER JOIN FolderTable F ON FC.folderIdx=F.idx WHERE OU.kakaoUserIdx= :user_id AND FC.folderIdx=:folder_id ORDER BY C.postTime DESC")
+    fun getFolderChat(user_id:Long, folder_id:Int):List<Chat>
 
     @Query("SELECT chatIdx FROM ChatTable")
     fun getChatIdxList(): List<Int>
