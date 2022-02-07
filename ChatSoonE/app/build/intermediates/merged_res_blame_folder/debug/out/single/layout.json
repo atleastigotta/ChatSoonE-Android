@@ -1,19 +1,15 @@
 [
     {
-        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_folder.xml",
-        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_folder.xml"
-    },
-    {
         "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
         "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_chat_choose.xml",
-        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\item_chat_choose.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_folder_content.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_folder_content.xml"
     },
     {
-        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_mypage.xml",
-        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\fragment_mypage.xml"
+        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_chat_choose.xml",
+        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\item_chat_choose.xml"
     },
     {
         "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_hidden_folder.xml",
@@ -28,20 +24,12 @@
         "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\popup_window_set_folder_name.xml"
     },
     {
-        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_folder_chat.xml",
-        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_folder_chat.xml"
-    },
-    {
         "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_chat.xml",
         "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_chat.xml"
     },
     {
         "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_create_pattern.xml",
         "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_create_pattern.xml"
-    },
-    {
-        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_signup.xml",
-        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_signup.xml"
     },
     {
         "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_hidden_folder.xml",
@@ -84,10 +72,6 @@
         "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\popup_window_change_name.xml"
     },
     {
-        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_home.xml",
-        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\fragment_home.xml"
-    },
-    {
         "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_splash.xml",
         "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_splash.xml"
     },
@@ -104,16 +88,8 @@
         "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_permission.xml"
     },
     {
-        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\layout_switch.xml",
-        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\layout_switch.xml"
-    },
-    {
         "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\popup_window_change_icon.xml",
         "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\popup_window_change_icon.xml"
-    },
-    {
-        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_match.xml",
-        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\fragment_match.xml"
     },
     {
         "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_chat_default.xml",
@@ -130,10 +106,6 @@
     {
         "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main_toolbar.xml",
         "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_main_toolbar.xml"
-    },
-    {
-        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_search.xml",
-        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\fragment_search.xml"
     },
     {
         "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_input_pattern.xml",

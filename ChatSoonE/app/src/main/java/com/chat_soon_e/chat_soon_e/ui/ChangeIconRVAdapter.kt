@@ -1,14 +1,10 @@
 package com.chat_soon_e.chat_soon_e.ui
 
-import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.chat_soon_e.chat_soon_e.data.entities.Icon
 import com.chat_soon_e.chat_soon_e.databinding.ItemIconBinding
-import com.chat_soon_e.chat_soon_e.databinding.ItemMyFolderBinding
 
 class ChangeIconRVAdapter(private val iconList: ArrayList<Icon>): RecyclerView.Adapter<ChangeIconRVAdapter.ViewHolder>() {
     // 클릭 인터페이스
@@ -47,7 +43,6 @@ class ChangeIconRVAdapter(private val iconList: ArrayList<Icon>): RecyclerView.A
     // 뷰홀더
     inner class ViewHolder(val binding: ItemIconBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(icon: Icon) {
-            Log.d("CHANGE/BIND", icon.toString())
             binding.itemIconIv.setImageResource(icon.iconImage)
         }
     }

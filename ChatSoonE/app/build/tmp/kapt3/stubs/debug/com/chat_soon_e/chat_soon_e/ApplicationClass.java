@@ -15,11 +15,11 @@ public final class ApplicationClass extends android.app.Application {
     @org.jetbrains.annotations.NotNull()
     public static final java.lang.String APP_DATABASE = "TEMPLATE-APP-DB";
     @org.jetbrains.annotations.NotNull()
-    public static final java.lang.String DEV_URL = "http://3.37.76.21/";
+    public static final java.lang.String DEV_URL = "https://api.template.com/";
     @org.jetbrains.annotations.NotNull()
     public static final java.lang.String PROD_URL = "https://api.template.com/";
     @org.jetbrains.annotations.NotNull()
-    public static final java.lang.String BASE_URL = "http://3.37.76.21/";
+    public static final java.lang.String BASE_URL = "https://api.template.com/";
     @org.jetbrains.annotations.NotNull()
     public static final java.lang.String ACTIVE = "ACTIVE";
     @org.jetbrains.annotations.NotNull()

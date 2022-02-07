@@ -28,15 +28,13 @@
         </activity>
 
         <activity android:name=".ui.PermissionActivity" />
-        <activity android:name="com.chat_soon_e.chat_soon_e.ui.SignUpActivity" android:exported="true" />
         <activity android:name="com.chat_soon_e.chat_soon_e.ui.MainActivity" android:exported="true" />
         <activity android:name=".ui.ChatActivity" android:exported="true" />
-        <activity android:name=".ui.FolderChatActivity" android:exported="true" />
         <activity android:name=".ui.MyFolderActivity" android:exported="true" />
-        <activity android:name=".ui.FolderActivity" android:exported="true" />
         <activity android:name=".ui.CreatePatternActivity" android:exported="true" />
         <activity android:name=".ui.HiddenFolderActivity" android:exported="true" />
         <activity android:name=".ui.InputPatternActivity" android:exported="true" />
+        <activity android:name=".ui.FolderContentActivity" android:exported="true" />
 
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
@@ -61,5 +59,4 @@
             </intent-filter>
         </service>
     </application>
-
 </manifest>

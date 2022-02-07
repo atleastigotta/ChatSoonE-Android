@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import com.chat_soon_e.chat_soon_e.R
 import com.google.gson.annotations.SerializedName
 
-// folderImg, createdAt, updatedAt 부분 수정해야 합니다.
+// folderImg: Int -> String (using Bitmap) 변환 필요
 @Entity(tableName = "FolderTable")
 data class Folder(
     @PrimaryKey(autoGenerate = false) @SerializedName("folderIdx") var idx: Int = 0,

@@ -4,11 +4,10 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
-import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 import java.util.*
 
-//추후 서버와의 통신을 위한 데이터
+// 추후 서버와의 통신을 위한 데이터
 @Entity(tableName = "ChatListTable")
 data class ChatList(
     var chatIdx:Int,

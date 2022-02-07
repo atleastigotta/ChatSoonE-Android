@@ -41,7 +41,6 @@ import com.chat_soon_e.chat_soon_e.data.remote.auth.master
 import com.chat_soon_e.chat_soon_e.utils.saveID
 import java.security.MessageDigest
 
-
 // BaseActivity를 상속받기 때문에 BaseActivity 안에서 onCreate() 실행되면서 자동적으로 뷰 바인딩을 해준다.
 // 따라서 SplashActivity에서는 그 코드를 쓸 필요가 없다.
 // <> Generic: 아직 정의되지 않은 타입을 정의할 때 사용하는데, 여기서는 이 안에 어떤 뷰 바인딩을 할 것인지를 넣어준다.
@@ -54,15 +53,15 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
     override fun initAfterBinding() {
         //현재 시각에서 1초 후 Runnable 객체 실행, MainThread(UI thread)로 보냄
         Handler(Looper.getMainLooper()).postDelayed({
-            //최초 실행 때만 권한 얻기 페이지를 뜨게 함, spf를 사용해 최초 진입인지 아닌지 확인
-            //일단 권한 없으면 무조건 페이지로 가게하기
+            // 최초 실행 때만 권한 얻기 페이지를 뜨게 함, spf를 사용해 최초 진입인지 아닌지 확인
+            // 일단 권한 없으면 무조건 페이지로 가게하기
 //            val spf=this.getSharedPreferences("firstRun",AppCompatActivity.MODE_PRIVATE)
 //            Log.d("splashactivityspf", spf.getInt("check", 0).toString())!
 //            if((spf==null) || (spf?.getInt("check", 0)!=1))
 //                    startNextActivity(PermissionActivity::class.java)
             if(!permissionGrantred(this))
                 startNextActivity(PermissionActivity::class.java)
-        }, 1000)//1초 후 권한 페이지로
+        }, 1000)// 1초 후 권한 페이지로
         //로딩바 설정, 추후 서버와의 연동
 
         binding.splashProgressBar.setProgress(10)

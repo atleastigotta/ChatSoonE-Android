@@ -4,8 +4,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+// 서버 통신 X
 @Entity(tableName="IconTable")
-//서버 통신 X
 data class Icon(
     @SerializedName("iconImage") val iconImage: Int
 ) {

@@ -94,8 +94,10 @@ class HiddenFolderRVAdapter(private val mContext: HiddenFolderActivity): Recycle
         }
     }
 
+    // 데이터셋의 크기 반환
     override fun getItemCount(): Int = folderList.size
 
+    // folder list 추가 및 연결
     @SuppressLint("NotifyDataSetChanged")
     fun addFolderList(folderList: ArrayList<Folder>) {
         this.folderList.clear()
@@ -103,12 +105,14 @@ class HiddenFolderRVAdapter(private val mContext: HiddenFolderActivity): Recycle
         notifyDataSetChanged()
     }
 
+    // 폴더 삭제
     private fun removeFolder(position: Int) {
         folderList.removeAt(position)
         notifyItemRemoved(position)
         notifyItemRangeChanged(position, itemCount);
     }
 
+    // 뷰홀더
     inner class ViewHolder(val binding: ItemHiddenFolderBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(folder: Folder) {
             binding.itemHiddenFolderTv.text = folder.folderName

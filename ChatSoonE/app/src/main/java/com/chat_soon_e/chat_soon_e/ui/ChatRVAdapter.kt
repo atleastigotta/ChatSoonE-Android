@@ -69,13 +69,6 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
 
     override fun getItemCount(): Int = chatList.size
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun addChatList(chatList: ArrayList<Chat>) {
-        this.chatList.clear()
-        this.chatList.addAll(chatList)
-        notifyDataSetChanged()
-    }
-
     private fun removeChat(position: Int) {
         chatList.removeAt(position)
         notifyItemRemoved(position)
@@ -84,9 +77,9 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
 
     //AddData
     @SuppressLint("NotifyDataSetChanged")
-    fun addItem(testChat: List<Chat>){
+    fun addItem(chat: List<Chat>){
         chatList.clear()
-        chatList.addAll(testChat as ArrayList)
+        chatList.addAll(chat as ArrayList)
 
         notifyDataSetChanged()
     }
@@ -97,17 +90,6 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
             selectedItemList.delete(position)
         } else {
             selectedItemList.put(position, true)
-        }
-        notifyItemChanged(position)
-    }
-
-    private fun toggleItemSelectedOnChooseMode(binding: ItemChatChooseBinding, position: Int) {
-        if(selectedItemList.get(position, false)) {
-            selectedItemList.delete(position)
-            binding.itemChatChooseMessageTv.setBackgroundResource(R.drawable.background_chat_default)
-        } else {
-            selectedItemList.put(position, true)
-            binding.itemChatChooseMessageTv.setBackgroundResource(R.drawable.background_chat_choose)
         }
         notifyItemChanged(position)
     }
@@ -154,7 +136,7 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
     inner class DefaultViewHolder(private val binding: ItemChatDefaultBinding): RecyclerView.ViewHolder(binding.root) {
         init {
             binding.itemChatDefaultMessageTv.setOnLongClickListener {
-                toggleItemSelected(null, position = bindingAdapterPosition)
+                toggleItemSelected(itemView, position = bindingAdapterPosition)
                 popup = PopupMenu(mContext, binding.itemChatDefaultMessageTv, Gravity.START, 0, R.style.MyFolderBottomPopupMenuTheme)
                 popup.menuInflater.inflate(R.menu.popup_chat_option_menu, popup.menu)
                 popup.setOnMenuItemClickListener { item ->
@@ -189,7 +171,7 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
         : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.itemChatChooseMessageTv.setOnClickListener {
-                toggleItemSelectedOnChooseMode(binding, position = bindingAdapterPosition)
+                toggleItemSelected(itemView, position = bindingAdapterPosition)
                 mItemClickListener.onChooseChatClick(itemView, position = bindingAdapterPosition)
             }
         }
@@ -203,7 +185,6 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
             binding.itemChatChooseMessageTv.text = testChat.message
             binding.itemChatChooseDateTimeTv.text = dateToString(testChat.postTime!!)
             binding.itemChatChooseProfileIv.setImageBitmap(loadBitmap(other.image!!, mContext))
-
         }
     }
 

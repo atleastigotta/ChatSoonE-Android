@@ -1,66 +1,63 @@
 package com.chat_soon_e.chat_soon_e.ui
 
+
 import android.content.Intent
 import android.os.Handler
 import android.os.Looper
+import android.annotation.SuppressLint
+import android.graphics.Insets
+import android.graphics.Point
+
 import android.util.Log
-import android.view.MenuItem
-import android.view.View
+import android.view.*
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.PopupMenu
-import android.widget.Toast
+import android.widget.PopupWindow
 import androidx.activity.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView
+import com.chat_soon_e.chat_soon_e.ApplicationClass
 import com.chat_soon_e.chat_soon_e.R
 import com.chat_soon_e.chat_soon_e.data.entities.Chat
-import com.chat_soon_e.chat_soon_e.data.entities.TestChat
 import com.chat_soon_e.chat_soon_e.data.local.AppDatabase
 import com.chat_soon_e.chat_soon_e.data.entities.ChatList
+import com.chat_soon_e.chat_soon_e.data.entities.Folder
 import com.chat_soon_e.chat_soon_e.databinding.ActivityChatBinding
 import com.chat_soon_e.chat_soon_e.utils.getID
 import com.chat_soon_e.chat_soon_e.utils.permissionGrantred
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.chat_soon_e.chat_soon_e.databinding.ItemFolderListBinding
 import com.google.gson.Gson
 
 class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::inflate) {
     private var isFabOpen = false    // FAB(FloatingActionButton)가 열렸는지 체크해주는 변수
     private lateinit var fabOpen: Animation
     private lateinit var fabClose: Animation
-    private lateinit var appDB: AppDatabase
-    private var chatList = ArrayList<Chat>()
+    private lateinit var database: AppDatabase
+    private var folderList = ArrayList<Folder>()
     private lateinit var chatRVAdapter: ChatRVAdapter
-    private val testChatViewModel: TestChatViewModel by viewModels()
+    private val chatViewModel: ChatViewModel by viewModels()
+    private lateinit var mPopupWindow: PopupWindow
+    private var chatList = ArrayList<Chat>()
     private lateinit var chatListData:ChatList
     private var isGroup:Boolean=false
     private var isAll:Int=0 //모든 채팅을 불러오는지(1), 각 채팅방을 불러오는 것인지(-1)
 
-    override fun initAfterBinding() {
-        //initTestChat()
 
+    override fun initAfterBinding() {
+        initData()
         initFab()
         Handler(Looper.getMainLooper()).postDelayed({
             initData()
             initRecyclerView()
-        }, 3000)//1초 후 권한 페이지로
+        }, 3000)//3초
         initClickListener()
     }
-
     // test chat 초기화 (테스트용)
     private fun initTestChat() {
-        //chatList = appDB.testChatDao().getChatList() as ArrayList
 
         if(chatList.isNotEmpty()) return
-
-//        appDB.testChatDao().insert(TestChat("상대방", "안녕하세요.", null, 0, false))
-//        appDB.testChatDao().insert(TestChat("상대방", "만나서 반가워", null, 0, false))
-//        appDB.testChatDao().insert(TestChat("상대방", "잘가", null, 0, false))
-//        appDB.testChatDao().insert(TestChat("상대방", "또 보자", null, 0, false))
-//        appDB.testChatDao().insert(TestChat("상대방", "즐거웠어", null, 0, false))
-//        appDB.testChatDao().insert(TestChat("상대방", "가나다라마바사아자차카타파하", null, 0, false))
-//        appDB.testChatDao().insert(TestChat("상대방", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", null, 0, false))
-//        appDB.testChatDao().insert(TestChat("상대방", "한 번 띄어쓰기를 해보고, 줄바꿈도 해볼게요.\n그런데 이렇게 했을 때 어떻게 나올까요? 궁금한데 또 오류나면 어떡하지..", null, 0, false))
-        //chatList = appDB.testChatDao().getChatList() as ArrayList
     }
 
     // FAB 애니메이션 초기화
@@ -71,27 +68,26 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
 
     // RecyclerView
     private fun initRecyclerView() {
-        appDB = AppDatabase.getInstance(this)!!
-
+        database = AppDatabase.getInstance(this)!!
         chatRVAdapter = ChatRVAdapter(this, object: ChatRVAdapter.MyItemClickListener {
+            // 채팅 삭제
             override fun onRemoveChat(position: Int) {
-                //appDB.testChatDao().delete(chatList[position])
-                appDB.chatDao().deleteByChatIdx(chatList[position].chatIdx)
+                database.chatDao().deleteByChatIdx(chatList[position].chatIdx)
             }
 
+            // 채팅 롱클릭 시 팝업 메뉴 뜨도록
             override fun onDefaultChatLongClick(popupMenu: PopupMenu) {
-                // 채팅 롱클릭 시 팝업 메뉴 뜨도록
                 chatRVAdapter.clearSelectedItemList()
                 popupMenu.show()
             }
 
+            // 선택 모드
             override fun onChooseChatClick(view: View, position: Int) {
-                // 선택 모드
                 chatRVAdapter.setChecked(position)
             }
         })
 
-        testChatViewModel.mode.observe(this, {
+        chatViewModel.mode.observe(this, {
             if(it == 0) {
                 // 일반 모드
                 chatRVAdapter.clearSelectedItemList()
@@ -103,17 +99,18 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
             chatRVAdapter.setViewType(currentMode = it)
         })
 
+        // 어댑터 연결
         binding.chatChatRecyclerView.adapter = chatRVAdapter
 
         if(isAll==-1)
         {   //모든 톡 가져오기
-            appDB.chatDao().getUserAllChat(getID()).observe(this,{
+            database.chatDao().getUserAllChat(getID()).observe(this,{
                 chatRVAdapter.addItem(it)
             })
         }else if(isAll==1){
             //특정 톡만 가져오기
-            val otherIdx=appDB.chatDao().getChatOtherIdx(chatListData.chatIdx)
-            appDB.chatDao().getOneChatList(otherIdx).observe(this,{
+            val otherIdx=database.chatDao().getChatOtherIdx(chatListData.chatIdx)
+            database.chatDao().getOneChatList(otherIdx).observe(this,{
                 chatRVAdapter.addItem(it)
             })
         }
@@ -123,32 +120,28 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
             binding.chatCancelFab.startAnimation(fabClose)
             binding.chatCancelFab.isClickable = false
             isFabOpen = false
+            binding.chatBackgroundView.visibility = View.INVISIBLE
 
             // 일반 모드로
             chatRVAdapter.clearSelectedItemList()
-            testChatViewModel.setMode(mode = 0)
+            chatViewModel.setMode(mode = 0)
         }
    }
 
     private fun initClickListener() {
         // 메인 FAB 버튼 눌렀을 때
         binding.chatMainFab.setOnClickListener {
-
-            if(testChatViewModel.mode.value == 0) {
-                testChatViewModel.setMode(mode = 1)
+            if(chatViewModel.mode.value == 0) {
+                chatViewModel.setMode(mode = 1)
             } else {
-                testChatViewModel.setMode(mode = 0)
+                chatViewModel.setMode(mode = 0)
             }
 
             if(isFabOpen) {
                 // fab 버튼이 열려있는 경우 (선택 모드에서 클릭했을 때)
                 // 폴더로 보내는 팝업창을 띄운다.
                 // 여기서 view는 클릭된 뷰를 의미한다.
-                val popup = PopupMenu(this@ChatActivity, binding.chatMainFab)
-                menuInflater.inflate(R.menu.popup_folder_menu, popup.menu)
-                val listener = PopupFolderMenuListener()
-                popup.setOnMenuItemClickListener(listener)
-                popup.show()
+                popupWindowToFolderMenu()
             } else {
                 // fab 버튼이 닫혀있는 경우 (일반 모드에서 클릭했을 때)
                 binding.chatMainFab.setImageResource(R.drawable.icon_move)
@@ -163,6 +156,7 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
         }
     }
     //MainActivity로 부터 데이터를 가져온다.
+
     private fun initData(){
         //isGroup==-1, isNotGroup==1
         isAll=getSharedPreferences("chatAll", MODE_PRIVATE).getInt("chatAll", 0)
@@ -181,14 +175,89 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
         super.onBackPressed()
         startActivity(Intent(this,MainActivity::class.java))
     }
-    // 폴더 이동 선택 모드 팝업 메뉴 리스너
-    inner class PopupFolderMenuListener: PopupMenu.OnMenuItemClickListener {
-        override fun onMenuItemClick(item: MenuItem?): Boolean {
-            when(item?.itemId) {
-                R.id.popup_folder_menu
-                -> Toast.makeText(this@ChatActivity, "폴더로 보내기", Toast.LENGTH_SHORT).show()
+
+    // 폴더로 보내기 팝업 윈도우
+    @SuppressLint("InflateParams")
+    private fun popupWindowToFolderMenu() {
+        folderList = database.folderDao().getFolderList() as ArrayList
+
+        // 팝업 윈도우 사이즈를 잘못 맞추면 아이템들이 안 뜨므로 하드 코딩으로 사이즈 조정해주기
+        // 아이콘 16개 (기본)
+        val size = windowManager.currentWindowMetricsPointCompat()
+        val width = (size.x * 0.8f).toInt()
+        val height = (size.y * 0.3f).toInt()
+
+        val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val popupView = inflater.inflate(R.layout.popup_window_to_folder_menu, null)
+        mPopupWindow = PopupWindow(popupView, width, height)
+
+        mPopupWindow.animationStyle = -1        // 애니메이션 설정 (-1: 설정 안 함, 0: 설정)
+        mPopupWindow.isFocusable = true         // 외부 영역 선택 시 팝업 윈도우 종료
+        mPopupWindow.isOutsideTouchable = true
+        mPopupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0)
+        binding.chatBackgroundView.visibility = View.VISIBLE
+
+        // RecyclerView 구분선
+        val recyclerView = popupView.findViewById<RecyclerView>(R.id.popup_window_to_folder_menu_recycler_view)
+        val dividerItemDecoration =
+            DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL)
+        recyclerView.addItemDecoration(dividerItemDecoration)
+
+        // RecyclerView 초기화
+        // 더미 데이터와 어댑터 연결
+        val folderListRVAdapter = FolderListRVAdapter(folderList)
+        recyclerView.adapter = folderListRVAdapter
+        folderListRVAdapter.setMyItemClickListener(object: FolderListRVAdapter.MyItemClickListener {
+            override fun onFolderClick(itemBinding: ItemFolderListBinding, itemPosition: Int) {
+                // 이동하고 싶은 폴더 클릭 시 폴더로 채팅 이동 (뷰에는 그대로 남아 있도록)
+                val selectedFolder = folderList[itemPosition]
+                if (selectedFolder.status == ApplicationClass.HIDDEN) {
+                    val lockSPF = getSharedPreferences("lock", 0)
+                    val pattern = lockSPF.getString("pattern", "0")
+
+                    // 패턴 모드 확인
+                    // 0: 숨긴 폴더 목록을 확인하기 위한 입력 모드
+                    // 1: 메인 화면의 설정창 -> 변경 모드
+                    // 2: 폴더 화면의 설정창 -> 변경 모드
+                    // 3: 메인 화면 폴더로 보내기 -> 숨김 폴더 눌렀을 경우
+                    val modeSPF = getSharedPreferences("mode", 0)
+                    val editor = modeSPF.edit()
+
+                    // 여기서는 3번 모드
+                    editor.putInt("mode", 3)
+                    editor.apply()
+
+                    if(pattern.equals("0")) {   // 패턴이 설정되어 있지 않은 경우 패턴 설정 페이지로
+                        startNextActivity(CreatePatternActivity::class.java)
+                    } else {    // 패턴이 설정되어 있는 경우 입력 페이지로 (보안을 위해)
+                        startNextActivity(InputPatternActivity::class.java)
+                    }
+
+                    // 폴더로 이동시키는 코드 작성
+                }
+
+                // 팝업 윈도우를 꺼주는 역할
+                mPopupWindow.dismiss()
+                binding.chatBackgroundView.visibility = View.INVISIBLE
             }
-            return false
+        })
+    }
+
+    // 디바이스 크기에 사이즈를 맞추기 위한 함수
+    private fun WindowManager.currentWindowMetricsPointCompat(): Point {
+        return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+            val windowInsets = currentWindowMetrics.windowInsets
+            var insets: Insets = windowInsets.getInsets(WindowInsets.Type.navigationBars())
+            windowInsets.displayCutout?.run {
+                insets = Insets.max(insets, Insets.of(safeInsetLeft, safeInsetTop, safeInsetRight, safeInsetBottom))
+            }
+            val insetsWidth = insets.right + insets.left
+            val insetsHeight = insets.top + insets.bottom
+            Point(currentWindowMetrics.bounds.width() - insetsWidth, currentWindowMetrics.bounds.height() - insetsHeight)
+        } else{
+            Point().apply {
+                defaultDisplay.getSize(this)
+            }
         }
     }
 

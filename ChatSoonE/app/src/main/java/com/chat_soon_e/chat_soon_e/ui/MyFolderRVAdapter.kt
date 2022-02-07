@@ -19,7 +19,7 @@ class MyFolderRVAdapter(private val mContext: MyFolderActivity): RecyclerView.Ad
         fun onRemoveFolder(idx: Int)
         fun onHideFolder(idx: Int)
         fun onFolderNameLongClick(binding: ItemMyFolderBinding, position: Int)
-        fun onFolderClick(view: View, position: Int, folderIdx:Int)
+        fun onFolderClick(view: View, position: Int)
         fun onFolderLongClick(popup: PopupMenu)
     }
 
@@ -52,7 +52,7 @@ class MyFolderRVAdapter(private val mContext: MyFolderActivity): RecyclerView.Ad
 
         // 폴더 클릭 시 해당 폴더로 이동할 수 있도록
         holder.binding.itemMyFolderIv.setOnClickListener {
-            mItemClickListener.onFolderClick(holder.binding.itemMyFolderIv, position,folderList[position].idx)
+            mItemClickListener.onFolderClick(holder.binding.itemMyFolderIv, position)
         }
 
         // 폴더 아이템 롱클릭 시 팝업 메뉴 뜨도록
@@ -91,9 +91,10 @@ class MyFolderRVAdapter(private val mContext: MyFolderActivity): RecyclerView.Ad
         }
     }
 
-    // 데아터셋의 크기 반환
+    // 데이터셋의 크기 반환
     override fun getItemCount(): Int = folderList.size
 
+    // RecyclerView에 데이터 연결
     @SuppressLint("NotifyDataSetChanged")
     fun addFolderList(folderList: ArrayList<Folder>) {
         this.folderList.clear()
@@ -101,6 +102,8 @@ class MyFolderRVAdapter(private val mContext: MyFolderActivity): RecyclerView.Ad
         notifyDataSetChanged()
     }
 
+    // index를 바꿔줘야 한다.
+    // 선택된 index를 지우고, 끝에 추가해준다.
     private fun removeFolder(position: Int) {
         folderList.removeAt(position)
         notifyItemRemoved(position)

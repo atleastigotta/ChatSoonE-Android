@@ -20,5 +20,6 @@ interface ChatListDao {
     @Query("UPDATE ChatListTable SET isNew= :status WHERE chatIdx= :chatIdx")
     fun updateIsNew(chatIdx:Int, status:Int)
 
-
+    @Query("SELECT * FROM ChatListTable")
+    fun getChatList(): List<ChatList>
 }
