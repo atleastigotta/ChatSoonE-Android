@@ -38,26 +38,14 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
     override fun initAfterBinding() {
         appDB = AppDatabase.getInstance(this)!!
         iconList = appDB.iconDao().getIconList() as ArrayList   // 아이콘 받아오기
-        initFolder()                // 폴더 초기화
+        initRecyclerView()                // 폴더 초기화
         initDrawerLayout()          // 설정 메뉴창 설정
         initClickListener()         // 여러 click listener 초기화
     }
 
-    // 폴더 초기화
-    private fun initFolder() {
-        appDB = AppDatabase.getInstance(this)!!
+    // RecyclerView
+    private fun initRecyclerView() {
         folderList = appDB.folderDao().getFolderList() as ArrayList
-
-        // 만약 데이터베이스에서 받아온 folder list가 비어있는 경우
-        // 더미 데이터
-        if(folderList.isEmpty()) {
-            appDB.folderDao().insert(Folder(0, 0, null, "추억", R.drawable.ic_baseline_folder_24, "active"))
-            appDB.folderDao().insert(Folder(1, 0, null, "여행", R.drawable.ic_baseline_folder_24, "active"))
-            appDB.folderDao().insert(Folder(2, 0, null, "음식", R.drawable.ic_baseline_folder_24, "active"))
-            appDB.folderDao().insert(Folder(3, 0, null, "학교", R.drawable.ic_baseline_folder_24, "active"))
-            appDB.folderDao().insert(Folder(4, 0, null, "게임", R.drawable.ic_baseline_folder_24, "active"))
-            folderList = appDB.folderDao().getFolderList() as ArrayList
-        }
 
         // RecyclerView 초기화
         // 더미 데이터와 어댑터 연결
@@ -75,7 +63,7 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
 
             // 폴더 아이콘 클릭 시 해당 폴더로 이동
             override fun onFolderClick(view: View, position: Int) {
-                startNextActivity(FolderActivity::class.java)
+//                startNextActivity(FolderContentActivity::class.java)
             }
 
             // 폴더 아이콘 롱클릭 시 팝업 메뉴 뜨도록
@@ -306,7 +294,7 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
         // 아이콘 16개 (기본)
         val size = windowManager.currentWindowMetricsPointCompat()
         val width = (size.x * 0.8f).toInt()
-        val height = (size.y * 0.3f).toInt()
+        val height = (size.y * 0.5f).toInt()
 
         // 아이콘 바꾸기 팝업 윈도우
         val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater

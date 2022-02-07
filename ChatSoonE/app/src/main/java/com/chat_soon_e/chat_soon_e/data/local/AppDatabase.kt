@@ -7,8 +7,8 @@ import com.chat_soon_e.chat_soon_e.data.entities.*
 
 // 따로 불러와서 작업하는 것들은 만들어두지 않았기 때문에
 // RoomDB를 사용해야 된다고 할 때는 추가적으로 설정해줘야 한다.
-@Database(entities = [Chat::class, User::class, OtherUser::class,Folder::class,FolderContent::class, ChatList::class,Icon::class, TestChat::class], version = 2)
-@TypeConverters(Converter::class)//Data<->Long 변환을 위함, RoomDB Date 지원X
+@Database(entities = [Chat::class, User::class, OtherUser::class,Folder::class,FolderContent::class, ChatList::class,Icon::class], version = 1)
+@TypeConverters(Converter::class)   // Data <-> Long 변환을 위함, RoomDB Date 지원 X
 abstract class AppDatabase: RoomDatabase() {
     abstract fun chatDao(): ChatDao
     abstract fun userDao():UserDao
@@ -17,7 +17,6 @@ abstract class AppDatabase: RoomDatabase() {
     abstract fun folderDao(): FolderDao
     abstract fun folderContentDao():FolderContentDao
     abstract fun iconDao(): IconDao
-    abstract fun testChatDao(): TestChatDao
 
     companion object {
         private var instance: AppDatabase? = null
@@ -34,7 +33,6 @@ abstract class AppDatabase: RoomDatabase() {
                     fallbackToDestructiveMigration().build()
                 }
             }
-
             return instance
         }
     }

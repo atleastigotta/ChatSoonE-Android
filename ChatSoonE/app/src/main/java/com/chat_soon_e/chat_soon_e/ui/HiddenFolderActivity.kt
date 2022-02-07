@@ -3,7 +3,6 @@ package com.chat_soon_e.chat_soon_e.ui
 import android.annotation.SuppressLint
 import android.graphics.Insets
 import android.graphics.Point
-import android.util.Log
 import android.view.*
 import android.widget.EditText
 import android.widget.PopupMenu
@@ -17,7 +16,6 @@ import com.chat_soon_e.chat_soon_e.data.local.AppDatabase
 import com.chat_soon_e.chat_soon_e.databinding.ActivityHiddenFolderBinding
 import com.chat_soon_e.chat_soon_e.databinding.ItemHiddenFolderBinding
 import com.chat_soon_e.chat_soon_e.databinding.ItemIconBinding
-import com.chat_soon_e.chat_soon_e.databinding.ItemMyFolderBinding
 
 class HiddenFolderActivity: BaseActivity<ActivityHiddenFolderBinding>(ActivityHiddenFolderBinding::inflate) {
     private lateinit var appDB: AppDatabase
@@ -60,7 +58,6 @@ class HiddenFolderActivity: BaseActivity<ActivityHiddenFolderBinding>(ActivityHi
             }
 
             override fun onFolderClick(view: View, position: Int) {
-                startNextActivity(FolderActivity::class.java)
             }
 
             override fun onFolderLongClick(popup: PopupMenu) {

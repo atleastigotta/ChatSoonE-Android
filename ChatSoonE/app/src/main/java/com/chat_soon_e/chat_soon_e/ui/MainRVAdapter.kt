@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
+import com.chat_soon_e.chat_soon_e.R
 import com.chat_soon_e.chat_soon_e.databinding.ItemChatListChooseBinding
 import com.chat_soon_e.chat_soon_e.databinding.ItemChatListDefaultBinding
 import com.chat_soon_e.chat_soon_e.data.entities.ChatList
@@ -88,7 +89,7 @@ class MainRVAdapter(private val context: Context, private val mItemClickListener
                 val id = database.chatDao().getChatOtherIdx(i.chatIdx)
                 database.chatDao().deleteOneChat(id)
             }
-            else{   //단체톡일 경우 chatName인 것들 다 삭제
+            else{   // 단체 톡일 경우 chatName인 것들 다 삭제
                 database.chatDao().deleteOrgChat(getID(), i.chat_name!!)
             }
             Log.d(TG, i.chatIdx.toString())
@@ -101,7 +102,7 @@ class MainRVAdapter(private val context: Context, private val mItemClickListener
     @SuppressLint("NotifyDataSetChanged")
     fun blockSelectedItemList() {
         // 삭제하고
-        val newChatList=chatList.filter { chatList -> !(chatList.isChecked as Boolean) }
+        val newChatList = chatList.filter { chatList -> !(chatList.isChecked as Boolean) }
         // val newChatList = chatList.filter { chat -> !chat.isChecked }
         chatList = newChatList as ArrayList<ChatList>
         notifyDataSetChanged()
@@ -161,7 +162,7 @@ class MainRVAdapter(private val context: Context, private val mItemClickListener
         notifyDataSetChanged()
     }
 
-    // AddData
+    // Add Data
     @SuppressLint("NotifyDataSetChanged")
     fun addItem(chats: List<ChatList>){
         chatList.clear()
@@ -186,18 +187,15 @@ class MainRVAdapter(private val context: Context, private val mItemClickListener
 
         @RequiresApi(Build.VERSION_CODES.O)
         fun bind(chat: ChatList) {
-            if(chat.profileImg != "null") {
-                binding.itemChatListProfileIv.setImageBitmap(loadBitmap(chat.profileImg!!))
-            }
-            if(chat.chat_name != null)
-                binding.itemChatListNameTv.text = chat.chat_name
+            Log.d("MAIN-RV", "profile: ${chat.profileImg}")
+            if(chat.profileImg != null && chat.profileImg!!.isNotEmpty() && chat.isGroup != -1) binding.itemChatListProfileIv.setImageBitmap(loadBitmap(chat.profileImg!!))
+            else if(chat.isGroup == -1) binding.itemChatListProfileIv.setImageResource(R.drawable.icon_profile)
+            binding.itemChatListNameTv.text = chat.chat_name!!
             binding.itemChatListContentTv.text = chat.latest_message
-            if(chat.latest_time != null)
-                binding.itemChatListDateTimeTv.text = dateToString(chat.latest_time)
-            if(chat.isNew==0)
-                binding.itemChatListNewCv.visibility=View.VISIBLE
-            else
-                binding.itemChatListNewCv.visibility=View.INVISIBLE
+            binding.itemChatListDateTimeTv.text = dateToString(chat.latest_time)
+
+            if(chat.isNew == 0) binding.itemChatListNewCv.visibility = View.VISIBLE
+            else binding.itemChatListNewCv.visibility = View.INVISIBLE
         }
     }
 
@@ -213,16 +211,21 @@ class MainRVAdapter(private val context: Context, private val mItemClickListener
 
         @RequiresApi(Build.VERSION_CODES.O)
         fun bind(chat: ChatList) {
-            if(chat.profileImg != "null"){
-                binding.itemChatListProfileIv.setImageBitmap(loadBitmap(chat.profileImg!!))
-            }
-            if(chat.chat_name != null)
-                binding.itemChatListNameTv.text = chat.chat_name
-
+            if(chat.profileImg != null && chat.profileImg!!.isNotEmpty() && chat.isGroup != -1) binding.itemChatListProfileIv.setImageBitmap(loadBitmap(chat.profileImg!!))
+            else if(chat.isGroup == -1) binding.itemChatListProfileIv.setImageResource(R.drawable.icon_profile)
+            binding.itemChatListNameTv.text = chat.chat_name!!
             binding.itemChatListContentTv.text = chat.latest_message
-
-            if(chat.latest_time != null)
-                binding.itemChatListDateTimeTv.text = dateToString(chat.latest_time)
+            binding.itemChatListDateTimeTv.text = dateToString(chat.latest_time)
+//            if(chat.profileImg != "null"){
+//                binding.itemChatListProfileIv.setImageBitmap(loadBitmap(chat.profileImg!!))
+//            }
+//            if(chat.chat_name != null)
+//                binding.itemChatListNameTv.text = chat.chat_name
+//
+//            binding.itemChatListContentTv.text = chat.latest_message
+//
+//            if(chat.latest_time != null)
+//                binding.itemChatListDateTimeTv.text = dateToString(chat.latest_time)
         }
     }
 

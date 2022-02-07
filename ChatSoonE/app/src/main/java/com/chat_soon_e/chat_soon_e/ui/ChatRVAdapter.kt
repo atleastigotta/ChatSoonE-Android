@@ -21,7 +21,7 @@ import com.chat_soon_e.chat_soon_e.databinding.ItemChatListChooseBinding
 import com.chat_soon_e.chat_soon_e.databinding.ItemChatListDefaultBinding
 
 class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickListener: MyItemClickListener): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    var chatList = ArrayList<TestChat>()
+    var chatList = ArrayList<Chat>()
     var selectedItemList: SparseBooleanArray = SparseBooleanArray(0)
     private lateinit var popup: PopupMenu
     private lateinit var binding: ItemChatDefaultBinding
@@ -67,7 +67,7 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
     override fun getItemCount(): Int = chatList.size
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addChatList(chatList: ArrayList<TestChat>) {
+    fun addChatList(chatList: ArrayList<Chat>) {
         this.chatList.clear()
         this.chatList.addAll(chatList)
         notifyDataSetChanged()
@@ -81,7 +81,7 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
 
     //AddData
     @SuppressLint("NotifyDataSetChanged")
-    fun addItem(testChat: List<TestChat>){
+    fun addItem(testChat: List<Chat>){
         chatList.clear()
         chatList.addAll(testChat as ArrayList)
 
@@ -119,7 +119,7 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
     // 뷰타입 설정
     @SuppressLint("NotifyDataSetChanged")
     fun setViewType(currentMode: Int) {
-        val newChatList = ArrayList<TestChat>()
+        val newChatList = ArrayList<Chat>()
         for(i in 0 until chatList.size) {
             if(currentMode == 0) {
                 // 일반 모드
@@ -170,10 +170,10 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
         }
 
         @RequiresApi(Build.VERSION_CODES.O)
-        fun bind(testChat: TestChat) {
-            binding.itemChatDefaultNameTv.text = testChat.name
-            binding.itemChatDefaultMessageTv.text = testChat.message
-            binding.itemChatDefaultDateTimeTv.text = testChat.dateTime
+        fun bind(chat: Chat) {
+            binding.itemChatDefaultNameTv.text = chat.groupName
+            binding.itemChatDefaultMessageTv.text = chat.message
+            binding.itemChatDefaultDateTimeTv.text = chat.postTime.toString()
         }
     }
 
@@ -188,10 +188,10 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
         }
 
         @RequiresApi(Build.VERSION_CODES.O)
-        fun bind(testChat: TestChat) {
-            binding.itemChatChooseNameTv.text = testChat.name
-            binding.itemChatChooseMessageTv.text = testChat.message
-            binding.itemChatChooseDateTimeTv.text = testChat.dateTime
+        fun bind(chat: Chat) {
+            binding.itemChatChooseNameTv.text = chat.groupName
+            binding.itemChatChooseMessageTv.text = chat.message
+            binding.itemChatChooseDateTimeTv.text = chat.postTime.toString()
         }
     }
 }

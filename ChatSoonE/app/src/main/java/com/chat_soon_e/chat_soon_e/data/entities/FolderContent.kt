@@ -5,10 +5,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "FolderContentTable")
 data class FolderContent(
-    var folderIdx:Int,
-    var chatIdx:Int,
-    //ACTIVE, DELETED
-    var status:String="ACTIVE",
+    var folderIdx: Int,
+    var chatIdx: Int,
+    var status: String = "ACTIVE"   // ACTIVE, DELETED
 ){
-    @PrimaryKey(autoGenerate = true)var folderContentIdx:Int=0
+    @PrimaryKey(autoGenerate = true) var folderContentIdx: Int = 0
 }

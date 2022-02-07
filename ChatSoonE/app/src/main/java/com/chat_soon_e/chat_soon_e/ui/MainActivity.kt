@@ -8,12 +8,10 @@ import com.chat_soon_e.chat_soon_e.databinding.ActivityMainBinding
 import android.content.Intent
 import android.graphics.Insets
 import android.graphics.Point
-import android.graphics.Rect
 import android.os.Build
 import android.view.*
 import android.widget.PopupMenu
 import android.widget.PopupWindow
-import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.view.GravityCompat
@@ -24,6 +22,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 import androidx.appcompat.widget.SwitchCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.ACTIVE
 import com.chat_soon_e.chat_soon_e.R
 import com.chat_soon_e.chat_soon_e.data.entities.*
 import com.chat_soon_e.chat_soon_e.databinding.ItemFolderListBinding
@@ -36,63 +35,37 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
     private lateinit var appDB: AppDatabase
     private var iconList = ArrayList<Icon>()
     private var folderList = ArrayList<Folder>()
-    private var chatList = ArrayList<ChatList>()        // 데이터베이스로부터 chat list를 받아올 변수
-    private var testChatList = ArrayList<Chat>()
-    private lateinit var mainRVAdapter: MainRVAdapter   // chat list recycler view adpater
-    private var permission: Boolean = true              // 알림 허용 변수
-    private var selectedItem = ArrayList<ChatList>()    // 선택된 chatList를 담고 있는 Array
+    private var chatList = ArrayList<ChatList>()                // 데이터베이스로부터 chat list를 받아올 변수
+    private lateinit var mainRVAdapter: MainRVAdapter           // chat list recycler view adpater
+    private var permission: Boolean = true                      // 알림 허용 변수
+    private var selectedItem = ArrayList<ChatList>()            // 선택된 chatList를 담고 있는 Array
     private val chatViewModel: ChatViewModel by viewModels()
     private lateinit var mPopupWindow: PopupWindow
 
     // onCreate() 이후
     override fun initAfterBinding() {
-        Log.d("MAIN/LIFE-CYCLE", "after onCreate()")
+        appDB = AppDatabase.getInstance(this)!!
+        initIcon()                  // icon list 초기화
+        initFolder()                // folder list 초기화
     }
 
     // initAfterBinding() 이후 실행
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onStart() {
         super.onStart()
-        Log.d("MAIN/LIFE-CYCLE", "onStart()")
 
-        // initNotificationListener()  // NotificationListener (알림 권한 허용)
-        // initChatList()              // chat list 데이터 초기화
-        initChatList()
-        initIcon()
-        initFolder()
+//        initNotificationListener()  // NotificationListener (알림 권한 허용)
+//        initChatList()              // chat list 데이터 초기화
         initRecyclerView()          // RecylcerView Adapter 연결 & 기타 설정
         initDrawerLayout()          // 설정 메뉴창 설정
         initClickListener()         // 여러 ClickListener 초기화
     }
 
-    private fun initChatList() {
-        appDB = AppDatabase.getInstance(this)!!
-        val millisecond = System.currentTimeMillis()
-        val date = Date(millisecond)
-        appDB.otherUserDao().insert(OtherUser("A", "chatsoon1", "ACTIVE", 0))
-        appDB.otherUserDao().insert(OtherUser("B", "chatsoon2", "ACTIVE", 0))
-//        val otherUserIdx: Int = appDB.otherUserDao().getOtherUserByNameId("A").otherUserIdx
-
-        appDB.chatDao().insert(Chat(1, "A", "message", null, 0, "active", 0, false, 0))
-        appDB.chatDao().insert(Chat(1, "B", "message", null, 0, "active", 0, false, 0))
-        appDB.chatDao().insert(Chat(2, "C", "message", null, 0, "active", 0, false, 0))
-        appDB.chatDao().insert(Chat(2, "D", "message", null, 0, "active", 0, false, 0))
-//        appDB.chatListDao().insert(ChatList(100, "A", "chatsoon1", date, "message", 0, 0))
-//        appDB.chatListDao().insert(ChatList(200, "B", "chatsoon2", date, "message", -1, 0))
-//        appDB.chatListDao().insert(ChatList(300, "C", "chatsoon3", date, "message", 0, 0))
-//        appDB.chatListDao().insert(ChatList(400, "D", "chatsoon4", date, "message", 0, 0))
-//        appDB.chatListDao().insert(ChatList(500, "E", "chatsoon5", date, "message", 0, 0))
-
-        testChatList = appDB.chatDao().getChatList() as ArrayList
-        Log.d("MAIN", "chat list: $testChatList")
-    }
-
     // 아이콘 초기화
+    // 이렇게 넣어주는 방법밖에 없는 건가?
     private fun initIcon() {
-        appDB = AppDatabase.getInstance(this)!!
         iconList = appDB.iconDao().getIconList() as ArrayList
 
-        // 더미 데이터
         // 이 부분은 서버와 통신하지 않고 자체적으로 구현
         if(iconList.isEmpty()) {
             appDB.iconDao().insert(Icon(R.drawable.chatsoon1))
@@ -116,20 +89,15 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         }
     }
 
-
     // 폴더 초기화
     private fun initFolder() {
-        appDB = AppDatabase.getInstance(this)!!
         folderList = appDB.folderDao().getFolderList() as ArrayList
 
         // API: 전체폴더 목록 가져오기 (숨김폴더 제외)
-        // 더미 데이터
+        // 폴더 초기 세팅 (새폴더1, 새폴더2)
         if (folderList.isEmpty()) {
-            appDB.folderDao().insert(Folder(0, 0, null, "추억", R.drawable.ic_baseline_folder_24, "active"))
-            appDB.folderDao().insert(Folder(1, 0, null, "여행", R.drawable.ic_baseline_folder_24, "active"))
-            appDB.folderDao().insert(Folder(2, 0, null, "음식", R.drawable.ic_baseline_folder_24, "active"))
-            appDB.folderDao().insert(Folder(3, 0, null, "학교", R.drawable.ic_baseline_folder_24, "active"))
-            appDB.folderDao().insert(Folder(4, 0, null, "게임", R.drawable.ic_baseline_folder_24, "active"))
+            appDB.folderDao().insert(Folder(0, 0, null, "새폴더1", R.drawable.ic_baseline_folder_24, ACTIVE))
+            appDB.folderDao().insert(Folder(1, 0, null, "새폴더2", R.drawable.ic_baseline_folder_24, ACTIVE))
             folderList = appDB.folderDao().getFolderList() as ArrayList
         }
     }
@@ -151,11 +119,11 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         mainRVAdapter = MainRVAdapter(this, object: MainRVAdapter.MyItemClickListener {
             // 선택 모드
             override fun onChooseChatClick(view: View, position: Int) {
-                // 해당 item이 선택됬을 떄의 행동을 정의
+                // 해당 item이 선택됐을 때 행동 정의
                 mainRVAdapter.setChecked(position)
             }
 
-            // 이동 모드
+            // 일반 모드 (= 이동 모드)
             @SuppressLint("RestrictedApi")
             override fun onDefaultChatClick(view: View, position: Int, chat:ChatList) {
                 val gson = Gson()
@@ -239,7 +207,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         }
     }
 
-    // 설정 메뉴 창을 띄우는 DrawerLayout 초기화
+    // 설정 메뉴 창을 띄우는 DrawerLayout
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     private fun initDrawerLayout() {
@@ -263,7 +231,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 
         drawerSwitch.setOnClickListener {
             if (drawerSwitch.isChecked) {
-                // 알림 권한을 허용했을 때 코드를 작성해주시면 됩니다.
+                // 알림 권한을 허용했을 때
                 permission = true
                 Log.d("toggleListener", "is Checked")
                     startActivity(Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"))
@@ -273,6 +241,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
                     }
 
             } else {
+                // 알림 권한을 허용하지 않았을 때
                 permission = false
                 Log.d("toggleListener", "is not Checked")
                     startActivity(Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"))
@@ -283,7 +252,6 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             }
         }
     }
-
 
     // 설정 메뉴 창의 네비게이션 드로어의 아이템들에 대한 이벤트를 처리
     @RequiresApi(Build.VERSION_CODES.O)
@@ -386,7 +354,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             popupWindowToFolderMenu()
         }
 
-        //선택모드 시
+        // 선택 모드 시
         chatViewModel.mode.observe(this,{
             if(it==1) {
                 // 해당 chat 삭제

@@ -64,9 +64,6 @@
             android:name="com.chat_soon_e.chat_soon_e.ui.MyFolderActivity"
             android:exported="true" />
         <activity
-            android:name="com.chat_soon_e.chat_soon_e.ui.FolderActivity"
-            android:exported="true" />
-        <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.CreatePatternActivity"
             android:exported="true" />
         <activity

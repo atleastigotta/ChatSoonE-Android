@@ -3394,7 +3394,6 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_chat
 layout activity_create_pattern
-layout activity_folder
 layout activity_folder_chat
 layout activity_hidden_folder
 layout activity_input_pattern
