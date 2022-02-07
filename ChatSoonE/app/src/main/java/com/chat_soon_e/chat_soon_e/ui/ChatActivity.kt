@@ -56,7 +56,6 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
     }
     // test chat 초기화 (테스트용)
     private fun initTestChat() {
-
         if(chatList.isNotEmpty()) return
     }
 

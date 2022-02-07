@@ -36,6 +36,10 @@ interface ChatDao {
     @Query("UPDATE ChatTable SET isNew= :status WHERE chatIdx= :chatIdx")
     fun updateIsNew(chatIdx:Int, status:Int)
 
+    //해당 chatIdx folderIdx 바꾸기
+    @Query("UPDATE ChatTable SET folderIdx= :folderIdx WHERE chatIdx= :chatIdx")
+    fun updateFolder(chatIdx:Int, folderIdx:Int)
+
     // 상대방 대화 가져오기
     @Query("SELECT * FROM ChatTable WHERE otherUserIdx = :idx")
     fun getChatByIdx(idx: Int): List<Chat>
