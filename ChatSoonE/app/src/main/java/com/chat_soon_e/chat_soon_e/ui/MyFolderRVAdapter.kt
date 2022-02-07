@@ -91,7 +91,7 @@ class MyFolderRVAdapter(private val mContext: MyFolderActivity): RecyclerView.Ad
         }
     }
 
-    // 데아터셋의 크기 반환
+    // 데이터셋의 크기 반환
     override fun getItemCount(): Int = folderList.size
 
     @SuppressLint("NotifyDataSetChanged")

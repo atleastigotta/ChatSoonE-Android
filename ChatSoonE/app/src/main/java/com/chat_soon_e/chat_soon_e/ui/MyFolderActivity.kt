@@ -36,8 +36,9 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
 
     // onCreate() 이후
     override fun initAfterBinding() {
+        appDB = AppDatabase.getInstance(this)!!
+        iconList = appDB.iconDao().getIconList() as ArrayList   // 아이콘 받아오기
         initFolder()                // 폴더 초기화
-        initIcon()                  // 아이콘 초기화
         initDrawerLayout()          // 설정 메뉴창 설정
         initClickListener()         // 여러 click listener 초기화
     }
@@ -95,22 +96,6 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
         folderRVAdapter.addFolderList(appDB.folderDao().getFolderByStatus("active") as ArrayList)
     }
 
-    private fun initIcon() {
-        appDB = AppDatabase.getInstance(this)!!
-        iconList = appDB.iconDao().getIconList() as ArrayList
-
-        // 더미 데이터
-        // 이 부분은 서버와 통신하지 않고 자체적으로 구현
-        if(iconList.isEmpty()) {
-            appDB.iconDao().insert(Icon(R.drawable.ic_baseline_insert_emoticon_24))
-            appDB.iconDao().insert(Icon(R.drawable.ic_baseline_cancel_24))
-            appDB.iconDao().insert(Icon(R.drawable.ic_baseline_folder_24))
-            appDB.iconDao().insert(Icon(R.drawable.ic_baseline_account_circle_24))
-            appDB.iconDao().insert(Icon(R.drawable.ic_baseline_cached_24))
-            appDB.iconDao().insert(Icon(R.drawable.ic_baseline_check_box_24))
-            iconList = appDB.iconDao().getIconList() as ArrayList
-        }
-    }
 
     // 설정 메뉴 창을 띄우는 DrawerLayout 초기화
     @SuppressLint("UseSwitchCompatOrMaterialCode")

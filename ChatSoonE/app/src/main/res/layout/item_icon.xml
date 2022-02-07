@@ -7,9 +7,9 @@
 
     <ImageView
         android:id="@+id/item_icon_iv"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:src="@drawable/ic_baseline_insert_emoticon_24"
+        android:layout_width="180dp"
+        android:layout_height="120dp"
+        android:src="@drawable/chatsoon1"
         android:scaleType="fitXY"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

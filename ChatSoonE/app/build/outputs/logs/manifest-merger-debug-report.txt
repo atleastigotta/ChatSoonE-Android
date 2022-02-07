@@ -254,7 +254,7 @@ MERGED from [com.kakao.sdk:v2-auth:2.4.2] C:\Users\pc\.gradle\caches\transforms-
 		ADDED from [com.kakao.sdk:v2-auth:2.4.2] C:\Users\pc\.gradle\caches\transforms-3\b24800abe53266e872f2560b76a0176a\transformed\jetified-v2-auth-2.4.2\AndroidManifest.xml:20:13-53
 	android:name
 		ADDED from C:\Users\pc\projects\ChatSoonE-Android\ChatSoonE\app\src\main\AndroidManifest.xml:42:13-70
-intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:oauth+data:scheme:kakao
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:oauth+data:scheme:kakao344ce6395e3e90c63689e4fef30067f0
 ADDED from C:\Users\pc\projects\ChatSoonE-Android\ChatSoonE\app\src\main\AndroidManifest.xml:44:13-52:29
 action#android.intent.action.VIEW
 ADDED from C:\Users\pc\projects\ChatSoonE-Android\ChatSoonE\app\src\main\AndroidManifest.xml:45:17-69
@@ -269,11 +269,11 @@ ADDED from C:\Users\pc\projects\ChatSoonE-Android\ChatSoonE\app\src\main\Android
 	android:name
 		ADDED from C:\Users\pc\projects\ChatSoonE-Android\ChatSoonE\app\src\main\AndroidManifest.xml:47:27-75
 data
-ADDED from C:\Users\pc\projects\ChatSoonE-Android\ChatSoonE\app\src\main\AndroidManifest.xml:50:17-51:46
+ADDED from C:\Users\pc\projects\ChatSoonE-Android\ChatSoonE\app\src\main\AndroidManifest.xml:50:17-51:78
 	android:host
 		ADDED from C:\Users\pc\projects\ChatSoonE-Android\ChatSoonE\app\src\main\AndroidManifest.xml:50:23-43
 	android:scheme
-		ADDED from C:\Users\pc\projects\ChatSoonE-Android\ChatSoonE\app\src\main\AndroidManifest.xml:51:21-43
+		ADDED from C:\Users\pc\projects\ChatSoonE-Android\ChatSoonE\app\src\main\AndroidManifest.xml:51:21-75
 service#com.chat_soon_e.chat_soon_e.ui.MyNotificationListener
 ADDED from C:\Users\pc\projects\ChatSoonE-Android\ChatSoonE\app\src\main\AndroidManifest.xml:56:9-62:19
 	android:exported
