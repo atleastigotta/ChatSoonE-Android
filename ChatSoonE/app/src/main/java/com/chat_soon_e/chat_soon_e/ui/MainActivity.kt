@@ -403,7 +403,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         // 아이콘 16개 (기본)
         val size = windowManager.currentWindowMetricsPointCompat()
         val width = (size.x * 0.8f).toInt()
-        val height = (size.y * 0.3f).toInt()
+        val height = (size.y * 0.4f).toInt()
 
         val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val popupView = inflater.inflate(R.layout.popup_window_to_folder_menu, null)
@@ -456,11 +456,16 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
                 val folderContentDao=appDB.folderContentDao()
                 var chatIdxList=mainRVAdapter.getSelectedItem()
                 val folderIdx=folderList[itemPosition].idx
+                Log.d("MAIN-ACTIVITY", "item position: $itemPosition")
+                Log.d("MAIN-ACTIVITY", "chat index list: ${chatIdxList.toString()}")
+                Log.d("MAIN-ACTIVITY", "folder index: ${folderIdx.toString()}")
                 //갠톡: folderIdx, otherUserIdx
                 //단톡: folderIdx, userIdx, groupName
                 //이동
                 for(i in chatIdxList) {
                     val chat = chatDao.getChatByChatIdx(i)
+                    Log.d("MAIN-ACTIVITY", "chat: $chat")
+                    Log.d("MAIN-ACTIVITY", "chat group name: ${chat.groupName}")
                     if (chat.groupName != null)
                         folderContentDao.insertOtOChat(
                             folderIdx,
@@ -473,8 +478,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
                             chat.groupName!!
                         )
                 }
-                Log.d("folderContents", appDB.chatDao().getFolderChat(getID(), folderIdx).toString())
-
+                Log.d("MAIN-ACITIVTY", appDB.chatDao().getFolderChat(getID(), folderIdx).toString())
                 Toast.makeText(this@MainActivity, "selected folder: ${selectedFolder.folderName}", Toast.LENGTH_SHORT).show()
 
                 // 팝업 윈도우를 꺼주는 역할

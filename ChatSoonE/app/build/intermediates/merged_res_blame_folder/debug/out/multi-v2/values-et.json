@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-et\\values-et.xml",
+            "outputFile": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-et\\values-et.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\lj\\.gradle\\caches\\transforms-3\\6006d603408a8c1ed0edf3e550c48eb5\\transformed\\core-1.7.0\\res\\values-et\\values-et.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "90",
-                        "startColumns": "4",
-                        "startOffsets": "7623",
-                        "endColumns": "100",
-                        "endOffsets": "7719"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\lj\\.gradle\\caches\\transforms-3\\49532273eabc3c40157164b634dd2e9a\\transformed\\material-1.5.0\\res\\values-et\\values-et.xml",
+                    "source": "C:\\Users\\pc\\.gradle\\caches\\transforms-3\\49532273eabc3c40157164b634dd2e9a\\transformed\\material-1.5.0\\res\\values-et\\values-et.xml",
                     "from": {
                         "startLines": "2,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -40,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\lj\\.gradle\\caches\\transforms-3\\2ed271d536b7bafb160ec869a4214179\\transformed\\appcompat-1.4.1\\res\\values-et\\values-et.xml",
+                    "source": "C:\\Users\\pc\\.gradle\\caches\\transforms-3\\2ed271d536b7bafb160ec869a4214179\\transformed\\appcompat-1.4.1\\res\\values-et\\values-et.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -57,7 +40,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\lj\\.gradle\\caches\\transforms-3\\7a0d60d373f8ee754d540eb1d17aea7c\\transformed\\navigation-ui-2.3.5\\res\\values-et\\values-et.xml",
+                    "source": "C:\\Users\\pc\\.gradle\\caches\\transforms-3\\7a0d60d373f8ee754d540eb1d17aea7c\\transformed\\navigation-ui-2.3.5\\res\\values-et\\values-et.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -71,6 +54,23 @@
                         "startOffsets": "7229,7338",
                         "endColumns": "108,120",
                         "endOffsets": "7333,7454"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\pc\\.gradle\\caches\\transforms-3\\6006d603408a8c1ed0edf3e550c48eb5\\transformed\\core-1.7.0\\res\\values-et\\values-et.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "90",
+                        "startColumns": "4",
+                        "startOffsets": "7623",
+                        "endColumns": "100",
+                        "endOffsets": "7719"
                     }
                 }
             ]

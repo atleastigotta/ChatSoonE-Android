@@ -99,7 +99,7 @@ class ApplicationClass : Application() {
     override fun onCreate() {
         super.onCreate()
         //kakao sdk 연결
-        KakaoSdk.init(this,"")
+        KakaoSdk.init(this,"344ce6395e3e90c63689e4fef30067f0")
 
         // client definition
         // Http 통신할 때 클라이언트 옵션 설정해주는 부분
