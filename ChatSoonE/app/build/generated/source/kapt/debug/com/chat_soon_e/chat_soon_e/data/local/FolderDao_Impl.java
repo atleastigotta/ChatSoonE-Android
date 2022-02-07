@@ -213,8 +213,8 @@ public final class FolderDao_Impl implements FolderDao {
         final Folder _item;
         final int _tmpIdx;
         _tmpIdx = _cursor.getInt(_cursorIndexOfIdx);
-        final int _tmpKakaoUserIdx;
-        _tmpKakaoUserIdx = _cursor.getInt(_cursorIndexOfKakaoUserIdx);
+        final long _tmpKakaoUserIdx;
+        _tmpKakaoUserIdx = _cursor.getLong(_cursorIndexOfKakaoUserIdx);
         final Integer _tmpParentFolderIdx;
         if (_cursor.isNull(_cursorIndexOfParentFolderIdx)) {
           _tmpParentFolderIdx = null;
@@ -265,8 +265,8 @@ public final class FolderDao_Impl implements FolderDao {
         final Folder _item;
         final int _tmpIdx;
         _tmpIdx = _cursor.getInt(_cursorIndexOfIdx);
-        final int _tmpKakaoUserIdx;
-        _tmpKakaoUserIdx = _cursor.getInt(_cursorIndexOfKakaoUserIdx);
+        final long _tmpKakaoUserIdx;
+        _tmpKakaoUserIdx = _cursor.getLong(_cursorIndexOfKakaoUserIdx);
         final Integer _tmpParentFolderIdx;
         if (_cursor.isNull(_cursorIndexOfParentFolderIdx)) {
           _tmpParentFolderIdx = null;
@@ -316,8 +316,8 @@ public final class FolderDao_Impl implements FolderDao {
       if(_cursor.moveToFirst()) {
         final int _tmpIdx;
         _tmpIdx = _cursor.getInt(_cursorIndexOfIdx);
-        final int _tmpKakaoUserIdx;
-        _tmpKakaoUserIdx = _cursor.getInt(_cursorIndexOfKakaoUserIdx);
+        final long _tmpKakaoUserIdx;
+        _tmpKakaoUserIdx = _cursor.getLong(_cursorIndexOfKakaoUserIdx);
         final Integer _tmpParentFolderIdx;
         if (_cursor.isNull(_cursorIndexOfParentFolderIdx)) {
           _tmpParentFolderIdx = null;
@@ -372,8 +372,8 @@ public final class FolderDao_Impl implements FolderDao {
       if(_cursor.moveToFirst()) {
         final int _tmpIdx;
         _tmpIdx = _cursor.getInt(_cursorIndexOfIdx);
-        final int _tmpKakaoUserIdx;
-        _tmpKakaoUserIdx = _cursor.getInt(_cursorIndexOfKakaoUserIdx);
+        final long _tmpKakaoUserIdx;
+        _tmpKakaoUserIdx = _cursor.getLong(_cursorIndexOfKakaoUserIdx);
         final Integer _tmpParentFolderIdx;
         if (_cursor.isNull(_cursorIndexOfParentFolderIdx)) {
           _tmpParentFolderIdx = null;
@@ -429,8 +429,8 @@ public final class FolderDao_Impl implements FolderDao {
         final Folder _item;
         final int _tmpIdx;
         _tmpIdx = _cursor.getInt(_cursorIndexOfIdx);
-        final int _tmpKakaoUserIdx;
-        _tmpKakaoUserIdx = _cursor.getInt(_cursorIndexOfKakaoUserIdx);
+        final long _tmpKakaoUserIdx;
+        _tmpKakaoUserIdx = _cursor.getLong(_cursorIndexOfKakaoUserIdx);
         final Integer _tmpParentFolderIdx;
         if (_cursor.isNull(_cursorIndexOfParentFolderIdx)) {
           _tmpParentFolderIdx = null;

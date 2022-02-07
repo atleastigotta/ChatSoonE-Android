@@ -96,8 +96,8 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         // API: 전체폴더 목록 가져오기 (숨김폴더 제외)
         // 폴더 초기 세팅 (새폴더1, 새폴더2)
         if (folderList.isEmpty()) {
-            appDB.folderDao().insert(Folder(0, 0, null, "새폴더1", R.drawable.ic_baseline_folder_24, ACTIVE))
-            appDB.folderDao().insert(Folder(1, 0, null, "새폴더2", R.drawable.ic_baseline_folder_24, ACTIVE))
+            appDB.folderDao().insert(Folder(0, getID(), null, "새폴더1", R.drawable.ic_baseline_folder_24, ACTIVE))
+            appDB.folderDao().insert(Folder(1, getID(), null, "새폴더2", R.drawable.ic_baseline_folder_24, ACTIVE))
             folderList = appDB.folderDao().getFolderList() as ArrayList
         }
     }
@@ -429,6 +429,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             override fun onFolderClick(itemBinding: ItemFolderListBinding, itemPosition: Int) {
                 // 이동하고 싶은 폴더 클릭 시 폴더로 채팅 이동 (뷰에는 그대로 남아 있도록)
                 val selectedFolder = folderList[itemPosition]
+
                 if (selectedFolder.status == HIDDEN) {
                     val lockSPF = getSharedPreferences("lock", 0)
                     val pattern = lockSPF.getString("pattern", "0")
@@ -451,29 +452,41 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
                         startNextActivity(InputPatternActivity::class.java)
                     }
                 }
-
                 val chatDao=appDB.chatDao()
                 val folderContentDao=appDB.folderContentDao()
+
+                // 선택된 채팅의 아이디 리스트를 가져옴
                 var chatIdxList=mainRVAdapter.getSelectedItem()
+
+                Log.d("folderContents", chatIdxList.toString())
+                // 폴더의 id를 가져옴
+
                 val folderIdx=folderList[itemPosition].idx
                 //갠톡: folderIdx, otherUserIdx
                 //단톡: folderIdx, userIdx, groupName
+
                 //이동
                 for(i in chatIdxList) {
                     val chat = chatDao.getChatByChatIdx(i)
-                    if (chat.groupName != null)
-                        folderContentDao.insertOtOChat(
-                            folderIdx,
-                            chat.otherUserIdx
-                        )
-                    else
-                        folderContentDao.insertOrgChat(
-                            folderIdx,
-                            getID(),
-                            chat.groupName!!
-                        )
+                    //폴더에 채팅을 넣을 때는
+                    folderContentDao.insert(FolderContent(folderIdx, i, ACTIVE))
+                    //채팅 인덱스 번호 업데이트
+                    chatDao.updateFolder(i, folderIdx)
+
+//                    if (chat.groupName != null)
+//                        folderContentDao.insertOtOChat(
+//                            folderIdx,
+//                            chat.otherUserIdx
+//                        )
+//                    else
+//                        folderContentDao.insertOrgChat(
+//                            folderIdx,
+//                            getID(),
+//                            chat.groupName!!
+//                        )
                 }
-                Log.d("folderContents", appDB.chatDao().getFolderChat(getID(), folderIdx).toString())
+                Log.d("folderContents", appDB.folderDao().getFolderByIdx(folderIdx).toString())
+                Log.d("folderContents",appDB.folderContentDao().getAllfolder().toString())
 
                 Toast.makeText(this@MainActivity, "selected folder: ${selectedFolder.folderName}", Toast.LENGTH_SHORT).show()
 

@@ -242,7 +242,7 @@ MERGED from [com.kakao.sdk:v2-auth:2.4.2] C:\Users\lj\.gradle\caches\transforms-
 		ADDED from [com.kakao.sdk:v2-auth:2.4.2] C:\Users\lj\.gradle\caches\transforms-3\b24800abe53266e872f2560b76a0176a\transformed\jetified-v2-auth-2.4.2\AndroidManifest.xml:20:13-53
 	android:name
 		ADDED from F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:40:13-70
-intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:oauth+data:scheme:kakaof8c2d56075b5f5419de75d444f7c7071
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:oauth+data:scheme:kakao
 ADDED from F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:42:13-50:29
 action#android.intent.action.VIEW
 ADDED from F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:43:17-69
@@ -257,11 +257,11 @@ ADDED from F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml
 	android:name
 		ADDED from F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:45:27-75
 data
-ADDED from F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:48:17-49:78
+ADDED from F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:48:17-49:46
 	android:host
 		ADDED from F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:48:23-43
 	android:scheme
-		ADDED from F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:49:21-75
+		ADDED from F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:49:21-43
 service#com.chat_soon_e.chat_soon_e.ui.MyNotificationListener
 ADDED from F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:54:9-60:19
 	android:exported

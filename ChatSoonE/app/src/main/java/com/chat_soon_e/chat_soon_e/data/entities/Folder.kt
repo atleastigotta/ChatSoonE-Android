@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName
 @Entity(tableName = "FolderTable")
 data class Folder(
     @PrimaryKey(autoGenerate = false) @SerializedName("folderIdx") var idx: Int = 0,
-    @SerializedName("kakaoUserIdx") var kakaoUserIdx: Int = 0,
+    @SerializedName("kakaoUserIdx") var kakaoUserIdx: Long = 0,
     @SerializedName("parentFolderIdx") var parentFolderIdx: Int?,
     @SerializedName("folderName") var folderName: String,
     @SerializedName("folderImg") var folderImg: Int = R.drawable.ic_baseline_folder_24,
