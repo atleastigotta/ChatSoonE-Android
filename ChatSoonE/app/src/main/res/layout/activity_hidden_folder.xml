@@ -72,4 +72,15 @@
         app:layout_constraintStart_toStartOf="@+id/hidden_folder_line_view"
         app:layout_constraintEnd_toEndOf="@+id/hidden_folder_line_view" />
 
+    <View
+        android:id="@+id/hidden_folder_background_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#40BFBFBF"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

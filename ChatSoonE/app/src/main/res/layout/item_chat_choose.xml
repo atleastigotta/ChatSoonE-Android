@@ -32,7 +32,7 @@
         android:id="@+id/item_chat_choose_message_tv"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_chat_default"
+        android:background="@drawable/selector_chat"
         android:text="@string/message"
         android:textColor="@color/black"
         android:textSize="16sp"

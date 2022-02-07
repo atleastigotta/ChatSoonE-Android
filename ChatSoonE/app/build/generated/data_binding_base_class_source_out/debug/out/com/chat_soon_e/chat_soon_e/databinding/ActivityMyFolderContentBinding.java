@@ -28,6 +28,9 @@ public final class ActivityMyFolderContentBinding implements ViewBinding {
   public final ConstraintLayout myFolderBackgroundLayout;
 
   @NonNull
+  public final View myFolderBackgroundView;
+
+  @NonNull
   public final View myFolderBottomBarView;
 
   @NonNull
@@ -53,14 +56,15 @@ public final class ActivityMyFolderContentBinding implements ViewBinding {
 
   private ActivityMyFolderContentBinding(@NonNull ConstraintLayout rootView,
       @NonNull ImageView myFolderAllChatIv, @NonNull ConstraintLayout myFolderBackgroundLayout,
-      @NonNull View myFolderBottomBarView, @NonNull ImageView myFolderChatIv,
-      @NonNull ImageView myFolderCreateNewFolderIv,
+      @NonNull View myFolderBackgroundView, @NonNull View myFolderBottomBarView,
+      @NonNull ImageView myFolderChatIv, @NonNull ImageView myFolderCreateNewFolderIv,
       @NonNull RecyclerView myFolderFolderListRecyclerView, @NonNull ImageView myFolderMenuIv,
       @NonNull ImageView myFolderMyFolderIv, @NonNull View myFolderMyFolderLineView,
       @NonNull TextView myFolderMyFolderTv) {
     this.rootView = rootView;
     this.myFolderAllChatIv = myFolderAllChatIv;
     this.myFolderBackgroundLayout = myFolderBackgroundLayout;
+    this.myFolderBackgroundView = myFolderBackgroundView;
     this.myFolderBottomBarView = myFolderBottomBarView;
     this.myFolderChatIv = myFolderChatIv;
     this.myFolderCreateNewFolderIv = myFolderCreateNewFolderIv;
@@ -107,6 +111,12 @@ public final class ActivityMyFolderContentBinding implements ViewBinding {
       id = R.id.my_folder_background_layout;
       ConstraintLayout myFolderBackgroundLayout = ViewBindings.findChildViewById(rootView, id);
       if (myFolderBackgroundLayout == null) {
+        break missingId;
+      }
+
+      id = R.id.my_folder_background_view;
+      View myFolderBackgroundView = ViewBindings.findChildViewById(rootView, id);
+      if (myFolderBackgroundView == null) {
         break missingId;
       }
 
@@ -159,7 +169,7 @@ public final class ActivityMyFolderContentBinding implements ViewBinding {
       }
 
       return new ActivityMyFolderContentBinding((ConstraintLayout) rootView, myFolderAllChatIv,
-          myFolderBackgroundLayout, myFolderBottomBarView, myFolderChatIv,
+          myFolderBackgroundLayout, myFolderBackgroundView, myFolderBottomBarView, myFolderChatIv,
           myFolderCreateNewFolderIv, myFolderFolderListRecyclerView, myFolderMenuIv,
           myFolderMyFolderIv, myFolderMyFolderLineView, myFolderMyFolderTv);
     }

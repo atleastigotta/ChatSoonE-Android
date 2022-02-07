@@ -22,6 +22,9 @@ public final class ActivityMainContentBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final View mainBackgroundView;
+
+  @NonNull
   public final ImageView mainBlockIv;
 
   @NonNull
@@ -61,14 +64,15 @@ public final class ActivityMainContentBinding implements ViewBinding {
   public final ImageView mainUpdateIv;
 
   private ActivityMainContentBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ImageView mainBlockIv, @NonNull View mainBottomBarView,
-      @NonNull ImageView mainCancelIv, @NonNull ImageView mainChatIv,
-      @NonNull RecyclerView mainChatListRecyclerView, @NonNull ConstraintLayout mainContent,
-      @NonNull ImageView mainDeleteIv, @NonNull ImageView mainFolderIv,
-      @NonNull ImageView mainFolderModeIv, @NonNull ImageView mainMyFolderIv,
-      @NonNull ImageView mainSettingMenuIv, @NonNull TextView mainTitleTv,
-      @NonNull ImageView mainUpdateIv) {
+      @NonNull View mainBackgroundView, @NonNull ImageView mainBlockIv,
+      @NonNull View mainBottomBarView, @NonNull ImageView mainCancelIv,
+      @NonNull ImageView mainChatIv, @NonNull RecyclerView mainChatListRecyclerView,
+      @NonNull ConstraintLayout mainContent, @NonNull ImageView mainDeleteIv,
+      @NonNull ImageView mainFolderIv, @NonNull ImageView mainFolderModeIv,
+      @NonNull ImageView mainMyFolderIv, @NonNull ImageView mainSettingMenuIv,
+      @NonNull TextView mainTitleTv, @NonNull ImageView mainUpdateIv) {
     this.rootView = rootView;
+    this.mainBackgroundView = mainBackgroundView;
     this.mainBlockIv = mainBlockIv;
     this.mainBottomBarView = mainBottomBarView;
     this.mainCancelIv = mainCancelIv;
@@ -111,6 +115,12 @@ public final class ActivityMainContentBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.main_background_view;
+      View mainBackgroundView = ViewBindings.findChildViewById(rootView, id);
+      if (mainBackgroundView == null) {
+        break missingId;
+      }
+
       id = R.id.main_block_iv;
       ImageView mainBlockIv = ViewBindings.findChildViewById(rootView, id);
       if (mainBlockIv == null) {
@@ -185,10 +195,10 @@ public final class ActivityMainContentBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainContentBinding((ConstraintLayout) rootView, mainBlockIv,
-          mainBottomBarView, mainCancelIv, mainChatIv, mainChatListRecyclerView, mainContent,
-          mainDeleteIv, mainFolderIv, mainFolderModeIv, mainMyFolderIv, mainSettingMenuIv,
-          mainTitleTv, mainUpdateIv);
+      return new ActivityMainContentBinding((ConstraintLayout) rootView, mainBackgroundView,
+          mainBlockIv, mainBottomBarView, mainCancelIv, mainChatIv, mainChatListRecyclerView,
+          mainContent, mainDeleteIv, mainFolderIv, mainFolderModeIv, mainMyFolderIv,
+          mainSettingMenuIv, mainTitleTv, mainUpdateIv);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

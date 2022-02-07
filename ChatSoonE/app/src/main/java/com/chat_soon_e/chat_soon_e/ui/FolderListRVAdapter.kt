@@ -8,15 +8,16 @@ import com.chat_soon_e.chat_soon_e.databinding.ItemFolderListBinding
 
 class FolderListRVAdapter(private val folderList: ArrayList<Folder>): RecyclerView.Adapter<FolderListRVAdapter.ViewHolder>() {
 
+    // 클릭 인터페이스
     interface MyItemClickListener {
         fun onFolderClick(itemBinding: ItemFolderListBinding, itemPosition: Int)
     }
 
     // 리스너 객체를 저장하는 변수
-    private lateinit var mItemClickListener: FolderListRVAdapter.MyItemClickListener
+    private lateinit var mItemClickListener: MyItemClickListener
 
     // 리스너 객체를 외부에서 전달받는 함수
-    fun setMyItemClickListener(itemClickListener: FolderListRVAdapter.MyItemClickListener) {
+    fun setMyItemClickListener(itemClickListener: MyItemClickListener) {
         mItemClickListener = itemClickListener
     }
 

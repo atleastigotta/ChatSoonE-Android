@@ -22,6 +22,9 @@ public final class ActivityHiddenFolderBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final View hiddenFolderBackgroundView;
+
+  @NonNull
   public final ImageView hiddenFolderHiddenFolderIv;
 
   @NonNull
@@ -40,10 +43,12 @@ public final class ActivityHiddenFolderBinding implements ViewBinding {
   public final TextView hiddenFolderMyFolderTv;
 
   private ActivityHiddenFolderBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ImageView hiddenFolderHiddenFolderIv, @NonNull TextView hiddenFolderHiddenFolderTv,
-      @NonNull View hiddenFolderLineView, @NonNull RecyclerView hiddenFolderListRecyclerView,
-      @NonNull ImageView hiddenFolderMyFolderIv, @NonNull TextView hiddenFolderMyFolderTv) {
+      @NonNull View hiddenFolderBackgroundView, @NonNull ImageView hiddenFolderHiddenFolderIv,
+      @NonNull TextView hiddenFolderHiddenFolderTv, @NonNull View hiddenFolderLineView,
+      @NonNull RecyclerView hiddenFolderListRecyclerView, @NonNull ImageView hiddenFolderMyFolderIv,
+      @NonNull TextView hiddenFolderMyFolderTv) {
     this.rootView = rootView;
+    this.hiddenFolderBackgroundView = hiddenFolderBackgroundView;
     this.hiddenFolderHiddenFolderIv = hiddenFolderHiddenFolderIv;
     this.hiddenFolderHiddenFolderTv = hiddenFolderHiddenFolderTv;
     this.hiddenFolderLineView = hiddenFolderLineView;
@@ -79,6 +84,12 @@ public final class ActivityHiddenFolderBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.hidden_folder_background_view;
+      View hiddenFolderBackgroundView = ViewBindings.findChildViewById(rootView, id);
+      if (hiddenFolderBackgroundView == null) {
+        break missingId;
+      }
+
       id = R.id.hidden_folder_hidden_folder_iv;
       ImageView hiddenFolderHiddenFolderIv = ViewBindings.findChildViewById(rootView, id);
       if (hiddenFolderHiddenFolderIv == null) {
@@ -116,8 +127,9 @@ public final class ActivityHiddenFolderBinding implements ViewBinding {
       }
 
       return new ActivityHiddenFolderBinding((ConstraintLayout) rootView,
-          hiddenFolderHiddenFolderIv, hiddenFolderHiddenFolderTv, hiddenFolderLineView,
-          hiddenFolderListRecyclerView, hiddenFolderMyFolderIv, hiddenFolderMyFolderTv);
+          hiddenFolderBackgroundView, hiddenFolderHiddenFolderIv, hiddenFolderHiddenFolderTv,
+          hiddenFolderLineView, hiddenFolderListRecyclerView, hiddenFolderMyFolderIv,
+          hiddenFolderMyFolderTv);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

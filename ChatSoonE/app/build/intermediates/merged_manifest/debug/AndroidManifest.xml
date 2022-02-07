@@ -49,22 +49,13 @@
         </activity>
         <activity android:name="com.chat_soon_e.chat_soon_e.ui.PermissionActivity" />
         <activity
-            android:name="com.chat_soon_e.chat_soon_e.ui.SignUpActivity"
-            android:exported="true" />
-        <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.MainActivity"
             android:exported="true" />
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.ChatActivity"
             android:exported="true" />
         <activity
-            android:name="com.chat_soon_e.chat_soon_e.ui.FolderChatActivity"
-            android:exported="true" />
-        <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.MyFolderActivity"
-            android:exported="true" />
-        <activity
-            android:name="com.chat_soon_e.chat_soon_e.ui.FolderActivity"
             android:exported="true" />
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.CreatePatternActivity"
@@ -74,6 +65,9 @@
             android:exported="true" />
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.InputPatternActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.chat_soon_e.chat_soon_e.ui.FolderContentActivity"
             android:exported="true" />
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
@@ -89,7 +83,7 @@
                 <!-- Redirect URI: "kakao{NATIVE_APP_KEY}://oauth" -->
                 <data
                     android:host="oauth"
-                    android:scheme="kakao" />
+                    android:scheme="kakao344ce6395e3e90c63689e4fef30067f0" />
             </intent-filter>
         </activity>
 

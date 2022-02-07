@@ -21,7 +21,7 @@ import com.chat_soon_e.chat_soon_e.databinding.ItemChatListChooseBinding
 import com.chat_soon_e.chat_soon_e.databinding.ItemChatListDefaultBinding
 
 class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickListener: MyItemClickListener): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    var chatList = ArrayList<TestChat>()
+    var chatList = ArrayList<Chat>()
     var selectedItemList: SparseBooleanArray = SparseBooleanArray(0)
     private lateinit var popup: PopupMenu
     private lateinit var binding: ItemChatDefaultBinding
@@ -67,7 +67,7 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
     override fun getItemCount(): Int = chatList.size
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addChatList(chatList: ArrayList<TestChat>) {
+    fun addChatList(chatList: ArrayList<Chat>) {
         this.chatList.clear()
         this.chatList.addAll(chatList)
         notifyDataSetChanged()
@@ -81,9 +81,9 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
 
     //AddData
     @SuppressLint("NotifyDataSetChanged")
-    fun addItem(testChat: List<TestChat>){
+    fun addItem(chat: List<Chat>){
         chatList.clear()
-        chatList.addAll(testChat as ArrayList)
+        chatList.addAll(chat as ArrayList)
 
         notifyDataSetChanged()
     }
@@ -98,17 +98,6 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
         notifyItemChanged(position)
     }
 
-    private fun toggleItemSelectedOnChooseMode(binding: ItemChatChooseBinding, position: Int) {
-        if(selectedItemList.get(position, false)) {
-            selectedItemList.delete(position)
-            binding.itemChatChooseMessageTv.setBackgroundResource(R.drawable.background_chat_default)
-        } else {
-            selectedItemList.put(position, true)
-            binding.itemChatChooseMessageTv.setBackgroundResource(R.drawable.background_chat_choose)
-        }
-        notifyItemChanged(position)
-    }
-
     // selectedItemList 초기화
     @SuppressLint("NotifyDataSetChanged")
     fun clearSelectedItemList() {
@@ -119,7 +108,7 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
     // 뷰타입 설정
     @SuppressLint("NotifyDataSetChanged")
     fun setViewType(currentMode: Int) {
-        val newChatList = ArrayList<TestChat>()
+        val newChatList = ArrayList<Chat>()
         for(i in 0 until chatList.size) {
             if(currentMode == 0) {
                 // 일반 모드
@@ -151,7 +140,7 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
     inner class DefaultViewHolder(private val binding: ItemChatDefaultBinding): RecyclerView.ViewHolder(binding.root) {
         init {
             binding.itemChatDefaultMessageTv.setOnLongClickListener {
-                toggleItemSelected(null, position = bindingAdapterPosition)
+                toggleItemSelected(itemView, position = bindingAdapterPosition)
                 popup = PopupMenu(mContext, binding.itemChatDefaultMessageTv, Gravity.START, 0, R.style.MyFolderBottomPopupMenuTheme)
                 popup.menuInflater.inflate(R.menu.popup_chat_option_menu, popup.menu)
                 popup.setOnMenuItemClickListener { item ->
@@ -170,10 +159,10 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
         }
 
         @RequiresApi(Build.VERSION_CODES.O)
-        fun bind(testChat: TestChat) {
-            binding.itemChatDefaultNameTv.text = testChat.name
-            binding.itemChatDefaultMessageTv.text = testChat.message
-            binding.itemChatDefaultDateTimeTv.text = testChat.dateTime
+        fun bind(chat: Chat) {
+            binding.itemChatDefaultNameTv.text = chat.groupName
+            binding.itemChatDefaultMessageTv.text = chat.message
+            binding.itemChatDefaultDateTimeTv.text = chat.postTime.toString()
         }
     }
 
@@ -182,16 +171,16 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
         : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.itemChatChooseMessageTv.setOnClickListener {
-                toggleItemSelectedOnChooseMode(binding, position = bindingAdapterPosition)
+                toggleItemSelected(itemView, position = bindingAdapterPosition)
                 mItemClickListener.onChooseChatClick(itemView, position = bindingAdapterPosition)
             }
         }
 
         @RequiresApi(Build.VERSION_CODES.O)
-        fun bind(testChat: TestChat) {
-            binding.itemChatChooseNameTv.text = testChat.name
-            binding.itemChatChooseMessageTv.text = testChat.message
-            binding.itemChatChooseDateTimeTv.text = testChat.dateTime
+        fun bind(chat: Chat) {
+            binding.itemChatChooseNameTv.text = chat.groupName
+            binding.itemChatChooseMessageTv.text = chat.message
+            binding.itemChatChooseDateTimeTv.text = chat.postTime.toString()
         }
     }
 }

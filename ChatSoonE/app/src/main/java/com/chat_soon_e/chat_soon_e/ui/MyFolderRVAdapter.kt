@@ -91,9 +91,10 @@ class MyFolderRVAdapter(private val mContext: MyFolderActivity): RecyclerView.Ad
         }
     }
 
-    // 데아터셋의 크기 반환
+    // 데이터셋의 크기 반환
     override fun getItemCount(): Int = folderList.size
 
+    // RecyclerView에 데이터 연결
     @SuppressLint("NotifyDataSetChanged")
     fun addFolderList(folderList: ArrayList<Folder>) {
         this.folderList.clear()
@@ -101,6 +102,8 @@ class MyFolderRVAdapter(private val mContext: MyFolderActivity): RecyclerView.Ad
         notifyDataSetChanged()
     }
 
+    // index를 바꿔줘야 한다.
+    // 선택된 index를 지우고, 끝에 추가해준다.
     private fun removeFolder(position: Int) {
         folderList.removeAt(position)
         notifyItemRemoved(position)

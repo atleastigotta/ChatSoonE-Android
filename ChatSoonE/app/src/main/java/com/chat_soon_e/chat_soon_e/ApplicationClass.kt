@@ -38,11 +38,11 @@ class ApplicationClass : Application() {
         const val BASE_URL: String = DEV_URL                      // apk 추출할 때 알맞게 바꾸면[넣어주면] 된다.
 
         // DB: status
-        const val ACTIVE:String="ACTIVE"
-        const val INACTIVE:String="INACTIVE"
-        const val BLOCKED:String="BLOCKED"
-        const val DELETED:String="DELETED"
-        const val HIDDEN:String="HIDDEN"
+        const val ACTIVE: String = "ACTIVE"
+        const val INACTIVE: String = "INACTIVE"
+        const val BLOCKED: String = "BLOCKED"
+        const val DELETED: String = "DELETED"
+        const val HIDDEN: String = "HIDDEN"
 
         // 전체적으로 쓰일 수 있도록
         lateinit var mSharedPreferences: SharedPreferences
@@ -53,7 +53,7 @@ class ApplicationClass : Application() {
     override fun onCreate() {
         super.onCreate()
         //kakao sdk 연결
-        KakaoSdk.init(this,"" )
+        KakaoSdk.init(this,"344ce6395e3e90c63689e4fef30067f0")
 
         // client definition
         // Http 통신할 때 클라이언트 옵션 설정해주는 부분

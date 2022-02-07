@@ -34,6 +34,7 @@
         android:paddingEnd="10dp"
         app:layout_constraintTop_toBottomOf="@+id/popup_window_main_bottom_menu_to_folder_tv"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/popup_window_main_bottom_menu_to_folder_tv" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
