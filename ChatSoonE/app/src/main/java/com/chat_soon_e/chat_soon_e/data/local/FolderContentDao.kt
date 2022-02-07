@@ -6,7 +6,6 @@ import com.chat_soon_e.chat_soon_e.data.entities.FolderContent
 
 @Dao
 interface FolderContentDao {
-
     //채팅 한개를 폴더에 추가
     @Query("INSERT INTO FolderContentTable (folderIdx, chatIdx) VALUES (:folderIdx, :chatIdx)")
     fun insertChat(folderIdx:Int, chatIdx:Int)
@@ -25,5 +24,4 @@ interface FolderContentDao {
 
     @Query("SELECT * FROM foldercontenttable")
     fun getAllfolder():List<FolderContent>
-
 }

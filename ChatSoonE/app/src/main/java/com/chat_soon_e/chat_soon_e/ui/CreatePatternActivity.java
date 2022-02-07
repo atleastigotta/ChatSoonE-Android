@@ -27,9 +27,9 @@ public class CreatePatternActivity extends AppCompatActivity {
         // 0: 숨긴 폴더 목록을 확인하기 위한 입력 모드
         // 1: 메인 화면의 설정창 -> 변경 모드
         // 2: 폴더 화면의 설정창 -> 변경 모드
+        // 3: 메인 화면 폴더로 보내기 -> 숨김 폴더 눌렀을 경우
         SharedPreferences modeSPF = getSharedPreferences("mode", 0);
         mode = modeSPF.getInt("mode", 0);
-        Log.d("CREATE/MODE", String.valueOf(mode));
 
         mPatternLockView = (PatternLockView) findViewById(R.id.create_pattern_lock_view);
         mPatternLockView.addPatternLockListener(new PatternLockViewListener() {
@@ -60,8 +60,12 @@ public class CreatePatternActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                     finish();
-                } else {    // 폴더 화면으로 가면 된다.
+                } else if(mode == 2) {    // 폴더 화면으로 가면 된다.
                     Intent intent = new Intent(getApplicationContext(), MyFolderActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {    //입력 모드로 가면 된다.
+                    Intent intent = new Intent(getApplicationContext(), InputPatternActivity.class);
                     startActivity(intent);
                     finish();
                 }

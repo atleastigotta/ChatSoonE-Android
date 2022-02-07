@@ -26,6 +26,9 @@ public final class ActivityChatBinding implements ViewBinding {
   public final ImageView chatBackIv;
 
   @NonNull
+  public final View chatBackgroundView;
+
+  @NonNull
   public final FloatingActionButton chatCancelFab;
 
   @NonNull
@@ -41,11 +44,12 @@ public final class ActivityChatBinding implements ViewBinding {
   public final TextView chatNameTv;
 
   private ActivityChatBinding(@NonNull ConstraintLayout rootView, @NonNull ImageView chatBackIv,
-      @NonNull FloatingActionButton chatCancelFab, @NonNull RecyclerView chatChatRecyclerView,
-      @NonNull View chatLineView, @NonNull FloatingActionButton chatMainFab,
-      @NonNull TextView chatNameTv) {
+      @NonNull View chatBackgroundView, @NonNull FloatingActionButton chatCancelFab,
+      @NonNull RecyclerView chatChatRecyclerView, @NonNull View chatLineView,
+      @NonNull FloatingActionButton chatMainFab, @NonNull TextView chatNameTv) {
     this.rootView = rootView;
     this.chatBackIv = chatBackIv;
+    this.chatBackgroundView = chatBackgroundView;
     this.chatCancelFab = chatCancelFab;
     this.chatChatRecyclerView = chatChatRecyclerView;
     this.chatLineView = chatLineView;
@@ -86,6 +90,12 @@ public final class ActivityChatBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.chat_background_view;
+      View chatBackgroundView = ViewBindings.findChildViewById(rootView, id);
+      if (chatBackgroundView == null) {
+        break missingId;
+      }
+
       id = R.id.chat_cancel_fab;
       FloatingActionButton chatCancelFab = ViewBindings.findChildViewById(rootView, id);
       if (chatCancelFab == null) {
@@ -116,8 +126,8 @@ public final class ActivityChatBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityChatBinding((ConstraintLayout) rootView, chatBackIv, chatCancelFab,
-          chatChatRecyclerView, chatLineView, chatMainFab, chatNameTv);
+      return new ActivityChatBinding((ConstraintLayout) rootView, chatBackIv, chatBackgroundView,
+          chatCancelFab, chatChatRecyclerView, chatLineView, chatMainFab, chatNameTv);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

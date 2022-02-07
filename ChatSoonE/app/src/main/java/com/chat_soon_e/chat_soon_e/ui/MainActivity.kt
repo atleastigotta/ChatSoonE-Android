@@ -23,6 +23,7 @@ import kotlin.collections.ArrayList
 import androidx.appcompat.widget.SwitchCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.ACTIVE
+import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.HIDDEN
 import com.chat_soon_e.chat_soon_e.R
 import com.chat_soon_e.chat_soon_e.data.entities.*
 import com.chat_soon_e.chat_soon_e.databinding.ItemFolderListBinding
@@ -38,7 +39,6 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
     private var chatList = ArrayList<ChatList>()                // 데이터베이스로부터 chat list를 받아올 변수
     private lateinit var mainRVAdapter: MainRVAdapter           // chat list recycler view adpater
     private var permission: Boolean = true                      // 알림 허용 변수
-    private var selectedItem = ArrayList<ChatList>()            // 선택된 chatList를 담고 있는 Array
     private val chatViewModel: ChatViewModel by viewModels()
     private lateinit var mPopupWindow: PopupWindow
 
@@ -54,8 +54,6 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
     override fun onStart() {
         super.onStart()
 
-//        initNotificationListener()  // NotificationListener (알림 권한 허용)
-//        initChatList()              // chat list 데이터 초기화
         initRecyclerView()          // RecylcerView Adapter 연결 & 기타 설정
         initDrawerLayout()          // 설정 메뉴창 설정
         initClickListener()         // 여러 ClickListener 초기화
@@ -133,10 +131,6 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
                     putExtra("chatListJson", chatJson)
                 })
 
-//                startNextActivity(Intent(this@MainActivity, ChatActivity::class.java).apply {
-//                    putExtraData("chatListJson", chatJson)
-//                })
-
                 mainRVAdapter.clearSelectedItemList()
 
                 // 눌렀을 경우 chatIdx의 isNew를 바꾼다.
@@ -184,9 +178,6 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         appDB = AppDatabase.getInstance(this)!!
         appDB.chatDao().getRecentChat(getID()).observe(this, {
             Log.d("liveDataAdd", it.toString())
-            // Log.d("liveDataAddUseID", getID().toString())
-            // Log.d("liveDataAllChat", database.chatDao().getChatList().toString())
-            // Log.d("liveDataAllOther",database.otherUserDao().getAllOtherUser(getID()).toString())
             mainRVAdapter.addItem(it)
             chatList.clear()
             chatList.addAll(it)
@@ -204,6 +195,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             binding.mainContent.mainFolderModeIv.visibility = View.GONE
             binding.mainContent.mainUpdateIv.visibility = View.VISIBLE
             binding.mainContent.mainCancelIv.visibility = View.GONE
+            binding.mainContent.mainBackgroundView.visibility = View.INVISIBLE
         }
     }
 
@@ -387,47 +379,9 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         }
     }
 
-    // 폴더 이동 선택 모드 팝업 메뉴 리스너
-    inner class PopupFolderMenuListener: PopupMenu.OnMenuItemClickListener {
-        override fun onMenuItemClick(item: MenuItem?): Boolean {
-            when(item?.itemId) {
-                R.id.popup_folder_menu
-                -> {
-                    Toast.makeText(this@MainActivity, "폴더로 보내기", Toast.LENGTH_SHORT).show()
-                    //1번 더미데이터!
-                    //리싸이클러뷰 아이템 누르고 버튼을 누르면 db를 업데이트한다.
-                    //리싸이클러뷰 아이템 리스트를 가져와야한다.
-                    //어떻게 가져오지..?
-                    //인터페이스: main 에서 구현(정의)을 하고 item 별로 그 행동을 하게된다.
-                    var chat=ArrayList<Chat>()
-                    val rvChatList=mainRVAdapter.chatList
-                    val db=AppDatabase.getInstance(this@MainActivity)!!
-                    val dao=db.chatDao()
-                    val checkedList=mainRVAdapter.selectedItemList as ArrayList<Int>
-                    for(i in checkedList){
-                        chat.add(dao.getChatByChatIdx(rvChatList[i].chatIdx))
-                    }
-                    for(i in chat){
-                        if(i.groupName==null){
-                            db.folderContentDao().insertOtOChat(1, i.otherUserIdx)
-                        }
-                        else if(i.groupName!=null)
-                            db.folderContentDao().insertOrgChat(1, USER_ID, i.groupName!!)
-                    }
-                    Log.d("folderInsert", db.folderContentDao().getAllfolder().toString())
-
-                }
-
-                else
-                -> Toast.makeText(this@MainActivity, "잘못된 선택입니다.", Toast.LENGTH_SHORT).show()
-            }
-            return false
-        }
-    }
-
     // 폴더로 보내기 팝업 윈도우
+    @SuppressLint("InflateParams")
     private fun popupWindowToFolderMenu() {
-//        folderList = appDB.folderDao().getFolderByStatus("active") as ArrayList
         folderList = appDB.folderDao().getFolderList() as ArrayList
 
         // 팝업 윈도우 사이즈를 잘못 맞추면 아이템들이 안 뜨므로 하드 코딩으로 사이즈 조정해주기
@@ -444,11 +398,13 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         mPopupWindow.isFocusable = true         // 외부 영역 선택 시 팝업 윈도우 종료
         mPopupWindow.isOutsideTouchable = true
         mPopupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0)
+        binding.mainContent.mainBackgroundView.visibility = View.VISIBLE
 
         // RecyclerView 구분선
         val recyclerView = popupView.findViewById<RecyclerView>(R.id.popup_window_to_folder_menu_recycler_view)
         val dividerItemDecoration =
             DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL)
+        recyclerView.addItemDecoration(dividerItemDecoration)
 
         // RecyclerView 초기화
         // 더미 데이터와 어댑터 연결
@@ -456,30 +412,36 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         recyclerView.adapter = folderListRVAdapter
         folderListRVAdapter.setMyItemClickListener(object: FolderListRVAdapter.MyItemClickListener {
             override fun onFolderClick(itemBinding: ItemFolderListBinding, itemPosition: Int) {
-                // 폴더 아이콘
-                // 폴더로 이동하는 코드 밑에 작성해주시면 됩니다.
+                // 이동하고 싶은 폴더 클릭 시 폴더로 채팅 이동 (뷰에는 그대로 남아 있도록)
                 val selectedFolder = folderList[itemPosition]
+                if (selectedFolder.status == HIDDEN) {
+                    val lockSPF = getSharedPreferences("lock", 0)
+                    val pattern = lockSPF.getString("pattern", "0")
 
-                if (selectedFolder.status.equals("hidden")) {
-                    // 패턴
-                    // 0: 입력 모드
+                    // 패턴 모드 확인
+                    // 0: 숨긴 폴더 목록을 확인하기 위한 입력 모드
+                    // 1: 메인 화면의 설정창 -> 변경 모드
+                    // 2: 폴더 화면의 설정창 -> 변경 모드
+                    // 3: 메인 화면 폴더로 보내기 -> 숨김 폴더 눌렀을 경우
                     val modeSPF = getSharedPreferences("mode", 0)
                     val editor = modeSPF.edit()
+
+                    // 여기서는 3번 모드
                     editor.putInt("mode", 3)
                     editor.apply()
 
-                    startNextActivity(InputPatternActivity::class.java)
+                    if(pattern.equals("0")) {   // 패턴이 설정되어 있지 않은 경우 패턴 설정 페이지로
+                        startNextActivity(CreatePatternActivity::class.java)
+                    } else {    // 패턴이 설정되어 있는 경우 입력 페이지로 (보안을 위해)
+                        startNextActivity(InputPatternActivity::class.java)
+                    }
 
                     // 폴더로 이동시키는 코드 작성
-
                 }
-
-                // 같이 해도 좋을듯
-
-                Toast.makeText(this@MainActivity, "selected folder: ${selectedFolder.folderName}", Toast.LENGTH_SHORT).show()
 
                 // 팝업 윈도우를 꺼주는 역할
                 mPopupWindow.dismiss()
+                binding.mainContent.mainBackgroundView.visibility = View.INVISIBLE
             }
         })
     }

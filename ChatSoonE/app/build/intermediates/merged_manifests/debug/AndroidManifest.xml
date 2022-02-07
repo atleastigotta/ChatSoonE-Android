@@ -49,16 +49,10 @@
         </activity>
         <activity android:name="com.chat_soon_e.chat_soon_e.ui.PermissionActivity" />
         <activity
-            android:name="com.chat_soon_e.chat_soon_e.ui.SignUpActivity"
-            android:exported="true" />
-        <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.MainActivity"
             android:exported="true" />
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.ChatActivity"
-            android:exported="true" />
-        <activity
-            android:name="com.chat_soon_e.chat_soon_e.ui.FolderChatActivity"
             android:exported="true" />
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.MyFolderActivity"
@@ -71,6 +65,9 @@
             android:exported="true" />
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.InputPatternActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.chat_soon_e.chat_soon_e.ui.FolderContentActivity"
             android:exported="true" />
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"

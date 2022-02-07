@@ -14,8 +14,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="250dp"
         app:cardCornerRadius="30dp"
-        app:cardElevation="0dp"
-        >
+        app:cardElevation="0dp">
+
         <TextView
             android:id="@+id/notification_permission_btn"
             android:layout_width="wrap_content"
@@ -25,8 +25,7 @@
             android:paddingHorizontal="20dp"
             android:paddingVertical="8dp"
             android:background="#FEB3B0"
-            android:textColor="@color/white"
-            />
+            android:textColor="@color/white" />
     </androidx.cardview.widget.CardView>
     <TextView
         android:id="@+id/notification_main_txt"
@@ -38,8 +37,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/notification_permission_cv"
-        android:layout_marginTop="20dp"
-        />
+        android:layout_marginTop="20dp" />
     <ImageView
         android:id="@+id/notification_background_cloud"
         android:layout_width="match_parent"

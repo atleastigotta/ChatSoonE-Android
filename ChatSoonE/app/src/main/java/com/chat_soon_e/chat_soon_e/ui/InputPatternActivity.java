@@ -29,7 +29,7 @@ public class InputPatternActivity extends AppCompatActivity {
         // 0: 숨긴 폴더 목록을 확인하기 위한 입력 모드
         // 1: 메인 화면의 설정창 -> 변경 모드
         // 2: 폴더 화면의 설정창 -> 변경 모드
-        // 3: 폴더 리스트에서 숨김 폴더 클릭했을 때
+        // 3: 메인 화면 폴더로 보내기 -> 숨김 폴더 눌렀을 경우
         SharedPreferences modeSPF = getSharedPreferences("mode", 0);
         mode = modeSPF.getInt("mode", 0);
         Log.d("CREATE/MODE", String.valueOf(mode));

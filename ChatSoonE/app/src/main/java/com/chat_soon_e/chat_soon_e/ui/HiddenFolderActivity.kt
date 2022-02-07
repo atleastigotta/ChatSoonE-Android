@@ -9,6 +9,9 @@ import android.widget.PopupMenu
 import android.widget.PopupWindow
 import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.RecyclerView
+import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.ACTIVE
+import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.DELETED
+import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.HIDDEN
 import com.chat_soon_e.chat_soon_e.R
 import com.chat_soon_e.chat_soon_e.data.entities.Folder
 import com.chat_soon_e.chat_soon_e.data.entities.Icon
@@ -18,7 +21,7 @@ import com.chat_soon_e.chat_soon_e.databinding.ItemHiddenFolderBinding
 import com.chat_soon_e.chat_soon_e.databinding.ItemIconBinding
 
 class HiddenFolderActivity: BaseActivity<ActivityHiddenFolderBinding>(ActivityHiddenFolderBinding::inflate) {
-    private lateinit var appDB: AppDatabase
+    private lateinit var database: AppDatabase
     private lateinit var hiddenFolderRVAdapter: HiddenFolderRVAdapter
     private lateinit var iconRVAdapter: ChangeIconRVAdapter
     private var folderList = ArrayList<Folder>()
@@ -26,75 +29,62 @@ class HiddenFolderActivity: BaseActivity<ActivityHiddenFolderBinding>(ActivityHi
     private lateinit var mPopupWindow: PopupWindow
 
     // Popupwindow와 RecyclerView 연결을 위해 선언
-    private lateinit var itemBinding: ItemHiddenFolderBinding
-    private var itemPosition: Int = 0
+    private lateinit var itemHiddenFolderBinding: ItemHiddenFolderBinding
 
     override fun initAfterBinding() {
         initFolder()            // 폴더 초기화
-        initIcon()              // 아이콘 초기화
         initClickListener()     // 여러 click listener 초기화
     }
 
     private fun initFolder() {
-        appDB = AppDatabase.getInstance(this)!!
-        folderList = appDB.folderDao().getFolderList() as ArrayList
+        database = AppDatabase.getInstance(this)!!
+        folderList = database.folderDao().getFolderList() as ArrayList
 
         // RecyclerView 초기화
         hiddenFolderRVAdapter = HiddenFolderRVAdapter(this)
         binding.hiddenFolderListRecyclerView.adapter = hiddenFolderRVAdapter
 
         hiddenFolderRVAdapter.setMyItemClickListener(object: HiddenFolderRVAdapter.MyItemClickListener {
+            // 폴더 삭제
             override fun onRemoveFolder(idx: Int) {
-                appDB.folderDao().updateStatusByIdx("delete", idx)
+                database.folderDao().updateStatusByIdx(DELETED, idx)
             }
 
+            // 폴더 숨김 해제
             override fun onShowFolder(idx: Int) {
-                appDB.folderDao().updateStatusByIdx("active", idx)
+                database.folderDao().updateStatusByIdx(ACTIVE, idx)
             }
 
+            // 폴더 이름 롱클릭 시 이름 변경
             override fun onFolderNameLongClick(binding: ItemHiddenFolderBinding, position: Int) {
-                itemBinding = binding
-                changeFolderName(itemBinding)
+                itemHiddenFolderBinding = binding
+                changeFolderName(itemHiddenFolderBinding)
             }
 
+            // 폴더 클릭 시 이동
             override fun onFolderClick(view: View, position: Int) {
+                startNextActivity(FolderContentActivity::class.java)
             }
 
+            // 폴더 롱클릭 시 팝업 메뉴
             override fun onFolderLongClick(popup: PopupMenu) {
                 popup.show()
             }
         })
-        hiddenFolderRVAdapter.addFolderList(appDB.folderDao().getFolderByStatus("hidden") as ArrayList)
-    }
-
-    private fun initIcon() {
-        appDB = AppDatabase.getInstance(this)!!
-        iconList = appDB.iconDao().getIconList() as ArrayList
-
-        // 더미 데이터
-        // 이 부분은 서버와 통신하지 않고 자체적으로 구현
-        if(iconList.isEmpty()) {
-            appDB.iconDao().insert(Icon(R.drawable.ic_baseline_insert_emoticon_24))
-            appDB.iconDao().insert(Icon(R.drawable.ic_baseline_cancel_24))
-            appDB.iconDao().insert(Icon(R.drawable.ic_baseline_folder_24))
-            appDB.iconDao().insert(Icon(R.drawable.ic_baseline_account_circle_24))
-            appDB.iconDao().insert(Icon(R.drawable.ic_baseline_cached_24))
-            appDB.iconDao().insert(Icon(R.drawable.ic_baseline_check_box_24))
-            iconList = appDB.iconDao().getIconList() as ArrayList
-        }
+        hiddenFolderRVAdapter.addFolderList(database.folderDao().getFolderByStatus(HIDDEN) as ArrayList)
     }
 
     private fun initClickListener() {
         // 내폴더 아이콘 눌렀을 때
         binding.hiddenFolderMyFolderIv.setOnClickListener {
-            startActivityWithClear(MyFolderActivity::class.java)
+            startNextActivity(MyFolderActivity::class.java)
             finish()
         }
     }
 
     // 이름 바꾸기 팝업 윈도우를 띄워서 폴더 이름을 변경할 수 있도록 해준다.
     @SuppressLint("InflateParams")
-    fun changeFolderName(binding: ItemHiddenFolderBinding) {
+    fun changeFolderName(itemHiddenFolderBinding: ItemHiddenFolderBinding) {
         // 이름 바꾸기 팝업 윈도우
         val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val popupView = inflater.inflate(R.layout.popup_window_change_name, null)
@@ -104,31 +94,35 @@ class HiddenFolderActivity: BaseActivity<ActivityHiddenFolderBinding>(ActivityHi
         mPopupWindow.isFocusable = true         // 외부 영역 선택 시 팝업 윈도우 종료
         mPopupWindow.isOutsideTouchable = true
         mPopupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0)
+        binding.hiddenFolderBackgroundView.visibility = View.VISIBLE    // 뒷배경 흐리게
 
         // 기존 폴더 이름을 팝업 윈도우의 EditText에 넘겨준다.
-        var text: String = binding.itemHiddenFolderTv.text.toString()
+        var text: String = itemHiddenFolderBinding.itemHiddenFolderTv.text.toString()
         mPopupWindow.contentView.findViewById<EditText>(R.id.popup_window_change_name_et).setText(text)
 
         // RoomDB
-        appDB = AppDatabase.getInstance(this@HiddenFolderActivity)!!
-        val folder = appDB.folderDao().getFolderByName(text)
+        database = AppDatabase.getInstance(this@HiddenFolderActivity)!!
+        val folder = database.folderDao().getFolderByName(text)
 
         // 입력 완료했을 때 누르는 버튼
         mPopupWindow.contentView.findViewById<AppCompatButton>(R.id.popup_window_change_name_button).setOnClickListener {
             text = mPopupWindow.contentView.findViewById<EditText>(R.id.popup_window_change_name_et).text.toString()
-            binding.itemHiddenFolderTv.text = text
+            itemHiddenFolderBinding.itemHiddenFolderTv.text = text
 
             folder.folderName = text
-            appDB.folderDao().update(folder)
+            database.folderDao().update(folder)
 
             // 팝업 윈도우 종료
             mPopupWindow.dismiss()
+            binding.hiddenFolderBackgroundView.visibility = View.INVISIBLE    // 뒷배경 흐림 취소
         }
-        hiddenFolderRVAdapter.addFolderList(appDB.folderDao().getFolderByStatus("hidden") as ArrayList)
+        binding.hiddenFolderBackgroundView.visibility = View.INVISIBLE    // 뒷배경 흐림 취소
+        hiddenFolderRVAdapter.addFolderList(database.folderDao().getFolderByStatus("hidden") as ArrayList)
     }
 
+    // 아이콘 바꾸기 팝업 윈도우
     @SuppressLint("InflateParams")
-    fun changeIcon(binding: ItemHiddenFolderBinding, position: Int, folderListFromAdapter: ArrayList<Folder>) {
+    fun changeIcon(itemHiddenFolderBinding: ItemHiddenFolderBinding, position: Int, folderListFromAdapter: ArrayList<Folder>) {
         // 팝업 윈도우 사이즈를 잘못 맞추면 아이템들이 안 뜨므로 하드 코딩으로 사이즈 조정해주기
         // 아이콘 16개 (기본)
         val size = windowManager.currentWindowMetricsPointCompat()
@@ -144,32 +138,35 @@ class HiddenFolderActivity: BaseActivity<ActivityHiddenFolderBinding>(ActivityHi
         mPopupWindow.isFocusable = true
         mPopupWindow.isOutsideTouchable = true
         mPopupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0)
+        binding.hiddenFolderBackgroundView.visibility = View.VISIBLE
 
         // RecyclerView 초기화
         // 더미 데이터와 어댑터 연결
+        database = AppDatabase.getInstance(this@HiddenFolderActivity)!!
+        iconList = database.iconDao().getIconList() as ArrayList
         iconRVAdapter = ChangeIconRVAdapter(iconList)
         popupView.findViewById<RecyclerView>(R.id.popup_window_change_icon_recycler_view).adapter = iconRVAdapter
 
         iconRVAdapter.setMyItemClickListener(object: ChangeIconRVAdapter.MyItemClickListener {
             // 아이콘을 하나 선택했을 경우
-            override fun onIconClick(itemBinding: ItemIconBinding, itemPosition: Int) {
+            override fun onIconClick(itemIconBinding: ItemIconBinding, itemPosition: Int) {
                 // 선택한 아이콘으로 폴더 이미지 변경
                 val selectedIcon = iconList[itemPosition]
-                binding.itemHiddenFolderIv.setImageResource(selectedIcon.iconImage)
-
-                appDB = AppDatabase.getInstance(this@HiddenFolderActivity)!!
+                itemHiddenFolderBinding.itemHiddenFolderIv.setImageResource(selectedIcon.iconImage)
 
                 // RoomDB 적용
-                val folder = appDB.folderDao().getFolderByIdx(folderListFromAdapter[position].idx)
-                appDB.folderDao().updateFolderImgByIdx(selectedIcon.iconImage, folder.idx)
-                folderList = appDB.folderDao().getFolderList() as ArrayList
-                hiddenFolderRVAdapter.addFolderList(appDB.folderDao().getFolderByStatus("hidden") as ArrayList)
+                val folder = database.folderDao().getFolderByIdx(folderListFromAdapter[position].idx)
+                database.folderDao().updateFolderImgByIdx(selectedIcon.iconImage, folder.idx)
+                folderList = database.folderDao().getFolderList() as ArrayList
+                hiddenFolderRVAdapter.addFolderList(database.folderDao().getFolderByStatus(HIDDEN) as ArrayList)
 
                 // 팝업 윈도우 종료
                 mPopupWindow.dismiss()
+                binding.hiddenFolderBackgroundView.visibility = View.INVISIBLE
             }
         })
-//        folderRVAdapter.addFolderList(appDB.folderDao().getFolderByStatus("active") as ArrayList)
+        binding.hiddenFolderBackgroundView.visibility = View.INVISIBLE
+        hiddenFolderRVAdapter.addFolderList(database.folderDao().getFolderByStatus(ACTIVE) as ArrayList)
     }
 
     // 디바이스 크기에 사이즈를 맞추기 위한 함수
