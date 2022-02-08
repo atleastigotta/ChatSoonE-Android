@@ -74,6 +74,13 @@
             app:layout_constraintStart_toStartOf="@+id/my_folder_my_folder_line_view"
             app:layout_constraintEnd_toEndOf="@+id/my_folder_my_folder_line_view" />
 
+        <View
+            android:id="@+id/my_folder_background_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#40BFBFBF"
+            android:visibility="invisible" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
@@ -121,16 +128,5 @@
         app:layout_constraintBottom_toBottomOf="@+id/my_folder_bottom_bar_view"
         app:layout_constraintStart_toEndOf="@+id/my_folder_create_new_folder_iv"
         app:layout_constraintEnd_toEndOf="parent" />
-
-    <View
-        android:id="@+id/my_folder_background_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#40BFBFBF"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
