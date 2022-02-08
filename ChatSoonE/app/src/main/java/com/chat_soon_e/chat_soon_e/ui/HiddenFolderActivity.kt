@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.PopupMenu
 import android.widget.PopupWindow
 import androidx.appcompat.widget.AppCompatButton
+import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.ACTIVE
 import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.DELETED
@@ -185,5 +186,12 @@ class HiddenFolderActivity: BaseActivity<ActivityHiddenFolderBinding>(ActivityHi
                 defaultDisplay.getSize(this)
             }
         }
+    }
+
+    // 뒤로 가기 버튼을 한 경우
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivityWithClear(MyFolderActivity::class.java)
+        finish()
     }
 }

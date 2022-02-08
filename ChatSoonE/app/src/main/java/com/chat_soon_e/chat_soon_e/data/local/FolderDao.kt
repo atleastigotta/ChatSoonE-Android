@@ -14,7 +14,7 @@ interface FolderDao {
     fun update(folder: Folder)
 
     //폴더안의 모든 채팅 내용 삭제(폴더 삭제시 먼저 실행)
-    @Query("DELETE FROM FOlderTable WHERE idx = :folderIdx")
+    @Query("DELETE FROM FolderTable WHERE idx = :folderIdx")
     fun delete(folderIdx:Int)
 
     //모든 폴더목록 조회

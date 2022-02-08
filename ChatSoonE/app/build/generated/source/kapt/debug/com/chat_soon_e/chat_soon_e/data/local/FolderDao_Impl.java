@@ -95,7 +95,7 @@ public final class FolderDao_Impl implements FolderDao {
     this.__preparedStmtOfDelete = new SharedSQLiteStatement(__db) {
       @Override
       public String createQuery() {
-        final String _query = "DELETE FROM FOlderTable WHERE idx = ?";
+        final String _query = "DELETE FROM FolderTable WHERE idx = ?";
         return _query;
       }
     };

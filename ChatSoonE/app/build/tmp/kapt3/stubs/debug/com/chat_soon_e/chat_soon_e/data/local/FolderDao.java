@@ -14,7 +14,7 @@ public abstract interface FolderDao {
     public abstract void update(@org.jetbrains.annotations.NotNull()
     com.chat_soon_e.chat_soon_e.data.entities.Folder folder);
     
-    @androidx.room.Query(value = "DELETE FROM FOlderTable WHERE idx = :folderIdx")
+    @androidx.room.Query(value = "DELETE FROM FolderTable WHERE idx = :folderIdx")
     public abstract void delete(int folderIdx);
     
     @org.jetbrains.annotations.NotNull()
