@@ -259,6 +259,7 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
 
             folder.folderName = text
             database.folderDao().update(folder)
+            database.folderDao().update(folder)
 
             // 팝업 윈도우 종료
             mPopupWindow.dismiss()

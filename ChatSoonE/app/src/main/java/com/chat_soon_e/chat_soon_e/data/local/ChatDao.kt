@@ -67,6 +67,8 @@ interface ChatDao {
     fun getOneChatList(otherIdx:Int):LiveData<List<Chat>>
 
     //단톡 가져오기
+    @Query("SELECT C.postTime, C.folderIdx, C.chatIdx, C.otherUserIdx, C.isChecked, C.message, C.groupName, C.status, C.isNew, C.viewType FROM ChatTable C INNER JOIN OtherUserTable OU ON C.otherUserIdx=OU.otherUserIdx WHERE OU.kakaoUserIdx= :user_id AND groupName= :groupName ORDER BY C.postTime DESC")
+    fun getOrgChatList(user_id:Long, groupName: String):LiveData<List<Chat>>
 
     //모든 챗 목록
     @Query("SELECT * FROM ChatTable")

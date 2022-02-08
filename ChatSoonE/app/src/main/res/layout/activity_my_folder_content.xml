@@ -129,4 +129,18 @@
         app:layout_constraintStart_toEndOf="@+id/my_folder_create_new_folder_iv"
         app:layout_constraintEnd_toEndOf="parent" />
 
+<<<<<<< HEAD
+=======
+    <View
+        android:id="@+id/my_folder_background_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#405A5A5A"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+>>>>>>> upstream/develope
 </androidx.constraintlayout.widget.ConstraintLayout>

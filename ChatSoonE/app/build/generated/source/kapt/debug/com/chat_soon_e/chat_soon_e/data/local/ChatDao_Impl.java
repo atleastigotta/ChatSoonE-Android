@@ -642,6 +642,97 @@ public final class ChatDao_Impl implements ChatDao {
   }
 
   @Override
+  public LiveData<List<Chat>> getOrgChatList(final long user_id, final String groupName) {
+    final String _sql = "SELECT C.postTime, C.folderIdx, C.chatIdx, C.otherUserIdx, C.isChecked, C.message, C.groupName, C.status, C.isNew, C.viewType FROM ChatTable C INNER JOIN OtherUserTable OU ON C.otherUserIdx=OU.otherUserIdx WHERE OU.kakaoUserIdx= ? AND groupName= ? ORDER BY C.postTime DESC";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 2);
+    int _argIndex = 1;
+    _statement.bindLong(_argIndex, user_id);
+    _argIndex = 2;
+    if (groupName == null) {
+      _statement.bindNull(_argIndex);
+    } else {
+      _statement.bindString(_argIndex, groupName);
+    }
+    return __db.getInvalidationTracker().createLiveData(new String[]{"ChatTable","OtherUserTable"}, false, new Callable<List<Chat>>() {
+      @Override
+      public List<Chat> call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfPostTime = CursorUtil.getColumnIndexOrThrow(_cursor, "postTime");
+          final int _cursorIndexOfFolderIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "folderIdx");
+          final int _cursorIndexOfChatIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "chatIdx");
+          final int _cursorIndexOfOtherUserIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "otherUserIdx");
+          final int _cursorIndexOfIsChecked = CursorUtil.getColumnIndexOrThrow(_cursor, "isChecked");
+          final int _cursorIndexOfMessage = CursorUtil.getColumnIndexOrThrow(_cursor, "message");
+          final int _cursorIndexOfGroupName = CursorUtil.getColumnIndexOrThrow(_cursor, "groupName");
+          final int _cursorIndexOfStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "status");
+          final int _cursorIndexOfIsNew = CursorUtil.getColumnIndexOrThrow(_cursor, "isNew");
+          final int _cursorIndexOfViewType = CursorUtil.getColumnIndexOrThrow(_cursor, "viewType");
+          final List<Chat> _result = new ArrayList<Chat>(_cursor.getCount());
+          while(_cursor.moveToNext()) {
+            final Chat _item;
+            final Date _tmpPostTime;
+            final Long _tmp;
+            if (_cursor.isNull(_cursorIndexOfPostTime)) {
+              _tmp = null;
+            } else {
+              _tmp = _cursor.getLong(_cursorIndexOfPostTime);
+            }
+            _tmpPostTime = __converter.fromTimestamp(_tmp);
+            final int _tmpFolderIdx;
+            _tmpFolderIdx = _cursor.getInt(_cursorIndexOfFolderIdx);
+            final int _tmpOtherUserIdx;
+            _tmpOtherUserIdx = _cursor.getInt(_cursorIndexOfOtherUserIdx);
+            final boolean _tmpIsChecked;
+            final int _tmp_1;
+            _tmp_1 = _cursor.getInt(_cursorIndexOfIsChecked);
+            _tmpIsChecked = _tmp_1 != 0;
+            final String _tmpMessage;
+            if (_cursor.isNull(_cursorIndexOfMessage)) {
+              _tmpMessage = null;
+            } else {
+              _tmpMessage = _cursor.getString(_cursorIndexOfMessage);
+            }
+            final String _tmpGroupName;
+            if (_cursor.isNull(_cursorIndexOfGroupName)) {
+              _tmpGroupName = null;
+            } else {
+              _tmpGroupName = _cursor.getString(_cursorIndexOfGroupName);
+            }
+            final String _tmpStatus;
+            if (_cursor.isNull(_cursorIndexOfStatus)) {
+              _tmpStatus = null;
+            } else {
+              _tmpStatus = _cursor.getString(_cursorIndexOfStatus);
+            }
+            final Integer _tmpIsNew;
+            if (_cursor.isNull(_cursorIndexOfIsNew)) {
+              _tmpIsNew = null;
+            } else {
+              _tmpIsNew = _cursor.getInt(_cursorIndexOfIsNew);
+            }
+            final int _tmpViewType;
+            _tmpViewType = _cursor.getInt(_cursorIndexOfViewType);
+            _item = new Chat(_tmpOtherUserIdx,_tmpGroupName,_tmpMessage,_tmpPostTime,_tmpFolderIdx,_tmpStatus,_tmpViewType,_tmpIsChecked,_tmpIsNew);
+            final int _tmpChatIdx;
+            _tmpChatIdx = _cursor.getInt(_cursorIndexOfChatIdx);
+            _item.setChatIdx(_tmpChatIdx);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+        }
+      }
+
+      @Override
+      protected void finalize() {
+        _statement.release();
+      }
+    });
+  }
+
+  @Override
   public List<Chat> getChatList() {
     final String _sql = "SELECT * FROM ChatTable";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);

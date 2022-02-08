@@ -38,6 +38,7 @@
         android:usesCleartextTraffic="true" >
 
         <!-- SplashActivity -->
+
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.SplashActivity"
             android:exported="true" >
@@ -47,6 +48,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.chat_soon_e.chat_soon_e.ui.ExplainActivity.ExplainActivity"
+            android:exported="true" />
         <activity android:name="com.chat_soon_e.chat_soon_e.ui.PermissionActivity" />
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.MainActivity"
@@ -83,7 +87,11 @@
                 <!-- Redirect URI: "kakao{NATIVE_APP_KEY}://oauth" -->
                 <data
                     android:host="oauth"
+<<<<<<< HEAD
                     android:scheme="kakao344ce6395e3e90c63689e4fef30067f0" />
+=======
+                    android:scheme="kakaof8c2d56075b5f5419de75d444f7c7071" />
+>>>>>>> upstream/develope
             </intent-filter>
         </activity>
 
