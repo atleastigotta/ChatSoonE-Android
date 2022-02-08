@@ -1,6 +1,7 @@
 package com.chat_soon_e.chat_soon_e.ui
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Insets
 import android.graphics.Point
 import android.os.Build
@@ -24,9 +25,7 @@ import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.DELETED
 import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.HIDDEN
 import com.chat_soon_e.chat_soon_e.data.entities.Icon
 import com.chat_soon_e.chat_soon_e.databinding.ItemIconBinding
-import android.view.MotionEvent
-
-import android.view.View.OnTouchListener
+import com.google.gson.Gson
 
 class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBinding::inflate), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var database: AppDatabase
@@ -66,7 +65,17 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
 
             // 폴더 아이콘 클릭 시 해당 폴더로 이동
             override fun onFolderClick(view: View, position: Int) {
-                startNextActivity(FolderContentActivity::class.java)
+                var folder=folderRVAdapter.getSelectedFolder(position)
+
+                Log.d("FolderContentss", folder.toString())
+                // folder삽입시 status변경!null아님!!!!!!!!
+                val gson=Gson()
+                var folderJson=gson.toJson(folder)
+
+                // 폴더 정보를 보내기기
+               var intent=Intent(this@MyFolderActivity, FolderContentActivity::class.java)
+                intent.putExtra("folderData", folderJson)
+                startActivity(intent)
             }
 
             // 폴더 아이콘 롱클릭 시 팝업 메뉴 뜨도록
@@ -235,7 +244,7 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
     }
 
     // 이름 바꾸기 팝업 윈도우를 띄워서 폴더 이름을 변경할 수 있도록 해준다.
-    @SuppressLint("InflateParams")
+    @SuppressLint("InflateParams", "ClickableViewAccessibility")
     fun changeFolderName(itemBinding: ItemMyFolderBinding) {
         // 이름 바꾸기 팝업 윈도우
         val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -256,7 +265,6 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
         // RoomDB
         database = AppDatabase.getInstance(this@MyFolderActivity)!!
         val folder = database.folderDao().getFolderByName(text)
-
         // 입력 완료했을 때 누르는 버튼
         mPopupWindow.contentView.findViewById<AppCompatButton>(R.id.popup_window_change_name_button).setOnClickListener {
             text = mPopupWindow.contentView.findViewById<EditText>(R.id.popup_window_change_name_et).text.toString()
@@ -275,7 +283,7 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
         folderRVAdapter.addFolderList(database.folderDao().getFolderByStatus(ACTIVE) as ArrayList)
     }
 
-    @SuppressLint("InflateParams")
+    @SuppressLint("InflateParams", "ClickableViewAccessibility")
     fun changeIcon(binding: ItemMyFolderBinding, position: Int, folderListFromAdapter: ArrayList<Folder>) {
         // 팝업 윈도우 사이즈를 잘못 맞추면 아이템들이 안 뜨므로 하드 코딩으로 사이즈 조정해주기
         // 아이콘 16개 (기본)
@@ -291,6 +299,7 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
         mPopupWindow.animationStyle = -1        // 애니메이션 설정 (-1: 설정 안 함, 0: 설정)
         mPopupWindow.isFocusable = true
         mPopupWindow.isOutsideTouchable = true
+
         mPopupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0)
         mPopupWindow.setOnDismissListener(PopupWindowDismissListener())
 

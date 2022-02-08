@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:background="@color/white"
+    android:id="@+id/item_chat_list_default_layout"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/item_chat_list_profile_cv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:cardCornerRadius="50dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/item_chat_list_name_tv"
+        android:layout_marginStart="20dp"
+        >
+        <ImageView
+            android:id="@+id/item_chat_list_profile_iv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/icon_profile"
+            android:scaleType="fitXY"/>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/item_chat_list_name_tv"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/chat_list_name"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginStart="15dp"
+        app:layout_constraintTop_toTopOf="@id/item_chat_list_profile_cv"
+        app:layout_constraintBottom_toTopOf="@+id/item_chat_list_content_tv"
+        app:layout_constraintStart_toEndOf="@+id/item_chat_list_profile_cv" />
+
+    <TextView
+        android:id="@+id/item_chat_list_content_tv"
+        android:layout_width="250dp"
+        android:layout_height="20dp"
+        android:text="@string/chat_list_content"
+        android:textSize="13sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/item_chat_list_name_tv"
+        app:layout_constraintStart_toStartOf="@id/item_chat_list_name_tv"
+        app:layout_constraintBottom_toBottomOf="@+id/item_chat_list_profile_cv" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/item_chat_list_new_cv"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        app:cardCornerRadius="50dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@id/item_chat_list_profile_cv"
+        app:layout_constraintTop_toTopOf="@id/item_chat_list_profile_cv"
+        android:translationZ="2dp"
+        android:layout_marginTop="2dp"
+        android:visibility="visible"
+        app:cardElevation="0dp"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="N"
+                android:background="#FFF84D17"
+                android:textColor="@color/white"
+                android:textSize="7sp" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/item_chat_list_date_time_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/chat_list_date_time"
+        android:textSize="10sp"
+        android:textColor="@color/gray"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintTop_toTopOf="@+id/item_chat_list_name_tv"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

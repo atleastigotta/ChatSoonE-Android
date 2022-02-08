@@ -44,12 +44,12 @@ public final class MyFolderActivity extends com.chat_soon_e.chat_soon_e.ui.BaseA
     private final void initClickListener() {
     }
     
-    @android.annotation.SuppressLint(value = {"InflateParams"})
+    @android.annotation.SuppressLint(value = {"InflateParams", "ClickableViewAccessibility"})
     public final void changeFolderName(@org.jetbrains.annotations.NotNull()
     com.chat_soon_e.chat_soon_e.databinding.ItemMyFolderBinding itemBinding) {
     }
     
-    @android.annotation.SuppressLint(value = {"InflateParams"})
+    @android.annotation.SuppressLint(value = {"InflateParams", "ClickableViewAccessibility"})
     public final void changeIcon(@org.jetbrains.annotations.NotNull()
     com.chat_soon_e.chat_soon_e.databinding.ItemMyFolderBinding binding, int position, @org.jetbrains.annotations.NotNull()
     java.util.ArrayList<com.chat_soon_e.chat_soon_e.data.entities.Folder> folderListFromAdapter) {
