@@ -391,6 +391,7 @@ int attr customNavigationLayout 0x7f030139
 int attr customPixelDimension 0x7f03013a
 int attr customReference 0x7f03013b
 int attr customStringValue 0x7f03013c
+int attr dampingRatio 0x7f030474
 int attr data 0x7f03013d
 int attr dataPattern 0x7f03013e
 int attr dayInvalidStyle 0x7f03013f
@@ -421,6 +422,15 @@ int attr dotAnimationDuration 0x7f030157
 int attr dotCount 0x7f030158
 int attr dotNormalSize 0x7f030159
 int attr dotSelectedSize 0x7f03015a
+int attr dotsClickable 0x7f030475
+int attr dotsColor 0x7f030476
+int attr dotsCornerRadius 0x7f030477
+int attr dotsElevation 0x7f030478
+int attr dotsSize 0x7f030479
+int attr dotsSpacing 0x7f03047a
+int attr dotsStrokeColor 0x7f03047b
+int attr dotsStrokeWidth 0x7f03047c
+int attr dotsWidthFactor 0x7f03047d
 int attr dragDirection 0x7f03015b
 int attr dragScale 0x7f03015c
 int attr dragThreshold 0x7f03015d
@@ -905,6 +915,7 @@ int attr preserveIconSpacing 0x7f03033b
 int attr pressedTranslationZ 0x7f03033c
 int attr progressBarPadding 0x7f03033d
 int attr progressBarStyle 0x7f03033e
+int attr progressMode 0x7f03047e
 int attr quantizeMotionInterpolator 0x7f03033f
 int attr quantizeMotionPhase 0x7f030340
 int attr quantizeMotionSteps 0x7f030341
@@ -941,6 +952,7 @@ int attr searchViewStyle 0x7f03035f
 int attr seekBarStyle 0x7f030360
 int attr selectableItemBackground 0x7f030361
 int attr selectableItemBackgroundBorderless 0x7f030362
+int attr selectedDotColor 0x7f03047f
 int attr selectionRequired 0x7f030363
 int attr selectorSize 0x7f030364
 int attr setsTag 0x7f030365
@@ -995,6 +1007,7 @@ int attr state_lifted 0x7f030395
 int attr statusBarBackground 0x7f030396
 int attr statusBarForeground 0x7f030397
 int attr statusBarScrim 0x7f030398
+int attr stiffness 0x7f030480
 int attr strokeColor 0x7f030399
 int attr strokeWidth 0x7f03039a
 int attr subMenuArrow 0x7f03039b
@@ -2536,6 +2549,7 @@ int drawable btn_radio_off_mtrl 0x7f070067
 int drawable btn_radio_off_to_on_mtrl_animation 0x7f070068
 int drawable btn_radio_on_mtrl 0x7f070069
 int drawable btn_radio_on_to_off_mtrl_animation 0x7f07006a
+int drawable cancel_btn 0x7f0700f6
 int drawable chatsoon1 0x7f07006b
 int drawable chatsoon10 0x7f07006c
 int drawable chatsoon11 0x7f07006d
@@ -2557,6 +2571,7 @@ int drawable design_ic_visibility 0x7f07007c
 int drawable design_ic_visibility_off 0x7f07007d
 int drawable design_password_eye 0x7f07007e
 int drawable design_snackbar_background 0x7f07007f
+int drawable dot_background 0x7f0700f7
 int drawable ic_all_chat 0x7f070080
 int drawable ic_baseline_account_circle_24 0x7f070081
 int drawable ic_baseline_arrow_back_ios_24 0x7f070082
@@ -2660,6 +2675,7 @@ int drawable notification_template_icon_bg 0x7f0700e3
 int drawable notification_template_icon_low_bg 0x7f0700e4
 int drawable notification_tile_bg 0x7f0700e5
 int drawable notify_panel_notification_icon_bg 0x7f0700e6
+int drawable progressbar_progressbar1 0x7f0700fc
 int drawable selector_chat 0x7f0700e7
 int drawable selector_chat_list 0x7f0700e8
 int drawable selector_navi_home 0x7f0700e9
@@ -2671,10 +2687,14 @@ int drawable shadow 0x7f0700ee
 int drawable shape_switch_track_off 0x7f0700ef
 int drawable shape_switch_track_on 0x7f0700f0
 int drawable shape_thumb 0x7f0700f1
+int drawable spring_dot_background 0x7f0700f8
+int drawable spring_dot_stroke_background 0x7f0700f9
 int drawable test_custom_background 0x7f0700f2
 int drawable test_level_drawable 0x7f0700f3
 int drawable tooltip_frame_dark 0x7f0700f4
 int drawable tooltip_frame_light 0x7f0700f5
+int drawable worm_dot_background 0x7f0700fa
+int drawable worm_dot_stroke_background 0x7f0700fb
 int id ALT 0x7f080000
 int id BOTTOM_END 0x7f080001
 int id BOTTOM_START 0x7f080002
@@ -2763,6 +2783,7 @@ int id auto 0x7f080054
 int id autoComplete 0x7f080055
 int id autoCompleteToEnd 0x7f080056
 int id autoCompleteToStart 0x7f080057
+int id background 0x7f080270
 int id barrier 0x7f080058
 int id baseline 0x7f080059
 int id beginOnFirstDraw 0x7f08005a
@@ -2851,6 +2872,7 @@ int id disableIntraAutoTransition 0x7f0800ac
 int id disablePostScroll 0x7f0800ad
 int id disableScroll 0x7f0800ae
 int id disjoint 0x7f0800af
+int id dot 0x7f080267
 int id dragAnticlockwise 0x7f0800b0
 int id dragClockwise 0x7f0800b1
 int id dragDown 0x7f0800b2
@@ -2874,6 +2896,12 @@ int id enterAlwaysCollapsed 0x7f0800c3
 int id exitUntilCollapsed 0x7f0800c4
 int id expand_activities_button 0x7f0800c5
 int id expanded_menu 0x7f0800c6
+int id explain1_iv 0x7f080268
+int id explain_checkbox 0x7f080269
+int id explain_exit_btn_iv 0x7f08026f
+int id explain_fl 0x7f08026a
+int id explain_indicator 0x7f08026b
+int id explain_vp 0x7f08026c
 int id fade 0x7f0800c7
 int id fill 0x7f0800c8
 int id fill_horizontal 0x7f0800c9
@@ -3198,6 +3226,7 @@ int id split_action_bar 0x7f080207
 int id spread 0x7f080208
 int id spread_inside 0x7f080209
 int id spring 0x7f08020a
+int id spring_dot 0x7f08026d
 int id square 0x7f08020b
 int id src_atop 0x7f08020c
 int id src_in 0x7f08020d
@@ -3284,6 +3313,7 @@ int id west 0x7f08025d
 int id width_bias 0x7f08025e
 int id withText 0x7f08025f
 int id withinBounds 0x7f080260
+int id worm_dot 0x7f08026e
 int id wrap 0x7f080261
 int id wrap_content 0x7f080262
 int id wrap_content_constrained 0x7f080263
@@ -3378,6 +3408,7 @@ int layout abc_select_dialog_material 0x7f0b001a
 int layout abc_tooltip 0x7f0b001b
 int layout activity_chat 0x7f0b001c
 int layout activity_create_pattern 0x7f0b001d
+int layout activity_explain 0x7f0b009d
 int layout activity_folder_content 0x7f0b001e
 int layout activity_hidden_folder 0x7f0b001f
 int layout activity_input_pattern 0x7f0b0020
@@ -3410,6 +3441,9 @@ int layout design_navigation_menu 0x7f0b003a
 int layout design_navigation_menu_item 0x7f0b003b
 int layout design_text_input_end_icon 0x7f0b003c
 int layout design_text_input_start_icon 0x7f0b003d
+int layout dot_layout 0x7f0b009e
+int layout fragment_explain 0x7f0b009f
+int layout fragment_explain_1 0x7f0b00a0
 int layout item_chat_choose 0x7f0b003e
 int layout item_chat_default 0x7f0b003f
 int layout item_chat_list_choose 0x7f0b0040
@@ -3489,6 +3523,7 @@ int layout popup_window_to_folder_menu 0x7f0b0089
 int layout select_dialog_item_material 0x7f0b008a
 int layout select_dialog_multichoice_material 0x7f0b008b
 int layout select_dialog_singlechoice_material 0x7f0b008c
+int layout spring_dot_layout 0x7f0b00a1
 int layout support_simple_spinner_dropdown_item 0x7f0b008d
 int layout test_action_chip 0x7f0b008e
 int layout test_chip_zero_corner_radius 0x7f0b008f
@@ -3505,6 +3540,7 @@ int layout text_view_with_line_height_from_layout 0x7f0b0099
 int layout text_view_with_line_height_from_style 0x7f0b009a
 int layout text_view_with_theme_line_height 0x7f0b009b
 int layout text_view_without_line_height 0x7f0b009c
+int layout worm_dot_layout 0x7f0b00a2
 int menu example_menu 0x7f0c0000
 int menu example_menu2 0x7f0c0001
 int menu navi_setting_menu 0x7f0c0002
@@ -5708,6 +5744,16 @@ int styleable CustomAttribute_customStringValue 9
 int styleable CustomAttribute_methodName 10
 int[] styleable DialogFragmentNavigator { 0x01010003 }
 int styleable DialogFragmentNavigator_android_name 0
+int[] styleable DotsIndicator { 0x7f030475, 0x7f030476, 0x7f030477, 0x7f030478, 0x7f030479, 0x7f03047a, 0x7f03047d, 0x7f03047e, 0x7f03047f }
+int styleable DotsIndicator_dotsClickable 0
+int styleable DotsIndicator_dotsColor 1
+int styleable DotsIndicator_dotsCornerRadius 2
+int styleable DotsIndicator_dotsElevation 3
+int styleable DotsIndicator_dotsSize 4
+int styleable DotsIndicator_dotsSpacing 5
+int styleable DotsIndicator_dotsWidthFactor 6
+int styleable DotsIndicator_progressMode 7
+int styleable DotsIndicator_selectedDotColor 8
 int[] styleable DrawerArrowToggle { 0x7f030037, 0x7f030038, 0x7f030055, 0x7f0300db, 0x7f030163, 0x7f0301d5, 0x7f03037e, 0x7f030412 }
 int styleable DrawerArrowToggle_arrowHeadLength 0
 int styleable DrawerArrowToggle_arrowShaftLength 1
@@ -6486,6 +6532,16 @@ int styleable Spinner_android_popupBackground 1
 int styleable Spinner_android_prompt 2
 int styleable Spinner_android_dropDownWidth 3
 int styleable Spinner_popupTheme 4
+int[] styleable SpringDotsIndicator { 0x7f030474, 0x7f030475, 0x7f030476, 0x7f030477, 0x7f030479, 0x7f03047a, 0x7f03047b, 0x7f03047c, 0x7f030480 }
+int styleable SpringDotsIndicator_dampingRatio 0
+int styleable SpringDotsIndicator_dotsClickable 1
+int styleable SpringDotsIndicator_dotsColor 2
+int styleable SpringDotsIndicator_dotsCornerRadius 3
+int styleable SpringDotsIndicator_dotsSize 4
+int styleable SpringDotsIndicator_dotsSpacing 5
+int styleable SpringDotsIndicator_dotsStrokeColor 6
+int styleable SpringDotsIndicator_dotsStrokeWidth 7
+int styleable SpringDotsIndicator_stiffness 8
 int[] styleable State { 0x010100d0, 0x7f03010a }
 int styleable State_android_id 0
 int styleable State_constraints 1
@@ -6755,6 +6811,14 @@ int styleable ViewTransition_setsTag 11
 int styleable ViewTransition_transitionDisable 12
 int styleable ViewTransition_upDuration 13
 int styleable ViewTransition_viewTransitionMode 14
+int[] styleable WormDotsIndicator { 0x7f030475, 0x7f030476, 0x7f030477, 0x7f030479, 0x7f03047a, 0x7f03047b, 0x7f03047c }
+int styleable WormDotsIndicator_dotsClickable 0
+int styleable WormDotsIndicator_dotsColor 1
+int styleable WormDotsIndicator_dotsCornerRadius 2
+int styleable WormDotsIndicator_dotsSize 3
+int styleable WormDotsIndicator_dotsSpacing 4
+int styleable WormDotsIndicator_dotsStrokeColor 5
+int styleable WormDotsIndicator_dotsStrokeWidth 6
 int[] styleable include { 0x7f030105 }
 int styleable include_constraintSet 0
 int xml standalone_badge 0x7f120000

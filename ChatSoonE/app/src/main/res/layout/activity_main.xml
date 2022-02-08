@@ -16,6 +16,7 @@
         android:layout_height="match_parent"
         layout="@layout/activity_main_content" />
 
+
     <!-- 자식 레이아웃 -->
     <!-- Navigation Drawer -->
     <com.google.android.material.navigation.NavigationView

@@ -46,7 +46,7 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
 
 
     override fun initAfterBinding() {
-        initData()
+        //initData()
         initFab()
         Handler(Looper.getMainLooper()).postDelayed({
             initData()
@@ -108,10 +108,18 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
             })
         }else if(isAll==1){
             //특정 톡만 가져오기
-            val otherIdx=database.chatDao().getChatOtherIdx(chatListData.chatIdx)
-            database.chatDao().getOneChatList(otherIdx).observe(this,{
-                chatRVAdapter.addItem(it)
-            })
+            if(isGroup) {
+                database.chatDao().getOrgChatList(getID(), chatListData.chat_name!!).observe(this,{
+                    chatRVAdapter.addItem(it)
+                })
+            }
+            else if(!isGroup){
+                //개인톡일경우
+                val otherIdx=database.chatDao().getChatOtherIdx(chatListData.chatIdx)
+                database.chatDao().getOneChatList(otherIdx).observe(this,{
+                    chatRVAdapter.addItem(it)
+                })
+            }
         }
         // 폴더 선택 모드를 해제하기 위해
         binding.chatCancelFab.setOnClickListener {
@@ -157,10 +165,9 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
     //MainActivity로 부터 데이터를 가져온다.
 
     private fun initData(){
-        //isGroup==-1, isNotGroup==1
+        // isAll : 모든 채팅 목록==-1, 특정 채팅방 목록==1
         isAll=getSharedPreferences("chatAll", MODE_PRIVATE).getInt("chatAll", 0)
-        
-        Log.d("isALLOR", isAll.toString())
+
         if(intent.hasExtra("chatListJson")){
             chatListData=intent.getSerializableExtra("chatListJson") as ChatList
             isGroup = chatListData.isGroup !=0
@@ -231,9 +238,15 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
                     } else {    // 패턴이 설정되어 있는 경우 입력 페이지로 (보안을 위해)
                         startNextActivity(InputPatternActivity::class.java)
                     }
-
-                    // 폴더로 이동시키는 코드 작성
                 }
+                //만약 비밀번호가 틀렸을경우 제대로 취소가 되는지 확인
+                // 폴더로 이동시키는 코드 작성
+                var selectedChatIdx=chatRVAdapter.getSelectedItemList()
+                for(i in selectedChatIdx){
+                    database.folderContentDao().insertChat(folderList[itemPosition].idx, i)
+                }
+                val TG="moveListcontent"
+                Log.d(TG, "해당 폴더 목록"+database.folderContentDao().getAllfolder().toString())
 
                 // 팝업 윈도우를 꺼주는 역할
                 mPopupWindow.dismiss()

@@ -6,6 +6,7 @@ import com.chat_soon_e.chat_soon_e.R
 import com.google.gson.annotations.SerializedName
 
 // folderImg: Int -> String (using Bitmap) 변환 필요
+// 폴더 정보를 담은 데이터
 @Entity(tableName = "FolderTable")
 data class Folder(
     @PrimaryKey(autoGenerate = false) @SerializedName("folderIdx") var idx: Int = 0,

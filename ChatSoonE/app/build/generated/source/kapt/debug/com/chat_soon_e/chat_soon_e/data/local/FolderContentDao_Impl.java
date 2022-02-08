@@ -54,21 +54,21 @@ public final class FolderContentDao_Impl implements FolderContentDao {
     this.__preparedStmtOfInsertChat = new SharedSQLiteStatement(__db) {
       @Override
       public String createQuery() {
-        final String _query = "INSERT INTO FolderContentTable (folderIdx, chatIdx) VALUES (?, ?)";
+        final String _query = "INSERT INTO FolderContentTable (folderIdx, chatIdx, status) VALUES (?, ?,'ACTIVE')";
         return _query;
       }
     };
     this.__preparedStmtOfInsertOtOChat = new SharedSQLiteStatement(__db) {
       @Override
       public String createQuery() {
-        final String _query = "INSERT INTO FolderContentTable (folderIdx, chatIdx) SELECT ?, chatIdx FROM ChatTable WHERE otherUserIdx =? AND groupName IS NULL";
+        final String _query = "INSERT INTO FolderContentTable (folderIdx, chatIdx, status) VALUES(?, (SELECT chatIdx FROM ChatTable WHERE otherUserIdx =? AND groupName IS 'null'),'ACTIVE')";
         return _query;
       }
     };
     this.__preparedStmtOfInsertOrgChat = new SharedSQLiteStatement(__db) {
       @Override
       public String createQuery() {
-        final String _query = "INSERT INTO FolderContentTable (folderIdx, chatIdx) SELECT ?, chatIdx FROM ChatTable AS C INNER JOIN OtherUserTable AS OU ON C.otherUserIdx =OU.otherUserIdx WHERE OU.kakaoUserIdx= ? AND C.groupName = ?";
+        final String _query = "INSERT INTO FolderContentTable (folderIdx, chatIdx) VALUES(?,(SELECT chatIdx FROM ChatTable AS C INNER JOIN OtherUserTable AS OU ON C.otherUserIdx =OU.otherUserIdx WHERE OU.kakaoUserIdx= ? AND C.groupName = ?))";
         return _query;
       }
     };
