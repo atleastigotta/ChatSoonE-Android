@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/hidden_folder_my_folder_iv"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/icon_my_folder2"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/hidden_folder_my_folder_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/my_folder"
+        app:layout_constraintTop_toBottomOf="@+id/hidden_folder_my_folder_iv"
+        app:layout_constraintStart_toStartOf="@+id/hidden_folder_my_folder_iv"
+        app:layout_constraintEnd_toEndOf="@+id/hidden_folder_my_folder_iv" />
+
+    <ImageView
+        android:id="@+id/hidden_folder_hidden_folder_iv"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/icon_hidden_folder"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/hidden_folder_hidden_folder_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hidden_folder_title"
+        app:layout_constraintTop_toBottomOf="@+id/hidden_folder_hidden_folder_iv"
+        app:layout_constraintStart_toStartOf="@+id/hidden_folder_hidden_folder_iv"
+        app:layout_constraintEnd_toEndOf="@+id/hidden_folder_hidden_folder_iv" />
+
+    <View
+        android:id="@+id/hidden_folder_line_view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/hidden_folder_hidden_folder_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/hidden_folder_list_recycler_view"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        tools:listitem="@layout/item_hidden_folder"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="3"
+        android:overScrollMode="never"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/hidden_folder_line_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/hidden_folder_line_view"
+        app:layout_constraintEnd_toEndOf="@+id/hidden_folder_line_view" />
+
+    <View
+        android:id="@+id/hidden_folder_background_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#40BFBFBF"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

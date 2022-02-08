@@ -4,6 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.chat_soon_e.chat_soon_e.R
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 // folderImg: Int -> String (using Bitmap) 변환 필요
 // 폴더 정보를 담은 데이터
@@ -15,4 +16,4 @@ data class Folder(
     @SerializedName("folderName") var folderName: String,
     @SerializedName("folderImg") var folderImg: Int = R.drawable.ic_baseline_folder_24,
     @SerializedName("status") var status: String
-)
+):Serializable
