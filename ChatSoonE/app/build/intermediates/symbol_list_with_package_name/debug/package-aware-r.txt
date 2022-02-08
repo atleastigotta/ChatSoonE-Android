@@ -392,6 +392,7 @@ attr customNavigationLayout
 attr customPixelDimension
 attr customReference
 attr customStringValue
+attr dampingRatio
 attr data
 attr dataPattern
 attr dayInvalidStyle
@@ -422,6 +423,15 @@ attr dotAnimationDuration
 attr dotCount
 attr dotNormalSize
 attr dotSelectedSize
+attr dotsClickable
+attr dotsColor
+attr dotsCornerRadius
+attr dotsElevation
+attr dotsSize
+attr dotsSpacing
+attr dotsStrokeColor
+attr dotsStrokeWidth
+attr dotsWidthFactor
 attr dragDirection
 attr dragScale
 attr dragThreshold
@@ -906,6 +916,7 @@ attr preserveIconSpacing
 attr pressedTranslationZ
 attr progressBarPadding
 attr progressBarStyle
+attr progressMode
 attr quantizeMotionInterpolator
 attr quantizeMotionPhase
 attr quantizeMotionSteps
@@ -942,6 +953,7 @@ attr searchViewStyle
 attr seekBarStyle
 attr selectableItemBackground
 attr selectableItemBackgroundBorderless
+attr selectedDotColor
 attr selectionRequired
 attr selectorSize
 attr setsTag
@@ -996,6 +1008,7 @@ attr state_lifted
 attr statusBarBackground
 attr statusBarForeground
 attr statusBarScrim
+attr stiffness
 attr strokeColor
 attr strokeWidth
 attr subMenuArrow
@@ -2537,6 +2550,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable cancel_btn
 drawable chatsoon1
 drawable chatsoon10
 drawable chatsoon11
@@ -2558,6 +2572,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable dot_background
 drawable ic_all_chat
 drawable ic_baseline_account_circle_24
 drawable ic_baseline_arrow_back_ios_24
@@ -2661,6 +2676,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable progressbar_progressbar1
 drawable selector_chat
 drawable selector_chat_list
 drawable selector_navi_home
@@ -2672,10 +2688,14 @@ drawable shadow
 drawable shape_switch_track_off
 drawable shape_switch_track_on
 drawable shape_thumb
+drawable spring_dot_background
+drawable spring_dot_stroke_background
 drawable test_custom_background
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable worm_dot_background
+drawable worm_dot_stroke_background
 id ALT
 id BOTTOM_END
 id BOTTOM_START
@@ -2764,6 +2784,7 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id background
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -2852,6 +2873,7 @@ id disableIntraAutoTransition
 id disablePostScroll
 id disableScroll
 id disjoint
+id dot
 id dragAnticlockwise
 id dragClockwise
 id dragDown
@@ -2875,6 +2897,12 @@ id enterAlwaysCollapsed
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
+id explain1_iv
+id explain_checkbox
+id explain_exit_btn_iv
+id explain_fl
+id explain_indicator
+id explain_vp
 id fade
 id fill
 id fill_horizontal
@@ -3199,6 +3227,7 @@ id split_action_bar
 id spread
 id spread_inside
 id spring
+id spring_dot
 id square
 id src_atop
 id src_in
@@ -3285,6 +3314,7 @@ id west
 id width_bias
 id withText
 id withinBounds
+id worm_dot
 id wrap
 id wrap_content
 id wrap_content_constrained
@@ -3379,6 +3409,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_chat
 layout activity_create_pattern
+layout activity_explain
 layout activity_folder_content
 layout activity_hidden_folder
 layout activity_input_pattern
@@ -3411,6 +3442,9 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout dot_layout
+layout fragment_explain
+layout fragment_explain_1
 layout item_chat_choose
 layout item_chat_default
 layout item_chat_list_choose
@@ -3490,6 +3524,7 @@ layout popup_window_to_folder_menu
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout spring_dot_layout
 layout support_simple_spinner_dropdown_item
 layout test_action_chip
 layout test_chip_zero_corner_radius
@@ -3506,6 +3541,7 @@ layout text_view_with_line_height_from_layout
 layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
+layout worm_dot_layout
 menu example_menu
 menu example_menu2
 menu navi_setting_menu
@@ -4795,6 +4831,7 @@ styleable CoordinatorLayout keylines statusBarBackground
 styleable CoordinatorLayout_Layout android_layout_gravity layout_anchor layout_anchorGravity layout_behavior layout_dodgeInsetEdges layout_insetEdge layout_keyline
 styleable CustomAttribute attributeName customBoolean customColorDrawableValue customColorValue customDimension customFloatValue customIntegerValue customPixelDimension customReference customStringValue methodName
 styleable DialogFragmentNavigator android_name
+styleable DotsIndicator dotsClickable dotsColor dotsCornerRadius dotsElevation dotsSize dotsSpacing dotsWidthFactor progressMode selectedDotColor
 styleable DrawerArrowToggle arrowHeadLength arrowShaftLength barLength color drawableSize gapBetweenBars spinBars thickness
 styleable DrawerLayout elevation
 styleable ExtendedFloatingActionButton collapsedSize elevation extendMotionSpec hideMotionSpec showMotionSpec shrinkMotionSpec
@@ -4884,6 +4921,7 @@ styleable Slider android_enabled android_value android_stepSize android_valueFro
 styleable Snackbar snackbarButtonStyle snackbarStyle snackbarTextViewStyle
 styleable SnackbarLayout android_maxWidth actionTextColorAlpha animationMode backgroundOverlayColorAlpha backgroundTint backgroundTintMode elevation maxActionInlineWidth
 styleable Spinner android_entries android_popupBackground android_prompt android_dropDownWidth popupTheme
+styleable SpringDotsIndicator dampingRatio dotsClickable dotsColor dotsCornerRadius dotsSize dotsSpacing dotsStrokeColor dotsStrokeWidth stiffness
 styleable State android_id constraints
 styleable StateListDrawable android_dither android_visible android_variablePadding android_constantSize android_enterFadeDuration android_exitFadeDuration
 styleable StateListDrawableItem android_drawable
@@ -4907,6 +4945,7 @@ styleable ViewBackgroundHelper android_background backgroundTint backgroundTintM
 styleable ViewPager2 android_orientation
 styleable ViewStubCompat android_id android_layout android_inflatedId
 styleable ViewTransition android_id SharedValue SharedValueId clearsTag duration ifTagNotSet ifTagSet motionInterpolator motionTarget onStateTransition pathMotionArc setsTag transitionDisable upDuration viewTransitionMode
+styleable WormDotsIndicator dotsClickable dotsColor dotsCornerRadius dotsSize dotsSpacing dotsStrokeColor dotsStrokeWidth
 styleable include constraintSet
 xml standalone_badge
 xml standalone_badge_gravity_bottom_end

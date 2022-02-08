@@ -126,7 +126,7 @@
         android:id="@+id/my_folder_background_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#40BFBFBF"
+        android:background="#405A5A5A"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

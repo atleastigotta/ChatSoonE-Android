@@ -17,6 +17,7 @@
         android:theme="@style/Theme.Template_Basic">
 
         <!-- SplashActivity -->
+
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.SplashActivity"
             android:exported="true">
@@ -26,7 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".ui.ExplainActivity.ExplainActivity" android:exported="true"/>
         <activity android:name=".ui.PermissionActivity" />
         <activity android:name="com.chat_soon_e.chat_soon_e.ui.MainActivity" android:exported="true" />
         <activity android:name=".ui.ChatActivity" android:exported="true" />

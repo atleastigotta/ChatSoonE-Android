@@ -19,11 +19,13 @@ class PermissionActivity:BaseActivity<ActivityPermissionBinding>(ActivityPermiss
 
         //권한 얻기 버튼
         binding.notificationPermissionBtn.setOnClickListener {
-            startActivity(Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"))
+            startActivity(Intent( "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"))
             //권한을 얻었다면 서비스 시작
             if(permissionGrantred(this))
+
                 startForegroundService(Intent(this, MyNotificationListener::class.java))
             finish()
+        //startActivityWithClear(SplashActivity::class.java)
         }
     }
 }

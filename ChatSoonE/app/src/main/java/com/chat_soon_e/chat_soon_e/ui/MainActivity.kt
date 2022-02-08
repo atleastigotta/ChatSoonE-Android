@@ -469,23 +469,14 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
                 for(i in chatIdxList) {
                     val chat = chatDao.getChatByChatIdx(i)
                     //폴더에 채팅을 넣을 때는
-                    folderContentDao.insert(FolderContent(folderIdx, i, ACTIVE))
-                    //채팅 인덱스 번호 업데이트
-                    chatDao.updateFolder(i, folderIdx)
+                    val otherUserIdx=chatDao.getChatOtherIdx(i)
+                    if(chat.groupName!=null)
+                        folderContentDao.insertOrgChat(folderIdx, getID(), chat.groupName!!)
+                    else
+                        folderContentDao.insertOtOChat(folderIdx, otherUserIdx)
+                //folderContentDao.insert(FolderContent(folderIdx, i, ACTIVE))
 
-//                    if (chat.groupName != null)
-//                        folderContentDao.insertOtOChat(
-//                            folderIdx,
-//                            chat.otherUserIdx
-//                        )
-//                    else
-//                        folderContentDao.insertOrgChat(
-//                            folderIdx,
-//                            getID(),
-//                            chat.groupName!!
-//                        )
                 }
-                Log.d("folderContents", appDB.folderDao().getFolderByIdx(folderIdx).toString())
                 Log.d("folderContents",appDB.folderContentDao().getAllfolder().toString())
 
                 Toast.makeText(this@MainActivity, "selected folder: ${selectedFolder.folderName}", Toast.LENGTH_SHORT).show()

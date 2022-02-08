@@ -101,6 +101,22 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
         notifyDataSetChanged()
     }
 
+    //선택된 chatIdx 가져오기
+    fun getSelectedItemList():List<Int>{
+        val TG="moveList"
+        var chatIdxList=ArrayList<Int>()
+        val selectedList=chatList.filter{ chatlist-> chatlist.isChecked as Boolean }
+
+        for(i in selectedList){
+            chatIdxList.add(i.chatIdx)
+        }
+        Log.d(TG,"선택된 아이템"+chatIdxList.toString())
+        Log.d(TG,"모든 아이템"+chatList.toString())
+
+        return chatIdxList
+
+    }
+
     // 뷰타입 설정
     @SuppressLint("NotifyDataSetChanged")
     fun setViewType(currentMode: Int) {

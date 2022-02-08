@@ -185,7 +185,6 @@ class MainRVAdapter(private val context: Context, private val mItemClickListener
         for(i in selectedList){
             chatIdxList.add(i.chatIdx)
         }
-        notifyDataSetChanged()
         return chatIdxList
         //선택된 item의 position을 이용해
     }

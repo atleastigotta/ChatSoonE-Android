@@ -10,13 +10,13 @@ public abstract interface FolderContentDao {
     public abstract void insert(@org.jetbrains.annotations.NotNull()
     com.chat_soon_e.chat_soon_e.data.entities.FolderContent folderContent);
     
-    @androidx.room.Query(value = "INSERT INTO FolderContentTable (folderIdx, chatIdx) VALUES (:folderIdx, :chatIdx)")
+    @androidx.room.Query(value = "INSERT INTO FolderContentTable (folderIdx, chatIdx, status) VALUES (:folderIdx, :chatIdx,\'ACTIVE\')")
     public abstract void insertChat(int folderIdx, int chatIdx);
     
-    @androidx.room.Query(value = "INSERT INTO FolderContentTable (folderIdx, chatIdx) SELECT :folderIdx, chatIdx FROM ChatTable WHERE otherUserIdx =:otherUserIdx AND groupName IS NULL")
+    @androidx.room.Query(value = "INSERT INTO FolderContentTable (folderIdx, chatIdx, status) VALUES(:folderIdx, (SELECT chatIdx FROM ChatTable WHERE otherUserIdx =:otherUserIdx AND groupName IS \'null\'),\'ACTIVE\')")
     public abstract void insertOtOChat(int folderIdx, int otherUserIdx);
     
-    @androidx.room.Query(value = "INSERT INTO FolderContentTable (folderIdx, chatIdx) SELECT :folderIdx, chatIdx FROM ChatTable AS C INNER JOIN OtherUserTable AS OU ON C.otherUserIdx =OU.otherUserIdx WHERE OU.kakaoUserIdx= :userIdx AND C.groupName = :groupName")
+    @androidx.room.Query(value = "INSERT INTO FolderContentTable (folderIdx, chatIdx) VALUES(:folderIdx,(SELECT chatIdx FROM ChatTable AS C INNER JOIN OtherUserTable AS OU ON C.otherUserIdx =OU.otherUserIdx WHERE OU.kakaoUserIdx= :userIdx AND C.groupName = :groupName))")
     public abstract void insertOrgChat(int folderIdx, long userIdx, @org.jetbrains.annotations.NotNull()
     java.lang.String groupName);
     
