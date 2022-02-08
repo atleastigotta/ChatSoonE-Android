@@ -195,8 +195,8 @@ class MainRVAdapter(private val context: Context, private val mItemClickListener
             binding.itemChatListDefaultLayout.setOnClickListener {
                 toggleItemSelected(null, position = bindingAdapterPosition)
                 mItemClickListener.onDefaultChatClick(itemView, position = bindingAdapterPosition, chatList[bindingAdapterPosition])
-                Log.d("TESTPosition", bindingAdapterPosition.toString())
-                Log.d("TESTPosition", chatList[bindingAdapterPosition].profileImg.toString())
+//                Log.d("TESTPosition", bindingAdapterPosition.toString())
+//                Log.d("TESTPosition", chatList[bindingAdapterPosition].profileImg.toString())
             }
         }
 

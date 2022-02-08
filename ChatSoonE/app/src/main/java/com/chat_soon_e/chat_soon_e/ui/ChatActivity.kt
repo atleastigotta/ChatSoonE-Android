@@ -191,7 +191,7 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
         // 아이콘 16개 (기본)
         val size = windowManager.currentWindowMetricsPointCompat()
         val width = (size.x * 0.8f).toInt()
-        val height = (size.y * 0.3f).toInt()
+        val height = (size.y * 0.4f).toInt()
 
         val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val popupView = inflater.inflate(R.layout.popup_window_to_folder_menu, null)

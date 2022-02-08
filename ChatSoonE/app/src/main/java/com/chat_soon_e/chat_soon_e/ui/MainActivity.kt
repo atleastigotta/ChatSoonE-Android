@@ -403,7 +403,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         // 아이콘 16개 (기본)
         val size = windowManager.currentWindowMetricsPointCompat()
         val width = (size.x * 0.8f).toInt()
-        val height = (size.y * 0.3f).toInt()
+        val height = (size.y * 0.4f).toInt()
 
         val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val popupView = inflater.inflate(R.layout.popup_window_to_folder_menu, null)
@@ -462,6 +462,9 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
                 // 폴더의 id를 가져옴
 
                 val folderIdx=folderList[itemPosition].idx
+                Log.d("MAIN-ACTIVITY", "item position: $itemPosition")
+                Log.d("MAIN-ACTIVITY", "chat index list: ${chatIdxList.toString()}")
+                Log.d("MAIN-ACTIVITY", "folder index: ${folderIdx.toString()}")
                 //갠톡: folderIdx, otherUserIdx
                 //단톡: folderIdx, userIdx, groupName
 
@@ -469,16 +472,15 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
                 for(i in chatIdxList) {
                     val chat = chatDao.getChatByChatIdx(i)
                     //폴더에 채팅을 넣을 때는
+
                     val otherUserIdx=chatDao.getChatOtherIdx(i)
                     if(chat.groupName!=null)
                         folderContentDao.insertOrgChat(folderIdx, getID(), chat.groupName!!)
                     else
                         folderContentDao.insertOtOChat(folderIdx, otherUserIdx)
                 //folderContentDao.insert(FolderContent(folderIdx, i, ACTIVE))
-
                 }
                 Log.d("folderContents",appDB.folderContentDao().getAllfolder().toString())
-
                 Toast.makeText(this@MainActivity, "selected folder: ${selectedFolder.folderName}", Toast.LENGTH_SHORT).show()
 
                 // 팝업 윈도우를 꺼주는 역할

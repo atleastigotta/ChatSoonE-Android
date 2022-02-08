@@ -203,6 +203,8 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
             binding.myFolderDrawerLayout.closeDrawers()
         } else {
             super.onBackPressed()
+            startActivityWithClear(MainActivity::class.java)
+            finish()
         }
     }
 
@@ -274,7 +276,7 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
         // 아이콘 16개 (기본)
         val size = windowManager.currentWindowMetricsPointCompat()
         val width = (size.x * 0.8f).toInt()
-        val height = (size.y * 0.5f).toInt()
+        val height = (size.y * 0.6f).toInt()
 
         // 아이콘 바꾸기 팝업 윈도우
         val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -396,7 +398,7 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
         // 아이콘 16개 (기본)
         val size = windowManager.currentWindowMetricsPointCompat()
         val width = (size.x * 0.8f).toInt()
-        val height = (size.y * 0.5f).toInt()
+        val height = (size.y * 0.6f).toInt()
 
         // 아이콘 바꾸기 팝업 윈도우
         val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
