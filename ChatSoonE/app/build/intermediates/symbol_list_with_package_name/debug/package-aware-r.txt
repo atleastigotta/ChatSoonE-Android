@@ -2533,6 +2533,7 @@ drawable avd_hide_password
 drawable avd_show_password
 drawable background
 drawable background2
+drawable background3
 drawable background_chat_choose
 drawable background_chat_default
 drawable background_edit_text

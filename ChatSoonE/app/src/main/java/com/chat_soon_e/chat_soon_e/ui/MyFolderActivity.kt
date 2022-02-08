@@ -24,6 +24,9 @@ import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.DELETED
 import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.HIDDEN
 import com.chat_soon_e.chat_soon_e.data.entities.Icon
 import com.chat_soon_e.chat_soon_e.databinding.ItemIconBinding
+import android.view.MotionEvent
+
+import android.view.View.OnTouchListener
 
 class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBinding::inflate), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var database: AppDatabase
@@ -81,6 +84,7 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
                 // 여기서 index를 어떻게 바꿔야 할까?
                 // 숨김 폴더 인덱스를 맨 뒤로 넣는 식으로 해서 폴더 리스트 순서를 바꿔줘야 한다. (데이터베이스 안에)
                 database.folderDao().updateStatusByIdx(HIDDEN, idx)
+
                 val hiddenFolder = database.folderDao().getFolderByIdx(idx)
                 database.folderDao().delete(hiddenFolder.idx)
                 database.folderDao().insert(hiddenFolder)
@@ -243,6 +247,7 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
         mPopupWindow.isOutsideTouchable = true
         mPopupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0)
         binding.myFolderContent.myFolderBackgroundView.visibility = View.VISIBLE    // 뒷배경 흐려지게
+        mPopupWindow.setOnDismissListener(PopupWindowDismissListener())
 
         // 기존 폴더 이름을 팝업 윈도우의 EditText에 넘겨준다.
         var text: String = itemBinding.itemMyFolderTv.text.toString()
@@ -287,6 +292,7 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
         mPopupWindow.isFocusable = true
         mPopupWindow.isOutsideTouchable = true
         mPopupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0)
+        mPopupWindow.setOnDismissListener(PopupWindowDismissListener())
 
         // RecyclerView 초기화
         // 더미 데이터와 어댑터 연결
@@ -376,6 +382,7 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
         mPopupWindow.isFocusable = true         // 외부 영역 선택 시 팝업 윈도우 종료
         mPopupWindow.isOutsideTouchable = true
         mPopupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0)
+        mPopupWindow.setOnDismissListener(PopupWindowDismissListener())
 
         // 입력 완료했을 때 누르는 버튼
         mPopupWindow.contentView.findViewById<AppCompatButton>(R.id.popup_window_set_name_button).setOnClickListener {
@@ -409,6 +416,7 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
         mPopupWindow.isFocusable = true
         mPopupWindow.isOutsideTouchable = true
         mPopupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0)
+        mPopupWindow.setOnDismissListener(PopupWindowDismissListener())
 
         // RecyclerView 초기화
         iconRVAdapter = ChangeIconRVAdapter(iconList)
@@ -448,6 +456,12 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
             Point().apply {
                 defaultDisplay.getSize(this)
             }
+        }
+    }
+
+    inner class PopupWindowDismissListener(): PopupWindow.OnDismissListener {
+        override fun onDismiss() {
+            binding.myFolderContent.myFolderBackgroundView.visibility = View.INVISIBLE
         }
     }
 }

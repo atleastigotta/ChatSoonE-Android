@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-#Wed Feb 09 00:25:28 KST 2022
-=======
-#Tue Feb 08 20:30:56 KST 2022
->>>>>>> upstream/develope
+#Wed Feb 09 02:53:44 KST 2022
 path.4=13/classes.dex
 path.3=11/classes.dex
 path.2=10/classes.dex

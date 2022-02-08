@@ -4,17 +4,8 @@
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_main_drawer_header.xml"
     },
     {
-<<<<<<< HEAD
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_my_folder_content.xml",
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_my_folder_content.xml"
-=======
-        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_explain_1.xml",
-        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\fragment_explain_1.xml"
-    },
-    {
-        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_folder_content.xml",
-        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_folder_content.xml"
->>>>>>> upstream/develope
     },
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_icon.xml",
@@ -33,6 +24,10 @@
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_chat.xml"
     },
     {
+        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_explain.xml",
+        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\layout\\fragment_explain.xml"
+    },
+    {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_hidden_folder.xml",
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_hidden_folder.xml"
     },
@@ -45,17 +40,8 @@
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-<<<<<<< HEAD
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_my_folder.xml",
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\layout\\item_my_folder.xml"
-=======
-        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_explain.xml",
-        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_explain.xml"
-    },
-    {
-        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main_drawer_header.xml",
-        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_main_drawer_header.xml"
->>>>>>> upstream/develope
     },
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\popup_window_main_bottom_menu.xml",
@@ -106,8 +92,16 @@
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_main_toolbar.xml"
     },
     {
+        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_explain_1.xml",
+        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\layout\\fragment_explain_1.xml"
+    },
+    {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\popup_window_change_name.xml",
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\layout\\popup_window_change_name.xml"
+    },
+    {
+        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_explain.xml",
+        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_explain.xml"
     },
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_chat_choose.xml",
@@ -126,16 +120,7 @@
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_my_folder.xml"
     },
     {
-<<<<<<< HEAD
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\popup_window_to_folder_menu.xml",
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\layout\\popup_window_to_folder_menu.xml"
-=======
-        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_explain.xml",
-        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\fragment_explain.xml"
-    },
-    {
-        "merged": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_input_pattern.xml",
-        "source": "F:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_input_pattern.xml"
->>>>>>> upstream/develope
     }
 ]
