@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-Ó½
-=======
-æ½
->>>>>>> upstream/develope
+æ½ùqÈsîfğfğfÕgŞg

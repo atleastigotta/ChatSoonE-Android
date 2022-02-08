@@ -110,6 +110,10 @@ class MyFolderRVAdapter(private val mContext: MyFolderActivity): RecyclerView.Ad
         notifyItemRangeChanged(position, itemCount);
     }
 
+    fun getSelectedFolder(position:Int):Folder{
+        return folderList[position]
+    }
+
     // 뷰홀더
     inner class ViewHolder(val binding: ItemMyFolderBinding) :
         RecyclerView.ViewHolder(binding.root) {
