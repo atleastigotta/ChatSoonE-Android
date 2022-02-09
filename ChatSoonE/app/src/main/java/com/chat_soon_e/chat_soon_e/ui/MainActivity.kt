@@ -8,18 +8,14 @@ import com.chat_soon_e.chat_soon_e.databinding.ActivityMainBinding
 import android.content.Intent
 import android.graphics.Insets
 import android.graphics.Point
-import android.graphics.Rect
-import android.icu.number.Scale.none
 import android.os.Build
 import android.view.*
-import android.widget.PopupMenu
 import android.widget.PopupWindow
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.activity.viewModels
-import com.chat_soon_e.chat_soon_e.data.remote.auth.USER_ID
 import java.util.*
 import kotlin.collections.ArrayList
 import androidx.appcompat.widget.SwitchCompat
@@ -32,7 +28,6 @@ import com.chat_soon_e.chat_soon_e.databinding.ItemFolderListBinding
 import com.chat_soon_e.chat_soon_e.utils.getID
 import com.chat_soon_e.chat_soon_e.utils.permissionGrantred
 import com.google.android.material.navigation.NavigationView
-import com.google.gson.Gson
 
 class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var appDB: AppDatabase
@@ -68,16 +63,16 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 
         // 이 부분은 서버와 통신하지 않고 자체적으로 구현
         if(iconList.isEmpty()) {
-            appDB.iconDao().insert(Icon(R.drawable.chatsoon1))
-            appDB.iconDao().insert(Icon(R.drawable.chatsoon2))
-            appDB.iconDao().insert(Icon(R.drawable.chatsoon3))
-            appDB.iconDao().insert(Icon(R.drawable.chatsoon4))
-            appDB.iconDao().insert(Icon(R.drawable.chatsoon5))
-            appDB.iconDao().insert(Icon(R.drawable.chatsoon6))
-            appDB.iconDao().insert(Icon(R.drawable.chatsoon6))
-            appDB.iconDao().insert(Icon(R.drawable.chatsoon7))
-            appDB.iconDao().insert(Icon(R.drawable.chatsoon8))
-            appDB.iconDao().insert(Icon(R.drawable.chatsoon9))
+            appDB.iconDao().insert(Icon(R.drawable.chatsoon01))
+            appDB.iconDao().insert(Icon(R.drawable.chatsoon02))
+            appDB.iconDao().insert(Icon(R.drawable.chatsoon03))
+            appDB.iconDao().insert(Icon(R.drawable.chatsoon04))
+            appDB.iconDao().insert(Icon(R.drawable.chatsoon05))
+            appDB.iconDao().insert(Icon(R.drawable.chatsoon06))
+            appDB.iconDao().insert(Icon(R.drawable.chatsoon06))
+            appDB.iconDao().insert(Icon(R.drawable.chatsoon07))
+            appDB.iconDao().insert(Icon(R.drawable.chatsoon08))
+            appDB.iconDao().insert(Icon(R.drawable.chatsoon09))
             appDB.iconDao().insert(Icon(R.drawable.chatsoon10))
             appDB.iconDao().insert(Icon(R.drawable.chatsoon11))
             appDB.iconDao().insert(Icon(R.drawable.chatsoon12))
@@ -155,7 +150,6 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
                 mainRVAdapter.clearSelectedItemList()
                 binding.mainContent.mainFolderIv.visibility = View.VISIBLE
                 binding.mainContent.mainFolderModeIv.visibility = View.GONE
-                binding.mainContent.mainUpdateIv.visibility = View.VISIBLE
                 binding.mainContent.mainCancelIv.visibility = View.GONE
                 binding.mainContent.mainChatIv.visibility = View.VISIBLE
                 binding.mainContent.mainDeleteIv.visibility = View.GONE
@@ -166,7 +160,6 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
                 mainRVAdapter.clearSelectedItemList()
                 binding.mainContent.mainFolderIv.visibility = View.GONE
                 binding.mainContent.mainFolderModeIv.visibility = View.VISIBLE
-                binding.mainContent.mainUpdateIv.visibility = View.GONE
                 binding.mainContent.mainCancelIv.visibility = View.VISIBLE
                 binding.mainContent.mainChatIv.visibility = View.GONE
                 binding.mainContent.mainDeleteIv.visibility = View.VISIBLE
@@ -199,7 +192,6 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 
             binding.mainContent.mainFolderIv.visibility = View.VISIBLE
             binding.mainContent.mainFolderModeIv.visibility = View.GONE
-            binding.mainContent.mainUpdateIv.visibility = View.VISIBLE
             binding.mainContent.mainCancelIv.visibility = View.GONE
             binding.mainContent.mainBackgroundView.visibility = View.INVISIBLE
         }
@@ -413,6 +405,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         mPopupWindow.isFocusable = true         // 외부 영역 선택 시 팝업 윈도우 종료
         mPopupWindow.isOutsideTouchable = true
         mPopupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0)
+        mPopupWindow.setOnDismissListener(PopupWindowDismissListener())
         binding.mainContent.mainBackgroundView.visibility = View.VISIBLE
 
         // RecyclerView 구분선
@@ -505,6 +498,12 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
             Point().apply {
                 defaultDisplay.getSize(this)
             }
+        }
+    }
+
+    inner class PopupWindowDismissListener(): PopupWindow.OnDismissListener {
+        override fun onDismiss() {
+            binding.mainContent.mainBackgroundView.visibility = View.INVISIBLE
         }
     }
 }

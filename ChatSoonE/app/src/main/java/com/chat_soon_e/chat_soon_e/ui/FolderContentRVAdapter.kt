@@ -83,7 +83,7 @@ class FolderContentRVAdapter(private val mContext: FolderContentActivity, privat
             binding.itemChatDefaultNameTv.text = other.nickname
             binding.itemChatDefaultMessageTv.text = chat.message
             binding.itemChatDefaultDateTimeTv.text = dateToString(chat.postTime!!)
-            binding.itemChatDefaultProfileIv.setImageResource(R.drawable.icon_profile)
+            binding.itemChatDefaultProfileIv.setImageResource(R.drawable.ic_profile_black_no_circle)
 //            binding.itemChatDefaultProfileIv.setImageBitmap(loadBitmap(other.image!!, mContext))
         }
     }

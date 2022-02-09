@@ -231,9 +231,47 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
             }
         }
 
+        binding.myFolderContent.myFolderAllChatIv.setOnClickListener {
+            // 전체 채팅 보여주기
+            val spf = this@MyFolderActivity.getSharedPreferences("chatAll", MODE_PRIVATE)
+            val editor = spf.edit()
+            editor.putInt("chatAll", -1)
+            editor.apply()
+
+            Log.d("isAllOR", "from btn"+getSharedPreferences("chatAll", MODE_PRIVATE).getInt("chatALl", 0).toString())
+            startNextActivity(ChatActivity::class.java)
+        }
+
         // 하단 중앙의 버튼을 눌렀을 때
         binding.myFolderContent.myFolderCreateNewFolderIv.setOnClickListener {
-            popupFolderBottomMenu()
+            // popupFolderBottomMenu()
+            // 폴더 생성하기
+            setFolderName()
+        }
+
+        binding.myFolderContent.myFolderToHiddenFolderIv.setOnClickListener {
+            // 숨긴 폴더 목록 보기
+            val lockSPF = getSharedPreferences("lock", 0)
+            val pattern = lockSPF.getString("pattern", "0")
+
+            // 패턴 모드 설정
+            // 0: 숨긴 폴더 목록을 확인하기 위한 입력 모드
+            // 1: 메인 화면의 설정창 -> 변경 모드
+            // 2: 폴더 화면의 설정창 -> 변경 모드
+            // 3: 메인 화면 폴더 리스트에서 숨김 폴더 클릭 시
+            val modeSPF = getSharedPreferences("mode", 0)
+            val editor = modeSPF.edit()
+
+            // 여기서는 0번 모드
+            editor.putInt("mode", 0)
+            editor.apply()
+
+            if(pattern.equals("0")) {   // 패턴이 설정되어 있지 않은 경우 패턴 설정 페이지로
+                Toast.makeText(this@MyFolderActivity, "패턴이 설정되어 있지 않습니다.\n패턴을 설정해주세요.", Toast.LENGTH_SHORT).show()
+                startNextActivity(CreatePatternActivity::class.java)
+            } else {
+                startNextActivity(InputPatternActivity::class.java)
+            }
         }
 
         // 설정 메뉴창에 있는 메뉴 아이콘 클릭시 설정 메뉴창 닫히도록

@@ -34,7 +34,7 @@ class FolderContentActivity: BaseActivity<ActivityFolderContentBinding>(Activity
         }
 
         // 폴더 이름으로 바인딩
-        binding.folderChatNameTv.text = database.folderDao().getFolderByIdx(data.folderIdx).folderName
+        binding.folderContentNameTv.text = database.folderDao().getFolderByIdx(data.folderIdx).folderName
     }
 
     private fun initRecyclerView() {
@@ -55,12 +55,12 @@ class FolderContentActivity: BaseActivity<ActivityFolderContentBinding>(Activity
             }
         })
 
-        binding.folderChatRecyclerView.adapter = folderContentRVAdapter
+        binding.folderContentRecyclerView.adapter = folderContentRVAdapter
     }
 
     private fun initClickListener() {
         // 뒤로 가기 버튼 눌렀을 때
-        binding.folderChatBackIv.setOnClickListener {
+        binding.folderContentBackIv.setOnClickListener {
             finish()
         }
     }

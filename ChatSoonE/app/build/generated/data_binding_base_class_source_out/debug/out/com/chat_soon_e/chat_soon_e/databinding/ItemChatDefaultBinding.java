@@ -30,15 +30,34 @@ public final class ItemChatDefaultBinding implements ViewBinding {
   public final TextView itemChatDefaultNameTv;
 
   @NonNull
+  public final View itemChatDefaultNewDataTimeLine2View;
+
+  @NonNull
+  public final ConstraintLayout itemChatDefaultNewDateTimeLayout;
+
+  @NonNull
+  public final View itemChatDefaultNewDateTimeLine1View;
+
+  @NonNull
+  public final TextView itemChatDefaultNewDateTimeTv;
+
+  @NonNull
   public final ImageView itemChatDefaultProfileIv;
 
   private ItemChatDefaultBinding(@NonNull ConstraintLayout rootView,
       @NonNull TextView itemChatDefaultDateTimeTv, @NonNull TextView itemChatDefaultMessageTv,
-      @NonNull TextView itemChatDefaultNameTv, @NonNull ImageView itemChatDefaultProfileIv) {
+      @NonNull TextView itemChatDefaultNameTv, @NonNull View itemChatDefaultNewDataTimeLine2View,
+      @NonNull ConstraintLayout itemChatDefaultNewDateTimeLayout,
+      @NonNull View itemChatDefaultNewDateTimeLine1View,
+      @NonNull TextView itemChatDefaultNewDateTimeTv, @NonNull ImageView itemChatDefaultProfileIv) {
     this.rootView = rootView;
     this.itemChatDefaultDateTimeTv = itemChatDefaultDateTimeTv;
     this.itemChatDefaultMessageTv = itemChatDefaultMessageTv;
     this.itemChatDefaultNameTv = itemChatDefaultNameTv;
+    this.itemChatDefaultNewDataTimeLine2View = itemChatDefaultNewDataTimeLine2View;
+    this.itemChatDefaultNewDateTimeLayout = itemChatDefaultNewDateTimeLayout;
+    this.itemChatDefaultNewDateTimeLine1View = itemChatDefaultNewDateTimeLine1View;
+    this.itemChatDefaultNewDateTimeTv = itemChatDefaultNewDateTimeTv;
     this.itemChatDefaultProfileIv = itemChatDefaultProfileIv;
   }
 
@@ -87,6 +106,30 @@ public final class ItemChatDefaultBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.item_chat_default_new_data_time_line_2_view;
+      View itemChatDefaultNewDataTimeLine2View = ViewBindings.findChildViewById(rootView, id);
+      if (itemChatDefaultNewDataTimeLine2View == null) {
+        break missingId;
+      }
+
+      id = R.id.item_chat_default_new_date_time_layout;
+      ConstraintLayout itemChatDefaultNewDateTimeLayout = ViewBindings.findChildViewById(rootView, id);
+      if (itemChatDefaultNewDateTimeLayout == null) {
+        break missingId;
+      }
+
+      id = R.id.item_chat_default_new_date_time_line_1_view;
+      View itemChatDefaultNewDateTimeLine1View = ViewBindings.findChildViewById(rootView, id);
+      if (itemChatDefaultNewDateTimeLine1View == null) {
+        break missingId;
+      }
+
+      id = R.id.item_chat_default_new_date_time_tv;
+      TextView itemChatDefaultNewDateTimeTv = ViewBindings.findChildViewById(rootView, id);
+      if (itemChatDefaultNewDateTimeTv == null) {
+        break missingId;
+      }
+
       id = R.id.item_chat_default_profile_iv;
       ImageView itemChatDefaultProfileIv = ViewBindings.findChildViewById(rootView, id);
       if (itemChatDefaultProfileIv == null) {
@@ -94,7 +137,9 @@ public final class ItemChatDefaultBinding implements ViewBinding {
       }
 
       return new ItemChatDefaultBinding((ConstraintLayout) rootView, itemChatDefaultDateTimeTv,
-          itemChatDefaultMessageTv, itemChatDefaultNameTv, itemChatDefaultProfileIv);
+          itemChatDefaultMessageTv, itemChatDefaultNameTv, itemChatDefaultNewDataTimeLine2View,
+          itemChatDefaultNewDateTimeLayout, itemChatDefaultNewDateTimeLine1View,
+          itemChatDefaultNewDateTimeTv, itemChatDefaultProfileIv);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -54,6 +54,7 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
         }, 3000)//3초
         initClickListener()
     }
+
     // test chat 초기화 (테스트용)
     private fun initTestChat() {
         if(chatList.isNotEmpty()) return
@@ -123,7 +124,7 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
         }
         // 폴더 선택 모드를 해제하기 위해
         binding.chatCancelFab.setOnClickListener {
-            binding.chatMainFab.setImageResource(R.drawable.ic_baseline_folder_large_24)
+            binding.chatMainFab.setImageResource(R.drawable.ic_folder)
             binding.chatCancelFab.startAnimation(fabClose)
             binding.chatCancelFab.isClickable = false
             isFabOpen = false
@@ -151,7 +152,7 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
                 popupWindowToFolderMenu()
             } else {
                 // fab 버튼이 닫혀있는 경우 (일반 모드에서 클릭했을 때)
-                binding.chatMainFab.setImageResource(R.drawable.icon_move)
+                binding.chatMainFab.setImageResource(R.drawable.ic_to_folder)
                 binding.chatCancelFab.startAnimation(fabOpen)
                 binding.chatCancelFab.isClickable = true
                 isFabOpen = true

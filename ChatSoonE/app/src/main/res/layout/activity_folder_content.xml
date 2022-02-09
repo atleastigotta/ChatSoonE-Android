@@ -14,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="folder_content_recycler_view">
+        app:layout_constraintBottom_toTopOf="@+id/folder_content_recycler_view">
 
         <ImageView
             android:id="@+id/folder_content_back_iv"

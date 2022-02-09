@@ -17,13 +17,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/item_chat_list_name_tv"
-        android:layout_marginStart="20dp"
-        >
+        android:layout_marginStart="20dp">
         <ImageView
             android:id="@+id/item_chat_list_profile_iv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/icon_profile"
+            android:src="@drawable/ic_profile_black_no_circle"
             android:scaleType="fitXY"/>
     </androidx.cardview.widget.CardView>
 

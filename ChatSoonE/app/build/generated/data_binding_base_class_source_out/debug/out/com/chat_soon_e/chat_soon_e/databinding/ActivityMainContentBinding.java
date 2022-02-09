@@ -40,6 +40,9 @@ public final class ActivityMainContentBinding implements ViewBinding {
   public final RecyclerView mainChatListRecyclerView;
 
   @NonNull
+  public final View mainChatListRecyclerViewBackgroundView;
+
+  @NonNull
   public final ConstraintLayout mainContent;
 
   @NonNull
@@ -60,17 +63,14 @@ public final class ActivityMainContentBinding implements ViewBinding {
   @NonNull
   public final TextView mainTitleTv;
 
-  @NonNull
-  public final ImageView mainUpdateIv;
-
   private ActivityMainContentBinding(@NonNull ConstraintLayout rootView,
       @NonNull View mainBackgroundView, @NonNull ImageView mainBlockIv,
       @NonNull View mainBottomBarView, @NonNull ImageView mainCancelIv,
       @NonNull ImageView mainChatIv, @NonNull RecyclerView mainChatListRecyclerView,
-      @NonNull ConstraintLayout mainContent, @NonNull ImageView mainDeleteIv,
-      @NonNull ImageView mainFolderIv, @NonNull ImageView mainFolderModeIv,
-      @NonNull ImageView mainMyFolderIv, @NonNull ImageView mainSettingMenuIv,
-      @NonNull TextView mainTitleTv, @NonNull ImageView mainUpdateIv) {
+      @NonNull View mainChatListRecyclerViewBackgroundView, @NonNull ConstraintLayout mainContent,
+      @NonNull ImageView mainDeleteIv, @NonNull ImageView mainFolderIv,
+      @NonNull ImageView mainFolderModeIv, @NonNull ImageView mainMyFolderIv,
+      @NonNull ImageView mainSettingMenuIv, @NonNull TextView mainTitleTv) {
     this.rootView = rootView;
     this.mainBackgroundView = mainBackgroundView;
     this.mainBlockIv = mainBlockIv;
@@ -78,6 +78,7 @@ public final class ActivityMainContentBinding implements ViewBinding {
     this.mainCancelIv = mainCancelIv;
     this.mainChatIv = mainChatIv;
     this.mainChatListRecyclerView = mainChatListRecyclerView;
+    this.mainChatListRecyclerViewBackgroundView = mainChatListRecyclerViewBackgroundView;
     this.mainContent = mainContent;
     this.mainDeleteIv = mainDeleteIv;
     this.mainFolderIv = mainFolderIv;
@@ -85,7 +86,6 @@ public final class ActivityMainContentBinding implements ViewBinding {
     this.mainMyFolderIv = mainMyFolderIv;
     this.mainSettingMenuIv = mainSettingMenuIv;
     this.mainTitleTv = mainTitleTv;
-    this.mainUpdateIv = mainUpdateIv;
   }
 
   @Override
@@ -151,6 +151,12 @@ public final class ActivityMainContentBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.main_chat_list_recycler_view_background_view;
+      View mainChatListRecyclerViewBackgroundView = ViewBindings.findChildViewById(rootView, id);
+      if (mainChatListRecyclerViewBackgroundView == null) {
+        break missingId;
+      }
+
       ConstraintLayout mainContent = (ConstraintLayout) rootView;
 
       id = R.id.main_delete_iv;
@@ -189,16 +195,10 @@ public final class ActivityMainContentBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.main_update_iv;
-      ImageView mainUpdateIv = ViewBindings.findChildViewById(rootView, id);
-      if (mainUpdateIv == null) {
-        break missingId;
-      }
-
       return new ActivityMainContentBinding((ConstraintLayout) rootView, mainBackgroundView,
           mainBlockIv, mainBottomBarView, mainCancelIv, mainChatIv, mainChatListRecyclerView,
-          mainContent, mainDeleteIv, mainFolderIv, mainFolderModeIv, mainMyFolderIv,
-          mainSettingMenuIv, mainTitleTv, mainUpdateIv);
+          mainChatListRecyclerViewBackgroundView, mainContent, mainDeleteIv, mainFolderIv,
+          mainFolderModeIv, mainMyFolderIv, mainSettingMenuIv, mainTitleTv);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

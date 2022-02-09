@@ -16,8 +16,6 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Template_Basic">
 
-        <!-- SplashActivity -->
-
         <activity
             android:name="com.chat_soon_e.chat_soon_e.ui.SplashActivity"
             android:exported="true">

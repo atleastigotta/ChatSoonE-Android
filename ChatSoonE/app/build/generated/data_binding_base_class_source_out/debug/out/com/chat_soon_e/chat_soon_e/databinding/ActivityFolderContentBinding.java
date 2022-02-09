@@ -22,25 +22,26 @@ public final class ActivityFolderContentBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final ImageView folderChatBackIv;
+  public final ImageView folderContentBackIv;
 
   @NonNull
-  public final View folderChatLineView;
+  public final ConstraintLayout folderContentConstraintLayout;
 
   @NonNull
-  public final TextView folderChatNameTv;
+  public final TextView folderContentNameTv;
 
   @NonNull
-  public final RecyclerView folderChatRecyclerView;
+  public final RecyclerView folderContentRecyclerView;
 
   private ActivityFolderContentBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ImageView folderChatBackIv, @NonNull View folderChatLineView,
-      @NonNull TextView folderChatNameTv, @NonNull RecyclerView folderChatRecyclerView) {
+      @NonNull ImageView folderContentBackIv,
+      @NonNull ConstraintLayout folderContentConstraintLayout,
+      @NonNull TextView folderContentNameTv, @NonNull RecyclerView folderContentRecyclerView) {
     this.rootView = rootView;
-    this.folderChatBackIv = folderChatBackIv;
-    this.folderChatLineView = folderChatLineView;
-    this.folderChatNameTv = folderChatNameTv;
-    this.folderChatRecyclerView = folderChatRecyclerView;
+    this.folderContentBackIv = folderContentBackIv;
+    this.folderContentConstraintLayout = folderContentConstraintLayout;
+    this.folderContentNameTv = folderContentNameTv;
+    this.folderContentRecyclerView = folderContentRecyclerView;
   }
 
   @Override
@@ -70,32 +71,32 @@ public final class ActivityFolderContentBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.folder_chat_back_iv;
-      ImageView folderChatBackIv = ViewBindings.findChildViewById(rootView, id);
-      if (folderChatBackIv == null) {
+      id = R.id.folder_content_back_iv;
+      ImageView folderContentBackIv = ViewBindings.findChildViewById(rootView, id);
+      if (folderContentBackIv == null) {
         break missingId;
       }
 
-      id = R.id.folder_chat_line_view;
-      View folderChatLineView = ViewBindings.findChildViewById(rootView, id);
-      if (folderChatLineView == null) {
+      id = R.id.folder_content_constraint_layout;
+      ConstraintLayout folderContentConstraintLayout = ViewBindings.findChildViewById(rootView, id);
+      if (folderContentConstraintLayout == null) {
         break missingId;
       }
 
-      id = R.id.folder_chat_name_tv;
-      TextView folderChatNameTv = ViewBindings.findChildViewById(rootView, id);
-      if (folderChatNameTv == null) {
+      id = R.id.folder_content_name_tv;
+      TextView folderContentNameTv = ViewBindings.findChildViewById(rootView, id);
+      if (folderContentNameTv == null) {
         break missingId;
       }
 
-      id = R.id.folder_chat_recycler_view;
-      RecyclerView folderChatRecyclerView = ViewBindings.findChildViewById(rootView, id);
-      if (folderChatRecyclerView == null) {
+      id = R.id.folder_content_recycler_view;
+      RecyclerView folderContentRecyclerView = ViewBindings.findChildViewById(rootView, id);
+      if (folderContentRecyclerView == null) {
         break missingId;
       }
 
-      return new ActivityFolderContentBinding((ConstraintLayout) rootView, folderChatBackIv,
-          folderChatLineView, folderChatNameTv, folderChatRecyclerView);
+      return new ActivityFolderContentBinding((ConstraintLayout) rootView, folderContentBackIv,
+          folderContentConstraintLayout, folderContentNameTv, folderContentRecyclerView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -204,7 +204,7 @@ class MainRVAdapter(private val context: Context, private val mItemClickListener
         fun bind(chat: ChatList) {
             if(chat.profileImg != null && chat.profileImg!!.isNotEmpty() && chat.isGroup != -1){
                 binding.itemChatListProfileIv.setImageBitmap(loadBitmap(chat.profileImg!!, context))
-            }else if(chat.isGroup == -1) binding.itemChatListProfileIv.setImageResource(R.drawable.icon_profile)
+            }else if(chat.isGroup == -1) binding.itemChatListProfileIv.setImageResource(R.drawable.ic_profile_black_no_circle)
             if(chat.chat_name != null)
                 binding.itemChatListNameTv.text = chat.chat_name
             Log.d("MAIN-RV", "profile: ${chat.profileImg}")
@@ -233,7 +233,7 @@ class MainRVAdapter(private val context: Context, private val mItemClickListener
         fun bind(chat: ChatList) {
             if(chat.profileImg != null && chat.profileImg!!.isNotEmpty() && chat.isGroup != -1){
                 binding.itemChatListProfileIv.setImageBitmap(loadBitmap(chat.profileImg!!, context))
-            }else if(chat.isGroup == -1) binding.itemChatListProfileIv.setImageResource(R.drawable.icon_profile)
+            }else if(chat.isGroup == -1) binding.itemChatListProfileIv.setImageResource(R.drawable.ic_profile_black_no_circle)
             if(chat.chat_name != null)
                 binding.itemChatListNameTv.text = chat.chat_name
             Log.d("MAIN-RV", "profile: ${chat.profileImg}")

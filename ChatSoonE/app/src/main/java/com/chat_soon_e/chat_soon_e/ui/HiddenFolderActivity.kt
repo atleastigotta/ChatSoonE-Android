@@ -139,6 +139,7 @@ class HiddenFolderActivity: BaseActivity<ActivityHiddenFolderBinding>(ActivityHi
         mPopupWindow.isFocusable = true
         mPopupWindow.isOutsideTouchable = true
         mPopupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0)
+        mPopupWindow.setOnDismissListener(PopupWindowDismissListener())
         binding.hiddenFolderBackgroundView.visibility = View.VISIBLE
 
         // RecyclerView 초기화
@@ -193,5 +194,11 @@ class HiddenFolderActivity: BaseActivity<ActivityHiddenFolderBinding>(ActivityHi
         super.onBackPressed()
         startActivityWithClear(MyFolderActivity::class.java)
         finish()
+    }
+
+    inner class PopupWindowDismissListener(): PopupWindow.OnDismissListener {
+        override fun onDismiss() {
+            binding.hiddenFolderBackgroundView.visibility = View.INVISIBLE
+        }
     }
 }
