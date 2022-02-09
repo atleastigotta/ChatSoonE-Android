@@ -175,6 +175,14 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
             val db=AppDatabase.getInstance(mContext)!!
             val other=db.otherUserDao().getOtherUserById(testChat.otherUserIdx)
 
+//            // 날짜가 바뀐 걸 확인을 하면
+//            binding.itemChatDefaultDateTimeLayout.visibility = View.VISIBLE
+//            binding.itemChatDefaultNewDateTimeTv.text = // 년월일
+
+//            if(position == 0) // 날짜 표시
+//                else if(position != 0 && 이전 포지션에 들어있는 chatList의 데이트타임과 비교해서 1일 이상 차이가 나면 ture 반환) // 날짜 표시
+//            else //무시
+//
             binding.itemChatDefaultNameTv.text = other.nickname
             binding.itemChatDefaultMessageTv.text = testChat.message
             binding.itemChatDefaultDateTimeTv.text = dateToString(testChat.postTime!!)

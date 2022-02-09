@@ -54,15 +54,27 @@
         app:layout_constraintBottom_toBottomOf="@+id/main_title_tv"
         app:layout_constraintStart_toEndOf="@+id/main_title_tv" />
 
+    <View
+        android:id="@+id/main_chat_list_recycler_view_background_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/background_white_corner"
+        app:layout_constraintBottom_toTopOf="@+id/main_bottom_bar_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_title_tv" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/main_chat_list_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/background_white_corner"
+        android:background="@android:color/transparent"
         android:orientation="vertical"
         android:overScrollMode="never"
         android:scrollbarFadeDuration="0"
         android:scrollbars="vertical"
+        style="@style/scrollbar_shape_style"
+        android:scrollbarSize="10dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/main_bottom_bar_view"
         app:layout_constraintEnd_toEndOf="parent"

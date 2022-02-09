@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_background_folder_bottom_popup_menu.xml.flat",
-        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\drawable\\background_folder_bottom_popup_menu.xml"
-    },
-    {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_background.png.flat",
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\drawable\\background.png"
+    },
+    {
+        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_background_folder_bottom_popup_menu.xml.flat",
+        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\drawable\\background_folder_bottom_popup_menu.xml"
     },
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_popup_window_to_folder_menu.xml.flat",
@@ -96,10 +96,6 @@
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_baseline_block_24.xml"
     },
     {
-        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
-    },
-    {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_explain_1.xml.flat",
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\layout\\fragment_explain_1.xml"
     },
@@ -128,16 +124,8 @@
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\drawable\\selector_navi_home.xml"
     },
     {
-        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.png"
-    },
-    {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_all_chat.png.flat",
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_all_chat.png"
-    },
-    {
-        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
     },
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_toggle_off_24.xml.flat",
@@ -158,10 +146,6 @@
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_item_my_folder.xml.flat",
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\layout\\item_my_folder.xml"
-    },
-    {
-        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\menu_popup_hidden_folder_option_menu.xml.flat",
@@ -186,10 +170,6 @@
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_explain.xml.flat",
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_explain.xml"
-    },
-    {
-        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
     },
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_cached_24.xml.flat",
@@ -258,10 +238,6 @@
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_arrow_back_ios_24.xml.flat",
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_baseline_arrow_back_ios_24.xml"
-    },
-    {
-        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     },
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_explain.xml.flat",
@@ -336,10 +312,6 @@
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\drawable\\chatsoon3.png"
     },
     {
-        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
-    },
-    {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_chatsoon9.png.flat",
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\drawable\\chatsoon9.png"
     },
@@ -382,10 +354,6 @@
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxhdpi_img_background_folder.png.flat",
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\drawable-xxhdpi\\img_background_folder.png"
-    },
-    {
-        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
     },
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_selector_chat.xml.flat",
@@ -440,10 +408,6 @@
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\layout-v26\\activity_chat.xml"
     },
     {
-        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
-    },
-    {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_create_new_folder_24.xml.flat",
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_baseline_create_new_folder_24.xml"
     },
@@ -470,10 +434,6 @@
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_popup_window_main_bottom_menu.xml.flat",
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\layout\\popup_window_main_bottom_menu.xml"
-    },
-    {
-        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
     },
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_chatsoon7.png.flat",
@@ -524,10 +484,6 @@
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_main_drawer_switch.xml"
     },
     {
-        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
-    },
-    {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxxhdpi_icon_24_user_off.png.flat",
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\drawable-xxxhdpi\\icon_24_user_off.png"
     },
@@ -542,10 +498,6 @@
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\menu_navi_setting_menu.xml.flat",
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\menu\\navi_setting_menu.xml"
-    },
-    {
-        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_rate_review_24.xml.flat",
@@ -618,10 +570,6 @@
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_selector_switch.xml.flat",
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\drawable\\selector_switch.xml"
-    },
-    {
-        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
     },
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable-hdpi_background_chat_default.9.png.flat",
@@ -718,14 +666,6 @@
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_selector_navi_mypage.xml.flat",
         "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\drawable\\selector_navi_mypage.xml"
-    },
-    {
-        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
-    },
-    {
-        "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
         "merged": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_menu_black_24.xml.flat",

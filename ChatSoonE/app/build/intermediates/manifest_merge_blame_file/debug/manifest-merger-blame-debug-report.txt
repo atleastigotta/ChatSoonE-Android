@@ -167,11 +167,11 @@
 86
 87                <!-- Redirect URI: "kakao{NATIVE_APP_KEY}://oauth" -->
 88                <data
-88-->C:\Users\pc\projects\ChatSoonE-Android\ChatSoonE\app\src\main\AndroidManifest.xml:49:17-50:78
+88-->C:\Users\pc\projects\ChatSoonE-Android\ChatSoonE\app\src\main\AndroidManifest.xml:49:17-50:46
 89                    android:host="oauth"
 89-->C:\Users\pc\projects\ChatSoonE-Android\ChatSoonE\app\src\main\AndroidManifest.xml:49:23-43
-90                    android:scheme="kakao344ce6395e3e90c63689e4fef30067f0" />
-90-->C:\Users\pc\projects\ChatSoonE-Android\ChatSoonE\app\src\main\AndroidManifest.xml:50:21-75
+90                    android:scheme="kakao" />
+90-->C:\Users\pc\projects\ChatSoonE-Android\ChatSoonE\app\src\main\AndroidManifest.xml:50:21-43
 91            </intent-filter>
 92        </activity>
 93

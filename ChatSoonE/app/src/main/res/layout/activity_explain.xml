@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <ImageView
         android:id="@+id/explain_exit_btn_iv"
         android:layout_width="20dp"
@@ -11,7 +12,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_margin="10dp"
-        android:src="@drawable/cancel_btn"
+        android:src="@drawable/ic_cancel"
         />
     <FrameLayout
         android:id="@+id/explain_fl"
@@ -22,6 +23,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/explain_checkbox"
         app:layout_constraintTop_toBottomOf="@id/explain_exit_btn_iv"/>
+
     <!--checkBox-->
         <CheckBox
             android:id="@+id/explain_checkbox"

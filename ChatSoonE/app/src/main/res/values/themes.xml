@@ -25,13 +25,21 @@
 
         <!-- full screen mode -->
         <item name="android:windowFullscreen">false</item>
+
+        <!-- font -->
+        <item name="android:textViewStyle">@style/customTextViewFontStyle</item>
+        <item name="android:buttonStyle">@style/customButtonFontStyle</item>
+        <item name="android:editTextStyle">@style/customEditTextFontStyle</item>
+        <item name="android:radioButtonStyle">@style/customRadioButtonFontStyle</item>
+        <item name="android:checkboxStyle">@style/customCheckboxFontStyle</item>
     </style>
 
     <!-- EditText -->
     <style name="EditTheme" parent="Theme.Template_Basic">
         <!-- 커서 색, 드래그 시 하이라이트 색, EditText 선택 시 밑줄 하이라이트 색 등 강조 색 변경 -->
-        <item name="colorAccent">@color/mauve</item>
-        <item name="colorControlActivated">@color/mauve</item>
+        <item name="colorAccent">@color/blue</item>
+        <item name="colorControlActivated">@color/blue</item>
+        <item name="colorControlNormal">@color/gray</item>
     </style>
 
     <!-- MyFolder option PopupMenu -->
@@ -42,5 +50,16 @@
     <!-- MyFolder bottom PopupMenu -->
     <style name="MyFolderBottomPopupMenuTheme" parent="android:style/Widget.PopupMenu">
         <item name="android:popupBackground">@drawable/background_folder_bottom_popup_menu</item>
+    </style>
+
+    <!-- Main RecyclerView ScrollBar -->
+    <style name="scrollbar_shape_style">
+        <item name="android:scrollbarFadeDuration">0</item>
+        <item name="android:scrollbarAlwaysDrawVerticalTrack">true</item>
+        <item name="android:scrollbarStyle">outsideInset</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:fadeScrollbars">false</item>
+        <item name="android:scrollbarThumbVertical">@drawable/thumb</item>
+        <item name="android:scrollbarTrackVertical">@drawable/track</item>
     </style>
 </resources>

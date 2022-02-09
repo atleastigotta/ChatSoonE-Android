@@ -201,6 +201,7 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
         mPopupWindow.isFocusable = true         // 외부 영역 선택 시 팝업 윈도우 종료
         mPopupWindow.isOutsideTouchable = true
         mPopupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0)
+        mPopupWindow.setOnDismissListener(PopupWindowDismissListener())
         binding.chatBackgroundView.visibility = View.VISIBLE
 
         // RecyclerView 구분선
@@ -273,4 +274,9 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
         }
     }
 
+    inner class PopupWindowDismissListener(): PopupWindow.OnDismissListener {
+        override fun onDismiss() {
+            binding.chatBackgroundView.visibility = View.INVISIBLE
+        }
+    }
 }
