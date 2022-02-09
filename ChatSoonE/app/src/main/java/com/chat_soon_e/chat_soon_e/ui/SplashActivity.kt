@@ -35,7 +35,7 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
     SplashView {
     val TAG = "splashtest"
     // BaseActivity onCreate()에서 바인딩 끝나고 자동적으로 호출이 되게끔 해준다.
-
+    // 로그인 성곡
     @RequiresApi(Build.VERSION_CODES.P)
     override fun initAfterBinding() {
         //defaulValue=0, 설명창 보임=1, 더이상보이지 않음=2
@@ -50,14 +50,10 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
                 startNextActivity(PermissionActivity::class.java)
         }
         loginPermission()
-        binding.splashKakaoLoginBtn.setOnClickListener {
-            if(binding.splashKakaoLoginBtn.isVisible){
+        binding.splashKakaoBtn.setOnClickListener {
+            if(binding.splashKakaoBtn.isVisible){
                 login()
-                startAnimation()
             }
-        }
-        binding.splashWithdraw.setOnClickListener {
-            withdraw()
         }
         binding.splashStartBtn.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
@@ -74,7 +70,8 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
                 if (error != null) {
                     //로그인 필요
                     if (error is KakaoSdkError && error.isInvalidTokenError() == true) {
-                        binding.splashKakaoLoginBtn.visibility=View.VISIBLE
+                        binding.splashKakaoBtn.visibility=View.VISIBLE
+                        binding.splashKakaoIv.visibility=View.VISIBLE
                     }
                     //기타 에러
                     else {
@@ -84,13 +81,16 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
                 //토큰 유효성 체크 성공(필요 시 토큰 갱신됨)
                 else {
                     Log.d(TAG, "토큰 유효")
-                    binding.splashKakaoLoginBtn.visibility=View.INVISIBLE
+                    binding.splashKakaoBtn.visibility=View.INVISIBLE
+                    binding.splashKakaoIv.visibility=View.INVISIBLE
+
                 }
             }
         }
         //토큰 없음(로그아웃 혹은 연결 끊김)
         else {
-            binding.splashKakaoLoginBtn.visibility=View.VISIBLE
+            binding.splashKakaoBtn.visibility=View.VISIBLE
+            binding.splashKakaoIv.visibility=View.VISIBLE
         }
     }
 
@@ -101,7 +101,8 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
                 Log.e(TAG, "카카오계정으로 로그인 실패", error)
             } else if (token != null) {
                 Log.i(TAG, "카카오계정으로 로그인 성공 ${token.accessToken}")
-                binding.splashKakaoLoginBtn.visibility=View.INVISIBLE
+                binding.splashKakaoBtn.visibility=View.INVISIBLE
+                binding.splashKakaoIv.visibility=View.INVISIBLE
                 saveUserInfo("login")
             }
         }
@@ -120,7 +121,9 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
                     UserApiClient.instance.loginWithKakaoAccount(this, callback = callback)
                 } else if (token != null) {
                     Log.i(TAG, "카카오톡으로 로그인 성공 ${token.accessToken}")
-                    binding.splashKakaoLoginBtn.visibility=View.INVISIBLE
+                    binding.splashKakaoBtn.visibility=View.INVISIBLE
+                    binding.splashKakaoIv.visibility=View.INVISIBLE
+
                     saveUserInfo("login")
                 }
             }
@@ -234,13 +237,6 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
         }
         else
             return false
-    }
-    private fun startAnimation() {
-        val mProgressBar = binding.splashProgressBar
-        val progressAnimator = ObjectAnimator.ofInt(mProgressBar, "progress", 0, 100)
-        progressAnimator.duration = 1000
-        progressAnimator.interpolator = LinearInterpolator()
-        progressAnimator.start()
     }
     override fun onBackPressed() {
         finish()

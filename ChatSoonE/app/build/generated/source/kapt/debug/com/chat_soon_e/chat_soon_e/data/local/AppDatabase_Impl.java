@@ -43,7 +43,7 @@ public final class AppDatabase_Impl extends AppDatabase {
 
   @Override
   protected SupportSQLiteOpenHelper createOpenHelper(DatabaseConfiguration configuration) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(1) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(3) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
         _db.execSQL("CREATE TABLE IF NOT EXISTS `ChatTable` (`otherUserIdx` INTEGER NOT NULL, `groupName` TEXT, `message` TEXT, `postTime` INTEGER, `folderIdx` INTEGER NOT NULL, `status` TEXT NOT NULL, `viewType` INTEGER NOT NULL, `isChecked` INTEGER NOT NULL, `isNew` INTEGER, `chatIdx` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
@@ -52,10 +52,10 @@ public final class AppDatabase_Impl extends AppDatabase {
         _db.execSQL("CREATE TABLE IF NOT EXISTS `OtherUserTable` (`nickname` TEXT NOT NULL, `image` TEXT, `status` TEXT NOT NULL, `kakaoUserIdx` INTEGER NOT NULL, `otherUserIdx` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `FolderTable` (`idx` INTEGER NOT NULL, `kakaoUserIdx` INTEGER NOT NULL, `parentFolderIdx` INTEGER, `folderName` TEXT NOT NULL, `folderImg` INTEGER NOT NULL, `status` TEXT NOT NULL, PRIMARY KEY(`idx`))");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `FolderContentTable` (`folderIdx` INTEGER NOT NULL, `chatIdx` INTEGER NOT NULL, `status` TEXT, `folderContentIdx` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `ChatListTable` (`chatIdx` INTEGER NOT NULL, `chat_name` TEXT, `profileImg` TEXT, `latest_time` INTEGER NOT NULL, `latest_message` TEXT, `isGroup` INTEGER NOT NULL, `isNew` INTEGER NOT NULL, `isChecked` INTEGER DEFAULT false, `id` INTEGER PRIMARY KEY AUTOINCREMENT)");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `ChatListTable` (`chatIdx` INTEGER NOT NULL, `nickName` TEXT, `groupName` TEXT NOT NULL, `profileImg` TEXT, `postTime` INTEGER NOT NULL, `message` TEXT, `isNew` INTEGER NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `IconTable` (`iconImage` INTEGER NOT NULL, `idx` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0651ab28b4f6ecad9df7c636791b35e4')");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '78306c0659be49477a087cc9057c3a47')");
       }
 
       @Override
@@ -185,15 +185,14 @@ public final class AppDatabase_Impl extends AppDatabase {
                   + " Expected:\n" + _infoFolderContentTable + "\n"
                   + " Found:\n" + _existingFolderContentTable);
         }
-        final HashMap<String, TableInfo.Column> _columnsChatListTable = new HashMap<String, TableInfo.Column>(9);
+        final HashMap<String, TableInfo.Column> _columnsChatListTable = new HashMap<String, TableInfo.Column>(8);
         _columnsChatListTable.put("chatIdx", new TableInfo.Column("chatIdx", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsChatListTable.put("chat_name", new TableInfo.Column("chat_name", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsChatListTable.put("nickName", new TableInfo.Column("nickName", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsChatListTable.put("groupName", new TableInfo.Column("groupName", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsChatListTable.put("profileImg", new TableInfo.Column("profileImg", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsChatListTable.put("latest_time", new TableInfo.Column("latest_time", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsChatListTable.put("latest_message", new TableInfo.Column("latest_message", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsChatListTable.put("isGroup", new TableInfo.Column("isGroup", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsChatListTable.put("postTime", new TableInfo.Column("postTime", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsChatListTable.put("message", new TableInfo.Column("message", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsChatListTable.put("isNew", new TableInfo.Column("isNew", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsChatListTable.put("isChecked", new TableInfo.Column("isChecked", "INTEGER", false, 0, "false", TableInfo.CREATED_FROM_ENTITY));
         _columnsChatListTable.put("id", new TableInfo.Column("id", "INTEGER", false, 1, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysChatListTable = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesChatListTable = new HashSet<TableInfo.Index>(0);
@@ -218,7 +217,7 @@ public final class AppDatabase_Impl extends AppDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "0651ab28b4f6ecad9df7c636791b35e4", "9d0118b0f8d78d934028228e1dc706fd");
+    }, "78306c0659be49477a087cc9057c3a47", "cc10e4cb79f47a6fef14f2371d724ce4");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)

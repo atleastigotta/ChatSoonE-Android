@@ -24,7 +24,7 @@ class FolderContentActivity: BaseActivity<ActivityFolderContentBinding>(Activity
             Log.d("folderContentData", data.toString())
             val data=AppDatabase.getInstance(this)!!.folderDao().getFolderChats(getID(), data.folderIdx).observe(
                 this, {
-                    Log.d("folderContentData", it.toString())
+                   //= Log.d("folderContentData", it.toString())
                 }
             )
         }

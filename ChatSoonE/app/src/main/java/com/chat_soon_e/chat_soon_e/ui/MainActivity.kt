@@ -180,7 +180,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         // 어댑터 연결
         binding.mainContent.mainChatListRecyclerView.adapter = mainRVAdapter
 
-        // 데이터 추가
+        // 최근 챗 목록 데이터 추가
         appDB = AppDatabase.getInstance(this)!!
         appDB.chatDao().getRecentChat(getID()).observe(this, {
             Log.d("liveDataAdd", it.toString())
@@ -339,15 +339,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         }
 
         binding.mainContent.mainChatIv.setOnClickListener {
-            //전체 채팅 목록으로
-            var spf=this@MainActivity.getSharedPreferences("chatAll", MODE_PRIVATE)
-            var editor=spf.edit()
-            editor.putInt("chatAll", -1)
-            editor.commit()
-
-            Log.d("isAllOR", "from btn"+getSharedPreferences("chatAll", MODE_PRIVATE).getInt("chatALl", 0).toString())
-            startNextActivity(ChatActivity::class.java)
-
+            //차단 목록으로 변경될 것
         }
 
         // 하단 중앙 아이콘 클릭시
@@ -470,8 +462,10 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
 
                 //이동
                 for(i in chatIdxList) {
+                    //추후 다시 구현내용
                     val chat = chatDao.getChatByChatIdx(i)
-                    //폴더에 채팅을 넣을 때는
+
+                    //폴더에 채팅을 넣을 것 쿼리 수정해야함!
 
                     val otherUserIdx=chatDao.getChatOtherIdx(i)
                     if(chat.groupName!=null)

@@ -10,7 +10,6 @@ import androidx.room.util.CursorUtil;
 import androidx.room.util.DBUtil;
 import androidx.sqlite.db.SupportSQLiteStatement;
 import com.chat_soon_e.chat_soon_e.data.entities.ChatList;
-import java.lang.Boolean;
 import java.lang.Class;
 import java.lang.Integer;
 import java.lang.Long;
@@ -41,47 +40,44 @@ public final class ChatListDao_Impl implements ChatListDao {
     this.__insertionAdapterOfChatList = new EntityInsertionAdapter<ChatList>(__db) {
       @Override
       public String createQuery() {
-        return "INSERT OR ABORT INTO `ChatListTable` (`chatIdx`,`chat_name`,`profileImg`,`latest_time`,`latest_message`,`isGroup`,`isNew`,`isChecked`,`id`) VALUES (?,?,?,?,?,?,?,?,?)";
+        return "INSERT OR ABORT INTO `ChatListTable` (`chatIdx`,`nickName`,`groupName`,`profileImg`,`postTime`,`message`,`isNew`,`id`) VALUES (?,?,?,?,?,?,?,?)";
       }
 
       @Override
       public void bind(SupportSQLiteStatement stmt, ChatList value) {
         stmt.bindLong(1, value.getChatIdx());
-        if (value.getChat_name() == null) {
+        if (value.getNickName() == null) {
           stmt.bindNull(2);
         } else {
-          stmt.bindString(2, value.getChat_name());
+          stmt.bindString(2, value.getNickName());
         }
-        if (value.getProfileImg() == null) {
+        if (value.getGroupName() == null) {
           stmt.bindNull(3);
         } else {
-          stmt.bindString(3, value.getProfileImg());
+          stmt.bindString(3, value.getGroupName());
         }
-        final Long _tmp;
-        _tmp = __converter.dateToTimestamp(value.getLatest_time());
-        if (_tmp == null) {
+        if (value.getProfileImg() == null) {
           stmt.bindNull(4);
         } else {
-          stmt.bindLong(4, _tmp);
+          stmt.bindString(4, value.getProfileImg());
         }
-        if (value.getLatest_message() == null) {
+        final Long _tmp;
+        _tmp = __converter.dateToTimestamp(value.getPostTime());
+        if (_tmp == null) {
           stmt.bindNull(5);
         } else {
-          stmt.bindString(5, value.getLatest_message());
+          stmt.bindLong(5, _tmp);
         }
-        stmt.bindLong(6, value.isGroup());
+        if (value.getMessage() == null) {
+          stmt.bindNull(6);
+        } else {
+          stmt.bindString(6, value.getMessage());
+        }
         stmt.bindLong(7, value.isNew());
-        final Integer _tmp_1;
-        _tmp_1 = value.isChecked() == null ? null : (value.isChecked() ? 1 : 0);
-        if (_tmp_1 == null) {
+        if (value.getId() == null) {
           stmt.bindNull(8);
         } else {
-          stmt.bindLong(8, _tmp_1);
-        }
-        if (value.getId() == null) {
-          stmt.bindNull(9);
-        } else {
-          stmt.bindLong(9, value.getId());
+          stmt.bindLong(8, value.getId());
         }
       }
     };
@@ -103,52 +99,49 @@ public final class ChatListDao_Impl implements ChatListDao {
     this.__updateAdapterOfChatList = new EntityDeletionOrUpdateAdapter<ChatList>(__db) {
       @Override
       public String createQuery() {
-        return "UPDATE OR ABORT `ChatListTable` SET `chatIdx` = ?,`chat_name` = ?,`profileImg` = ?,`latest_time` = ?,`latest_message` = ?,`isGroup` = ?,`isNew` = ?,`isChecked` = ?,`id` = ? WHERE `id` = ?";
+        return "UPDATE OR ABORT `ChatListTable` SET `chatIdx` = ?,`nickName` = ?,`groupName` = ?,`profileImg` = ?,`postTime` = ?,`message` = ?,`isNew` = ?,`id` = ? WHERE `id` = ?";
       }
 
       @Override
       public void bind(SupportSQLiteStatement stmt, ChatList value) {
         stmt.bindLong(1, value.getChatIdx());
-        if (value.getChat_name() == null) {
+        if (value.getNickName() == null) {
           stmt.bindNull(2);
         } else {
-          stmt.bindString(2, value.getChat_name());
+          stmt.bindString(2, value.getNickName());
         }
-        if (value.getProfileImg() == null) {
+        if (value.getGroupName() == null) {
           stmt.bindNull(3);
         } else {
-          stmt.bindString(3, value.getProfileImg());
+          stmt.bindString(3, value.getGroupName());
         }
-        final Long _tmp;
-        _tmp = __converter.dateToTimestamp(value.getLatest_time());
-        if (_tmp == null) {
+        if (value.getProfileImg() == null) {
           stmt.bindNull(4);
         } else {
-          stmt.bindLong(4, _tmp);
+          stmt.bindString(4, value.getProfileImg());
         }
-        if (value.getLatest_message() == null) {
+        final Long _tmp;
+        _tmp = __converter.dateToTimestamp(value.getPostTime());
+        if (_tmp == null) {
           stmt.bindNull(5);
         } else {
-          stmt.bindString(5, value.getLatest_message());
+          stmt.bindLong(5, _tmp);
         }
-        stmt.bindLong(6, value.isGroup());
+        if (value.getMessage() == null) {
+          stmt.bindNull(6);
+        } else {
+          stmt.bindString(6, value.getMessage());
+        }
         stmt.bindLong(7, value.isNew());
-        final Integer _tmp_1;
-        _tmp_1 = value.isChecked() == null ? null : (value.isChecked() ? 1 : 0);
-        if (_tmp_1 == null) {
+        if (value.getId() == null) {
           stmt.bindNull(8);
         } else {
-          stmt.bindLong(8, _tmp_1);
+          stmt.bindLong(8, value.getId());
         }
         if (value.getId() == null) {
           stmt.bindNull(9);
         } else {
           stmt.bindLong(9, value.getId());
-        }
-        if (value.getId() == null) {
-          stmt.bindNull(10);
-        } else {
-          stmt.bindLong(10, value.getId());
         }
       }
     };
@@ -223,24 +216,29 @@ public final class ChatListDao_Impl implements ChatListDao {
     final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
     try {
       final int _cursorIndexOfChatIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "chatIdx");
-      final int _cursorIndexOfChatName = CursorUtil.getColumnIndexOrThrow(_cursor, "chat_name");
+      final int _cursorIndexOfNickName = CursorUtil.getColumnIndexOrThrow(_cursor, "nickName");
+      final int _cursorIndexOfGroupName = CursorUtil.getColumnIndexOrThrow(_cursor, "groupName");
       final int _cursorIndexOfProfileImg = CursorUtil.getColumnIndexOrThrow(_cursor, "profileImg");
-      final int _cursorIndexOfLatestTime = CursorUtil.getColumnIndexOrThrow(_cursor, "latest_time");
-      final int _cursorIndexOfLatestMessage = CursorUtil.getColumnIndexOrThrow(_cursor, "latest_message");
-      final int _cursorIndexOfIsGroup = CursorUtil.getColumnIndexOrThrow(_cursor, "isGroup");
+      final int _cursorIndexOfPostTime = CursorUtil.getColumnIndexOrThrow(_cursor, "postTime");
+      final int _cursorIndexOfMessage = CursorUtil.getColumnIndexOrThrow(_cursor, "message");
       final int _cursorIndexOfIsNew = CursorUtil.getColumnIndexOrThrow(_cursor, "isNew");
-      final int _cursorIndexOfIsChecked = CursorUtil.getColumnIndexOrThrow(_cursor, "isChecked");
       final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
       final List<ChatList> _result = new ArrayList<ChatList>(_cursor.getCount());
       while(_cursor.moveToNext()) {
         final ChatList _item;
         final int _tmpChatIdx;
         _tmpChatIdx = _cursor.getInt(_cursorIndexOfChatIdx);
-        final String _tmpChat_name;
-        if (_cursor.isNull(_cursorIndexOfChatName)) {
-          _tmpChat_name = null;
+        final String _tmpNickName;
+        if (_cursor.isNull(_cursorIndexOfNickName)) {
+          _tmpNickName = null;
         } else {
-          _tmpChat_name = _cursor.getString(_cursorIndexOfChatName);
+          _tmpNickName = _cursor.getString(_cursorIndexOfNickName);
+        }
+        final String _tmpGroupName;
+        if (_cursor.isNull(_cursorIndexOfGroupName)) {
+          _tmpGroupName = null;
+        } else {
+          _tmpGroupName = _cursor.getString(_cursorIndexOfGroupName);
         }
         final String _tmpProfileImg;
         if (_cursor.isNull(_cursorIndexOfProfileImg)) {
@@ -248,33 +246,23 @@ public final class ChatListDao_Impl implements ChatListDao {
         } else {
           _tmpProfileImg = _cursor.getString(_cursorIndexOfProfileImg);
         }
-        final Date _tmpLatest_time;
+        final Date _tmpPostTime;
         final Long _tmp;
-        if (_cursor.isNull(_cursorIndexOfLatestTime)) {
+        if (_cursor.isNull(_cursorIndexOfPostTime)) {
           _tmp = null;
         } else {
-          _tmp = _cursor.getLong(_cursorIndexOfLatestTime);
+          _tmp = _cursor.getLong(_cursorIndexOfPostTime);
         }
-        _tmpLatest_time = __converter.fromTimestamp(_tmp);
-        final String _tmpLatest_message;
-        if (_cursor.isNull(_cursorIndexOfLatestMessage)) {
-          _tmpLatest_message = null;
+        _tmpPostTime = __converter.fromTimestamp(_tmp);
+        final String _tmpMessage;
+        if (_cursor.isNull(_cursorIndexOfMessage)) {
+          _tmpMessage = null;
         } else {
-          _tmpLatest_message = _cursor.getString(_cursorIndexOfLatestMessage);
+          _tmpMessage = _cursor.getString(_cursorIndexOfMessage);
         }
-        final int _tmpIsGroup;
-        _tmpIsGroup = _cursor.getInt(_cursorIndexOfIsGroup);
         final int _tmpIsNew;
         _tmpIsNew = _cursor.getInt(_cursorIndexOfIsNew);
-        final Boolean _tmpIsChecked;
-        final Integer _tmp_1;
-        if (_cursor.isNull(_cursorIndexOfIsChecked)) {
-          _tmp_1 = null;
-        } else {
-          _tmp_1 = _cursor.getInt(_cursorIndexOfIsChecked);
-        }
-        _tmpIsChecked = _tmp_1 == null ? null : _tmp_1 != 0;
-        _item = new ChatList(_tmpChatIdx,_tmpChat_name,_tmpProfileImg,_tmpLatest_time,_tmpLatest_message,_tmpIsGroup,_tmpIsNew,_tmpIsChecked);
+        _item = new ChatList(_tmpChatIdx,_tmpNickName,_tmpGroupName,_tmpProfileImg,_tmpPostTime,_tmpMessage,_tmpIsNew);
         final Integer _tmpId;
         if (_cursor.isNull(_cursorIndexOfId)) {
           _tmpId = null;

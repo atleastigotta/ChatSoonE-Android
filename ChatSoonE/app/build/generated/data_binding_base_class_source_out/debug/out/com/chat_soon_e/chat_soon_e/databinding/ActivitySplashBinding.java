@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.chat_soon_e.chat_soon_e.R;
+import com.google.android.material.progressindicator.LinearProgressIndicator;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -23,34 +23,39 @@ public final class ActivitySplashBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final ImageView splashKakaoLoginBtn;
+  public final CardView splashKakaoBtn;
 
   @NonNull
-  public final TextView splashMainText;
+  public final ImageView splashKakaoIv;
 
   @NonNull
-  public final ProgressBar splashProgressBar;
+  public final TextView splashKakaoLoginBtnTv;
+
+  @NonNull
+  public final ImageView splashMainIcon;
+
+  @NonNull
+  public final ImageView splashMainIconText;
+
+  @NonNull
+  public final LinearProgressIndicator splashProgressBar;
 
   @NonNull
   public final TextView splashStartBtn;
 
-  @NonNull
-  public final CardView splashStartBtnCv;
-
-  @NonNull
-  public final TextView splashWithdraw;
-
   private ActivitySplashBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ImageView splashKakaoLoginBtn, @NonNull TextView splashMainText,
-      @NonNull ProgressBar splashProgressBar, @NonNull TextView splashStartBtn,
-      @NonNull CardView splashStartBtnCv, @NonNull TextView splashWithdraw) {
+      @NonNull CardView splashKakaoBtn, @NonNull ImageView splashKakaoIv,
+      @NonNull TextView splashKakaoLoginBtnTv, @NonNull ImageView splashMainIcon,
+      @NonNull ImageView splashMainIconText, @NonNull LinearProgressIndicator splashProgressBar,
+      @NonNull TextView splashStartBtn) {
     this.rootView = rootView;
-    this.splashKakaoLoginBtn = splashKakaoLoginBtn;
-    this.splashMainText = splashMainText;
+    this.splashKakaoBtn = splashKakaoBtn;
+    this.splashKakaoIv = splashKakaoIv;
+    this.splashKakaoLoginBtnTv = splashKakaoLoginBtnTv;
+    this.splashMainIcon = splashMainIcon;
+    this.splashMainIconText = splashMainIconText;
     this.splashProgressBar = splashProgressBar;
     this.splashStartBtn = splashStartBtn;
-    this.splashStartBtnCv = splashStartBtnCv;
-    this.splashWithdraw = splashWithdraw;
   }
 
   @Override
@@ -80,20 +85,38 @@ public final class ActivitySplashBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.splash_kakao_login_btn;
-      ImageView splashKakaoLoginBtn = ViewBindings.findChildViewById(rootView, id);
-      if (splashKakaoLoginBtn == null) {
+      id = R.id.splash_kakao_btn;
+      CardView splashKakaoBtn = ViewBindings.findChildViewById(rootView, id);
+      if (splashKakaoBtn == null) {
         break missingId;
       }
 
-      id = R.id.splash_main_text;
-      TextView splashMainText = ViewBindings.findChildViewById(rootView, id);
-      if (splashMainText == null) {
+      id = R.id.splash_kakao_iv;
+      ImageView splashKakaoIv = ViewBindings.findChildViewById(rootView, id);
+      if (splashKakaoIv == null) {
+        break missingId;
+      }
+
+      id = R.id.splash_kakao_login_btn_tv;
+      TextView splashKakaoLoginBtnTv = ViewBindings.findChildViewById(rootView, id);
+      if (splashKakaoLoginBtnTv == null) {
+        break missingId;
+      }
+
+      id = R.id.splash_main_icon;
+      ImageView splashMainIcon = ViewBindings.findChildViewById(rootView, id);
+      if (splashMainIcon == null) {
+        break missingId;
+      }
+
+      id = R.id.splash_main_icon_text;
+      ImageView splashMainIconText = ViewBindings.findChildViewById(rootView, id);
+      if (splashMainIconText == null) {
         break missingId;
       }
 
       id = R.id.splash_progressBar;
-      ProgressBar splashProgressBar = ViewBindings.findChildViewById(rootView, id);
+      LinearProgressIndicator splashProgressBar = ViewBindings.findChildViewById(rootView, id);
       if (splashProgressBar == null) {
         break missingId;
       }
@@ -104,20 +127,9 @@ public final class ActivitySplashBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.splash_start_btn_cv;
-      CardView splashStartBtnCv = ViewBindings.findChildViewById(rootView, id);
-      if (splashStartBtnCv == null) {
-        break missingId;
-      }
-
-      id = R.id.splash_withdraw;
-      TextView splashWithdraw = ViewBindings.findChildViewById(rootView, id);
-      if (splashWithdraw == null) {
-        break missingId;
-      }
-
-      return new ActivitySplashBinding((ConstraintLayout) rootView, splashKakaoLoginBtn,
-          splashMainText, splashProgressBar, splashStartBtn, splashStartBtnCv, splashWithdraw);
+      return new ActivitySplashBinding((ConstraintLayout) rootView, splashKakaoBtn, splashKakaoIv,
+          splashKakaoLoginBtnTv, splashMainIcon, splashMainIconText, splashProgressBar,
+          splashStartBtn);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

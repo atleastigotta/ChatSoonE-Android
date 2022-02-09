@@ -6,242 +6,242 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="23"
-8-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml
+8-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="31" />
-9-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml
+9-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:5:5-67
-11-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:5:22-64
+11-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:5:5-67
+11-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:5:22-64
 12    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-12-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:6:5-77
-12-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:6:22-74
+12-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:6:5-77
+12-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:6:22-74
 13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-13-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:7:5-79
-13-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:7:22-76
+13-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:7:5-79
+13-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:7:22-76
 14    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-14-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:8:5-76
-14-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:8:22-73
+14-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:8:5-76
+14-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:8:22-73
 15
 16    <queries>
-16-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\lj\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:11:5-19:15
+16-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:11:5-19:15
 17        <package android:name="com.kakao.talk" />
-17-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\lj\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:12:9-50
-17-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\lj\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:12:18-47
+17-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:12:9-50
+17-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:12:18-47
 18        <package android:name="com.kakao.talk.alpha" />
-18-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\lj\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:13:9-56
-18-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\lj\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:13:18-53
+18-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:13:9-56
+18-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:13:18-53
 19        <package android:name="com.kakao.talk.sandbox" />
-19-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\lj\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:14:9-58
-19-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\lj\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:14:18-55
+19-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:14:9-58
+19-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:14:18-55
 20        <package android:name="com.kakao.onetalk" />
-20-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\lj\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:15:9-53
-20-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\lj\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:15:18-50
+20-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:15:9-53
+20-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:15:18-50
 21        <package android:name="com.android.chrome" />
-21-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\lj\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:16:9-54
-21-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\lj\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:16:18-51
+21-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:16:9-54
+21-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:16:18-51
 22        <package android:name="com.chrome.beta" />
-22-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\lj\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:17:9-51
-22-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\lj\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:17:18-48
+22-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:17:9-51
+22-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:17:18-48
 23        <package android:name="com.chrome.dev" />
-23-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\lj\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:18:9-50
-23-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\lj\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:18:18-47
+23-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:18:9-50
+23-->[com.kakao.sdk:v2-common:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\638f37a555470d330fc172611bca0222\transformed\jetified-v2-common-2.4.2\AndroidManifest.xml:18:18-47
 24    </queries>
 25
 26    <application
-26-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:9:5-62:19
+26-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:9:5-63:19
 27        android:name="com.chat_soon_e.chat_soon_e.ApplicationClass"
-27-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:10:9-68
-28        android:allowBackup="true"
-28-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:11:9-35
+27-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:10:9-68
+28        android:allowBackup="false"
+28-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:11:9-36
 29        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-29-->[androidx.core:core:1.7.0] C:\Users\lj\.gradle\caches\transforms-3\6006d603408a8c1ed0edf3e550c48eb5\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
+29-->[androidx.core:core:1.7.0] C:\Users\82108\.gradle\caches\transforms-3\6006d603408a8c1ed0edf3e550c48eb5\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
 30        android:debuggable="true"
 31        android:extractNativeLibs="false"
 32        android:icon="@mipmap/ic_launcher"
-32-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:12:9-43
+32-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:12:9-43
 33        android:label="@string/app_name"
-33-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:13:9-41
+33-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:13:9-41
 34        android:roundIcon="@mipmap/ic_launcher_round"
-34-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:14:9-54
+34-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:14:9-54
 35        android:supportsRtl="true"
-35-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:15:9-35
+35-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:15:9-35
 36        android:testOnly="true"
 37        android:theme="@style/Theme.Template_Basic"
-37-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:17:9-52
+37-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:17:9-52
 38        android:usesCleartextTraffic="true" >
-38-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:16:9-44
+38-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:16:9-44
 39
 40        <!-- SplashActivity -->
 41
 42        <activity
-42-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:21:9-29:20
+42-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:21:9-29:20
 43            android:name="com.chat_soon_e.chat_soon_e.ui.SplashActivity"
-43-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:22:13-73
+43-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:22:13-73
 44            android:exported="true" >
-44-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:23:13-36
+44-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:23:13-36
 45            <intent-filter>
-45-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:24:13-28:29
+45-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:24:13-28:29
 46                <action android:name="android.intent.action.MAIN" />
-46-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:25:17-69
-46-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:25:25-66
+46-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:25:17-69
+46-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:25:25-66
 47
 48                <category android:name="android.intent.category.LAUNCHER" />
-48-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:27:17-77
-48-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:27:27-74
+48-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:27:17-77
+48-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:27:27-74
 49            </intent-filter>
 50        </activity>
 51        <activity
-51-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:30:9-95
+51-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:30:9-95
 52            android:name="com.chat_soon_e.chat_soon_e.ui.ExplainActivity.ExplainActivity"
-52-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:30:19-69
+52-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:30:19-69
 53            android:exported="true" />
-53-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:30:70-93
+53-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:30:70-93
 54        <activity android:name="com.chat_soon_e.chat_soon_e.ui.PermissionActivity" />
-54-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:31:9-59
-54-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:31:19-56
+54-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:31:9-59
+54-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:31:19-56
 55        <activity
-55-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:32:9-104
+55-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:32:9-104
 56            android:name="com.chat_soon_e.chat_soon_e.ui.MainActivity"
-56-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:32:19-77
+56-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:32:19-77
 57            android:exported="true" />
-57-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:32:78-101
+57-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:32:78-101
 58        <activity
-58-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:33:9-77
+58-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:33:9-77
 59            android:name="com.chat_soon_e.chat_soon_e.ui.ChatActivity"
-59-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:33:19-50
+59-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:33:19-50
 60            android:exported="true" />
-60-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:33:51-74
+60-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:33:51-74
 61        <activity
-61-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:34:9-81
+61-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:34:9-81
 62            android:name="com.chat_soon_e.chat_soon_e.ui.MyFolderActivity"
-62-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:34:19-54
+62-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:34:19-54
 63            android:exported="true" />
-63-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:34:55-78
+63-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:34:55-78
 64        <activity
-64-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:35:9-86
+64-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:35:9-86
 65            android:name="com.chat_soon_e.chat_soon_e.ui.CreatePatternActivity"
-65-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:35:19-59
+65-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:35:19-59
 66            android:exported="true" />
-66-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:35:60-83
+66-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:35:60-83
 67        <activity
-67-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:36:9-85
+67-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:36:9-85
 68            android:name="com.chat_soon_e.chat_soon_e.ui.HiddenFolderActivity"
-68-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:36:19-58
+68-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:36:19-58
 69            android:exported="true" />
-69-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:36:59-82
+69-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:36:59-82
 70        <activity
-70-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:37:9-85
+70-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:37:9-85
 71            android:name="com.chat_soon_e.chat_soon_e.ui.InputPatternActivity"
-71-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:37:19-58
+71-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:37:19-58
 72            android:exported="true" />
-72-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:37:59-82
+72-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:37:59-82
 73        <activity
-73-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:38:9-86
+73-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:38:9-86
 74            android:name="com.chat_soon_e.chat_soon_e.ui.FolderContentActivity"
-74-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:38:19-59
+74-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:38:19-59
 75            android:exported="true" />
-75-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:38:60-83
+75-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:38:60-83
 76        <activity
-76-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:40:9-52:20
+76-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:40:9-53:20
 77            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
-77-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:41:13-70
+77-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:41:13-70
 78            android:exported="true"
-78-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:42:13-36
+78-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:42:13-36
 79            android:launchMode="singleTask"
-79-->[com.kakao.sdk:v2-auth:2.4.2] C:\Users\lj\.gradle\caches\transforms-3\b24800abe53266e872f2560b76a0176a\transformed\jetified-v2-auth-2.4.2\AndroidManifest.xml:19:13-44
+79-->[com.kakao.sdk:v2-auth:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\b24800abe53266e872f2560b76a0176a\transformed\jetified-v2-auth-2.4.2\AndroidManifest.xml:19:13-44
 80            android:theme="@style/TransparentCompat" >
-80-->[com.kakao.sdk:v2-auth:2.4.2] C:\Users\lj\.gradle\caches\transforms-3\b24800abe53266e872f2560b76a0176a\transformed\jetified-v2-auth-2.4.2\AndroidManifest.xml:20:13-53
+80-->[com.kakao.sdk:v2-auth:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\b24800abe53266e872f2560b76a0176a\transformed\jetified-v2-auth-2.4.2\AndroidManifest.xml:20:13-53
 81            <intent-filter>
-81-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:43:13-51:29
+81-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:43:13-52:29
 82                <action android:name="android.intent.action.VIEW" />
-82-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:44:17-69
-82-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:44:25-66
+82-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:44:17-69
+82-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:44:25-66
 83
 84                <category android:name="android.intent.category.DEFAULT" />
-84-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:45:17-76
-84-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:45:27-73
+84-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:45:17-76
+84-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:45:27-73
 85                <category android:name="android.intent.category.BROWSABLE" />
-85-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:46:17-78
-85-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:46:27-75
+85-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:46:17-78
+85-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:46:27-75
 86
 87                <!-- Redirect URI: "kakao{NATIVE_APP_KEY}://oauth" -->
 88                <data
-88-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:49:17-50:46
+88-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:49:17-51:6
 89                    android:host="oauth"
-89-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:49:23-43
-90                    android:scheme="kakao" />
-90-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:50:21-43
+89-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:49:23-43
+90                    android:scheme="kakao63ebc69c67adf9e9e8f147df6508dc35 " />
+90-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:49:17-51:6
 91            </intent-filter>
 92        </activity>
 93
 94        <!-- NotificationListener 권한 얻기 -->
 95        <service
-95-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:55:9-61:19
+95-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:56:9-62:19
 96            android:name="com.chat_soon_e.chat_soon_e.ui.MyNotificationListener"
-96-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:55:18-59
+96-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:56:18-59
 97            android:exported="false"
-97-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:57:13-37
+97-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:58:13-37
 98            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" >
-98-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:56:13-87
+98-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:57:13-87
 99            <intent-filter>
-99-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:58:13-60:29
+99-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:59:13-61:29
 100                <action android:name="android.service.notification.NotificationListenerService" />
-100-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:59:17-99
-100-->F:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:59:25-96
+100-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:60:17-99
+100-->D:\gitfolder\UMC_ChatSoon5\ChatSoonE\app\src\main\AndroidManifest.xml:60:25-96
 101            </intent-filter>
 102        </service>
 103
 104        <activity
-104-->[com.kakao.sdk:v2-auth:2.4.2] C:\Users\lj\.gradle\caches\transforms-3\b24800abe53266e872f2560b76a0176a\transformed\jetified-v2-auth-2.4.2\AndroidManifest.xml:12:9-16:56
+104-->[com.kakao.sdk:v2-auth:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\b24800abe53266e872f2560b76a0176a\transformed\jetified-v2-auth-2.4.2\AndroidManifest.xml:12:9-16:56
 105            android:name="com.kakao.sdk.auth.TalkAuthCodeActivity"
-105-->[com.kakao.sdk:v2-auth:2.4.2] C:\Users\lj\.gradle\caches\transforms-3\b24800abe53266e872f2560b76a0176a\transformed\jetified-v2-auth-2.4.2\AndroidManifest.xml:13:13-67
+105-->[com.kakao.sdk:v2-auth:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\b24800abe53266e872f2560b76a0176a\transformed\jetified-v2-auth-2.4.2\AndroidManifest.xml:13:13-67
 106            android:exported="false"
-106-->[com.kakao.sdk:v2-auth:2.4.2] C:\Users\lj\.gradle\caches\transforms-3\b24800abe53266e872f2560b76a0176a\transformed\jetified-v2-auth-2.4.2\AndroidManifest.xml:14:13-37
+106-->[com.kakao.sdk:v2-auth:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\b24800abe53266e872f2560b76a0176a\transformed\jetified-v2-auth-2.4.2\AndroidManifest.xml:14:13-37
 107            android:launchMode="singleTask"
-107-->[com.kakao.sdk:v2-auth:2.4.2] C:\Users\lj\.gradle\caches\transforms-3\b24800abe53266e872f2560b76a0176a\transformed\jetified-v2-auth-2.4.2\AndroidManifest.xml:15:13-44
+107-->[com.kakao.sdk:v2-auth:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\b24800abe53266e872f2560b76a0176a\transformed\jetified-v2-auth-2.4.2\AndroidManifest.xml:15:13-44
 108            android:theme="@style/TransparentCompat" />
-108-->[com.kakao.sdk:v2-auth:2.4.2] C:\Users\lj\.gradle\caches\transforms-3\b24800abe53266e872f2560b76a0176a\transformed\jetified-v2-auth-2.4.2\AndroidManifest.xml:16:13-53
+108-->[com.kakao.sdk:v2-auth:2.4.2] C:\Users\82108\.gradle\caches\transforms-3\b24800abe53266e872f2560b76a0176a\transformed\jetified-v2-auth-2.4.2\AndroidManifest.xml:16:13-53
 109        <activity
-109-->[gun0912.ted:tedpermission:2.2.3] C:\Users\lj\.gradle\caches\transforms-3\6dce36e881ddebd52f58099518dd04fb\transformed\jetified-tedpermission-2.2.3\AndroidManifest.xml:10:9-14:67
+109-->[gun0912.ted:tedpermission:2.2.3] C:\Users\82108\.gradle\caches\transforms-3\ce2936c42b7907fccce98b9ca5fc8ca5\transformed\jetified-tedpermission-2.2.3\AndroidManifest.xml:10:9-14:67
 110            android:name="com.gun0912.tedpermission.TedPermissionActivity"
-110-->[gun0912.ted:tedpermission:2.2.3] C:\Users\lj\.gradle\caches\transforms-3\6dce36e881ddebd52f58099518dd04fb\transformed\jetified-tedpermission-2.2.3\AndroidManifest.xml:11:13-75
+110-->[gun0912.ted:tedpermission:2.2.3] C:\Users\82108\.gradle\caches\transforms-3\ce2936c42b7907fccce98b9ca5fc8ca5\transformed\jetified-tedpermission-2.2.3\AndroidManifest.xml:11:13-75
 111            android:configChanges="mcc|mnc|locale|keyboard|keyboardHidden|screenLayout|fontScale|uiMode|orientation|screenSize|layoutDirection"
-111-->[gun0912.ted:tedpermission:2.2.3] C:\Users\lj\.gradle\caches\transforms-3\6dce36e881ddebd52f58099518dd04fb\transformed\jetified-tedpermission-2.2.3\AndroidManifest.xml:12:13-144
+111-->[gun0912.ted:tedpermission:2.2.3] C:\Users\82108\.gradle\caches\transforms-3\ce2936c42b7907fccce98b9ca5fc8ca5\transformed\jetified-tedpermission-2.2.3\AndroidManifest.xml:12:13-144
 112            android:screenOrientation="unspecified"
-112-->[gun0912.ted:tedpermission:2.2.3] C:\Users\lj\.gradle\caches\transforms-3\6dce36e881ddebd52f58099518dd04fb\transformed\jetified-tedpermission-2.2.3\AndroidManifest.xml:13:13-52
+112-->[gun0912.ted:tedpermission:2.2.3] C:\Users\82108\.gradle\caches\transforms-3\ce2936c42b7907fccce98b9ca5fc8ca5\transformed\jetified-tedpermission-2.2.3\AndroidManifest.xml:13:13-52
 113            android:theme="@style/Theme.Transparent.Permission" />
-113-->[gun0912.ted:tedpermission:2.2.3] C:\Users\lj\.gradle\caches\transforms-3\6dce36e881ddebd52f58099518dd04fb\transformed\jetified-tedpermission-2.2.3\AndroidManifest.xml:14:13-64
+113-->[gun0912.ted:tedpermission:2.2.3] C:\Users\82108\.gradle\caches\transforms-3\ce2936c42b7907fccce98b9ca5fc8ca5\transformed\jetified-tedpermission-2.2.3\AndroidManifest.xml:14:13-64
 114
 115        <service
-115-->[androidx.room:room-runtime:2.3.0] C:\Users\lj\.gradle\caches\transforms-3\4caaad01a284ca2170c6698a94c0c7b8\transformed\room-runtime-2.3.0\AndroidManifest.xml:25:9-28:40
+115-->[androidx.room:room-runtime:2.3.0] C:\Users\82108\.gradle\caches\transforms-3\4caaad01a284ca2170c6698a94c0c7b8\transformed\room-runtime-2.3.0\AndroidManifest.xml:25:9-28:40
 116            android:name="androidx.room.MultiInstanceInvalidationService"
-116-->[androidx.room:room-runtime:2.3.0] C:\Users\lj\.gradle\caches\transforms-3\4caaad01a284ca2170c6698a94c0c7b8\transformed\room-runtime-2.3.0\AndroidManifest.xml:26:13-74
+116-->[androidx.room:room-runtime:2.3.0] C:\Users\82108\.gradle\caches\transforms-3\4caaad01a284ca2170c6698a94c0c7b8\transformed\room-runtime-2.3.0\AndroidManifest.xml:26:13-74
 117            android:directBootAware="true"
-117-->[androidx.room:room-runtime:2.3.0] C:\Users\lj\.gradle\caches\transforms-3\4caaad01a284ca2170c6698a94c0c7b8\transformed\room-runtime-2.3.0\AndroidManifest.xml:27:13-43
+117-->[androidx.room:room-runtime:2.3.0] C:\Users\82108\.gradle\caches\transforms-3\4caaad01a284ca2170c6698a94c0c7b8\transformed\room-runtime-2.3.0\AndroidManifest.xml:27:13-43
 118            android:exported="false" />
-118-->[androidx.room:room-runtime:2.3.0] C:\Users\lj\.gradle\caches\transforms-3\4caaad01a284ca2170c6698a94c0c7b8\transformed\room-runtime-2.3.0\AndroidManifest.xml:28:13-37
+118-->[androidx.room:room-runtime:2.3.0] C:\Users\82108\.gradle\caches\transforms-3\4caaad01a284ca2170c6698a94c0c7b8\transformed\room-runtime-2.3.0\AndroidManifest.xml:28:13-37
 119
 120        <provider
-120-->[androidx.emoji2:emoji2:1.0.0] C:\Users\lj\.gradle\caches\transforms-3\0c8b21db498ae6b6ba22706b7f0dbd1b\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
+120-->[androidx.emoji2:emoji2:1.0.0] C:\Users\82108\.gradle\caches\transforms-3\0c8b21db498ae6b6ba22706b7f0dbd1b\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
 121            android:name="androidx.startup.InitializationProvider"
-121-->[androidx.emoji2:emoji2:1.0.0] C:\Users\lj\.gradle\caches\transforms-3\0c8b21db498ae6b6ba22706b7f0dbd1b\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:27:13-67
+121-->[androidx.emoji2:emoji2:1.0.0] C:\Users\82108\.gradle\caches\transforms-3\0c8b21db498ae6b6ba22706b7f0dbd1b\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:27:13-67
 122            android:authorities="com.chat_soon_e.chat_soon_e.androidx-startup"
-122-->[androidx.emoji2:emoji2:1.0.0] C:\Users\lj\.gradle\caches\transforms-3\0c8b21db498ae6b6ba22706b7f0dbd1b\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:28:13-68
+122-->[androidx.emoji2:emoji2:1.0.0] C:\Users\82108\.gradle\caches\transforms-3\0c8b21db498ae6b6ba22706b7f0dbd1b\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:28:13-68
 123            android:exported="false" >
-123-->[androidx.emoji2:emoji2:1.0.0] C:\Users\lj\.gradle\caches\transforms-3\0c8b21db498ae6b6ba22706b7f0dbd1b\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:29:13-37
+123-->[androidx.emoji2:emoji2:1.0.0] C:\Users\82108\.gradle\caches\transforms-3\0c8b21db498ae6b6ba22706b7f0dbd1b\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:29:13-37
 124            <meta-data
-124-->[androidx.emoji2:emoji2:1.0.0] C:\Users\lj\.gradle\caches\transforms-3\0c8b21db498ae6b6ba22706b7f0dbd1b\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+124-->[androidx.emoji2:emoji2:1.0.0] C:\Users\82108\.gradle\caches\transforms-3\0c8b21db498ae6b6ba22706b7f0dbd1b\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
 125                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-125-->[androidx.emoji2:emoji2:1.0.0] C:\Users\lj\.gradle\caches\transforms-3\0c8b21db498ae6b6ba22706b7f0dbd1b\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:32:17-75
+125-->[androidx.emoji2:emoji2:1.0.0] C:\Users\82108\.gradle\caches\transforms-3\0c8b21db498ae6b6ba22706b7f0dbd1b\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:32:17-75
 126                android:value="androidx.startup" />
-126-->[androidx.emoji2:emoji2:1.0.0] C:\Users\lj\.gradle\caches\transforms-3\0c8b21db498ae6b6ba22706b7f0dbd1b\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:33:17-49
+126-->[androidx.emoji2:emoji2:1.0.0] C:\Users\82108\.gradle\caches\transforms-3\0c8b21db498ae6b6ba22706b7f0dbd1b\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:33:17-49
 127            <meta-data
-127-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\lj\.gradle\caches\transforms-3\a889c36c21c1e2bc116f811fb6c47330\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
+127-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\82108\.gradle\caches\transforms-3\a889c36c21c1e2bc116f811fb6c47330\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
 128                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-128-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\lj\.gradle\caches\transforms-3\a889c36c21c1e2bc116f811fb6c47330\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
+128-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\82108\.gradle\caches\transforms-3\a889c36c21c1e2bc116f811fb6c47330\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
 129                android:value="androidx.startup" />
-129-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\lj\.gradle\caches\transforms-3\a889c36c21c1e2bc116f811fb6c47330\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
+129-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\82108\.gradle\caches\transforms-3\a889c36c21c1e2bc116f811fb6c47330\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
 130        </provider>
 131    </application>
 132
