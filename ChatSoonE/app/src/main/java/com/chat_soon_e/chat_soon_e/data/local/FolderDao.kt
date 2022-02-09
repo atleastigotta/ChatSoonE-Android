@@ -45,4 +45,5 @@ interface FolderDao {
     //해당 폴더의 챗들 가져오기
     @Query("SELECT C.postTime, C.folderIdx, C.chatIdx, C.otherUserIdx, C.isChecked, C.message, C.groupName, C.status, C.isNew, C.viewType FROM ChatTable C INNER JOIN OtherUserTable OU ON C.otherUserIdx=OU.otherUserIdx INNER JOIN FolderContentTable FC ON C.chatIdx=FC.chatIdx INNER JOIN FolderTable F ON FC.folderIdx=F.idx WHERE OU.kakaoUserIdx= :user_id AND FC.folderIdx=:folderIdx ORDER BY C.postTime DESC")
     fun getFolderChats(user_id:Long, folderIdx:Int): LiveData<List<Chat>>
+
 }

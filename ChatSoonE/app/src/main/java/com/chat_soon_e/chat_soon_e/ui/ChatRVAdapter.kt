@@ -1,7 +1,6 @@
 package com.chat_soon_e.chat_soon_e.ui
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Build
 import android.util.Log
 import android.util.SparseBooleanArray
@@ -10,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.dateToString
@@ -18,16 +16,15 @@ import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.loadBitmap
 import com.chat_soon_e.chat_soon_e.R
 import com.chat_soon_e.chat_soon_e.data.entities.*
 import com.chat_soon_e.chat_soon_e.data.local.AppDatabase
+import com.chat_soon_e.chat_soon_e.databinding.ItemChatBinding
 import com.chat_soon_e.chat_soon_e.databinding.ItemChatChooseBinding
-import com.chat_soon_e.chat_soon_e.databinding.ItemChatDefaultBinding
-import com.chat_soon_e.chat_soon_e.databinding.ItemChatListChooseBinding
-import com.chat_soon_e.chat_soon_e.databinding.ItemChatListDefaultBinding
+import okhttp3.internal.notifyAll
 
 class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickListener: MyItemClickListener): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    var chatList = ArrayList<Chat>()
+    var chatList = ArrayList<ChatList>()
     var selectedItemList: SparseBooleanArray = SparseBooleanArray(0)
     private lateinit var popup: PopupMenu
-    private lateinit var binding: ItemChatDefaultBinding
+    private lateinit var binding: ItemChatBinding
     private var currentPosition: Int = 0
 
     // 클릭 인터페이스
@@ -46,7 +43,7 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
                     mItemClickListener = mItemClickListener)
             }
             else -> {
-                DefaultViewHolder(ItemChatDefaultBinding.inflate(
+                DefaultViewHolder(ItemChatBinding.inflate(
                     LayoutInflater.from(viewGroup.context), viewGroup, false))
             }
         }
@@ -77,7 +74,7 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
 
     //AddData
     @SuppressLint("NotifyDataSetChanged")
-    fun addItem(chat: List<Chat>){
+    fun addItem(chat: List<ChatList>){
         chatList.clear()
         chatList.addAll(chat as ArrayList)
 
@@ -110,8 +107,6 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
         for(i in selectedList){
             chatIdxList.add(i.chatIdx)
         }
-        Log.d(TG,"선택된 아이템"+chatIdxList.toString())
-        Log.d(TG,"모든 아이템"+chatList.toString())
 
         return chatIdxList
 
@@ -120,7 +115,7 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
     // 뷰타입 설정
     @SuppressLint("NotifyDataSetChanged")
     fun setViewType(currentMode: Int) {
-        val newChatList = ArrayList<Chat>()
+        val newChatList = ArrayList<ChatList>()
         for(i in 0 until chatList.size) {
             if(currentMode == 0) {
                 // 일반 모드
@@ -149,7 +144,7 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
     override fun getItemViewType(position: Int): Int = chatList[position].viewType!!
 
     // 디폴트 뷰홀더
-    inner class DefaultViewHolder(private val binding: ItemChatDefaultBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class DefaultViewHolder(private val binding: ItemChatBinding): RecyclerView.ViewHolder(binding.root) {
         init {
             binding.itemChatDefaultMessageTv.setOnLongClickListener {
                 toggleItemSelected(itemView, position = bindingAdapterPosition)
@@ -170,10 +165,6 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
             }
         }
 
-        @RequiresApi(Build.VERSION_CODES.O)
-        fun bind(testChat: Chat) {
-            val db=AppDatabase.getInstance(mContext)!!
-            val other=db.otherUserDao().getOtherUserById(testChat.otherUserIdx)
 
 //            // 날짜가 바뀐 걸 확인을 하면
 //            binding.itemChatDefaultDateTimeLayout.visibility = View.VISIBLE
@@ -182,11 +173,14 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
 //            if(position == 0) // 날짜 표시
 //                else if(position != 0 && 이전 포지션에 들어있는 chatList의 데이트타임과 비교해서 1일 이상 차이가 나면 ture 반환) // 날짜 표시
 //            else //무시
-//
-            binding.itemChatDefaultNameTv.text = other.nickname
-            binding.itemChatDefaultMessageTv.text = testChat.message
-            binding.itemChatDefaultDateTimeTv.text = dateToString(testChat.postTime!!)
-            binding.itemChatDefaultProfileIv.setImageBitmap(loadBitmap(other.image!!, mContext))
+        @RequiresApi(Build.VERSION_CODES.O)
+        fun bind(chat: ChatList) {
+            Log.d("chatNameRVA", chat.nickName.toString())
+            binding.itemChatDefaultNameTv.text = chat.nickName
+            binding.itemChatDefaultMessageTv.text = chat.message
+            binding.itemChatDefaultDateTimeTv.text = dateToString(chat.postTime!!)
+            binding.itemChatDefaultProfileIv.setImageBitmap(loadBitmap(chat.profileImg!!, mContext))
+
         }
     }
 
@@ -201,14 +195,12 @@ class ChatRVAdapter(private val mContext: ChatActivity, private val mItemClickLi
         }
 
         @RequiresApi(Build.VERSION_CODES.O)
-        fun bind(testChat: Chat) {
-            val db=AppDatabase.getInstance(mContext)!!
-            val other=db.otherUserDao().getOtherUserById(testChat.otherUserIdx)
-
-            binding.itemChatChooseNameTv.text = other.nickname
-            binding.itemChatChooseMessageTv.text = testChat.message
-            binding.itemChatChooseDateTimeTv.text = dateToString(testChat.postTime!!)
-            binding.itemChatChooseProfileIv.setImageBitmap(loadBitmap(other.image!!, mContext))
+        fun bind(chat: ChatList) {
+            Log.d("chatNameRVA", chat.nickName.toString())
+            binding.itemChatChooseNameTv.text = chat.nickName
+            binding.itemChatChooseMessageTv.text = chat.message
+            binding.itemChatChooseDateTimeTv.text = dateToString(chat.postTime!!)
+            binding.itemChatChooseProfileIv.setImageBitmap(loadBitmap(chat.profileImg!!, mContext))
         }
     }
 

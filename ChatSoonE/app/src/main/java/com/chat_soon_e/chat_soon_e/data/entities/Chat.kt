@@ -11,7 +11,7 @@ data class Chat(
     @SerializedName("groupName") var groupName: String? = null,     // 그룹명
     @SerializedName("message") var message: String? = null,         // 내용
     @SerializedName("postTime") var postTime: Date? = null,         // 보낸시간
-    @SerializedName("folderIdx") var folderIdx: Int = 0,            // 폴더 인덱스
+    @SerializedName("folderIdx") var folderIdx: Int = 0,            // 폴더 인덱스, 삭제해야함!
     @SerializedName("status") var status: String="ACTIVE",          // 상태, (ACTIVE: 기본, BLOCKED, DELETED)
     @SerializedName("viewType") var viewType: Int = 0,
     @SerializedName("isChecked") var isChecked: Boolean = false,

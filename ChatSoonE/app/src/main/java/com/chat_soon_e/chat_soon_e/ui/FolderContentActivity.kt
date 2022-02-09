@@ -20,7 +20,6 @@ class FolderContentActivity: BaseActivity<ActivityFolderContentBinding>(Activity
         initRecyclerView()
         initClickListener()
     }
-
     //들어간 폴더의 챗 정보를 보여줌??응?
     private fun initData(){
         database = AppDatabase.getInstance(this)!!
@@ -31,6 +30,11 @@ class FolderContentActivity: BaseActivity<ActivityFolderContentBinding>(Activity
             var gson=Gson()
             data=gson.fromJson(folderjson, FolderContent::class.java)
             Log.d("folderContentData", data.toString())
+            val data=AppDatabase.getInstance(this)!!.folderDao().getFolderChats(getID(), data.folderIdx).observe(
+                this, {
+                   //= Log.d("folderContentData", it.toString())
+                }
+            )
         }
 
         // 폴더 이름으로 바인딩

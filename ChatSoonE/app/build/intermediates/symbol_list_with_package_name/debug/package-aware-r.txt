@@ -2535,6 +2535,12 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable account
+drawable account_profile
+drawable accountone
+drawable ad11d
+drawable add
+drawable allchattwo
 drawable avd_hide_password
 drawable avd_show_password
 drawable background
@@ -2561,6 +2567,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+<<<<<<< HEAD
 drawable button_change_name
 drawable chatsoon01
 drawable chatsoon02
@@ -2571,6 +2578,12 @@ drawable chatsoon06
 drawable chatsoon07
 drawable chatsoon08
 drawable chatsoon09
+=======
+drawable cancel_btn
+drawable chat
+drawable chatone
+drawable chatsoon1
+>>>>>>> juyeon
 drawable chatsoon10
 drawable chatsoon11
 drawable chatsoon12
@@ -2578,14 +2591,37 @@ drawable chatsoon13
 drawable chatsoon14
 drawable chatsoon15
 drawable chatsoon16
+<<<<<<< HEAD
+=======
+drawable chatsoon2
+drawable chatsoon3
+drawable chatsoon4
+drawable chatsoon5
+drawable chatsoon6
+drawable chatsoon7
+drawable chatsoon8
+drawable chatsoon9
+drawable cloud
+drawable dddd
+>>>>>>> juyeon
 drawable design_fab_background
 drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
 drawable dot_background
+<<<<<<< HEAD
 drawable ic_all_chat_black
 drawable ic_arrow_left_back
+=======
+drawable file
+drawable folder
+drawable folder1
+drawable foldertwo
+drawable foldertwoone
+drawable home
+drawable ic_all_chat
+>>>>>>> juyeon
 drawable ic_baseline_account_circle_24
 drawable ic_baseline_block_24
 drawable ic_baseline_email_24
@@ -2626,6 +2662,7 @@ drawable ic_to_folder
 drawable ic_up_and_down
 drawable img_background_folder
 drawable kakao_login_medium_narrow
+drawable kakaoicon
 drawable m3_appbar_background
 drawable m3_popupmenu_background_overlay
 drawable m3_radiobutton_ripple
@@ -2654,6 +2691,7 @@ drawable mtrl_navigation_bar_item_background
 drawable mtrl_popupmenu_background
 drawable mtrl_popupmenu_background_overlay
 drawable mtrl_tabs_default_indicator
+drawable narrow4
 drawable navigation_empty_icon
 drawable notiback
 drawable notification_action_background
@@ -2668,7 +2706,9 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable patten
 drawable progressbar_progressbar1
+drawable rnfma
 drawable selector_chat
 drawable selector_chat_list
 drawable selector_switch
@@ -2676,18 +2716,29 @@ drawable shadow
 drawable shape_switch_track_off
 drawable shape_switch_track_on
 drawable shape_thumb
+drawable sharetwos
+drawable splash_btn
 drawable spring_dot_background
 drawable spring_dot_stroke_background
+drawable ssssss
 drawable test_custom_background
 drawable test_level_drawable
+<<<<<<< HEAD
 drawable thumb
+=======
+drawable text
+>>>>>>> juyeon
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable track
 drawable worm_dot_background
 drawable worm_dot_stroke_background
+<<<<<<< HEAD
 font font
 font noto_sans_korean
+=======
+drawable xnaud
+>>>>>>> juyeon
 id ALT
 id BOTTOM_END
 id BOTTOM_START
@@ -3215,12 +3266,13 @@ id snapMargins
 id south
 id spacer
 id special_effects_controller_view_tag
-id splash_kakao_login_btn
-id splash_main_text
+id splash_kakao_btn
+id splash_kakao_iv
+id splash_kakao_login_btn_tv
+id splash_main_icon
+id splash_main_icon_text
 id splash_progressBar
 id splash_start_btn
-id splash_start_btn_cv
-id splash_withdraw
 id spline
 id split_action_bar
 id spread

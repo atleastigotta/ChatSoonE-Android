@@ -89,15 +89,12 @@ class MainRVAdapter(private val context: Context, private val mItemClickListener
         // DB 업데이트
 
         for(i in selectedList) {
-            if(i.isGroup==0){   // 개인톡일 경우
-                // chatIdx로 otherUserIdx를 검색한다.
-                val id = database.chatDao().getChatOtherIdx(i.chatIdx)
-                database.chatDao().deleteOneChat(id)
+            if(i.groupName!=null){   // 개인톡일 경우
+                database.chatDao().deleteOneChat(i.chatIdx)
             }
             else{   // 단체 톡일 경우 chatName인 것들 다 삭제
-                database.chatDao().deleteOrgChat(getID(), i.chat_name!!)
+                database.chatDao().deleteOrgChat(getID(), i.nickName!!)
             }
-            Log.d(TG, i.chatIdx.toString())
         }
         Log.d(TG, "After delete Items" + database.chatDao().getChatIdxList().toString())
         notifyDataSetChanged()
@@ -202,14 +199,14 @@ class MainRVAdapter(private val context: Context, private val mItemClickListener
 
         @RequiresApi(Build.VERSION_CODES.O)
         fun bind(chat: ChatList) {
-            if(chat.profileImg != null && chat.profileImg!!.isNotEmpty() && chat.isGroup != -1){
+            if(chat.profileImg != null && chat.profileImg!!.isNotEmpty() && chat.groupName != null ){
                 binding.itemChatListProfileIv.setImageBitmap(loadBitmap(chat.profileImg!!, context))
-            }else if(chat.isGroup == -1) binding.itemChatListProfileIv.setImageResource(R.drawable.ic_profile_black_no_circle)
-            if(chat.chat_name != null)
-                binding.itemChatListNameTv.text = chat.chat_name
+            }else if(chat.groupName !=null || chat.groupName!="null")
+                binding.itemChatListProfileIv.setImageResource(R.drawable.ic_profile_black_no_circle)
+            binding.itemChatListNameTv.text = chat.nickName
             Log.d("MAIN-RV", "profile: ${chat.profileImg}")
-            binding.itemChatListContentTv.text = chat.latest_message
-            binding.itemChatListDateTimeTv.text = dateToString(chat.latest_time)
+            binding.itemChatListContentTv.text = chat.message
+            binding.itemChatListDateTimeTv.text = dateToString(chat.postTime)
 
             if(chat.isNew == 0) binding.itemChatListNewCv.visibility = View.VISIBLE
             else binding.itemChatListNewCv.visibility = View.INVISIBLE
@@ -231,14 +228,16 @@ class MainRVAdapter(private val context: Context, private val mItemClickListener
 
         @RequiresApi(Build.VERSION_CODES.O)
         fun bind(chat: ChatList) {
-            if(chat.profileImg != null && chat.profileImg!!.isNotEmpty() && chat.isGroup != -1){
+            //틀릴 수도 있음!
+            if(chat.profileImg != null && chat.profileImg!!.isNotEmpty() && chat.groupName != null ){
                 binding.itemChatListProfileIv.setImageBitmap(loadBitmap(chat.profileImg!!, context))
-            }else if(chat.isGroup == -1) binding.itemChatListProfileIv.setImageResource(R.drawable.ic_profile_black_no_circle)
-            if(chat.chat_name != null)
-                binding.itemChatListNameTv.text = chat.chat_name
+            }else if(chat.groupName !=null || chat.groupName!="null")
+                binding.itemChatListProfileIv.setImageResource(R.drawable.ic_profile_black_no_circle)
+
+            binding.itemChatListNameTv.text = chat.nickName
             Log.d("MAIN-RV", "profile: ${chat.profileImg}")
-            binding.itemChatListContentTv.text = chat.latest_message
-            binding.itemChatListDateTimeTv.text = dateToString(chat.latest_time)
+            binding.itemChatListContentTv.text = chat.message
+            binding.itemChatListDateTimeTv.text = dateToString(chat.postTime)
 
         }
     }

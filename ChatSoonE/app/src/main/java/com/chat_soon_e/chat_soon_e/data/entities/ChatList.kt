@@ -7,23 +7,21 @@ import androidx.room.PrimaryKey
 import java.io.Serializable
 import java.util.*
 
-// 추후 서버와의 통신을 위한 데이터
+// 추후 서버와의 통신을 위한 데이터, 챗 쿼리를 통해 불러온 데이터 형식!, Chat 은 그냥 삽입만!
 @Entity(tableName = "ChatListTable")
 data class ChatList(
     var chatIdx:Int,
-    var chat_name:String?,
-    var profileImg:String?=null,
-    var latest_time:Date,
-    var latest_message:String?,
-    var isGroup:Int,//-1이면 그룹, 0이면 개인
-    @ColumnInfo(defaultValue = "0")@Ignore var viewType: Int=0,
+    var nickName:String?,
+    var groupName:String,
+    var profileImg:String?,
+    var postTime:Date,
+    var message:String?,
     var isNew:Int=0,
-    @ColumnInfo(defaultValue = "false") var isChecked: Boolean?=false
 ):Serializable{
-    @PrimaryKey(autoGenerate = true)var id:Int?=0
-    constructor(chatIdx: Int,chat_name:String?, profileImg: String?, latest_time: Date, latest_message: String?, isGroup: Int,isNew:Int, isChecked:Boolean?):this(chatIdx,chat_name, profileImg, latest_time, latest_message, isGroup,0, isNew,false)
+    @PrimaryKey(autoGenerate = true)var id:Int?=0;
+    @Ignore var viewType: Int=0;
+    @Ignore var isChecked: Boolean=false;
 }
-
 object ChatListViewType {
     const val DEFAULT = 0
     const val CHOOSE = 1

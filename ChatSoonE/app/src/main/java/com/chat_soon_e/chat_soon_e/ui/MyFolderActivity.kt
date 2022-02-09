@@ -368,56 +368,6 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
         folderRVAdapter.addFolderList(database.folderDao().getFolderByStatus(ACTIVE) as ArrayList)
     }
 
-    // 가운데 아래 버튼 클릭 시 나오는 팝업 메뉴
-    @SuppressLint("InflateParams")
-    private fun popupFolderBottomMenu() {
-        val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val popupView = inflater.inflate(R.layout.popup_window_folder_bottom_menu, null)
-        mPopupWindow = PopupWindow(popupView, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT)
-
-        mPopupWindow.animationStyle = -1        // 애니메이션 설정 (-1: 설정 안 함, 0: 설정)
-        mPopupWindow.isFocusable = true         // 외부 영역 선택 시 팝업 윈도우 종료
-        mPopupWindow.isOutsideTouchable = true
-        mPopupWindow.showAtLocation(popupView, Gravity.BOTTOM, 0, 0)
-
-        // 폴더 생성하기 클릭
-        mPopupWindow.contentView.findViewById<TextView>(R.id.popup_window_folder_bottom_menu_create_folder_tv).setOnClickListener {
-            // 폴더 이름을 입력하라는 윈도우 띄우기
-            // 그 다음 폴더 아이콘을 선택하라는 윈도우 띄우기
-            // 리사이클러뷰 & RoomDB에 반영해주기
-            mPopupWindow.dismiss()
-            setFolderName()
-        }
-
-        // 숨긴 폴더 목록 클릭
-        mPopupWindow.contentView.findViewById<TextView>(R.id.popup_window_folder_bottom_menu_hidden_folder_tv).setOnClickListener {
-            mPopupWindow.dismiss()
-
-            // 숨긴 폴더 목록 보기
-            val lockSPF = getSharedPreferences("lock", 0)
-            val pattern = lockSPF.getString("pattern", "0")
-
-            // 패턴 모드 설정
-            // 0: 숨긴 폴더 목록을 확인하기 위한 입력 모드
-            // 1: 메인 화면의 설정창 -> 변경 모드
-            // 2: 폴더 화면의 설정창 -> 변경 모드
-            // 3: 메인 화면 폴더 리스트에서 숨김 폴더 클릭 시
-            val modeSPF = getSharedPreferences("mode", 0)
-            val editor = modeSPF.edit()
-
-            // 여기서는 0번 모드
-            editor.putInt("mode", 0)
-            editor.apply()
-
-            if(pattern.equals("0")) {   // 패턴이 설정되어 있지 않은 경우 패턴 설정 페이지로
-                Toast.makeText(this@MyFolderActivity, "패턴이 설정되어 있지 않습니다.\n패턴을 설정해주세요.", Toast.LENGTH_SHORT).show()
-                startNextActivity(CreatePatternActivity::class.java)
-            } else {
-                startNextActivity(InputPatternActivity::class.java)
-            }
-        }
-    }
-
     // 새폴더 이름 설정
     @SuppressLint("InflateParams")
     private fun setFolderName() {

@@ -14,7 +14,7 @@ import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.loadBitmap
 import com.chat_soon_e.chat_soon_e.R
 import com.chat_soon_e.chat_soon_e.data.entities.Chat
 import com.chat_soon_e.chat_soon_e.data.local.AppDatabase
-import com.chat_soon_e.chat_soon_e.databinding.ItemChatDefaultBinding
+import com.chat_soon_e.chat_soon_e.databinding.ItemChatBinding
 
 class FolderContentRVAdapter(private val mContext: FolderContentActivity, private val mItemClickListener: MyClickListener)
     : RecyclerView.Adapter<FolderContentRVAdapter.ViewHolder>() {
@@ -28,7 +28,7 @@ class FolderContentRVAdapter(private val mContext: FolderContentActivity, privat
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): FolderContentRVAdapter.ViewHolder {
-        val binding: ItemChatDefaultBinding = ItemChatDefaultBinding.inflate(
+        val binding: ItemChatBinding = ItemChatBinding.inflate(
             LayoutInflater.from(viewGroup.context), viewGroup, false)
         return ViewHolder(binding)
     }
@@ -56,7 +56,7 @@ class FolderContentRVAdapter(private val mContext: FolderContentActivity, privat
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(val binding: ItemChatDefaultBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(val binding: ItemChatBinding): RecyclerView.ViewHolder(binding.root) {
         init {
             binding.itemChatDefaultMessageTv.setOnLongClickListener {
                 popup = PopupMenu(mContext, binding.itemChatDefaultMessageTv, Gravity.START, 0, R.style.MyFolderOptionPopupMenuTheme)

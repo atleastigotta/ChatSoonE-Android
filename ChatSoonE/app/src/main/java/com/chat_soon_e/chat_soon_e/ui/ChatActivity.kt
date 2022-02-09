@@ -2,8 +2,6 @@ package com.chat_soon_e.chat_soon_e.ui
 
 
 import android.content.Intent
-import android.os.Handler
-import android.os.Looper
 import android.annotation.SuppressLint
 import android.graphics.Insets
 import android.graphics.Point
@@ -25,10 +23,7 @@ import com.chat_soon_e.chat_soon_e.data.entities.ChatList
 import com.chat_soon_e.chat_soon_e.data.entities.Folder
 import com.chat_soon_e.chat_soon_e.databinding.ActivityChatBinding
 import com.chat_soon_e.chat_soon_e.utils.getID
-import com.chat_soon_e.chat_soon_e.utils.permissionGrantred
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.chat_soon_e.chat_soon_e.databinding.ItemFolderListBinding
-import com.google.gson.Gson
 
 class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::inflate) {
     private var isFabOpen = false    // FAB(FloatingActionButton)가 열렸는지 체크해주는 변수
@@ -48,11 +43,10 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
     override fun initAfterBinding() {
         //initData()
         initFab()
-        Handler(Looper.getMainLooper()).postDelayed({
-            initData()
-            initRecyclerView()
-        }, 3000)//3초
+        initData()
+        initRecyclerView()
         initClickListener()
+
     }
 
     // test chat 초기화 (테스트용)
@@ -101,27 +95,17 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
 
         // 어댑터 연결
         binding.chatChatRecyclerView.adapter = chatRVAdapter
-
-        if(isAll==-1)
-        {   //모든 톡 가져오기
-            database.chatDao().getUserAllChat(getID()).observe(this,{
+        if(chatListData.groupName=="null")
+            database.chatDao().getOneChatList(getID(), chatListData.chatIdx).observe(this,{
                 chatRVAdapter.addItem(it)
+                Log.d("RValllllllllll", it.toString())
             })
-        }else if(isAll==1){
-            //특정 톡만 가져오기
-            if(isGroup) {
-                database.chatDao().getOrgChatList(getID(), chatListData.chat_name!!).observe(this,{
-                    chatRVAdapter.addItem(it)
-                })
-            }
-            else if(!isGroup){
-                //개인톡일경우
-                val otherIdx=database.chatDao().getChatOtherIdx(chatListData.chatIdx)
-                database.chatDao().getOneChatList(otherIdx).observe(this,{
-                    chatRVAdapter.addItem(it)
-                })
-            }
-        }
+        else
+            database.chatDao().getOrgChatList(getID(), chatListData.chatIdx).observe(this,{
+                chatRVAdapter.addItem(it)
+                Log.d("RValllllllllll", it.toString())
+            })
+
         // 폴더 선택 모드를 해제하기 위해
         binding.chatCancelFab.setOnClickListener {
             binding.chatMainFab.setImageResource(R.drawable.ic_folder)
@@ -168,11 +152,12 @@ class ChatActivity: BaseActivity<ActivityChatBinding>(ActivityChatBinding::infla
     private fun initData(){
         // isAll : 모든 채팅 목록==-1, 특정 채팅방 목록==1
         isAll=getSharedPreferences("chatAll", MODE_PRIVATE).getInt("chatAll", 0)
-
         if(intent.hasExtra("chatListJson")){
             chatListData=intent.getSerializableExtra("chatListJson") as ChatList
-            isGroup = chatListData.isGroup !=0
-            binding.chatNameTv.text=chatListData.chat_name
+            if(chatListData.groupName==null ||chatListData.groupName=="null")
+                binding.chatNameTv.text=chatListData.nickName
+            else
+                binding.chatNameTv.text=chatListData.groupName
             Log.d("chatListInitData", chatListData.toString())
         }
 
