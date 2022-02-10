@@ -12,16 +12,10 @@ com/chat_soon_e/re_chat/data/local/ChatDao_Impl.java
  com.chat_soon_e.re_chat.data.local.ChatDao_Impl$7
  com.chat_soon_e.re_chat.data.local.ChatDao_Impl$8
  com.chat_soon_e.re_chat.data.local.ChatDao_Impl$9
-com/chat_soon_e/re_chat/data/local/FolderContentDao_Impl.java
- com.chat_soon_e.re_chat.data.local.FolderContentDao_Impl
- com.chat_soon_e.re_chat.data.local.FolderContentDao_Impl$1
- com.chat_soon_e.re_chat.data.local.FolderContentDao_Impl$2
- com.chat_soon_e.re_chat.data.local.FolderContentDao_Impl$3
- com.chat_soon_e.re_chat.data.local.FolderContentDao_Impl$4
- com.chat_soon_e.re_chat.data.local.FolderContentDao_Impl$5
-com/chat_soon_e/re_chat/data/local/AppDatabase_Impl.java
- com.chat_soon_e.re_chat.data.local.AppDatabase_Impl
- com.chat_soon_e.re_chat.data.local.AppDatabase_Impl$1
+com/chat_soon_e/re_chat/databinding/ActivityMainBinding.java
+ com.chat_soon_e.re_chat.databinding.ActivityMainBinding
+com/chat_soon_e/re_chat/databinding/ActivityMyFolderContentBinding.java
+ com.chat_soon_e.re_chat.databinding.ActivityMyFolderContentBinding
 com/chat_soon_e/re_chat/data/local/UserDao_Impl.java
  com.chat_soon_e.re_chat.data.local.UserDao_Impl
  com.chat_soon_e.re_chat.data.local.UserDao_Impl$1
@@ -30,8 +24,8 @@ com/chat_soon_e/re_chat/data/local/UserDao_Impl.java
  com.chat_soon_e.re_chat.data.local.UserDao_Impl$4
 androidx/databinding/DataBinderMapperImpl.java
  androidx.databinding.DataBinderMapperImpl
-androidx/databinding/DataBindingComponent.java
- androidx.databinding.DataBindingComponent
+com/chat_soon_e/re_chat/databinding/ItemChatChooseBinding.java
+ com.chat_soon_e.re_chat.databinding.ItemChatChooseBinding
 com/chat_soon_e/re_chat/data/local/ChatListDao_Impl.java
  com.chat_soon_e.re_chat.data.local.ChatListDao_Impl
  com.chat_soon_e.re_chat.data.local.ChatListDao_Impl$1
@@ -42,48 +36,28 @@ com/chat_soon_e/re_chat/BR.java
  com.chat_soon_e.re_chat.BR
 androidx/databinding/library/baseAdapters/BR.java
  androidx.databinding.library.baseAdapters.BR
-com/chat_soon_e/re_chat/DataBindingTriggerClass.java
- com.chat_soon_e.re_chat.DataBindingTriggerClass
-com/chat_soon_e/re_chat/data/local/FolderDao_Impl.java
- com.chat_soon_e.re_chat.data.local.FolderDao_Impl
- com.chat_soon_e.re_chat.data.local.FolderDao_Impl$1
- com.chat_soon_e.re_chat.data.local.FolderDao_Impl$2
- com.chat_soon_e.re_chat.data.local.FolderDao_Impl$3
- com.chat_soon_e.re_chat.data.local.FolderDao_Impl$4
- com.chat_soon_e.re_chat.data.local.FolderDao_Impl$5
- com.chat_soon_e.re_chat.data.local.FolderDao_Impl$6
+com/chat_soon_e/re_chat/databinding/ActivityInputPatternBinding.java
+ com.chat_soon_e.re_chat.databinding.ActivityInputPatternBinding
+com/chat_soon_e/re_chat/databinding/PopupWindowSetFolderNameBinding.java
+ com.chat_soon_e.re_chat.databinding.PopupWindowSetFolderNameBinding
 com/chat_soon_e/re_chat/data/local/OtherUserDao_Impl.java
  com.chat_soon_e.re_chat.data.local.OtherUserDao_Impl
  com.chat_soon_e.re_chat.data.local.OtherUserDao_Impl$1
  com.chat_soon_e.re_chat.data.local.OtherUserDao_Impl$2
  com.chat_soon_e.re_chat.data.local.OtherUserDao_Impl$3
-com/chat_soon_e/re_chat/data/local/IconDao_Impl.java
- com.chat_soon_e.re_chat.data.local.IconDao_Impl
- com.chat_soon_e.re_chat.data.local.IconDao_Impl$1
- com.chat_soon_e.re_chat.data.local.IconDao_Impl$2
- com.chat_soon_e.re_chat.data.local.IconDao_Impl$3
-com/chat_soon_e/re_chat/BuildConfig.java
- com.chat_soon_e.re_chat.BuildConfig
-com/chat_soon_e/re_chat/DataBinderMapperImpl.java
- com.chat_soon_e.re_chat.DataBinderMapperImpl
- com.chat_soon_e.re_chat.DataBinderMapperImpl$InnerBrLookup
- com.chat_soon_e.re_chat.DataBinderMapperImpl$InnerLayoutIdLookup
-com/chat_soon_e/re_chat/databinding/ActivityMainBinding.java
- com.chat_soon_e.re_chat.databinding.ActivityMainBinding
-com/chat_soon_e/re_chat/databinding/ActivityMyFolderContentBinding.java
- com.chat_soon_e.re_chat.databinding.ActivityMyFolderContentBinding
-com/chat_soon_e/re_chat/databinding/ItemChatChooseBinding.java
- com.chat_soon_e.re_chat.databinding.ItemChatChooseBinding
-com/chat_soon_e/re_chat/databinding/ActivityInputPatternBinding.java
- com.chat_soon_e.re_chat.databinding.ActivityInputPatternBinding
-com/chat_soon_e/re_chat/databinding/PopupWindowSetFolderNameBinding.java
- com.chat_soon_e.re_chat.databinding.PopupWindowSetFolderNameBinding
 com/chat_soon_e/re_chat/databinding/ActivityChatBinding.java
  com.chat_soon_e.re_chat.databinding.ActivityChatBinding
 com/chat_soon_e/re_chat/databinding/ItemMyFolderBinding.java
  com.chat_soon_e.re_chat.databinding.ItemMyFolderBinding
 com/chat_soon_e/re_chat/databinding/ActivityMainDrawerHeaderBinding.java
  com.chat_soon_e.re_chat.databinding.ActivityMainDrawerHeaderBinding
+com/chat_soon_e/re_chat/data/local/FolderContentDao_Impl.java
+ com.chat_soon_e.re_chat.data.local.FolderContentDao_Impl
+ com.chat_soon_e.re_chat.data.local.FolderContentDao_Impl$1
+ com.chat_soon_e.re_chat.data.local.FolderContentDao_Impl$2
+ com.chat_soon_e.re_chat.data.local.FolderContentDao_Impl$3
+ com.chat_soon_e.re_chat.data.local.FolderContentDao_Impl$4
+ com.chat_soon_e.re_chat.data.local.FolderContentDao_Impl$5
 com/chat_soon_e/re_chat/databinding/PopupWindowChangeNameBinding.java
  com.chat_soon_e.re_chat.databinding.PopupWindowChangeNameBinding
 com/chat_soon_e/re_chat/databinding/ActivityMainDrawerSwitchBinding.java
@@ -94,6 +68,14 @@ com/chat_soon_e/re_chat/databinding/FragmentExplainBinding.java
  com.chat_soon_e.re_chat.databinding.FragmentExplainBinding
 com/chat_soon_e/re_chat/databinding/ActivityCreatePatternBinding.java
  com.chat_soon_e.re_chat.databinding.ActivityCreatePatternBinding
+com/chat_soon_e/re_chat/data/local/FolderDao_Impl.java
+ com.chat_soon_e.re_chat.data.local.FolderDao_Impl
+ com.chat_soon_e.re_chat.data.local.FolderDao_Impl$1
+ com.chat_soon_e.re_chat.data.local.FolderDao_Impl$2
+ com.chat_soon_e.re_chat.data.local.FolderDao_Impl$3
+ com.chat_soon_e.re_chat.data.local.FolderDao_Impl$4
+ com.chat_soon_e.re_chat.data.local.FolderDao_Impl$5
+ com.chat_soon_e.re_chat.data.local.FolderDao_Impl$6
 com/chat_soon_e/re_chat/databinding/ActivityExplainBinding.java
  com.chat_soon_e.re_chat.databinding.ActivityExplainBinding
 com/chat_soon_e/re_chat/databinding/FragmentExplain1Binding.java
@@ -106,6 +88,12 @@ com/chat_soon_e/re_chat/databinding/ActivitySplashBinding.java
  com.chat_soon_e.re_chat.databinding.ActivitySplashBinding
 com/chat_soon_e/re_chat/databinding/ActivityPermissionBinding.java
  com.chat_soon_e.re_chat.databinding.ActivityPermissionBinding
+com/chat_soon_e/re_chat/DataBinderMapperImpl.java
+ com.chat_soon_e.re_chat.DataBinderMapperImpl
+ com.chat_soon_e.re_chat.DataBinderMapperImpl$InnerBrLookup
+ com.chat_soon_e.re_chat.DataBinderMapperImpl$InnerLayoutIdLookup
+com/chat_soon_e/re_chat/BuildConfig.java
+ com.chat_soon_e.re_chat.BuildConfig
 com/chat_soon_e/re_chat/databinding/ItemFolderListBinding.java
  com.chat_soon_e.re_chat.databinding.ItemFolderListBinding
 com/chat_soon_e/re_chat/databinding/ItemChatBinding.java
@@ -115,8 +103,15 @@ com/chat_soon_e/re_chat/databinding/ActivityMyFolderBinding.java
 com/chat_soon_e/re_chat/ui/InputPatternActivity.java
  com.chat_soon_e.re_chat.ui.InputPatternActivity
  com.chat_soon_e.re_chat.ui.InputPatternActivity$1
+com/chat_soon_e/re_chat/data/local/IconDao_Impl.java
+ com.chat_soon_e.re_chat.data.local.IconDao_Impl
+ com.chat_soon_e.re_chat.data.local.IconDao_Impl$1
+ com.chat_soon_e.re_chat.data.local.IconDao_Impl$2
+ com.chat_soon_e.re_chat.data.local.IconDao_Impl$3
 com/chat_soon_e/re_chat/databinding/ActivityHiddenFolderBinding.java
  com.chat_soon_e.re_chat.databinding.ActivityHiddenFolderBinding
+com/chat_soon_e/re_chat/DataBindingTriggerClass.java
+ com.chat_soon_e.re_chat.DataBindingTriggerClass
 com/chat_soon_e/re_chat/databinding/PopupWindowChangeIconBinding.java
  com.chat_soon_e.re_chat.databinding.PopupWindowChangeIconBinding
 com/chat_soon_e/re_chat/databinding/ItemChatListDefaultBinding.java
@@ -128,5 +123,12 @@ com/chat_soon_e/re_chat/databinding/ItemHiddenFolderBinding.java
  com.chat_soon_e.re_chat.databinding.ItemHiddenFolderBinding
 com/chat_soon_e/re_chat/databinding/ItemIconBinding.java
  com.chat_soon_e.re_chat.databinding.ItemIconBinding
+androidx/databinding/DataBindingComponent.java
+ androidx.databinding.DataBindingComponent
+com/chat_soon_e/re_chat/data/local/AppDatabase_Impl.java
+ com.chat_soon_e.re_chat.data.local.AppDatabase_Impl
+ com.chat_soon_e.re_chat.data.local.AppDatabase_Impl$1
 com/chat_soon_e/re_chat/databinding/ActivityMainContentBinding.java
  com.chat_soon_e.re_chat.databinding.ActivityMainContentBinding
+com/chat_soon_e/chat_soon_e/databinding/ItemChatBinding.java
+ com.chat_soon_e.chat_soon_e.databinding.ItemChatBinding

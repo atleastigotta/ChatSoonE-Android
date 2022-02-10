@@ -1,0 +1,538 @@
+[
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\anim_horizon_exit.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\anim\\horizon_exit.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\font_noto_sans_korean.otf.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\font\\noto_sans_korean.otf"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_item_my_folder.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\item_my_folder.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_chatsoon03.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\chatsoon03.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_my_folder.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_my_folder.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_share_24.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_baseline_share_24.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_background_chat_choose.9.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\background_chat_choose.9.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_explain.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\fragment_explain.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_chatsoon10.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\chatsoon10.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_main_drawer_header.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_main_drawer_header.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\anim_none.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\anim\\none.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_help_24.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_baseline_help_24.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_input_pattern.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_input_pattern.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_item_chat.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\item_chat.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable-xhdpi_ic_my_folder.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable-xhdpi\\ic_my_folder.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\anim_fab_close.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\anim\\fab_close.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_item_hidden_folder.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\item_hidden_folder.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_background2.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\background2.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_shadow.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\shadow.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxhdpi_img_background_folder.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable-xxhdpi\\img_background_folder.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_item_folder_list.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\item_folder_list.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_track.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\track.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_popup_window_set_folder_name.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\popup_window_set_folder_name.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable-xhdpi_ic_hidden_folder.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable-xhdpi\\ic_hidden_folder.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_background_white_corner.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\background_white_corner.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_popup_window_to_folder_menu.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\popup_window_to_folder_menu.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_button_change_name.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\button_change_name.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_profile_white_no_circle.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_profile_white_no_circle.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_phonelink_ring_24.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_baseline_phonelink_ring_24.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable-xhdpi_background_navi_setting.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable-xhdpi\\background_navi_setting.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable-xhdpi_ic_my_folder_list.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable-xhdpi\\ic_my_folder_list.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_shape_switch_track_off.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\shape_switch_track_off.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_my_folder_bottom_blue_white.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_my_folder_bottom_blue_white.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_background_folder_option_popup_menu.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\background_folder_option_popup_menu.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_cancel.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_cancel.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_kakao_login_medium_narrow.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\kakao_login_medium_narrow.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_chatsoon08.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\chatsoon08.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_background_white_corner_bottom.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\background_white_corner_bottom.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable-hdpi_background_chat_default.9.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable-hdpi\\background_chat_default.9.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_chatsoon12.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\chatsoon12.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_block_24.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_baseline_block_24.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_create_pattern.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_create_pattern.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable-mdpi_background3.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable-mdpi\\background3.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_email_24.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_baseline_email_24.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\font_font.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\font\\font.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\menu_navi_setting_menu.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\menu\\navi_setting_menu.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_hidden_folder.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_hidden_folder.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout-v26_activity_chat.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout-v26\\activity_chat.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_chatsoon02.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\chatsoon02.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\menu_popup_folder_bottom_menu.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\menu\\popup_folder_bottom_menu.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\menu_popup_folder_option_menu.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\menu\\popup_folder_option_menu.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_splash.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_splash.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_rate_review_24.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_baseline_rate_review_24.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxxhdpi_ic_all_chat_black.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_all_chat_black.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_chat_soon_e.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_chat_soon_e.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_background.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\background.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_splash_btn.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\splash_btn.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_chatsoon15.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\chatsoon15.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxxhdpi_ic_menu_gray.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_menu_gray.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_shape_thumb.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\shape_thumb.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_folder_24.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_baseline_folder_24.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_explain.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_explain.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_item_chat_list_choose.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\item_chat_list_choose.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_chatsoon05.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\chatsoon05.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_item_icon.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\item_icon.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_main_drawer_switch.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_main_drawer_switch.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_thumb.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\thumb.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_person_remove_24.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_baseline_person_remove_24.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_background_profile_circle.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\background_profile_circle.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_chatsoon14.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\chatsoon14.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_background_mauve_corner.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\background_mauve_corner.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\menu_popup_chat_option_menu.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\menu\\popup_chat_option_menu.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_arrow_left_back.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_arrow_left_back.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_notiback.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\notiback.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_background_white_corner_button.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\background_white_corner_button.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_item_chat_list_default.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\item_chat_list_default.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_background_image.jpg.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\background_image.jpg"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_chatsoon06.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\chatsoon06.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_pattern_24.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_baseline_pattern_24.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_folder_content.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_folder_content.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_permission.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_permission.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_popup_window_change_icon.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\popup_window_change_icon.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_profile_black_no_circle.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_profile_black_no_circle.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_progressbar_progressbar1.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\progressbar_progressbar1.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_main_content.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_main_content.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_shape_switch_track_on.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\shape_switch_track_on.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_my_folder_bottom_blue.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_my_folder_bottom_blue.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_chatsoon07.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\chatsoon07.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_popup_window_change_name.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\popup_window_change_name.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\anim_fab_open.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\anim\\fab_open.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_chatsoon13.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\chatsoon13.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_background_icon_folder.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\background_icon_folder.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_pofile_black.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_pofile_black.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\menu_popup_hidden_folder_option_menu.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\menu\\popup_hidden_folder_option_menu.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_kakao_talk.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_kakao_talk.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxxhdpi_ic_menu_black.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_menu_black.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_background_folder_bottom_popup_menu.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\background_folder_bottom_popup_menu.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_chatsoon16.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\chatsoon16.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_main.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_my_folder_bottom_black.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_my_folder_bottom_black.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_chatsoon01.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\chatsoon01.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_selector_chat_list.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\selector_chat_list.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_block.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable-v24\\ic_block.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_selector_chat.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\selector_chat.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_selector_switch.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\selector_switch.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_chatsoon09.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\chatsoon09.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_chatsoon04.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\chatsoon04.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_account_circle_24.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_baseline_account_circle_24.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_folder.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_folder.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_up_and_down.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_up_and_down.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_item_chat_choose.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\item_chat_choose.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_chatsoon11.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\chatsoon11.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_explain_1.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\fragment_explain_1.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_my_folder_content.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\layout\\activity_my_folder_content.xml"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_to_folder.png.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\ic_to_folder.png"
+    },
+    {
+        "merged": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\merged_res\\debug\\drawable_background_popup_window.xml.flat",
+        "source": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\src\\main\\res\\drawable\\background_popup_window.xml"
+    }
+]

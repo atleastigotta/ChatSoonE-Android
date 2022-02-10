@@ -1,4 +1,4 @@
-#Fri Feb 11 02:07:45 KST 2022
+#Fri Feb 11 02:31:42 KST 2022
 path.4=12/classes.dex
 path.3=11/classes.dex
 path.2=10/classes.dex
@@ -8,6 +8,7 @@ renamed.8=classes9.dex
 path.8=4/classes.dex
 path.7=3/classes.dex
 path.6=1/classes.dex
+renamed.12=classes13.dex
 path.5=13/classes.dex
 renamed.11=classes12.dex
 renamed.10=classes11.dex
@@ -18,6 +19,7 @@ base.2=C\:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\build\\intermediates\\de
 base.1=C\:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
 base.0=C\:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 renamed.3=classes4.dex
+path.12=14/classes.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 path.10=9/classes.dex
@@ -33,5 +35,6 @@ renamed.5=classes6.dex
 base.6=C\:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex
 renamed.4=classes5.dex
 base.5=C\:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\13\\classes.dex
+base.12=C\:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\14\\classes.dex
 base.11=C\:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
 base.10=C\:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex

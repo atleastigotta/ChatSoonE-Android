@@ -252,12 +252,12 @@
         "source": "C:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "C:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_kakao_talk.png.flat",
-        "source": "C:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\src\\main\\res\\drawable\\ic_kakao_talk.png"
-    },
-    {
         "merged": "C:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_my_folder_blue_white.png.flat",
         "source": "C:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\src\\main\\res\\drawable\\ic_my_folder_blue_white.png"
+    },
+    {
+        "merged": "C:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_kakao_talk.png.flat",
+        "source": "C:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\src\\main\\res\\drawable\\ic_kakao_talk.png"
     },
     {
         "merged": "C:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxxhdpi_ic_all_chat_black.png.flat",
@@ -292,12 +292,12 @@
         "source": "C:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\src\\main\\res\\menu\\popup_folder_bottom_menu.xml"
     },
     {
-        "merged": "C:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\build\\intermediates\\merged_res\\debug\\drawable_chatsoon09.png.flat",
-        "source": "C:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\src\\main\\res\\drawable\\chatsoon09.png"
-    },
-    {
         "merged": "C:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_lock_24_black.xml.flat",
         "source": "C:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\src\\main\\res\\drawable\\ic_baseline_lock_24_black.xml"
+    },
+    {
+        "merged": "C:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\build\\intermediates\\merged_res\\debug\\drawable_chatsoon09.png.flat",
+        "source": "C:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\src\\main\\res\\drawable\\chatsoon09.png"
     },
     {
         "merged": "C:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_email_24.xml.flat",
@@ -420,12 +420,12 @@
         "source": "C:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\src\\main\\res\\layout\\activity_main_drawer_switch.xml"
     },
     {
-        "merged": "C:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_splash.xml.flat",
-        "source": "C:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\src\\main\\res\\layout\\activity_splash.xml"
-    },
-    {
         "merged": "C:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_block_list_blue.png.flat",
         "source": "C:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\src\\main\\res\\drawable\\ic_block_list_blue.png"
+    },
+    {
+        "merged": "C:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_splash.xml.flat",
+        "source": "C:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\src\\main\\res\\layout\\activity_splash.xml"
     },
     {
         "merged": "C:\\Users\\pc\\projects\\re_chat\\RE_CHAT\\app\\build\\intermediates\\merged_res\\debug\\drawable-hdpi_ic_my_folder_blue_white.png.flat",
