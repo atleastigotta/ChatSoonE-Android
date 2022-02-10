@@ -58,27 +58,61 @@ class MyNotificationListener: NotificationListenerService(), addChatView {
             //알림 메세지(264개의 메세지 등) 제외 대화 내용 DB 저장
             //음악 메세지(id==2016) 차단
             if(name!=null && sbn.id!=2016){
-                //서버에 추가
 
                 database= AppDatabase.getInstance(this)!!
                 var otherUser=database.otherUserDao().getOtherUserByNameId(name.toString(), getID())
                 //이미 있던 유저인지 확인
 
-                //이미 있던 유저라면 Chat 만 추가
+                //TEST
                 if(otherUser!=null){
-                    database.chatDao().insert(Chat(otherUser.otherUserIdx, subText.toString(),text.toString(), date, -1, "activate" ))
-                    Log.d(TAG,database.chatDao().getChatByIdx(otherUser.otherUserIdx).toString())
-                }else{//새로운 유저라면 otherUser, Chat 저장, 사진 이름(image): otherUser.name_postTime.millsecond.png
+                    val chat=Chat(otherUser.otherUserIdx, subText.toString(),text.toString(), date, -1, "activate")
+                    //이미 있던 유저라면
+                    var blocked:String?
+                    if(subText==null){
+                        //갠톡이라면
+                        if(database.otherUserDao().checkOneBlock(getID(), otherUser.otherUserIdx)==null)
+                            database.chatDao().insert(chat)
+                    }else{
+                        //단톡이라면
+                        if(database.otherUserDao().checkOrgBlock(getID(), subText.toString())==null)
+                            database.chatDao().insert(chat)
+                    }
+                }
+                else{
+                    //새로운 유저라면 일단 그냥 넣기, 차단이 됬는지 안됬는지 어떻게 알아?새로운 유저인데!
                     var fileName:String=""
                     if(largeIcon!=null){
                         fileName=saveCache(convertIconToBitmap(largeIcon), name+"_"+millisecond.toString())
+                        database.otherUserDao().insert(OtherUser(name.toString(), fileName, "activate", getID()))
+                        val other=database.otherUserDao().getOtherUserByNameId(name.toString(), getID())
+                        database.chatDao().insert(Chat(other!!.otherUserIdx, subText.toString(),text.toString(), date, -1, "activate"))
                     }
-                    database.otherUserDao().insert(OtherUser(name.toString(), fileName, "activate", getID()))
-                    val other=database.otherUserDao().getOtherUserByNameId(name.toString(), getID())
-                    database.chatDao().insert(Chat(other.otherUserIdx, subText.toString(),text.toString(), date, -1, "activate"))
-                    Log.d(TAG, "database: "+database.chatDao().getChatByIdx(other.otherUserIdx).toString())
                 }
-                val chatService=ChatService()
+
+
+                //오리지널! 삭제하면 안됌
+               //이미 있던 유저라면 Chat 만 추가
+//                if(otherUser!=null){
+//                    database.chatDao().insert(Chat(otherUser.otherUserIdx, subText.toString(),text.toString(), date, -1, "activate" ))
+//                    //Log.d(TAG,database.chatDao().getChatByIdx(otherUser.otherUserIdx).toString())
+//                    //아래 삭제 내용
+////                    if(subText==null){
+////                        if(database.otherUserDao().checkOneBlock(getID(), otherUser.otherUserIdx)==null)//null 반환
+////                            Log.d("QueryTest","개인: null")
+////                    }else
+////                        Log.d("QueryTest", "단채방: "+database.otherUserDao().checkOrgBlock(getID(), subText.toString()).toString())
+//
+//                }else{//새로운 유저라면 otherUser, Chat 저장, 사진 이름(image): otherUser.name_postTime.millsecond.png
+//                    var fileName:String=""
+//                    if(largeIcon!=null){
+//                        fileName=saveCache(convertIconToBitmap(largeIcon), name+"_"+millisecond.toString())
+//                    }
+//                    database.otherUserDao().insert(OtherUser(name.toString(), fileName, "activate", getID()))
+//                    val other=database.otherUserDao().getOtherUserByNameId(name.toString(), getID())
+//                    database.chatDao().insert(Chat(other!!.otherUserIdx, subText.toString(),text.toString(), date, -1, "activate"))
+//                    Log.d(TAG, "database: "+database.chatDao().getChatByIdx(other.otherUserIdx).toString())
+//                }
+                //val chatService=ChatService()
                 //chatService.addChat(this.vi, 1234,com.chat_soon_e.chat_soon_e.data.remote.chat.Chat(name, "null", "null", text.toString(), date ) )
 
             }

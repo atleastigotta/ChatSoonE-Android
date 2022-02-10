@@ -10,12 +10,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/splash_main_icon_text"
-        android:src="@drawable/rnfma"/>
+        android:src="@drawable/ic_chat_soon_e"/>
     <ImageView
         android:id="@+id/splash_main_icon_text"
         android:layout_width="190dp"
         android:layout_height="100dp"
-        android:src="@drawable/xnaud"
+        android:src="@drawable/ic_chat_soon_e"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -38,16 +38,16 @@
     <TextView
             android:id="@+id/splash_start_btn"
             android:layout_width="227dp"
-            android:layout_height="38dp"
-            android:text="시작하기"
-            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:textSize="15sp"
             android:layout_marginTop="50dp"
+            android:text="삭제하기"
             android:textAlignment="center"
             app:layout_constraintStart_toStartOf="@id/splash_progressBar"
             app:layout_constraintEnd_toEndOf="@id/splash_progressBar"
             app:layout_constraintTop_toBottomOf="@id/splash_progressBar"
-            android:paddingHorizontal="50dp"
-            android:paddingVertical="8dp"
             android:background="@drawable/splash_btn"
             android:textColor="#9DB2FA"
         />
@@ -63,25 +63,25 @@
     app:cardElevation="0dp"
     android:layout_marginTop="10dp"
     >
+
     <TextView
         android:id="@+id/splash_kakao_login_btn_tv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#fae44d"
-        android:text="카카오 로그인"
-        android:textSize="15sp"
-        android:textAlignment="center"
         android:gravity="center"
+        android:text="카카오 로그인"
+        android:textAlignment="center"
         android:textColor="#000000"
-
+        android:textSize="13sp"
         />
-    </androidx.cardview.widget.CardView>
+</androidx.cardview.widget.CardView>
 
     <ImageView
         android:id="@+id/splash_kakao_iv"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:src="@drawable/kakaoicon"
+        android:src="@drawable/ic_kakao_talk"
         app:layout_constraintStart_toStartOf="@id/splash_kakao_btn"
         app:layout_constraintTop_toTopOf="@id/splash_kakao_btn"
         app:layout_constraintBottom_toBottomOf="@id/splash_kakao_btn"

@@ -7,9 +7,6 @@ import com.chat_soon_e.chat_soon_e.data.entities.ChatList
 
 @Dao
 interface ChatDao {
-    @Insert
-    fun insert(chat: Chat)
-
     @Update
     fun update(chat: Chat)
 
@@ -88,14 +85,14 @@ interface ChatDao {
             " ORDER BY postTime DESC;")
     fun getRecentChat(userIdx:Long):LiveData<List<ChatList>>
 
-    //갠톡
+    //갠톡, 검증된
     @Query("SELECT C.chatIdx, OU.nickname as nickName, C.groupName, OU.image as profileImg, C.message, C.postTime, C.isNew\n" +
             "    FROM ChatTable AS C INNER JOIN OtherUserTable AS OU on C.otherUserIdx = OU.otherUserIdx\n" +
             "    WHERE OU.kakaoUserIdx = :userIdx AND C.status != 'DELETED' AND C.otherUserIdx IN (SELECT otherUserIdx FROM ChatTable WHERE chatIdx = :chatIdx) AND groupName is 'null'\n" +
             "ORDER BY C.postTime DESC")
     fun getOneChatList(userIdx:Long, chatIdx:Int):LiveData<List<ChatList>>
 
-    //단톡
+    //단톡, 검증된
     @Query("SELECT C.chatIdx, OU.nickname as nickName, C.groupName, OU.image as profileImg, C.message, C.postTime, C.isNew" +
             " FROM ChatTable C INNER JOIN OtherUserTable OU on C.otherUserIdx = OU.otherUserIdx" +
             " WHERE OU.kakaoUserIdx = :userIdx AND C.status != 'DELETED' AND groupName = (SELECT groupName FROM ChatTable WHERE chatIdx = :chatIdx)" +
@@ -120,5 +117,10 @@ interface ChatDao {
     @Query("SELECT otherUserIdx FROM ChatTable WHERE chatIdx = :chatIdx")
     fun getChatOtherIdx(chatIdx: Int):Int
 
+    //TEST
+
+    //검증된(주연)
+    @Insert
+    fun insert(chat: Chat)
 
 }

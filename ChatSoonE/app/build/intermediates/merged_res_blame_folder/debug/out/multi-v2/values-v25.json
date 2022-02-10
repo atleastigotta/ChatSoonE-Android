@@ -1,17 +1,10 @@
 {
     "logs": [
         {
-<<<<<<< HEAD
-            "outputFile": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v25\\values-v25.xml",
+            "outputFile": "F:\\gitfolder\\UMC_ChatSoon6\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v25\\values-v25.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\pc\\.gradle\\caches\\transforms-3\\2ed271d536b7bafb160ec869a4214179\\transformed\\appcompat-1.4.1\\res\\values-v25\\values-v25.xml",
-=======
-            "outputFile": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v25\\values-v25.xml",
-            "map": [
-                {
-                    "source": "C:\\Users\\82108\\.gradle\\caches\\transforms-3\\2ed271d536b7bafb160ec869a4214179\\transformed\\appcompat-1.4.1\\res\\values-v25\\values-v25.xml",
->>>>>>> juyeon
+                    "source": "C:\\Users\\lj\\.gradle\\caches\\transforms-3\\2ed271d536b7bafb160ec869a4214179\\transformed\\appcompat-1.4.1\\res\\values-v25\\values-v25.xml",
                     "from": {
                         "startLines": "2,3,4,6",
                         "startColumns": "4,4,4,4",

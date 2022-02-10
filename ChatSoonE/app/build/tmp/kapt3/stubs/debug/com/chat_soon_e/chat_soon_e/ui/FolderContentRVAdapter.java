@@ -60,18 +60,18 @@ public final class FolderContentRVAdapter extends androidx.recyclerview.widget.R
         android.widget.PopupMenu popupMenu);
     }
     
-    @kotlin.Metadata(mv = {1, 6, 0}, k = 1, d1 = {"\u0000\u001e\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0004\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\b\u0086\u0004\u0018\u00002\u00020\u0001B\r\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\u0002\u0010\u0004J\u0010\u0010\u0007\u001a\u00020\b2\u0006\u0010\t\u001a\u00020\nH\u0007R\u0011\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0005\u0010\u0006\u00a8\u0006\u000b"}, d2 = {"Lcom/chat_soon_e/chat_soon_e/ui/FolderContentRVAdapter$ViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "binding", "Lcom/chat_soon_e/chat_soon_e/databinding/ItemChatDefaultBinding;", "(Lcom/chat_soon_e/chat_soon_e/ui/FolderContentRVAdapter;Lcom/chat_soon_e/chat_soon_e/databinding/ItemChatDefaultBinding;)V", "getBinding", "()Lcom/chat_soon_e/chat_soon_e/databinding/ItemChatDefaultBinding;", "bind", "", "chat", "Lcom/chat_soon_e/chat_soon_e/data/entities/Chat;", "app_debug"})
+    @kotlin.Metadata(mv = {1, 6, 0}, k = 1, d1 = {"\u0000\u001e\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0004\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\b\u0086\u0004\u0018\u00002\u00020\u0001B\r\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\u0002\u0010\u0004J\u0010\u0010\u0007\u001a\u00020\b2\u0006\u0010\t\u001a\u00020\nH\u0007R\u0011\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0005\u0010\u0006\u00a8\u0006\u000b"}, d2 = {"Lcom/chat_soon_e/chat_soon_e/ui/FolderContentRVAdapter$ViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "binding", "Lcom/chat_soon_e/chat_soon_e/databinding/ItemChatBinding;", "(Lcom/chat_soon_e/chat_soon_e/ui/FolderContentRVAdapter;Lcom/chat_soon_e/chat_soon_e/databinding/ItemChatBinding;)V", "getBinding", "()Lcom/chat_soon_e/chat_soon_e/databinding/ItemChatBinding;", "bind", "", "chat", "Lcom/chat_soon_e/chat_soon_e/data/entities/Chat;", "app_debug"})
     public final class ViewHolder extends androidx.recyclerview.widget.RecyclerView.ViewHolder {
         @org.jetbrains.annotations.NotNull()
-        private final com.chat_soon_e.chat_soon_e.databinding.ItemChatDefaultBinding binding = null;
+        private final com.chat_soon_e.chat_soon_e.databinding.ItemChatBinding binding = null;
         
         public ViewHolder(@org.jetbrains.annotations.NotNull()
-        com.chat_soon_e.chat_soon_e.databinding.ItemChatDefaultBinding binding) {
+        com.chat_soon_e.chat_soon_e.databinding.ItemChatBinding binding) {
             super(null);
         }
         
         @org.jetbrains.annotations.NotNull()
-        public final com.chat_soon_e.chat_soon_e.databinding.ItemChatDefaultBinding getBinding() {
+        public final com.chat_soon_e.chat_soon_e.databinding.ItemChatBinding getBinding() {
             return null;
         }
         

@@ -135,62 +135,6 @@ public final class OtherUserDao_Impl implements OtherUserDao {
   }
 
   @Override
-  public OtherUser getOtherUserByNameId(final String name, final long id) {
-    final String _sql = "SELECT * FROM OtherUserTable WHERE nickname =? AND kakaoUserIdx =?";
-    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 2);
-    int _argIndex = 1;
-    if (name == null) {
-      _statement.bindNull(_argIndex);
-    } else {
-      _statement.bindString(_argIndex, name);
-    }
-    _argIndex = 2;
-    _statement.bindLong(_argIndex, id);
-    __db.assertNotSuspendingTransaction();
-    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
-    try {
-      final int _cursorIndexOfNickname = CursorUtil.getColumnIndexOrThrow(_cursor, "nickname");
-      final int _cursorIndexOfImage = CursorUtil.getColumnIndexOrThrow(_cursor, "image");
-      final int _cursorIndexOfStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "status");
-      final int _cursorIndexOfKakaoUserIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "kakaoUserIdx");
-      final int _cursorIndexOfOtherUserIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "otherUserIdx");
-      final OtherUser _result;
-      if(_cursor.moveToFirst()) {
-        final String _tmpNickname;
-        if (_cursor.isNull(_cursorIndexOfNickname)) {
-          _tmpNickname = null;
-        } else {
-          _tmpNickname = _cursor.getString(_cursorIndexOfNickname);
-        }
-        final String _tmpImage;
-        if (_cursor.isNull(_cursorIndexOfImage)) {
-          _tmpImage = null;
-        } else {
-          _tmpImage = _cursor.getString(_cursorIndexOfImage);
-        }
-        final String _tmpStatus;
-        if (_cursor.isNull(_cursorIndexOfStatus)) {
-          _tmpStatus = null;
-        } else {
-          _tmpStatus = _cursor.getString(_cursorIndexOfStatus);
-        }
-        final long _tmpKakaoUserIdx;
-        _tmpKakaoUserIdx = _cursor.getLong(_cursorIndexOfKakaoUserIdx);
-        _result = new OtherUser(_tmpNickname,_tmpImage,_tmpStatus,_tmpKakaoUserIdx);
-        final int _tmpOtherUserIdx;
-        _tmpOtherUserIdx = _cursor.getInt(_cursorIndexOfOtherUserIdx);
-        _result.setOtherUserIdx(_tmpOtherUserIdx);
-      } else {
-        _result = null;
-      }
-      return _result;
-    } finally {
-      _cursor.close();
-      _statement.release();
-    }
-  }
-
-  @Override
   public List<Integer> getOtherUserIdxList(final long id) {
     final String _sql = "SELECT OU.otherUserIdx FROM OtherUserTable as OU WHERE kakaoUserIdx= ?";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
@@ -308,6 +252,122 @@ public final class OtherUserDao_Impl implements OtherUserDao {
         _tmpOtherUserIdx = _cursor.getInt(_cursorIndexOfOtherUserIdx);
         _item.setOtherUserIdx(_tmpOtherUserIdx);
         _result.add(_item);
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
+  public String checkOneBlock(final long userIdx, final int otherUserIdx) {
+    final String _sql = "SELECT OU.nickname FROM ChatTable C INNER JOIN OtherUserTable OU on C.otherUserIdx = OU.otherUserIdx WHERE OU.kakaoUserIdx =? AND C.otherUserIdx =? AND C.groupName == 'null' AND OU.status==\"BLOCKED\"";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 2);
+    int _argIndex = 1;
+    _statement.bindLong(_argIndex, userIdx);
+    _argIndex = 2;
+    _statement.bindLong(_argIndex, otherUserIdx);
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final String _result;
+      if(_cursor.moveToFirst()) {
+        if (_cursor.isNull(0)) {
+          _result = null;
+        } else {
+          _result = _cursor.getString(0);
+        }
+      } else {
+        _result = null;
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
+  public String checkOrgBlock(final long userIdx, final String groupName) {
+    final String _sql = "SELECT OU.nickname FROM ChatTable C INNER JOIN OtherUserTable OU ON C.otherUserIdx=OU.otherUserIdx WHERE OU.kakaoUserIdx =? AND C.groupName =? AND C.status = \"BLOCKED\"";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 2);
+    int _argIndex = 1;
+    _statement.bindLong(_argIndex, userIdx);
+    _argIndex = 2;
+    if (groupName == null) {
+      _statement.bindNull(_argIndex);
+    } else {
+      _statement.bindString(_argIndex, groupName);
+    }
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final String _result;
+      if(_cursor.moveToFirst()) {
+        if (_cursor.isNull(0)) {
+          _result = null;
+        } else {
+          _result = _cursor.getString(0);
+        }
+      } else {
+        _result = null;
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
+  public OtherUser getOtherUserByNameId(final String name, final long id) {
+    final String _sql = "SELECT * FROM OtherUserTable WHERE nickname =? AND kakaoUserIdx =?";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 2);
+    int _argIndex = 1;
+    if (name == null) {
+      _statement.bindNull(_argIndex);
+    } else {
+      _statement.bindString(_argIndex, name);
+    }
+    _argIndex = 2;
+    _statement.bindLong(_argIndex, id);
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _cursorIndexOfNickname = CursorUtil.getColumnIndexOrThrow(_cursor, "nickname");
+      final int _cursorIndexOfImage = CursorUtil.getColumnIndexOrThrow(_cursor, "image");
+      final int _cursorIndexOfStatus = CursorUtil.getColumnIndexOrThrow(_cursor, "status");
+      final int _cursorIndexOfKakaoUserIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "kakaoUserIdx");
+      final int _cursorIndexOfOtherUserIdx = CursorUtil.getColumnIndexOrThrow(_cursor, "otherUserIdx");
+      final OtherUser _result;
+      if(_cursor.moveToFirst()) {
+        final String _tmpNickname;
+        if (_cursor.isNull(_cursorIndexOfNickname)) {
+          _tmpNickname = null;
+        } else {
+          _tmpNickname = _cursor.getString(_cursorIndexOfNickname);
+        }
+        final String _tmpImage;
+        if (_cursor.isNull(_cursorIndexOfImage)) {
+          _tmpImage = null;
+        } else {
+          _tmpImage = _cursor.getString(_cursorIndexOfImage);
+        }
+        final String _tmpStatus;
+        if (_cursor.isNull(_cursorIndexOfStatus)) {
+          _tmpStatus = null;
+        } else {
+          _tmpStatus = _cursor.getString(_cursorIndexOfStatus);
+        }
+        final long _tmpKakaoUserIdx;
+        _tmpKakaoUserIdx = _cursor.getLong(_cursorIndexOfKakaoUserIdx);
+        _result = new OtherUser(_tmpNickname,_tmpImage,_tmpStatus,_tmpKakaoUserIdx);
+        final int _tmpOtherUserIdx;
+        _tmpOtherUserIdx = _cursor.getInt(_cursorIndexOfOtherUserIdx);
+        _result.setOtherUserIdx(_tmpOtherUserIdx);
+      } else {
+        _result = null;
       }
       return _result;
     } finally {
