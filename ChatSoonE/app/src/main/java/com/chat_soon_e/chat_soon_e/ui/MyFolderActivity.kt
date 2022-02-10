@@ -26,6 +26,7 @@ import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.HIDDEN
 import com.chat_soon_e.chat_soon_e.data.entities.Icon
 import com.chat_soon_e.chat_soon_e.databinding.ItemIconBinding
 import com.google.gson.Gson
+import com.skydoves.transformationlayout.TransformationCompat
 
 class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBinding::inflate), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var database: AppDatabase
@@ -215,8 +216,6 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
         if(binding.myFolderDrawerLayout.isDrawerOpen(GravityCompat.START)) {
             binding.myFolderDrawerLayout.closeDrawers()
         } else {
-            super.onBackPressed()
-            startActivityWithClear(MainActivity::class.java)
             finish()
         }
     }
@@ -284,10 +283,15 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
     // 이름 바꾸기 팝업 윈도우를 띄워서 폴더 이름을 변경할 수 있도록 해준다.
     @SuppressLint("InflateParams", "ClickableViewAccessibility")
     fun changeFolderName(itemBinding: ItemMyFolderBinding) {
+
+        val size = windowManager.currentWindowMetricsPointCompat()
+        val width = (size.x * 0.8f).toInt()
+        val height = (size.y * 0.4f).toInt()
+
         // 이름 바꾸기 팝업 윈도우
         val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val popupView = inflater.inflate(R.layout.popup_window_change_name, null)
-        mPopupWindow = PopupWindow(popupView, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT)
+        mPopupWindow = PopupWindow(popupView, width, WindowManager.LayoutParams.WRAP_CONTENT)
 
         mPopupWindow.animationStyle = -1        // 애니메이션 설정 (-1: 설정 안 함, 0: 설정)
         mPopupWindow.isFocusable = true         // 외부 영역 선택 시 팝업 윈도우 종료
@@ -322,7 +326,7 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
     }
 
     @SuppressLint("InflateParams", "ClickableViewAccessibility")
-    fun changeIcon(binding: ItemMyFolderBinding, position: Int, folderListFromAdapter: ArrayList<Folder>) {
+    fun changeIcon(itemBinding: ItemMyFolderBinding, position: Int, folderListFromAdapter: ArrayList<Folder>) {
         // 팝업 윈도우 사이즈를 잘못 맞추면 아이템들이 안 뜨므로 하드 코딩으로 사이즈 조정해주기
         // 아이콘 16개 (기본)
         val size = windowManager.currentWindowMetricsPointCompat()
@@ -339,6 +343,7 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
         mPopupWindow.isOutsideTouchable = true
 
         mPopupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0)
+        binding.myFolderContent.myFolderBackgroundView.visibility = View.VISIBLE    // 뒷배경 흐려지게
         mPopupWindow.setOnDismissListener(PopupWindowDismissListener())
 
         // RecyclerView 초기화
@@ -348,10 +353,10 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
 
         iconRVAdapter.setMyItemClickListener(object: ChangeIconRVAdapter.MyItemClickListener {
             // 아이콘을 하나 선택했을 경우
-            override fun onIconClick(itemBinding: ItemIconBinding, itemPosition: Int) {
+            override fun onIconClick(itemIconBinding: ItemIconBinding, itemPosition: Int) {
                 // 선택한 아이콘으로 폴더 이미지 변경
                 val selectedIcon = iconList[itemPosition]
-                binding.itemMyFolderIv.setImageResource(selectedIcon.iconImage)
+                itemBinding.itemMyFolderIv.setImageResource(selectedIcon.iconImage)
 
                 database = AppDatabase.getInstance(this@MyFolderActivity)!!
 
@@ -371,14 +376,19 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
     // 새폴더 이름 설정
     @SuppressLint("InflateParams")
     private fun setFolderName() {
+        val size = windowManager.currentWindowMetricsPointCompat()
+        val width = (size.x * 0.8f).toInt()
+        val height = (size.y * 0.4f).toInt()
+
         val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val popupView = inflater.inflate(R.layout.popup_window_set_folder_name, null)
-        mPopupWindow = PopupWindow(popupView, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT)
+        mPopupWindow = PopupWindow(popupView, width, WindowManager.LayoutParams.WRAP_CONTENT)
 
         mPopupWindow.animationStyle = -1        // 애니메이션 설정 (-1: 설정 안 함, 0: 설정)
         mPopupWindow.isFocusable = true         // 외부 영역 선택 시 팝업 윈도우 종료
         mPopupWindow.isOutsideTouchable = true
         mPopupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0)
+        binding.myFolderContent.myFolderBackgroundView.visibility = View.VISIBLE    // 뒷배경 흐려지게
         mPopupWindow.setOnDismissListener(PopupWindowDismissListener())
 
         // 입력 완료했을 때 누르는 버튼
@@ -413,6 +423,7 @@ class MyFolderActivity: BaseActivity<ActivityMyFolderBinding>(ActivityMyFolderBi
         mPopupWindow.isFocusable = true
         mPopupWindow.isOutsideTouchable = true
         mPopupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0)
+        binding.myFolderContent.myFolderBackgroundView.visibility = View.VISIBLE    // 뒷배경 흐려지게
         mPopupWindow.setOnDismissListener(PopupWindowDismissListener())
 
         // RecyclerView 초기화

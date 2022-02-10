@@ -9,6 +9,7 @@ import android.content.Intent
 import android.graphics.Insets
 import android.graphics.Point
 import android.os.Build
+import android.os.Bundle
 import android.view.*
 import android.widget.PopupWindow
 import android.widget.Toast
@@ -28,8 +29,12 @@ import com.chat_soon_e.chat_soon_e.databinding.ItemFolderListBinding
 import com.chat_soon_e.chat_soon_e.utils.getID
 import com.chat_soon_e.chat_soon_e.utils.permissionGrantred
 import com.google.android.material.navigation.NavigationView
+import com.skydoves.transformationlayout.TransformationAppCompatActivity
+import com.skydoves.transformationlayout.onTransformationEndContainer
+import com.skydoves.transformationlayout.onTransformationStartContainer
 
-class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity: NavigationView.OnNavigationItemSelectedListener, TransformationAppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
     private lateinit var appDB: AppDatabase
     private var iconList = ArrayList<Icon>()
     private var folderList = ArrayList<Folder>()
@@ -39,8 +44,12 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
     private val chatViewModel: ChatViewModel by viewModels()
     private lateinit var mPopupWindow: PopupWindow
 
-    // onCreate() 이후
-    override fun initAfterBinding() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        onTransformationStartContainer()
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         appDB = AppDatabase.getInstance(this)!!
         initIcon()                  // icon list 초기화
         initFolder()                // folder list 초기화
@@ -275,9 +284,11 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
                 editor.apply()
 
                 if(pattern.equals("0")) {   // 패턴이 설정되어 있지 않은 경우 패턴 설정 페이지로
-                    startNextActivity(CreatePatternActivity::class.java)
+                    val intent = Intent(this@MainActivity, CreatePatternActivity::class.java)
+                    startActivity(intent)
                 } else {    // 패턴이 설정되어 있는 경우 입력 페이지로 (보안을 위해)
-                    startNextActivity(InputPatternActivity::class.java)
+                    val intent = Intent(this@MainActivity, InputPatternActivity::class.java)
+                    startActivity(intent)
                 }
             }
 
@@ -326,12 +337,14 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
         // 내폴더 아이콘 클릭시 폴더 화면으로 이동
         binding.mainContent.mainMyFolderIv.setOnClickListener {
             // startNextActivityWithClear()를 사용하는 게 좋을까?
-            startNextActivity(MyFolderActivity::class.java)
+
+            val intent = Intent(this@MainActivity, MyFolderActivity::class.java)
+            startActivity(intent)
             Log.d("toggleListener", "folder")
         }
 
         binding.mainContent.mainChatIv.setOnClickListener {
-            //차단 목록으로 변경될 것
+            // 차단 목록으로 변경될 것
         }
 
         // 하단 중앙 아이콘 클릭시
@@ -432,9 +445,11 @@ class MainActivity: BaseActivity<ActivityMainBinding>(ActivityMainBinding::infla
                     editor.apply()
 
                     if(pattern.equals("0")) {   // 패턴이 설정되어 있지 않은 경우 패턴 설정 페이지로
-                        startNextActivity(CreatePatternActivity::class.java)
+                        val intent = Intent(this@MainActivity, CreatePatternActivity::class.java)
+                        startActivity(intent)
                     } else {    // 패턴이 설정되어 있는 경우 입력 페이지로 (보안을 위해)
-                        startNextActivity(InputPatternActivity::class.java)
+                        val intent = Intent(this@MainActivity, InputPatternActivity::class.java)
+                        startActivity(intent)
                     }
                 }
                 val chatDao=appDB.chatDao()

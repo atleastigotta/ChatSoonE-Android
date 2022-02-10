@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ChatSoonE</string>
+    <string name="app_name">RE:CHAT</string>
 
     <!-- 공통 -->
     <string name="img_app_logo">logo image</string>
@@ -36,6 +36,7 @@
     <string name="chat_list_name">이름</string>
     <string name="chat_list_content">내용</string>
     <string name="chat_list_date_time">날짜와 시간</string>
+    <string name="chat_list_new">N</string>
 
     <!-- 팝업 메뉴 -->
     <string name="delete">삭제하기</string>

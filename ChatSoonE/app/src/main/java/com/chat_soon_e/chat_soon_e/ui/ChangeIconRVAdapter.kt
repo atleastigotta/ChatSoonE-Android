@@ -9,7 +9,7 @@ import com.chat_soon_e.chat_soon_e.databinding.ItemIconBinding
 class ChangeIconRVAdapter(private val iconList: ArrayList<Icon>): RecyclerView.Adapter<ChangeIconRVAdapter.ViewHolder>() {
     // 클릭 인터페이스
     interface MyItemClickListener {
-        fun onIconClick(itemBinding: ItemIconBinding, itemPosition: Int)
+        fun onIconClick(itemIconBinding: ItemIconBinding, itemPosition: Int)
     }
 
     // 리스너 객체를 저장하는 변수

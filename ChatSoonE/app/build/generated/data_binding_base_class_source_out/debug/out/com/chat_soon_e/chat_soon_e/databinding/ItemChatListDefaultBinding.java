@@ -34,7 +34,7 @@ public final class ItemChatListDefaultBinding implements ViewBinding {
   public final TextView itemChatListNameTv;
 
   @NonNull
-  public final CardView itemChatListNewCv;
+  public final TextView itemChatListNewTv;
 
   @NonNull
   public final CardView itemChatListProfileCv;
@@ -45,14 +45,14 @@ public final class ItemChatListDefaultBinding implements ViewBinding {
   private ItemChatListDefaultBinding(@NonNull ConstraintLayout rootView,
       @NonNull TextView itemChatListContentTv, @NonNull TextView itemChatListDateTimeTv,
       @NonNull ConstraintLayout itemChatListDefaultLayout, @NonNull TextView itemChatListNameTv,
-      @NonNull CardView itemChatListNewCv, @NonNull CardView itemChatListProfileCv,
+      @NonNull TextView itemChatListNewTv, @NonNull CardView itemChatListProfileCv,
       @NonNull ImageView itemChatListProfileIv) {
     this.rootView = rootView;
     this.itemChatListContentTv = itemChatListContentTv;
     this.itemChatListDateTimeTv = itemChatListDateTimeTv;
     this.itemChatListDefaultLayout = itemChatListDefaultLayout;
     this.itemChatListNameTv = itemChatListNameTv;
-    this.itemChatListNewCv = itemChatListNewCv;
+    this.itemChatListNewTv = itemChatListNewTv;
     this.itemChatListProfileCv = itemChatListProfileCv;
     this.itemChatListProfileIv = itemChatListProfileIv;
   }
@@ -104,9 +104,9 @@ public final class ItemChatListDefaultBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.item_chat_list_new_cv;
-      CardView itemChatListNewCv = ViewBindings.findChildViewById(rootView, id);
-      if (itemChatListNewCv == null) {
+      id = R.id.item_chat_list_new_tv;
+      TextView itemChatListNewTv = ViewBindings.findChildViewById(rootView, id);
+      if (itemChatListNewTv == null) {
         break missingId;
       }
 
@@ -123,7 +123,7 @@ public final class ItemChatListDefaultBinding implements ViewBinding {
       }
 
       return new ItemChatListDefaultBinding((ConstraintLayout) rootView, itemChatListContentTv,
-          itemChatListDateTimeTv, itemChatListDefaultLayout, itemChatListNameTv, itemChatListNewCv,
+          itemChatListDateTimeTv, itemChatListDefaultLayout, itemChatListNameTv, itemChatListNewTv,
           itemChatListProfileCv, itemChatListProfileIv);
     }
     String missingId = rootView.getResources().getResourceName(id);

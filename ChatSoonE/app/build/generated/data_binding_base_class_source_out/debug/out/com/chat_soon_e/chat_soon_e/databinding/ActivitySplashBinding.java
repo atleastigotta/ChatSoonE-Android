@@ -14,6 +14,7 @@ import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.chat_soon_e.chat_soon_e.R;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
+import com.skydoves.transformationlayout.TransformationLayout;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -43,11 +44,14 @@ public final class ActivitySplashBinding implements ViewBinding {
   @NonNull
   public final TextView splashStartBtn;
 
+  @NonNull
+  public final TransformationLayout splashTransformationLayout;
+
   private ActivitySplashBinding(@NonNull ConstraintLayout rootView,
       @NonNull CardView splashKakaoBtn, @NonNull ImageView splashKakaoIv,
       @NonNull TextView splashKakaoLoginBtnTv, @NonNull ImageView splashMainIcon,
       @NonNull ImageView splashMainIconText, @NonNull LinearProgressIndicator splashProgressBar,
-      @NonNull TextView splashStartBtn) {
+      @NonNull TextView splashStartBtn, @NonNull TransformationLayout splashTransformationLayout) {
     this.rootView = rootView;
     this.splashKakaoBtn = splashKakaoBtn;
     this.splashKakaoIv = splashKakaoIv;
@@ -56,6 +60,7 @@ public final class ActivitySplashBinding implements ViewBinding {
     this.splashMainIconText = splashMainIconText;
     this.splashProgressBar = splashProgressBar;
     this.splashStartBtn = splashStartBtn;
+    this.splashTransformationLayout = splashTransformationLayout;
   }
 
   @Override
@@ -127,9 +132,15 @@ public final class ActivitySplashBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.splash_transformation_layout;
+      TransformationLayout splashTransformationLayout = ViewBindings.findChildViewById(rootView, id);
+      if (splashTransformationLayout == null) {
+        break missingId;
+      }
+
       return new ActivitySplashBinding((ConstraintLayout) rootView, splashKakaoBtn, splashKakaoIv,
           splashKakaoLoginBtnTv, splashMainIcon, splashMainIconText, splashProgressBar,
-          splashStartBtn);
+          splashStartBtn, splashTransformationLayout);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

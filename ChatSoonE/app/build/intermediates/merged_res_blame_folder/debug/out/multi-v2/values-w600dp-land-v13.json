@@ -1,17 +1,10 @@
 {
     "logs": [
         {
-<<<<<<< HEAD
             "outputFile": "C:\\Users\\pc\\projects\\ChatSoonE-Android\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w600dp-land-v13\\values-w600dp-land-v13.xml",
             "map": [
                 {
                     "source": "C:\\Users\\pc\\.gradle\\caches\\transforms-3\\49532273eabc3c40157164b634dd2e9a\\transformed\\material-1.5.0\\res\\values-w600dp-land-v13\\values-w600dp-land-v13.xml",
-=======
-            "outputFile": "D:\\gitfolder\\UMC_ChatSoon5\\ChatSoonE\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w600dp-land-v13\\values-w600dp-land-v13.xml",
-            "map": [
-                {
-                    "source": "C:\\Users\\82108\\.gradle\\caches\\transforms-3\\49532273eabc3c40157164b634dd2e9a\\transformed\\material-1.5.0\\res\\values-w600dp-land-v13\\values-w600dp-land-v13.xml",
->>>>>>> juyeon
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -1,16 +1,14 @@
 package com.chat_soon_e.chat_soon_e.ui
 
-import android.R
-import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.animation.LinearInterpolator
-import android.widget.ProgressBar
-import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.chat_soon_e.chat_soon_e.ApplicationClass.Companion.mSharedPreferences
 import com.chat_soon_e.chat_soon_e.data.entities.User
@@ -26,28 +24,42 @@ import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.common.model.KakaoSdkError
 import com.kakao.sdk.user.UserApiClient
-
+import com.skydoves.transformationlayout.TransformationAppCompatActivity
+import com.skydoves.transformationlayout.TransformationCompat
+import com.skydoves.transformationlayout.onTransformationStartContainer
 
 // BaseActivity를 상속받기 때문에 BaseActivity 안에서 onCreate() 실행되면서 자동적으로 뷰 바인딩을 해준다.
 // 따라서 SplashActivity에서는 그 코드를 쓸 필요가 없다.
 // <> Generic: 아직 정의되지 않은 타입을 정의할 때 사용하는데, 여기서는 이 안에 어떤 뷰 바인딩을 할 것인지를 넣어준다.
-class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate),
+@SuppressLint("CustomSplashScreen")
+class SplashActivity: AppCompatActivity(),
     SplashView {
     val TAG = "splashtest"
     // BaseActivity onCreate()에서 바인딩 끝나고 자동적으로 호출이 되게끔 해준다.
     // 로그인 성곡
-    @RequiresApi(Build.VERSION_CODES.P)
-    override fun initAfterBinding() {
+
+    private lateinit var binding: ActivitySplashBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+//        onTransformationStartContainer() // should be called before super.onCreate().
+        super.onCreate(savedInstanceState)
+        binding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         //defaulValue=0, 설명창 보임=1, 더이상보이지 않음=2
         mSharedPreferences=getSharedPreferences("explain", MODE_PRIVATE)
         val isExplain= mSharedPreferences.getInt("explain", 0)
 
-        if(isExplain==0 || isExplain==1)
-            startNextActivity(ExplainActivity::class.java)
+        if(isExplain==0 || isExplain==1) {
+            val intent = Intent(this@SplashActivity, ExplainActivity::class.java)
+            startActivity(intent)
+        }
         else if(isExplain==2)
         {
-            if(!permissionGrantred(this))
-                startNextActivity(PermissionActivity::class.java)
+            if(!permissionGrantred(this)) {
+                val intent = Intent(this@SplashActivity, PermissionActivity::class.java)
+                startActivity(intent)
+            }
         }
         loginPermission()
         binding.splashKakaoBtn.setOnClickListener {
@@ -56,12 +68,14 @@ class SplashActivity: BaseActivity<ActivitySplashBinding>(ActivitySplashBinding:
             }
         }
         binding.splashStartBtn.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            val intent = Intent(this@SplashActivity, MainActivity::class.java)
+            TransformationCompat.startActivity(binding.splashTransformationLayout, intent)
             finish()
         }
         //로그인이 되었다면 로그인은 안뜨게====O
         //데이터 다운이 완료되면 시작하기 버튼 활성화====X
     }
+
     //Token 존재 확인, 즉 로그인 확인
     fun loginPermission(){
         if (AuthApiClient.instance.hasToken()) {

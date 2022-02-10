@@ -208,8 +208,13 @@ class MainRVAdapter(private val context: Context, private val mItemClickListener
             binding.itemChatListContentTv.text = chat.message
             binding.itemChatListDateTimeTv.text = dateToString(chat.postTime)
 
-            if(chat.isNew == 0) binding.itemChatListNewCv.visibility = View.VISIBLE
-            else binding.itemChatListNewCv.visibility = View.INVISIBLE
+            if(chat.isNew == 0) {
+                binding.itemChatListNewTv.visibility = View.VISIBLE
+                binding.itemChatListNewTv.bringToFront()
+            }
+            else {
+                binding.itemChatListNewTv.visibility = View.INVISIBLE
+            }
         }
     }
 

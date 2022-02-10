@@ -1184,6 +1184,20 @@ attr trackThickness
 attr trackTint
 attr trackTintMode
 attr transformPivotTarget
+attr transformation_allContainerColor
+attr transformation_containerColor
+attr transformation_direction
+attr transformation_duration
+attr transformation_elevationShadowEnabled
+attr transformation_endElevation
+attr transformation_fadeMode
+attr transformation_fitMode
+attr transformation_holdAtEndEnabled
+attr transformation_pathMode
+attr transformation_scrimColor
+attr transformation_startElevation
+attr transformation_targetView
+attr transformation_zOrder
 attr transitionDisable
 attr transitionEasing
 attr transitionFlags
@@ -2535,12 +2549,6 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
-drawable account
-drawable account_profile
-drawable accountone
-drawable ad11d
-drawable add
-drawable allchattwo
 drawable avd_hide_password
 drawable avd_show_password
 drawable background
@@ -2553,7 +2561,9 @@ drawable background_folder_option_popup_menu
 drawable background_icon_folder
 drawable background_image
 drawable background_mauve_corner
+drawable background_navi
 drawable background_navi_setting
+drawable background_new_red_corner
 drawable background_popup_window
 drawable background_profile_circle
 drawable background_white_corner
@@ -2567,7 +2577,6 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
-<<<<<<< HEAD
 drawable button_change_name
 drawable chatsoon01
 drawable chatsoon02
@@ -2578,12 +2587,6 @@ drawable chatsoon06
 drawable chatsoon07
 drawable chatsoon08
 drawable chatsoon09
-=======
-drawable cancel_btn
-drawable chat
-drawable chatone
-drawable chatsoon1
->>>>>>> juyeon
 drawable chatsoon10
 drawable chatsoon11
 drawable chatsoon12
@@ -2591,39 +2594,20 @@ drawable chatsoon13
 drawable chatsoon14
 drawable chatsoon15
 drawable chatsoon16
-<<<<<<< HEAD
-=======
-drawable chatsoon2
-drawable chatsoon3
-drawable chatsoon4
-drawable chatsoon5
-drawable chatsoon6
-drawable chatsoon7
-drawable chatsoon8
-drawable chatsoon9
-drawable cloud
-drawable dddd
->>>>>>> juyeon
 drawable design_fab_background
 drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
 drawable dot_background
-<<<<<<< HEAD
 drawable ic_all_chat_black
+drawable ic_all_chat_blue
+drawable ic_all_chat_line
+drawable ic_app_title
 drawable ic_arrow_left_back
-=======
-drawable file
-drawable folder
-drawable folder1
-drawable foldertwo
-drawable foldertwoone
-drawable home
-drawable ic_all_chat
->>>>>>> juyeon
 drawable ic_baseline_account_circle_24
 drawable ic_baseline_block_24
+drawable ic_baseline_cancel_24
 drawable ic_baseline_email_24
 drawable ic_baseline_folder_24
 drawable ic_baseline_help_24
@@ -2632,11 +2616,17 @@ drawable ic_baseline_person_remove_24
 drawable ic_baseline_phonelink_ring_24
 drawable ic_baseline_rate_review_24
 drawable ic_baseline_share_24
+drawable ic_basic_folder
 drawable ic_block
 drawable ic_cancel
+drawable ic_chat_blue
+drawable ic_chat_line
 drawable ic_chat_soon_e
 drawable ic_clock_black_24dp
+drawable ic_create_folder_line
 drawable ic_folder
+drawable ic_folder_blue
+drawable ic_folder_line
 drawable ic_hidden_folder
 drawable ic_kakao_talk
 drawable ic_keyboard_black_24dp
@@ -2651,18 +2641,24 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_my_folder
+drawable ic_my_folder_blue
+drawable ic_my_folder_blue_white
 drawable ic_my_folder_bottom_black
 drawable ic_my_folder_bottom_blue
 drawable ic_my_folder_bottom_blue_white
+drawable ic_my_folder_line
 drawable ic_my_folder_list
+drawable ic_my_folder_list_blue
+drawable ic_my_folder_mauve
 drawable ic_pofile_black
 drawable ic_profile_black_no_circle
+drawable ic_profile_blue
 drawable ic_profile_white_no_circle
 drawable ic_to_folder
+drawable ic_to_folder_line
 drawable ic_up_and_down
 drawable img_background_folder
 drawable kakao_login_medium_narrow
-drawable kakaoicon
 drawable m3_appbar_background
 drawable m3_popupmenu_background_overlay
 drawable m3_radiobutton_ripple
@@ -2691,7 +2687,6 @@ drawable mtrl_navigation_bar_item_background
 drawable mtrl_popupmenu_background
 drawable mtrl_popupmenu_background_overlay
 drawable mtrl_tabs_default_indicator
-drawable narrow4
 drawable navigation_empty_icon
 drawable notiback
 drawable notification_action_background
@@ -2706,39 +2701,33 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
-drawable patten
 drawable progressbar_progressbar1
-drawable rnfma
+drawable selector_all_chat
+drawable selector_block_list
 drawable selector_chat
 drawable selector_chat_list
+drawable selector_create_folder
+drawable selector_folder
+drawable selector_main_folder
+drawable selector_my_folder
 drawable selector_switch
 drawable shadow
 drawable shape_switch_track_off
 drawable shape_switch_track_on
 drawable shape_thumb
-drawable sharetwos
 drawable splash_btn
 drawable spring_dot_background
 drawable spring_dot_stroke_background
-drawable ssssss
 drawable test_custom_background
 drawable test_level_drawable
-<<<<<<< HEAD
 drawable thumb
-=======
-drawable text
->>>>>>> juyeon
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable track
 drawable worm_dot_background
 drawable worm_dot_stroke_background
-<<<<<<< HEAD
 font font
 font noto_sans_korean
-=======
-drawable xnaud
->>>>>>> juyeon
 id ALT
 id BOTTOM_END
 id BOTTOM_START
@@ -2891,6 +2880,7 @@ id cos
 id counterclockwise
 id create_pattern_lock_view
 id create_pattern_tv
+id cross
 id currentState
 id custom
 id customPanel
@@ -2937,6 +2927,7 @@ id endToStart
 id end_padder
 id enterAlways
 id enterAlwaysCollapsed
+id entering
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -2973,6 +2964,7 @@ id grouping
 id groups
 id guideline
 id header_title
+id height
 id height_bias
 id hidden_folder_background_view
 id hidden_folder_hidden_folder_iv
@@ -2993,6 +2985,7 @@ id ignore
 id ignoreRequest
 id image
 id immediateStop
+id in
 id included
 id info
 id input_pattern_lock_view
@@ -3025,7 +3018,7 @@ id item_chat_list_content_tv
 id item_chat_list_date_time_tv
 id item_chat_list_default_layout
 id item_chat_list_name_tv
-id item_chat_list_new_cv
+id item_chat_list_new_tv
 id item_chat_list_profile_cv
 id item_chat_list_profile_iv
 id item_folder_list_iv
@@ -3053,6 +3046,7 @@ id listMode
 id list_item
 id main_background_view
 id main_block_iv
+id main_bottom_bar_shadow_view
 id main_bottom_bar_view
 id main_cancel_iv
 id main_chat_iv
@@ -3063,6 +3057,7 @@ id main_delete_iv
 id main_drawer_alarm_switch
 id main_drawer_layout
 id main_drawer_setting_menu_iv
+id main_folder_background_view
 id main_folder_iv
 id main_folder_mode_iv
 id main_my_folder_iv
@@ -3177,6 +3172,7 @@ id on
 id onAttachStateChangeListener
 id onDateChanged
 id onInterceptTouchReturnSwipe
+id out
 id outline
 id outward
 id overshoot
@@ -3204,9 +3200,6 @@ id popup_window_change_icon_tv
 id popup_window_change_name_button
 id popup_window_change_name_et
 id popup_window_change_name_tv
-id popup_window_folder_bottom_menu_create_folder_tv
-id popup_window_folder_bottom_menu_hidden_folder_tv
-id popup_window_folder_bottom_menu_line_view
 id popup_window_main_bottom_menu_to_folder_tv
 id popup_window_set_name_button
 id popup_window_set_name_et
@@ -3219,6 +3212,7 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
+id returning
 id reverseSawtooth
 id right
 id rightToLeft
@@ -3273,6 +3267,7 @@ id splash_main_icon
 id splash_main_icon_text
 id splash_progressBar
 id splash_start_btn
+id splash_transformation_layout
 id spline
 id split_action_bar
 id spread
@@ -3331,6 +3326,7 @@ id textinput_helper_text
 id textinput_placeholder
 id textinput_prefix_text
 id textinput_suffix_text
+id through
 id time
 id title
 id titleDividerNoCustom
@@ -3362,6 +3358,7 @@ id visible
 id visible_removing_fragment_view_tag
 id webview
 id west
+id width
 id width_bias
 id withText
 id withinBounds
@@ -3495,8 +3492,8 @@ layout design_text_input_start_icon
 layout dot_layout
 layout fragment_explain
 layout fragment_explain_1
+layout item_chat
 layout item_chat_choose
-layout item_chat_default
 layout item_chat_list_choose
 layout item_chat_list_default
 layout item_folder_list
@@ -3567,7 +3564,6 @@ layout notification_template_part_chronometer
 layout notification_template_part_time
 layout popup_window_change_icon
 layout popup_window_change_name
-layout popup_window_folder_bottom_menu
 layout popup_window_set_folder_name
 layout popup_window_to_folder_menu
 layout select_dialog_item_material
@@ -3648,6 +3644,7 @@ string chat_list
 string chat_list_content
 string chat_list_date_time
 string chat_list_name
+string chat_list_new
 string chip_text
 string clear_text_end_icon_content_description
 string com_kakao_talk_chooser_text
@@ -4993,6 +4990,7 @@ styleable ThemeEnforcement android_textAppearance enforceMaterialTheme enforceTe
 styleable Toolbar android_gravity android_minHeight buttonGravity collapseContentDescription collapseIcon contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation logo logoDescription maxButtonHeight menu navigationContentDescription navigationIcon popupTheme subtitle subtitleTextAppearance subtitleTextColor title titleMargin titleMarginBottom titleMarginEnd titleMarginStart titleMarginTop titleMargins titleTextAppearance titleTextColor
 styleable Tooltip android_textAppearance android_textColor android_padding android_layout_margin android_minWidth android_minHeight android_text backgroundTint
 styleable Transform android_transformPivotX android_transformPivotY android_translationX android_translationY android_scaleX android_scaleY android_rotation android_rotationX android_rotationY android_translationZ android_elevation transformPivotTarget
+styleable TransformationLayout transformation_allContainerColor transformation_containerColor transformation_direction transformation_duration transformation_elevationShadowEnabled transformation_endElevation transformation_fadeMode transformation_fitMode transformation_holdAtEndEnabled transformation_pathMode transformation_scrimColor transformation_startElevation transformation_targetView transformation_zOrder
 styleable Transition android_id autoTransition constraintSetEnd constraintSetStart duration layoutDuringTransition motionInterpolator pathMotionArc staggered transitionDisable transitionFlags
 styleable Variant constraints region_heightLessThan region_heightMoreThan region_widthLessThan region_widthMoreThan
 styleable View android_theme android_focusable paddingEnd paddingStart theme

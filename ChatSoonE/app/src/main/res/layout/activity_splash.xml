@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <ImageView
         android:id="@+id/splash_main_icon"
         android:layout_width="179dp"
@@ -11,16 +12,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/splash_main_icon_text"
         android:src="@drawable/ic_chat_soon_e"/>
+
     <ImageView
         android:id="@+id/splash_main_icon_text"
-        android:layout_width="190dp"
+        android:layout_width="200dp"
         android:layout_height="100dp"
-        android:src="null"
+        android:src="@drawable/ic_app_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-    />
+        app:layout_constraintBottom_toBottomOf="parent" />
+
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/splash_progressBar"
         android:layout_width="230dp"
@@ -35,7 +37,21 @@
         app:trackThickness="14dp"
         app:trackColor="#E3E3E3"
         app:trackCornerRadius="8dp"/>
-    <TextView
+
+    <com.skydoves.transformationlayout.TransformationLayout
+        android:id="@+id/splash_transformation_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:transformation_duration="300"
+        app:transformation_direction="entering"
+        app:transformation_fadeMode="cross"
+        app:transformation_fitMode="height"
+        app:transformation_pathMode="arc"
+        app:layout_constraintStart_toStartOf="@id/splash_progressBar"
+        app:layout_constraintEnd_toEndOf="@id/splash_progressBar"
+        app:layout_constraintTop_toBottomOf="@id/splash_progressBar">
+
+        <TextView
             android:id="@+id/splash_start_btn"
             android:layout_width="227dp"
             android:layout_height="wrap_content"
@@ -43,22 +59,22 @@
             android:paddingBottom="0dp"
             android:textSize="15sp"
             android:layout_marginTop="50dp"
-            android:text="삭제하기"
+            android:text="시작하기"
             android:textAlignment="center"
-            app:layout_constraintStart_toStartOf="@id/splash_progressBar"
-            app:layout_constraintEnd_toEndOf="@id/splash_progressBar"
-            app:layout_constraintTop_toBottomOf="@id/splash_progressBar"
             android:background="@drawable/splash_btn"
-            android:textColor="#9DB2FA"
-        />
+            android:textColor="#9DB2FA" />
+
+    </com.skydoves.transformationlayout.TransformationLayout>
+
+
 <androidx.cardview.widget.CardView
     android:id="@+id/splash_kakao_btn"
     android:layout_width="227dp"
     android:layout_height="38dp"
     app:cardCornerRadius="5dp"
-    app:layout_constraintStart_toStartOf="@id/splash_start_btn"
-    app:layout_constraintEnd_toEndOf="@id/splash_start_btn"
-    app:layout_constraintTop_toBottomOf="@id/splash_start_btn"
+    app:layout_constraintStart_toStartOf="@id/splash_transformation_layout"
+    app:layout_constraintEnd_toEndOf="@id/splash_transformation_layout"
+    app:layout_constraintTop_toBottomOf="@id/splash_transformation_layout"
     android:visibility="visible"
     app:cardElevation="0dp"
     android:layout_marginTop="10dp"

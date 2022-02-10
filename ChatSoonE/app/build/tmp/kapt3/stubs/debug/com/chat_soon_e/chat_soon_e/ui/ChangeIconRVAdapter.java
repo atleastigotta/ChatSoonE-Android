@@ -33,11 +33,11 @@ public final class ChangeIconRVAdapter extends androidx.recyclerview.widget.Recy
         return 0;
     }
     
-    @kotlin.Metadata(mv = {1, 6, 0}, k = 1, d1 = {"\u0000\u001c\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\b\n\u0000\bf\u0018\u00002\u00020\u0001J\u0018\u0010\u0002\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u00052\u0006\u0010\u0006\u001a\u00020\u0007H&\u00a8\u0006\b"}, d2 = {"Lcom/chat_soon_e/chat_soon_e/ui/ChangeIconRVAdapter$MyItemClickListener;", "", "onIconClick", "", "itemBinding", "Lcom/chat_soon_e/chat_soon_e/databinding/ItemIconBinding;", "itemPosition", "", "app_debug"})
+    @kotlin.Metadata(mv = {1, 6, 0}, k = 1, d1 = {"\u0000\u001c\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\b\n\u0000\bf\u0018\u00002\u00020\u0001J\u0018\u0010\u0002\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u00052\u0006\u0010\u0006\u001a\u00020\u0007H&\u00a8\u0006\b"}, d2 = {"Lcom/chat_soon_e/chat_soon_e/ui/ChangeIconRVAdapter$MyItemClickListener;", "", "onIconClick", "", "itemIconBinding", "Lcom/chat_soon_e/chat_soon_e/databinding/ItemIconBinding;", "itemPosition", "", "app_debug"})
     public static abstract interface MyItemClickListener {
         
         public abstract void onIconClick(@org.jetbrains.annotations.NotNull()
-        com.chat_soon_e.chat_soon_e.databinding.ItemIconBinding itemBinding, int itemPosition);
+        com.chat_soon_e.chat_soon_e.databinding.ItemIconBinding itemIconBinding, int itemPosition);
     }
     
     @kotlin.Metadata(mv = {1, 6, 0}, k = 1, d1 = {"\u0000\u001e\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0004\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\b\u0086\u0004\u0018\u00002\u00020\u0001B\r\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\u0002\u0010\u0004J\u000e\u0010\u0007\u001a\u00020\b2\u0006\u0010\t\u001a\u00020\nR\u0011\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0005\u0010\u0006\u00a8\u0006\u000b"}, d2 = {"Lcom/chat_soon_e/chat_soon_e/ui/ChangeIconRVAdapter$ViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "binding", "Lcom/chat_soon_e/chat_soon_e/databinding/ItemIconBinding;", "(Lcom/chat_soon_e/chat_soon_e/ui/ChangeIconRVAdapter;Lcom/chat_soon_e/chat_soon_e/databinding/ItemIconBinding;)V", "getBinding", "()Lcom/chat_soon_e/chat_soon_e/databinding/ItemIconBinding;", "bind", "", "icon", "Lcom/chat_soon_e/chat_soon_e/data/entities/Icon;", "app_debug"})
